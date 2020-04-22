@@ -24,16 +24,14 @@ from . import view,testdb
 #    path('admin/', admin.site.urls),
 #]
 """
-from django.conf.urls import url
 from django.conf.urls import url, include
 from ATC_Data import view
+from django.urls import path
 
-#urlpatterns = [
-#    url(r'^$', view.hello),
-#]
 
 urlpatterns = [
     url(r'^$', view.login),
+    path('test/', view.test),
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
 ]

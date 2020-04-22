@@ -7,4 +7,4 @@ def getinfo(request):
     context = {}
     context['atcName'] = getatcinfo.atcName
     context['atcOld'] = getatcinfo.atcOld
-    return render(request, 'personnalinfo.html', context)
+    return render(request, 'infosearch.html', context)

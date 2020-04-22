@@ -17,3 +17,7 @@ def login(request):
     #context['hello'] = 'Hello World!'
     return render(request, 'index.html')
 
+def test(request):
+   # context = {}
+    #context['hello'] = 'Hello World!'
+    return render(request, 'test.html')

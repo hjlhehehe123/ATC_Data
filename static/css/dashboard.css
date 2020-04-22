@@ -62,11 +62,21 @@ body {
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #428bca;
+/*  color: #fff;
+/*  background-color: #428bca;*/
 }
 
 
+#menu ul{
+    display:none;
+}
+
+#menu>li:hover ul{
+    display:block;
+}
+li{
+    list-style:none;
+}
 /*
  * Main content
  */
