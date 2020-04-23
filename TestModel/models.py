@@ -2,6 +2,9 @@
 
 # Create your models here.
 # models.py
+# python manage.py makemigrations atcinfo
+# python manage.py migrate atcinfo
+# atcinfo
 from django.db import models
 
 
