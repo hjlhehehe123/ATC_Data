@@ -93,6 +93,7 @@
 		}
 
 	</style>
+     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -100,7 +101,9 @@
 		<button class="layui-btn" onclick="addRow()">新增行</button>
 		<label for="saverow"><input type="checkbox" id="saverow"/>新增前保存所有行</label>
 	</div>
-	<table id="test">
+     <div class="block-content collapse in">
+            <div class="span12">
+	<table id="test"  class="table table-bordered">
 		<thead>
 			<tr>
 				<th>序号</th>
@@ -201,6 +204,8 @@
 {#				<td>123</td>#}
 {#				<td><a>修改</a><a>删除</a></td>#}
 {#			</tr>#}
+          </div>
+        </div>
 		</tbody>
 	</table>
 
