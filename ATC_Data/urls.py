@@ -25,13 +25,14 @@ from . import view,testdb
 #]
 """
 from django.conf.urls import url, include
-from ATC_Data import view
 from django.urls import path
 
+from ATC_Data import view
 
 urlpatterns = [
     url(r'^$', view.login),
     path('test/', view.test),
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
 ]
