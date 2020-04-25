@@ -63,9 +63,9 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar" id="menu">
-            <li><a href="#">系统使用说明</a>
-            <li class="active" ><a href="{% url 'atcInfo' %}" target="iframe_a">人员信息查询 <span class="sr-only">(current)</span></a>
-            <li class="active" ><a href="">培训计划查询 <span class="sr-only">(current)</span></a>
+            <li><a href="{% url 'instruction' %}" target="iframe_a">系统使用说明</a>
+            <li class="active" ><a href="{% url 'infosearch' %}" target="iframe_a">人员信息查询 <span class="sr-only">(current)</span></a>
+            <li class="active" ><a href="{% url 'trainningstatus' %}" target="iframe_a">培训计划查询 <span class="sr-only">(current)</span></a>
             <li class="active" ><a href="">制定培训计划 <span class="sr-only">(current)</span></a>
                 <ul>
                   <li><a href="#">•月培训计划</a></li>
@@ -78,7 +78,8 @@
                   <li><a href="#">•在进行的培训</a></li>
                   <li><a href="#">•已关闭的培训</a></li>
                  </ul></li>
-              <li class="active" ><a href="">班组成员维护 <span class="sr-only">(current)</span></a>
+              <li class="active" ><a href="{% url 'banzu' %}" target="iframe_a">班组成员维护 <span class="sr-only">(current)</span></a>
+              <li class="active" ><a href="{% url 'atcInfo' %}" target="iframe_a">个人技术档案 <span class="sr-only">(current)</span></a>
           </ul>
         </div>
 

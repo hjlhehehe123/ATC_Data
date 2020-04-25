@@ -31,7 +31,8 @@ from django.urls import path
 
 urlpatterns = [
     url(r'^$', view.login),
-    path('test/', view.test),
+    path('banzu/', view.banzu,name="banzu"),
+    path('instruction/', view.instruction,name="instruction"),
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
 ]
