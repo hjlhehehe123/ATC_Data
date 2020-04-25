@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^$', view.login),
     path('banzu/', view.banzu,name="banzu"),
     path('instruction/', view.instruction,name="instruction"),
+    path('simulator/', view.simulator, name="simulator"),
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
 ]

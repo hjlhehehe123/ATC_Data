@@ -22,3 +22,6 @@ def banzu(request):
 
 def instruction(request):
     return render(request, 'instruction.html')
+
+def simulator(request):
+    return render(request, 'simulator.html')

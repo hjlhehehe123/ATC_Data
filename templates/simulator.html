@@ -1,0 +1,568 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>信息管理系统</title>
+   <style>
+          .btn{
+              height: 15px;
+              width: 15px;
+              float: left;
+          }
+       .day{
+           height:70px;
+           width: 70px;
+           float:left;
+       }
+       .week{
+           height:70px;
+           width: 550px;
+           float:left;
+       }
+       .month{
+           padding-top: 10px;
+           height:400px;
+           width: 550px;
+           float: left;
+       }
+        #add{
+			  display: inline-block;
+	          height: 38px;
+	          line-height: 38px;
+	          background-color: #009688;
+              color: #fff;
+	          white-space: nowrap;
+	          text-align: center;
+	          font-size: 14px;
+	          border: none;
+	          border-radius: 2px;
+	          cursor: pointer;
+          }
+       #add:hover {
+	    opacity: .8;
+	    filter: alpha(opacity=80);
+	    color: #fff;
+		}
+    </style>
+  </head>
+
+  <body>
+  <div><select><option>1</option><option>2</option><option>3</option></select>月模拟机使用情况</div>
+  <div class="month">
+  <div class="week">
+  <div class="day" id="d1">
+      <button class="btn" id="1.1.1"></button>
+      <button class="btn" id="1.1.2"></button>
+      <button class="btn" id="1.1.3"></button>
+      <button class="btn" id="1.1.4"></button>
+      <button class="btn" id="1.2.1"></button>
+      <button class="btn" id="1.2.2"></button>
+      <button class="btn" id="1.2.3"></button>
+      <button class="btn" id="1.2.4"></button>
+      <button class="btn" id="1.3.1"></button>
+      <button class="btn" id="1.3.2"></button>
+      <button class="btn" id="1.3.3"></button>
+      <button class="btn" id="1.3.4"></button>
+      <p>&nbsp;1st</p>
+  </div>
+    <div class="day" id="d2">
+      <button class="btn" id="2.1.1"></button>
+      <button class="btn" id="2.1.2"></button>
+      <button class="btn" id="2.1.3"></button>
+      <button class="btn" id="2.1.4"></button>
+      <button class="btn" id="2.2.1"></button>
+      <button class="btn" id="2.2.2"></button>
+      <button class="btn" id="2.2.3"></button>
+      <button class="btn" id="2.2.4"></button>
+      <button class="btn" id="2.3.1"></button>
+      <button class="btn" id="2.3.2"></button>
+      <button class="btn" id="2.3.3"></button>
+      <button class="btn" id="2.3.4"></button>
+      <p>&nbsp;2nd</p>
+  </div>
+    <div class="day" id="d3">
+      <button class="btn" id="3.1.1"></button>
+      <button class="btn" id="3.1.2"></button>
+      <button class="btn" id="3.1.3"></button>
+      <button class="btn" id="3.1.4"></button>
+      <button class="btn" id="3.2.1"></button>
+      <button class="btn" id="3.2.2"></button>
+      <button class="btn" id="3.2.3"></button>
+      <button class="btn" id="3.2.4"></button>
+      <button class="btn" id="3.3.1"></button>
+      <button class="btn" id="3.3.2"></button>
+      <button class="btn" id="3.3.3"></button>
+      <button class="btn" id="3.3.4"></button>
+      <p>&nbsp;3rd</p>
+  </div>
+      <div class="day" id="d4">
+      <button class="btn" id="4.1.1"></button>
+      <button class="btn" id="4.1.2"></button>
+      <button class="btn" id="4.1.3"></button>
+      <button class="btn" id="4.1.4"></button>
+      <button class="btn" id="4.2.1"></button>
+      <button class="btn" id="4.2.2"></button>
+      <button class="btn" id="4.2.3"></button>
+      <button class="btn" id="4.2.4"></button>
+      <button class="btn" id="4.3.1"></button>
+      <button class="btn" id="4.3.2"></button>
+      <button class="btn" id="4.3.3"></button>
+      <button class="btn" id="4.3.4"></button>
+      <p>&nbsp;4th</p>
+  </div>
+      <div class="day" id="d5">
+      <button class="btn" id="5.1.1"></button>
+      <button class="btn" id="5.1.2"></button>
+      <button class="btn" id="5.1.3"></button>
+      <button class="btn" id="5.1.4"></button>
+      <button class="btn" id="5.2.1"></button>
+      <button class="btn" id="5.2.2"></button>
+      <button class="btn" id="5.2.3"></button>
+      <button class="btn" id="5.2.4"></button>
+      <button class="btn" id="5.3.1"></button>
+      <button class="btn" id="5.3.2"></button>
+      <button class="btn" id="5.3.3"></button>
+      <button class="btn" id="5.3.4"></button>
+      <p>&nbsp;5th</p>
+  </div>
+      <div class="day" >
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <p>&nbsp;6th</p>
+  </div>
+      <div class="day" >
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <p>&nbsp;7th</p>
+  </div>
+  </div>
+ <div class="week">
+  <div class="day" id="d1">
+      <button class="btn" id="1.1.1"></button>
+      <button class="btn" id="1.1.2"></button>
+      <button class="btn" id="1.1.3"></button>
+      <button class="btn" id="1.1.4"></button>
+      <button class="btn" id="1.2.1"></button>
+      <button class="btn" id="1.2.2"></button>
+      <button class="btn" id="1.2.3"></button>
+      <button class="btn" id="1.2.4"></button>
+      <button class="btn" id="1.3.1"></button>
+      <button class="btn" id="1.3.2"></button>
+      <button class="btn" id="1.3.3"></button>
+      <button class="btn" id="1.3.4"></button>
+      <p>&nbsp;8th</p>
+  </div>
+    <div class="day" id="d2">
+      <button class="btn" id="2.1.1"></button>
+      <button class="btn" id="2.1.2"></button>
+      <button class="btn" id="2.1.3"></button>
+      <button class="btn" id="2.1.4"></button>
+      <button class="btn" id="2.2.1"></button>
+      <button class="btn" id="2.2.2"></button>
+      <button class="btn" id="2.2.3"></button>
+      <button class="btn" id="2.2.4"></button>
+      <button class="btn" id="2.3.1"></button>
+      <button class="btn" id="2.3.2"></button>
+      <button class="btn" id="2.3.3"></button>
+      <button class="btn" id="2.3.4"></button>
+      <p>&nbsp;9th</p>
+  </div>
+    <div class="day" id="d3">
+      <button class="btn" id="3.1.1"></button>
+      <button class="btn" id="3.1.2"></button>
+      <button class="btn" id="3.1.3"></button>
+      <button class="btn" id="3.1.4"></button>
+      <button class="btn" id="3.2.1"></button>
+      <button class="btn" id="3.2.2"></button>
+      <button class="btn" id="3.2.3"></button>
+      <button class="btn" id="3.2.4"></button>
+      <button class="btn" id="3.3.1"></button>
+      <button class="btn" id="3.3.2"></button>
+      <button class="btn" id="3.3.3"></button>
+      <button class="btn" id="3.3.4"></button>
+      <p>&nbsp;10th</p>
+  </div>
+      <div class="day" id="d4">
+      <button class="btn" id="4.1.1"></button>
+      <button class="btn" id="4.1.2"></button>
+      <button class="btn" id="4.1.3"></button>
+      <button class="btn" id="4.1.4"></button>
+      <button class="btn" id="4.2.1"></button>
+      <button class="btn" id="4.2.2"></button>
+      <button class="btn" id="4.2.3"></button>
+      <button class="btn" id="4.2.4"></button>
+      <button class="btn" id="4.3.1"></button>
+      <button class="btn" id="4.3.2"></button>
+      <button class="btn" id="4.3.3"></button>
+      <button class="btn" id="4.3.4"></button>
+      <p>&nbsp;11th</p>
+  </div>
+      <div class="day" id="d5">
+      <button class="btn" id="5.1.1"></button>
+      <button class="btn" id="5.1.2"></button>
+      <button class="btn" id="5.1.3"></button>
+      <button class="btn" id="5.1.4"></button>
+      <button class="btn" id="5.2.1"></button>
+      <button class="btn" id="5.2.2"></button>
+      <button class="btn" id="5.2.3"></button>
+      <button class="btn" id="5.2.4"></button>
+      <button class="btn" id="5.3.1"></button>
+      <button class="btn" id="5.3.2"></button>
+      <button class="btn" id="5.3.3"></button>
+      <button class="btn" id="5.3.4"></button>
+      <p>&nbsp;12th</p>
+  </div>
+      <div class="day" >
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <p>&nbsp;13th</p>
+  </div>
+      <div class="day" >
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <p>&nbsp;14th</p>
+  </div>
+  </div>
+      <div class="week">
+  <div class="day" id="d1">
+      <button class="btn" id="1.1.1"></button>
+      <button class="btn" id="1.1.2"></button>
+      <button class="btn" id="1.1.3"></button>
+      <button class="btn" id="1.1.4"></button>
+      <button class="btn" id="1.2.1"></button>
+      <button class="btn" id="1.2.2"></button>
+      <button class="btn" id="1.2.3"></button>
+      <button class="btn" id="1.2.4"></button>
+      <button class="btn" id="1.3.1"></button>
+      <button class="btn" id="1.3.2"></button>
+      <button class="btn" id="1.3.3"></button>
+      <button class="btn" id="1.3.4"></button>
+      <p>&nbsp;15th</p>
+  </div>
+    <div class="day" id="d2">
+      <button class="btn" id="2.1.1"></button>
+      <button class="btn" id="2.1.2"></button>
+      <button class="btn" id="2.1.3"></button>
+      <button class="btn" id="2.1.4"></button>
+      <button class="btn" id="2.2.1"></button>
+      <button class="btn" id="2.2.2"></button>
+      <button class="btn" id="2.2.3"></button>
+      <button class="btn" id="2.2.4"></button>
+      <button class="btn" id="2.3.1"></button>
+      <button class="btn" id="2.3.2"></button>
+      <button class="btn" id="2.3.3"></button>
+      <button class="btn" id="2.3.4"></button>
+      <p>&nbsp;16th</p>
+  </div>
+    <div class="day" id="d3">
+      <button class="btn" id="3.1.1"></button>
+      <button class="btn" id="3.1.2"></button>
+      <button class="btn" id="3.1.3"></button>
+      <button class="btn" id="3.1.4"></button>
+      <button class="btn" id="3.2.1"></button>
+      <button class="btn" id="3.2.2"></button>
+      <button class="btn" id="3.2.3"></button>
+      <button class="btn" id="3.2.4"></button>
+      <button class="btn" id="3.3.1"></button>
+      <button class="btn" id="3.3.2"></button>
+      <button class="btn" id="3.3.3"></button>
+      <button class="btn" id="3.3.4"></button>
+      <p>&nbsp;17th</p>
+  </div>
+      <div class="day" id="d4">
+      <button class="btn" id="4.1.1"></button>
+      <button class="btn" id="4.1.2"></button>
+      <button class="btn" id="4.1.3"></button>
+      <button class="btn" id="4.1.4"></button>
+      <button class="btn" id="4.2.1"></button>
+      <button class="btn" id="4.2.2"></button>
+      <button class="btn" id="4.2.3"></button>
+      <button class="btn" id="4.2.4"></button>
+      <button class="btn" id="4.3.1"></button>
+      <button class="btn" id="4.3.2"></button>
+      <button class="btn" id="4.3.3"></button>
+      <button class="btn" id="4.3.4"></button>
+      <p>&nbsp;18th</p>
+  </div>
+      <div class="day" id="d5">
+      <button class="btn" id="5.1.1"></button>
+      <button class="btn" id="5.1.2"></button>
+      <button class="btn" id="5.1.3"></button>
+      <button class="btn" id="5.1.4"></button>
+      <button class="btn" id="5.2.1"></button>
+      <button class="btn" id="5.2.2"></button>
+      <button class="btn" id="5.2.3"></button>
+      <button class="btn" id="5.2.4"></button>
+      <button class="btn" id="5.3.1"></button>
+      <button class="btn" id="5.3.2"></button>
+      <button class="btn" id="5.3.3"></button>
+      <button class="btn" id="5.3.4"></button>
+      <p>&nbsp;19th</p>
+  </div>
+      <div class="day" >
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <p>&nbsp;20th</p>
+  </div>
+      <div class="day" >
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <p>&nbsp;21th</p>
+  </div>
+  </div>
+      <div class="week">
+  <div class="day" id="d1">
+      <button class="btn" id="1.1.1"></button>
+      <button class="btn" id="1.1.2"></button>
+      <button class="btn" id="1.1.3"></button>
+      <button class="btn" id="1.1.4"></button>
+      <button class="btn" id="1.2.1"></button>
+      <button class="btn" id="1.2.2"></button>
+      <button class="btn" id="1.2.3"></button>
+      <button class="btn" id="1.2.4"></button>
+      <button class="btn" id="1.3.1"></button>
+      <button class="btn" id="1.3.2"></button>
+      <button class="btn" id="1.3.3"></button>
+      <button class="btn" id="1.3.4"></button>
+      <p>&nbsp;22th</p>
+  </div>
+    <div class="day" id="d2">
+      <button class="btn" id="2.1.1"></button>
+      <button class="btn" id="2.1.2"></button>
+      <button class="btn" id="2.1.3"></button>
+      <button class="btn" id="2.1.4"></button>
+      <button class="btn" id="2.2.1"></button>
+      <button class="btn" id="2.2.2"></button>
+      <button class="btn" id="2.2.3"></button>
+      <button class="btn" id="2.2.4"></button>
+      <button class="btn" id="2.3.1"></button>
+      <button class="btn" id="2.3.2"></button>
+      <button class="btn" id="2.3.3"></button>
+      <button class="btn" id="2.3.4"></button>
+      <p>&nbsp;23th</p>
+  </div>
+    <div class="day" id="d3">
+      <button class="btn" id="3.1.1"></button>
+      <button class="btn" id="3.1.2"></button>
+      <button class="btn" id="3.1.3"></button>
+      <button class="btn" id="3.1.4"></button>
+      <button class="btn" id="3.2.1"></button>
+      <button class="btn" id="3.2.2"></button>
+      <button class="btn" id="3.2.3"></button>
+      <button class="btn" id="3.2.4"></button>
+      <button class="btn" id="3.3.1"></button>
+      <button class="btn" id="3.3.2"></button>
+      <button class="btn" id="3.3.3"></button>
+      <button class="btn" id="3.3.4"></button>
+      <p>&nbsp;24th</p>
+  </div>
+      <div class="day" id="d4">
+      <button class="btn" id="4.1.1"></button>
+      <button class="btn" id="4.1.2"></button>
+      <button class="btn" id="4.1.3"></button>
+      <button class="btn" id="4.1.4"></button>
+      <button class="btn" id="4.2.1"></button>
+      <button class="btn" id="4.2.2"></button>
+      <button class="btn" id="4.2.3"></button>
+      <button class="btn" id="4.2.4"></button>
+      <button class="btn" id="4.3.1"></button>
+      <button class="btn" id="4.3.2"></button>
+      <button class="btn" id="4.3.3"></button>
+      <button class="btn" id="4.3.4"></button>
+      <p>&nbsp;25th</p>
+  </div>
+      <div class="day" id="d5">
+      <button class="btn" id="5.1.1"></button>
+      <button class="btn" id="5.1.2"></button>
+      <button class="btn" id="5.1.3"></button>
+      <button class="btn" id="5.1.4"></button>
+      <button class="btn" id="5.2.1"></button>
+      <button class="btn" id="5.2.2"></button>
+      <button class="btn" id="5.2.3"></button>
+      <button class="btn" id="5.2.4"></button>
+      <button class="btn" id="5.3.1"></button>
+      <button class="btn" id="5.3.2"></button>
+      <button class="btn" id="5.3.3"></button>
+      <button class="btn" id="5.3.4"></button>
+      <p>&nbsp;26th</p>
+  </div>
+      <div class="day" >
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <p>&nbsp;27th</p>
+  </div>
+      <div class="day" >
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <button class="btn" ></button>
+      <p>&nbsp;28th</p>
+  </div>
+  </div>
+      <div class="week">
+  <div class="day" id="d1">
+      <button class="btn" id="1.1.1"></button>
+      <button class="btn" id="1.1.2"></button>
+      <button class="btn" id="1.1.3"></button>
+      <button class="btn" id="1.1.4"></button>
+      <button class="btn" id="1.2.1"></button>
+      <button class="btn" id="1.2.2"></button>
+      <button class="btn" id="1.2.3"></button>
+      <button class="btn" id="1.2.4"></button>
+      <button class="btn" id="1.3.1"></button>
+      <button class="btn" id="1.3.2"></button>
+      <button class="btn" id="1.3.3"></button>
+      <button class="btn" id="1.3.4"></button>
+      <p>&nbsp;29th</p>
+  </div>
+    <div class="day" id="d2">
+      <button class="btn" id="2.1.1"></button>
+      <button class="btn" id="2.1.2"></button>
+      <button class="btn" id="2.1.3"></button>
+      <button class="btn" id="2.1.4"></button>
+      <button class="btn" id="2.2.1"></button>
+      <button class="btn" id="2.2.2"></button>
+      <button class="btn" id="2.2.3"></button>
+      <button class="btn" id="2.2.4"></button>
+      <button class="btn" id="2.3.1"></button>
+      <button class="btn" id="2.3.2"></button>
+      <button class="btn" id="2.3.3"></button>
+      <button class="btn" id="2.3.4"></button>
+      <p>&nbsp;30th</p>
+  </div>
+    <div class="day" id="d3">
+      <button class="btn" id="3.1.1"></button>
+      <button class="btn" id="3.1.2"></button>
+      <button class="btn" id="3.1.3"></button>
+      <button class="btn" id="3.1.4"></button>
+      <button class="btn" id="3.2.1"></button>
+      <button class="btn" id="3.2.2"></button>
+      <button class="btn" id="3.2.3"></button>
+      <button class="btn" id="3.2.4"></button>
+      <button class="btn" id="3.3.1"></button>
+      <button class="btn" id="3.3.2"></button>
+      <button class="btn" id="3.3.3"></button>
+      <button class="btn" id="3.3.4"></button>
+      <p>&nbsp;31th</p>
+  </div>
+  </div>
+  </div>
+
+  <div style="float: left;padding-top: 10px">
+      色块说明：
+      <br><br>
+      <button style="width: 15px;height: 15px;background: green"></button>上午占用
+      <br>
+      <button style="width: 15px;height: 15px;background:orange"></button>下午占用
+      <br>
+      <button style="width: 15px;height: 15px;background: red"></button>全天占用
+      <br><br>
+      <button id="add">&nbsp;&nbsp;导入数据&nbsp;&nbsp;</button>
+  </div>
+
+
+
+
+
+
+
+
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
