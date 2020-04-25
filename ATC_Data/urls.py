@@ -35,4 +35,11 @@ urlpatterns = [
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
     url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningplan/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+
 ]
