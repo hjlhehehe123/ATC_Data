@@ -99,10 +99,14 @@
 
 <body>
 <div>
-    <button class="layui-btn" onclick="addRow()">新增行</button>
-    <label for="saverow"><input type="checkbox" id="saverow"/>新增前保存所有行</label>
+  <form >
+            <input type="text"  placeholder="输入人员姓名查询">
+  </form>
+    <br>
 </div>
-
+<div>
+    <button class="layui-btn" onclick="addRow()">新增行</button>
+</div>
 <table id="test" class="table table-bordered"
        width="100%" border="1" cellpadding="0" cellspacing="0" style="table-layout:fixed">
     <thead>
@@ -119,6 +123,7 @@
         <th>设备培训</th>
         <th>熟练培训</th>
         <th>专项培训</th>
+        <th>合计</th>
     </tr>
     </thead>
     <tbody>
@@ -133,6 +138,7 @@
         <td>1</td>
         <td>1</td>
         <td>3</td>
+        <td>20</td>
     </tr>
      <tr>
         <td>2</td>
@@ -145,6 +151,7 @@
         <td>1</td>
         <td>1</td>
         <td>3</td>
+        <td>20</td>
     </tr>
      <tr>
         <td>3</td>
@@ -157,6 +164,7 @@
         <td>1</td>
         <td>1</td>
         <td>3</td>
+        <td>20</td>
     </tr>
     <tr>
         <td>4</td>
@@ -169,6 +177,7 @@
         <td>1</td>
         <td>1</td>
         <td>3</td>
+        <td>20</td>
     </tr>
       <tr>
         <td>合计</td>
@@ -181,6 +190,7 @@
         <td>4</td>
         <td>4</td>
         <td>12</td>
+        <td>20</td>
     </tr>
 
 

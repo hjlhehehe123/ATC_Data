@@ -34,6 +34,9 @@ urlpatterns = [
     path('banzu/', view.banzu,name="banzu"),
     path('instruction/', view.instruction,name="instruction"),
     path('simulator/', view.simulator, name="simulator"),
+    path('closedtrainning/', view.closedtrainning,name="closedtrainning"),
+    path('ontrainning/', view.ontrainning, name="ontrainning"),
+    path('sheet/', view.sheet, name="sheet"),
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
 ]

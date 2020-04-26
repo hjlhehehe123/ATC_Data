@@ -72,11 +72,11 @@
                   <li><a href="{% url 'simulator' %}" target="iframe_a">•模拟机使用</a></li>
               </ul></li>
             <li class="active" ><a href="">月度报表分析 <span class="sr-only">(current)</span></a>
-            <li class="active" ><a href="">考核评估表 <span class="sr-only">(current)</span></a>
-            <li class="active" ><a href="">培训项目管理 <span class="sr-only">(current)</span></a>
+            <li class="active" ><a href="{% url 'sheet' %}" target="iframe_a">考核评估表 <span class="sr-only">(current)</span></a>
+            <li class="active" ><a href="#">培训项目管理 <span class="sr-only">(current)</span></a>
                 <ul>
-                  <li><a href="#">•在进行的培训</a></li>
-                  <li><a href="#">•已关闭的培训</a></li>
+                  <li><a href="{% url 'ontrainning' %}" target="iframe_a">•在进行的培训</a></li>
+                  <li><a href="{% url 'closedtrainning' %}" target="iframe_a">•已关闭的培训</a></li>
                  </ul></li>
               <li class="active" ><a href="{% url 'banzu' %}" target="iframe_a">班组成员维护 <span class="sr-only">(current)</span></a>
               <li class="active" ><a href="{% url 'atcInfo' %}" target="iframe_a">个人技术档案 <span class="sr-only">(current)</span></a>

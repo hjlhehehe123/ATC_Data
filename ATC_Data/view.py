@@ -25,3 +25,12 @@ def instruction(request):
 
 def simulator(request):
     return render(request, 'simulator.html')
+
+def closedtrainning(request):
+    return render(request, 'closedtrainnig.html')
+
+def ontrainning(request):
+    return render(request, 'ontrainning.html')
+
+def sheet(request):
+    return render(request, 'sheet.html')
