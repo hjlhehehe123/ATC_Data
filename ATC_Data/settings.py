@@ -84,6 +84,17 @@ WSGI_APPLICATION = 'ATC_Data.wsgi.application'
 #    }
 #}
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # 或者使用 mysql.connector.django
+#         'NAME': 'atc',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST':'127.0.0.1',
+#         'PORT':'3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 或者使用 mysql.connector.django

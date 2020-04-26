@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>用户登录</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="{% static 'css/ie8-responsive-file-warning.js' %}"></script><![endif]-->
+    <script src="{% static 'css/ie-emulation-modes-warning.js' %}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <link rel="stylesheet" href="/static/css/jHsDate.css"/>
+    <style>
+        input {
+            height: 20px;
+            padding: 5px;
+            width: 400px;
+            border: 1px solid #3ab2d0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <form class="form-signin" action="{% url 'do_login' %}" method="post">
+        {% csrf_token %}
+        {#        <h2 class="form-signin-heading">用户登录</h2>#}
+        <div>
+            <input type="text" id="account" class="" placeholder="" name="account" value="{{ account }}" required
+                   autofocus>
+            月
+        </div>
+        <div>
+            培训类型
+            <select>
+                <option value="复习培训">复习培训</option>
+                <option value="资格培训">资格培训</option>
+                <option value="附加培训">附加培训</option>
+                <option value="设备培训">设备培训</option>
+            </select>
+        </div>
+        <div>
+            培训项
+            <input type="text" id="account" class="" placeholder="" name="account" value="{{ account }}" required
+                   autofocus>
+        </div>
+
+        <div>
+            <div style="text-align:center;margin-top:50px;">
+                <span>计划开</span>
+                <input type="text" id="date"/>
+            </div>
+        </div>
+        <div>
+            <div style="text-align:center;margin-top:50px;">
+                <span>计划结</span>
+                <input type="text" id="date1"/>
+            </div>
+        </div>
+
+        <div></div>
+        <div>
+
+        </div>
+        <div></div>
+        <div></div>
+        {#        <label for="account" class="">月</label>#}
+
+
+        {#        <label for="password" class="sr-only">身份证后6位</label>#}
+        {#        <input type="password" id="password" class="form-control" placeholder="password" name="password" value="{{ password }}" required>#}
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+    </form>
+
+</div> <!-- /container -->
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{% static 'css/ie10-viewport-bug-workaround.js' %}"></script>
+<script type="text/javascript" src="/static/jquery.min.js"></script>
+<script type="text/javascript" src="/static/jHsDate.js"></script>
+<script type="text/javascript">
+    $('#date').jHsDate();
+    $('#date1').jHsDate();
+    $('#time').jHsDate({
+        format: 'hh:mm'
+    });
+    $('#datetimeformat').jHsDate({
+        format: 'yyyy年MM月dd日 hh时mm分'
+    });
+    $('#datetimedef').jHsDate({
+        defDate: '2017-01-01',
+        defIsShow: true
+    });
+    $('#dateread').jHsDate({
+        inputIsRead: true
+    });
+    $('#datemaxmin').jHsDate({
+        minDate: '2010-01-01',
+        maxDate: '2017-05-31'
+    });
+    $('#datecallback').jHsDate({
+        callBack: function () {
+            alert('我是回掉函数')
+        }
+    });
+</script>
+</body>
+</html>

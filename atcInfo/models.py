@@ -1,5 +1,6 @@
 from django.db import models
-
+# python manage.py makemigrations atcInfo
+# python manage.py migrate atcInfo
 # Create your models here.
 
 class info(models.Model):

@@ -25,9 +25,9 @@ from . import view,testdb
 #]
 """
 from django.conf.urls import url, include
-from ATC_Data import view
 from django.urls import path
 
+from ATC_Data import view
 
 urlpatterns = [
     url(r'^$', view.login),
@@ -39,4 +39,12 @@ urlpatterns = [
     path('sheet/', view.sheet, name="sheet"),
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningplan/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+    url(r'^trainningstatus/', include('atcInfo.urls')),
+
 ]
