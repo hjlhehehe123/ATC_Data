@@ -34,3 +34,9 @@ def ontrainning(request):
 
 def sheet(request):
     return render(request, 'sheet.html')
+
+def analysis(request):
+    return render(request, 'analysis.html')
+
+def makeplan(request):
+    return render(request, 'makeplan.html')

@@ -66,12 +66,12 @@
             <li><a href="{% url 'instruction' %}" target="iframe_a">系统使用说明</a>
             <li class="active" ><a href="{% url 'infosearch' %}" target="iframe_a">人员信息查询 <span class="sr-only">(current)</span></a>
             <li class="active" ><a href="{% url 'trainningstatus' %}" target="iframe_a">培训计划查询 <span class="sr-only">(current)</span></a>
-            <li class="active" ><a href="">制定培训计划 <span class="sr-only">(current)</span></a>
+            <li class="active" ><a href="#">制定培训计划 <span class="sr-only">(current)</span></a>
                 <ul>
-                  <li><a href="#">•月培训计划</a></li>
+                  <li><a href="{% url 'makeplan' %}" target="iframe_a">•月培训计划</a></li>
                   <li><a href="{% url 'simulator' %}" target="iframe_a">•模拟机使用</a></li>
               </ul></li>
-            <li class="active" ><a href="">月度报表分析 <span class="sr-only">(current)</span></a>
+            <li class="active" ><a href="{% url 'analysis' %}" target="iframe_a">月度报表分析 <span class="sr-only">(current)</span></a>
             <li class="active" ><a href="{% url 'sheet' %}" target="iframe_a">考核评估表 <span class="sr-only">(current)</span></a>
             <li class="active" ><a href="#">培训项目管理 <span class="sr-only">(current)</span></a>
                 <ul>
