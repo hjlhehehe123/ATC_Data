@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="/static/jquery-3.3.1.min.js"></script>
+
+    <title>管制指挥岗见习资格评估表（塔台）</title>
+    <style type="text/css">
+        body {
+            line-height: 24px;
+            font: 14px Helvetica Neue, Helvetica, PingFang SC, \5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif;
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        label input {
+            cursor: pointer;
+            position: relative;
+            top: 1px;
+        }
+
+        .btn1 {
+            display: inline-block;
+            height: 38px;
+            line-height: 38px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+    </style>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="div1">
+
+    {#    分析报表的月份：<textarea cols="1" rows="1"></textarea>月 &nbsp;&nbsp;#}
+    {#    检查<textarea cols="1" rows="1"></textarea>段#}
+    {#    </p>#}
+    {#    <p>#}
+    {#    塔台复训责任教员：<textarea cols="2" rows="1"></textarea>&nbsp;&nbsp;#}
+    {#    塔台计划人均模拟机复训小时：<textarea cols="1" rows="1"></textarea>#}
+    {#    </p>#}
+    {#    <p>#}
+    {#    区调复训责任教员：<textarea cols="2" rows="1"></textarea>&nbsp;&nbsp;#}
+    {#    区调计划人均模拟机复训小时：<textarea cols="1" rows="1"></textarea>#}
+    {#    </p><br>#}
+
+    <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;陆空通话&nbsp;&nbsp;</button>
+    <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;监听复诵&nbsp;&nbsp;</button>
+    <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;间隔&nbsp;&nbsp;</button>
+    <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;设备操作&nbsp;&nbsp;</button>
+    <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;管制意识与判断力&nbsp;&nbsp;</button>
+    <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;防止跑道侵入&nbsp;&nbsp;</button>
+    <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;其他&nbsp;&nbsp;</button>
+    <br>
+    <select name="selLocation1" id="selLocation1">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <label for="account">熟练使用标准陆空通话用语，口齿清晰</label>
+    <br>
+    <select name="selLocation1" id="selLocation1">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <label for="account">熟练使用标准陆空通话用语，口齿清晰</label>
+    <br>
+    <select name="selLocation1" id="selLocation1">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <label for="account"> 熟练使用标准陆空通话用语，口齿清晰</label>
+    <br>
+    <select name="selLocation1" id="selLocation1">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <label for="account">熟练使用标准陆空通话用语，口齿清晰</label>
+    <br>
+
+    <table id="test" class="table table-bordered"
+           width="100%" border="1" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+        <thead>
+        <tr>
+            <td>大</td>
+            <td>次数</td>
+            <td>扣分</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>通</td>
+            <td>1</td>
+            <td>-2</td> <!-- <input type="text"> -->
+
+        </tr>
+        <tr>
+            <td>监</td>
+            <td>0</td>
+            <td>0</td> <!-- <input type="text"> -->
+
+        </tr>
+        <tr>
+            <td>间</td>
+            <td>0</td>
+            <td>0</td> <!-- <input type="text"> -->
+
+        </tr>
+        <tr>
+            <td>设</td>
+            <td>0</td>
+            <td>0</td> <!-- <input type="text"> -->
+
+        </tr>
+        <tr>
+            <td>意</td>
+            <td>0</td>
+            <td>0</td> <!-- <input type="text"> -->
+
+        </tr>
+        <tr>
+            <td>防侵</td>
+            <td>0</td>
+            <td>0</td> <!-- <input type="text"> -->
+
+        </tr>
+        <tr>
+            <td>其</td>
+            <td>0</td>
+            <td>0</td> <!-- <input type="text"> -->
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+    <form class="form-signin" action="{% url 'do_login' %}" method="post">
+        {% csrf_token %}
+        <div>训练情况
+            <br>
+            <textarea cols="160" rows="15" value="{{ account }}"></textarea></div>
+
+        <div
+                {#                style="float:right"#}
+        >教员评语
+            <br>
+            <textarea cols="160" rows="15" value="{{ account }}"></textarea></div>
+
+
+        <br>
+        <div>
+            学员姓名
+            <input type="text" id="account" name="account" value="{{ account }}" required autofocus>
+            教员姓名
+            <input type="text" id="password" name="password" value="{{ password }}" required>
+            考核席位
+            <select name="selLocation1" id="selLocation1">
+                <option value="0">地面席</option>
+                <option value="1">塔台管制席</option>
+                <option value="2">塔台协调席</option>
+
+            </select>
+        </div>
+
+        <button class="btn1" type="submit">确定</button>
+    </form>
+
+
+</body>
+</html>

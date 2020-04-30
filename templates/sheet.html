@@ -21,17 +21,17 @@
         }
         .btn1{
 			  display: inline-block;
-	          height: 38px;
-	          line-height: 38px;
-	          background-color: #009688;
-              color: #fff;
-	          white-space: nowrap;
-	          text-align: center;
-	          font-size: 14px;
-	          border: none;
-	          border-radius: 2px;
-	          cursor: pointer;
-          }
+            height: 38px;
+            line-height: 38px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
 
     </style>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -41,16 +41,93 @@
 
 <div id="div1">
     <br>
-    <form><p>
-      科室<select><option>塔台</option><option>进近</option><option>区域</option><option>飞服</option></select>
-      考培类<select><option>上岗前培训</option><option>资格培训</option><option>复习培训</option></select></p>
+    <form action="{% url 'getsheet' %}" method="post">
+        {% csrf_token %}
+        <p>
+            科室<select name="selLocation1" id="selLocation1">
+            <option value="0">塔台</option>
+            <option value="1">进近</option>
+            <option value="2">区域</option>
+            <option value="3">飞服</option>
+        </select>
+            考培类<select name="selLocation2" id="selLocation2">
+            <option value="4">上岗前培训</option>
+            <option value="5">资格培训</option>
+            <option value="6">复习培训</option>
+        </select></p>
+        {#        <br>#}
+        <p>模式<select name="selLocation3" id="selLocation3">
+            <option value="7">训练培训</option>
+            <option value="8">考核评估</option>
+        </select></p>
         <br>
-        <p>模式<select><option>训练培训</option><option>考核评估</option></select></p>
-       <br>
-        <button class="btn1" >&nbsp;&nbsp;确定&nbsp;&nbsp;</button>
+        <button class="btn1" id="btn11" type="submit">&nbsp;&nbsp;确定&nbsp;&nbsp;</button>
+        {# <button class="btn1"  id="btn12" onclick="confirm1()" >&nbsp;&nbsp;确定&nbsp;&nbsp;</button>#}
 
     </form>
-  </div>
+</div>
+<script type="text/javascript">
 
+
+    function confirm() {
+        var btn12 = document.getElementById("btn12");
+        btn12.href = "{% url 'trainningstatus' %}";
+        var selectBox = document.forms[0].elements["location"];
+        var selectBox = document.getElementById("selLocation1");
+
+        //取得选择框
+        var selectBox = document.querySelector("#selLocation1");
+//取得由selected为true的选项的集合
+        var selectedOptions = getSelectedOption(selectBox);
+
+        var message = "";
+
+        for (var i = 0, len = selectedOptions.length; i < len; i++) {
+            message = "Select index:" + selectedOptions[i].index + "\nSelect text:" + selectedOptions[i].text + "\nSelect value:" + selectedOptions[i].value;
+            console.log(message); //返回每一个选中项的索引、文本、值
+        }
+
+
+        if (selectBox.options[0].text = "塔台") {
+            console.log("塔台");
+            {#var html="<a href=\"{% url 'atcInfo' %}\" ></a>";#}
+            var btn11 = document.getElementById("btn11");
+            btn11.href = "{% url 'trainningstatus' %}";
+
+            {#btn11.=html;#}
+            {#window.location.href="{% url 'trainningstatus' %}"#}
+            {#btn11.href="{% url 'trainningstatus' %}";#}
+            {#btn11.onclick = function() {#}
+            {#btn11.href="{% url 'infosearch' %}";#}
+            {#    top.mainframe.frames['iframe_a'].location.href="{% url 'infosearch' %}"#}
+            {#window.location.href="{% url 'infosearch' %}"#}
+            {#               };#}
+
+        }
+
+
+    }
+
+    function getSelectedOption(selectedBox) {
+        var result = new Array();
+        var option = null;
+
+        for (var i = 0, len = selectBox.options.length; i < len; i++) {
+            option = selectBox.options[i];
+            //如果选项的selected为true，则将其选项插入到一个数组。
+            if (option.selected) {
+                result.push(option);
+            }
+        }
+        return result;
+    }
+
+
+    function confirm1() {
+        {#window.location.href="{% url 'trainningstatus' %}"#}
+    }
+
+
+</script>
 </body>
 </html>
