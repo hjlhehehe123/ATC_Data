@@ -41,6 +41,7 @@ urlpatterns = [
     path('makeplan/', view.makeplan, name="makeplan"),
 
     path('getsheet/', view.getsheet, name="getsheet"),
+    path('saveevaluationresult/', view.saveevaluationresult, name="saveevaluationresult"),
 
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),

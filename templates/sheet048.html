@@ -62,43 +62,20 @@
     <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;管制意识与判断力&nbsp;&nbsp;</button>
     <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;防止跑道侵入&nbsp;&nbsp;</button>
     <button class="btn1" id="btn1" type="submit">&nbsp;&nbsp;其他&nbsp;&nbsp;</button>
+
     <br>
-    <select name="selLocation1" id="selLocation1">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-    <label for="account">熟练使用标准陆空通话用语，口齿清晰</label>
-    <br>
-    <select name="selLocation1" id="selLocation1">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-    <label for="account">熟练使用标准陆空通话用语，口齿清晰</label>
-    <br>
-    <select name="selLocation1" id="selLocation1">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-    <label for="account"> 熟练使用标准陆空通话用语，口齿清晰</label>
-    <br>
-    <select name="selLocation1" id="selLocation1">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-    <label for="account">熟练使用标准陆空通话用语，口齿清晰</label>
-    <br>
+    {% for i in data %}
+        <select name="selLocation1" id="selLocation1">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <label for="account">{{ i.detailevalution }}({{ i.value }}分）</label>
+        <br>
+    {% endfor %}
+
 
     <table id="test" class="table table-bordered"
            width="100%" border="1" cellpadding="0" cellspacing="0" style="table-layout:fixed">
@@ -156,26 +133,96 @@
         </tbody>
 
     </table>
+    <label for="account" style="font-size:300%;"> 100分</label>
+    <script type="text/javascript">
 
-    <form class="form-signin" action="{% url 'do_login' %}" method="post">
+
+        function confirm() {
+            var btn12 = document.getElementById("btn12");
+            btn12.href = "{% url 'trainningstatus' %}";
+            var selectBox = document.forms[0].elements["location"];
+            var selectBox = document.getElementById("selLocation1");
+
+            //取得选择框
+            var selectBox = document.querySelector("#selLocation1");
+//取得由selected为true的选项的集合
+            var selectedOptions = getSelectedOption(selectBox);
+
+            var message = "";
+
+            for (var i = 0, len = selectedOptions.length; i < len; i++) {
+                message = "Select index:" + selectedOptions[i].index + "\nSelect text:" + selectedOptions[i].text + "\nSelect value:" + selectedOptions[i].value;
+                console.log(message); //返回每一个选中项的索引、文本、值
+            }
+
+
+            if (selectBox.options[0].text === "塔台") {
+                console.log("塔台");
+                {#var html="<a href=\"{% url 'atcInfo' %}\" ></a>";#}
+                var btn11 = document.getElementById("btn11");
+                btn11.href = "{% url 'trainningstatus' %}";
+
+                {#btn11.=html;#}
+                {#window.location.href="{% url 'trainningstatus' %}"#}
+                {#btn11.href="{% url 'trainningstatus' %}";#}
+                {#btn11.onclick = function() {#}
+                {#btn11.href="{% url 'infosearch' %}";#}
+                {#    top.mainframe.frames['iframe_a'].location.href="{% url 'infosearch' %}"#}
+                {#window.location.href="{% url 'infosearch' %}"#}
+                {#               };#}
+
+            }
+
+
+        }
+
+        function getSelectedOption(selectedBox) {
+            var result = new Array();
+            var option = null;
+
+            for (var i = 0, len = selectBox.options.length; i < len; i++) {
+                option = selectBox.options[i];
+                //如果选项的selected为true，则将其选项插入到一个数组。
+                if (option.selected) {
+                    result.push(option);
+                }
+            }
+            return result;
+        }
+
+
+        function confirm1() {
+            {#window.location.href="{% url 'trainningstatus' %}"#}
+        }
+
+
+    </script>
+
+    <form class="form-signin" action="{% url 'saveevaluationresult' %}" method="post">
         {% csrf_token %}
         <div>训练情况
             <br>
-            <textarea cols="160" rows="15" value="{{ account }}"></textarea></div>
+            <textarea cols="160" rows="15"
+                      id="训练情况" name="训练情况" placeholder="训练情况" value="{{ 训练情况 }}"
+            ></textarea></div>
 
         <div
                 {#                style="float:right"#}
         >教员评语
             <br>
-            <textarea cols="160" rows="15" value="{{ account }}"></textarea></div>
+            <textarea cols="160" rows="15"
+                      id="教员评语" name="教员评语" placeholder="教员评语" value="{{ account }}"
+            ></textarea></div>
 
 
         <br>
         <div>
             学员姓名
-            <input type="text" id="account" name="account" value="{{ account }}" required autofocus>
+            <input type="text" id="studentname" name="studentname" placeholder="zhang" value="{{ studentname }}"
+                   required autofocus>
             教员姓名
-            <input type="text" id="password" name="password" value="{{ password }}" required>
+            <input type="text" id="teachername" name="teachername" placeholder="zhang" value="{{ teachername }}"
+                   required>
             考核席位
             <select name="selLocation1" id="selLocation1">
                 <option value="0">地面席</option>
