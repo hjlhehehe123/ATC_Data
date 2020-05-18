@@ -3,7 +3,7 @@
 import json
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from atcInfo import models
@@ -202,3 +202,54 @@ def trainningstatusdetail(request):
     data16 = request.POST.get('data16')
 
     return render(request, 'trainningstatusdetail.html', {'data': data})
+
+
+
+
+
+def ajax_add(request):
+    data = json.loads(request.body.decode("utf-8"))
+    print(data)
+    post_data = {
+        "name": "1"
+    }
+
+    fileuri = []
+    # 先从库表中获取到与该应用相关的全部配置文件路径与文件信息，即fileuri
+    for i in data:
+        fileuri.append(i)
+    print(data)
+    print(fileuri)
+    print("每一行")
+    a = models.trainningstatusdetail()
+
+
+    a.is_active = 0
+
+    a.save()
+    for i in data:
+        # print(i)
+        print(i[0])
+        print(i[1])
+        a.frontdata1 = i[0]
+        a.frontdata2 = i[1]
+        a.frontdata3 = i[2]
+        a.frontdata4 = i[3]
+        a.frontdata5 = i[4]
+        a.frontdata6 = i[5]
+        a.frontdata7 = i[6]
+        a.frontdata8 = i[7]
+        a.frontdata9 = i[8]
+        a.frontdata10 = i[9]
+        a.frontdata11 = i[10]
+        a.frontdata12 = i[11]
+        a.frontdata13 = i[12]
+        a.frontdata14 = i[13]
+        a.frontdata15 = i[14]
+        a.frontdata16 = i[15]
+
+        # for j in i:
+            # print(j)
+
+    return HttpResponse(json.dumps(post_data
+                                   ), content_type='application/json')

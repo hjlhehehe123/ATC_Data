@@ -1,7 +1,8 @@
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 
 from atcInfo.models import info
-
+import json
 
 # Create your views here.
 
@@ -24,3 +25,7 @@ def gettrainningstatus(request):
 
 def infosearch(request):
     return render(request,'infosearch.html')
+
+
+
+

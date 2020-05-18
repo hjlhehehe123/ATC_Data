@@ -103,6 +103,7 @@
 {#<div>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
     <button class="layui-btn" onclick="addRow()">新增行</button>
+<button class="layui-btn" id="send1" onclick="addRow()">新增行</button>
 {#</div>#}
 <div id="example"></div>
 {#<div class="block-content collapse in">#}
@@ -272,8 +273,38 @@
 
     });
     // single callback, added globally
+    console.log(
+       hot.getData()
+    )
+    ;
+
+$("#send1").click(function () {
+
+    {#json数据#}
+    var post_data =JSON.stringify( hot.getData() )
+        ;
+
+    $.ajax({
+        url: "http://localhost:8000/ajax_add/",
+        type: "POST",
+        {#发送json数据到服务器#}
+        data: post_data,
+        dataType: "json",
+
+        {#请求成功回调函数#}
+        success: function (data) {
 
 
+            alert(data);
+            alert("请求成功")
+        },
+        {#请求失败回调函数#}
+        error: function () {
+            alert("服务器请求超时,请重试!")
+        }
+
+    });
+});
     $(function () {
         //load加载动态修改表格样式
         if ($("#test tbody tr").length > 0) {
