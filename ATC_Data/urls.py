@@ -25,24 +25,20 @@ from . import view,testdb
 #]
 """
 from django.conf.urls import url, include
+from ATC_Data import view
 from django.urls import path
 
-from ATC_Data import view
 
 urlpatterns = [
     url(r'^$', view.login),
-    path('banzu/', view.banzu, name="banzu"),
-    path('instruction/', view.instruction, name="instruction"),
+    path('banzu/', view.banzu,name="banzu"),
+    path('instruction/', view.instruction,name="instruction"),
     path('simulator/', view.simulator, name="simulator"),
-    path('closedtrainning/', view.closedtrainning, name="closedtrainning"),
+    path('closedtrainning/', view.closedtrainning,name="closedtrainning"),
     path('ontrainning/', view.ontrainning, name="ontrainning"),
     path('sheet/', view.sheet, name="sheet"),
     path('analysis/', view.analysis, name="analysis"),
     path('makeplan/', view.makeplan, name="makeplan"),
-
-    path('getsheet/', view.getsheet, name="getsheet"),
-    path('saveevaluationresult/', view.saveevaluationresult, name="saveevaluationresult"),
-
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
 ]
