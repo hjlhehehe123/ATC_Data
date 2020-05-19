@@ -221,16 +221,15 @@ def ajax_add(request):
     print(data)
     print(fileuri)
     print("每一行")
-    a = models.trainningstatusdetail()
 
 
-    a.is_active = 0
 
-    a.save()
+
     for i in data:
         # print(i)
         print(i[0])
         print(i[1])
+        a = models.trainningstatusdetail()
         a.frontdata1 = i[0]
         a.frontdata2 = i[1]
         a.frontdata3 = i[2]
@@ -247,6 +246,8 @@ def ajax_add(request):
         a.frontdata14 = i[13]
         a.frontdata15 = i[14]
         a.frontdata16 = i[15]
+        a.is_active = 0
+        a.save()
 
         # for j in i:
             # print(j)
