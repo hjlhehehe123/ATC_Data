@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'atcInfo',
     'TestModel',
-    'SimuPlan',]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
