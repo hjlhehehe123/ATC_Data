@@ -102,10 +102,13 @@
 <body>
 {#<div>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
-    <button class="layui-btn" onclick="addRow()">新增行</button>
-<button class="layui-btn" id="send1" onclick="addRow()">新增行</button>
-{#</div>#}
+{#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 <div id="example"></div>
+<button class="layui-btn" id="send2" onclick="addRow()">新增数据</button>
+<button class="layui-btn" id="send1" onclick="addRow()">保存</button>
+
+{#</div>#}
+
 {#<div class="block-content collapse in">#}
 {#    <div class="span12">#}
 {#        <table id="test" class="table table-bordered"#}
@@ -135,63 +138,63 @@
 {#            <tr>#}
 {#                // {#            {%for i in data1 %}#}
 {##}
-{#            <tr>#}
-{#                <form action="{% url 'trainningstatusdetail' %}" method="POST">#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data1" value="{{ i.frontdata1 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data2" value="{{ i.frontdata2 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data3" value="{{ i.frontdata3 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data4" value="{{ i.frontdata4 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data5" value="{{ i.frontdata5 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data6" value="{{ i.frontdata6 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data7" value="{{ i.frontdata7 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data8" value="{{ i.frontdata8 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data9" value="{{ i.frontdata9 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data10" value="{{ i.frontdata10 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data11" value="{{ i.frontdata11 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data12" value="{{ i.frontdata12 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data13" value="{{ i.frontdata13 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data14" value="{{ i.frontdata14 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data15" value="{{ i.frontdata15 }}" style="border-style:none">#}
-{#                    </label></td>#}
-{#                    <td><label>#}
-{#                        <input type="text" name="data16" value="{{ i.frontdata16 }}" style="border-style:none">#}
-{#                    </label></td>#}
+<tr>
+    <form action="{% url 'trainningstatusdetail' %}" method="POST">
+        <td><label>
+            <input type="text" name="data1" value="{{ i.frontdata1 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data2" value="{{ i.frontdata2 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data3" value="{{ i.frontdata3 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data4" value="{{ i.frontdata4 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data5" value="{{ i.frontdata5 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data6" value="{{ i.frontdata6 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data7" value="{{ i.frontdata7 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data8" value="{{ i.frontdata8 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data9" value="{{ i.frontdata9 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data10" value="{{ i.frontdata10 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data11" value="{{ i.frontdata11 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data12" value="{{ i.frontdata12 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data13" value="{{ i.frontdata13 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data14" value="{{ i.frontdata14 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data15" value="{{ i.frontdata15 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data16" value="{{ i.frontdata16 }}" style="border-style:none">
+        </label></td>
+
+    </form>
+
+</tr>
 {##}
-{#                </form>#}
 {##}
-{#            </tr>#}
-{##}
-{##}
-            {#            {% endfor %}#}
+{#            {% endfor %}#}
 {#            </tbody>#}
 {#        </table>#}
 {#    </div>#}
@@ -274,37 +277,43 @@
     });
     // single callback, added globally
     console.log(
-       hot.getData()
+        hot.getData()
     )
     ;
 
-$("#send1").click(function () {
+    $("#send1").click(function () {
 
-    {#json数据#}
-    var post_data =JSON.stringify( hot.getData() )
-        ;
+        {#json数据#}
+        {#var post_data =JSON.stringify( hot.getData() );#}
+        var post_data = JSON.stringify(hot.getData(hot.countRows() - 1, 0, hot.countRows() - 1, hot.countCols() - 1));
 
-    $.ajax({
-        url: "http://localhost:8000/ajax_add/",
-        type: "POST",
-        {#发送json数据到服务器#}
-        data: post_data,
-        dataType: "json",
+        $.ajax({
+            url: "http://localhost:8000/ajax_add/",
+            type: "POST",
+            {#发送json数据到服务器#}
+            data: post_data,
+            dataType: "json",
 
-        {#请求成功回调函数#}
-        success: function (data) {
+            {#请求成功回调函数#}
+            success: function (data) {
 
 
-            alert(data);
-            alert("请求成功")
-        },
-        {#请求失败回调函数#}
-        error: function () {
-            alert("服务器请求超时,请重试!")
-        }
+                alert(data);
+                alert("请求成功")
+            },
+            {#请求失败回调函数#}
+            error: function () {
+                alert("服务器请求超时,请重试!")
+            }
+
+        });
+    });
+    $("#send2").click(function () {
+        hot.alter('insert_row', hot.countRows(), 1);
+        {#json数据#}
+
 
     });
-});
     $(function () {
         //load加载动态修改表格样式
         if ($("#test tbody tr").length > 0) {

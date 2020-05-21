@@ -52,3 +52,12 @@ class trainningstatusdetail(models.Model):
     frontdata14 = models.CharField(max_length=300)
     frontdata15 = models.CharField(max_length=300)
     frontdata16 = models.CharField(max_length=300)
+
+
+class saveevaluationresult(models.Model):
+    score = models.CharField(max_length=300)
+    训练情况 = models.CharField(max_length=300)
+    教员评语 = models.CharField(max_length=300)
+    studentname = models.CharField(max_length=300)
+    teachername = models.CharField(max_length=300)
+    selLocation11 = models.CharField(max_length=300)

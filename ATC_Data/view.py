@@ -230,22 +230,22 @@ def ajax_add(request):
         print(i[0])
         print(i[1])
         a = models.trainningstatusdetail()
-        a.frontdata1 = i[0]
-        a.frontdata2 = i[1]
-        a.frontdata3 = i[2]
-        a.frontdata4 = i[3]
-        a.frontdata5 = i[4]
-        a.frontdata6 = i[5]
-        a.frontdata7 = i[6]
-        a.frontdata8 = i[7]
-        a.frontdata9 = i[8]
-        a.frontdata10 = i[9]
-        a.frontdata11 = i[10]
-        a.frontdata12 = i[11]
-        a.frontdata13 = i[12]
-        a.frontdata14 = i[13]
-        a.frontdata15 = i[14]
-        a.frontdata16 = i[15]
+        a.frontdata1 = i[1]
+        a.frontdata2 = i[2]
+        a.frontdata3 = i[3]
+        a.frontdata4 = i[4]
+        a.frontdata5 = i[5]
+        a.frontdata6 = i[6]
+        a.frontdata7 = i[7]
+        a.frontdata8 = i[8]
+        a.frontdata9 = i[9]
+        a.frontdata10 = i[10]
+        a.frontdata11 = i[11]
+        a.frontdata12 = i[12]
+        a.frontdata13 = i[13]
+        a.frontdata14 = i[14]
+        a.frontdata15 = i[15]
+        a.frontdata16 = i[16]
         a.is_active = 0
         a.save()
 
