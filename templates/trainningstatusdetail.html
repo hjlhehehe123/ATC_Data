@@ -103,9 +103,10 @@
 {#<div>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
-<div id="example"></div>
-<button class="layui-btn" id="send2" onclick="addRow()">新增数据</button>
+
+<button class="layui-btn" id="send3" onclick="savedata()" >新增数据</button>
 <button class="layui-btn" id="send1" onclick="addRow()">保存</button>
+<div id="example"></div>
 
 {#</div>#}
 
@@ -272,6 +273,8 @@
         //水平：htLeft，htCenter，htRight，htJustify，
         //垂直：htTop，htMiddle，htBottom。
         //只读: readOnly htDimmed
+        {#fixedRowsBottom: 1,#}
+        fixedRowsTop: 1,
 
 
     });
@@ -314,6 +317,16 @@
 
 
     });
+     function savedata() {
+         window.location.href="http://127.0.0.1:8000/addtrainningrecord";
+
+    }
+
+
+
+
+
+
     $(function () {
         //load加载动态修改表格样式
         if ($("#test tbody tr").length > 0) {

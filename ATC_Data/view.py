@@ -254,3 +254,47 @@ def ajax_add(request):
 
     return HttpResponse(json.dumps(post_data
                                    ), content_type='application/json')
+def addtrainningrecord(request):
+
+    return render(request, 'addtrainningrecord.html')
+def addtrainningrecord1(request):
+    data02 = request.POST.get('data02')
+    data03 = request.POST.get('data03')
+    data04 = request.POST.get('data04')
+    data05 = request.POST.get('data05')
+    data06 = request.POST.get('data06')
+    data07 = request.POST.get('data07')
+    data08 = request.POST.get('data08')
+    data09 = request.POST.get('data09')
+    data10 = request.POST.get('data10')
+    data11 = request.POST.get('data11')
+    data12 = request.POST.get('data12')
+    data13 = request.POST.get('data13')
+    data14 = request.POST.get('data14')
+    data15 = request.POST.get('data15')
+    data16 = request.POST.get('data16')
+    a = models.trainningstatusdetail()
+
+    a.frontdata1 =data03
+        # list(models.trainningstatusdetail.objects.values_list().all()).count().as_integer_ratio()+1
+    a.frontdata2 = data02
+    a.frontdata3 = data03
+    a.frontdata4 = data04
+    a.frontdata5 = data05
+    a.frontdata6 = data06
+    a.frontdata7 = data07
+    a.frontdata8 = data08
+    a.frontdata9 = data09
+    a.frontdata10 = data10
+    a.frontdata11 = data11
+    a.frontdata12 = data12
+    a.frontdata13 = data13
+    a.frontdata14 = data14
+    a.frontdata15 = data15
+    a.frontdata16 = data16
+
+    a.is_active = 0
+    a.save()
+
+
+    return render(request, 'ok.html')

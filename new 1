@@ -33,4 +33,39 @@
 	a.frontdata15 =i[14]
 	a.frontdata16 =i[15]
 	
+	frontdata1  = models.CharField(max_length=300)
+	frontdata2  = models.CharField(max_length=300)
+	frontdata3  = models.CharField(max_length=300)
+	frontdata4  = models.CharField(max_length=300)
+	frontdata5  = models.CharField(max_length=300)
+	frontdata6  = models.CharField(max_length=300)
+	frontdata7  = models.CharField(max_length=300)
+	frontdata8  = models.CharField(max_length=300)
+	frontdata9  = models.CharField(max_length=300)
+	frontdata10 = models.CharField(max_length=300)
+	frontdata11 = models.CharField(max_length=300)
+	frontdata12 = models.CharField(max_length=300)
+	frontdata13 = models.CharField(max_length=300)
+	frontdata14 = models.CharField(max_length=300)
+	frontdata15 = models.CharField(max_length=300)
+	frontdata16 = models.CharField(max_length=300)
+	    a.frontdata1 =  i[1]
+        a.frontdata2  = i[2]
+        a.frontdata3  = i[3]
+        a.frontdata4  = i[4]
+        a.frontdata5  = i[5]
+        a.frontdata6  = i[6]
+        a.frontdata7  = i[7]
+        a.frontdata8  = i[8]
+        a.frontdata9  = i[9]
+        a.frontdata10 = i[10]
+        a.frontdata11 = i[11]
+        a.frontdata12 = i[12]
+        a.frontdata13 = i[13]
+        a.frontdata14 = i[14]
+        a.frontdata15 = i[15]
+        a.frontdata16 = i[16]
+		
+<input type="text" id="studentname" name="data1" placeholder="zhang" value="{{ studentname }}"required>
+	
 

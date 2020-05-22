@@ -75,8 +75,16 @@
                     </ul>
                 </li>
                 <li class="active"><a href="{% url 'trainningstatus' %}" target="iframe_a">培训计划查询 <span class="sr-only">(current)</span></a>
-                <li class="active"><a href="{% url 'trainningstatusdetail' %}" >培训完成情况 <span
+                <li class="active"><a href="{% url 'trainningstatusdetail' %}">培训完成情况 <span
                         class="sr-only">(current)</span></a>
+                    <ul>
+                        <li><a href="{% url 'addtrainningrecord' %}" target="iframe_a">•增加培训记录</a></li>
+                        <li><a href="{% url 'trainningstatusdetail' %}" target="iframe_a">•模拟机培训记录</a></li>
+                        <li><a href="{% url 'trainningstatusdetail' %}" target="iframe_a">•理论培训记录</a></li>
+                    </ul>
+                </li>
+
+
                 <li class="active"><a href="{% url 'analysis' %}" target="iframe_a">月度报表分析 <span class="sr-only">(current)</span></a>
                 <li class="active"><a href="{% url 'sheet' %}" target="iframe_a">考核评估表 <span
                         class="sr-only">(current)</span></a>

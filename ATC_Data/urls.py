@@ -46,6 +46,9 @@ urlpatterns = [
     path('trainningstatusdetail/', view.trainningstatusdetail, name="trainningstatusdetail"),
     # path('^ajax/',ajax),
 
+path('addtrainningrecord/', view.addtrainningrecord, name="addtrainningrecord"),
+path('addtrainningrecord1/', view.addtrainningrecord1, name="addtrainningrecord1"),
+
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
 url(r'^ajax_add/', view.ajax_add),
