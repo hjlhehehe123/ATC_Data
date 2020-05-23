@@ -275,8 +275,7 @@ def addtrainningrecord1(request):
     data16 = request.POST.get('data16')
     a = models.trainningstatusdetail()
 
-    a.frontdata1 =data03
-        # list(models.trainningstatusdetail.objects.values_list().all()).count().as_integer_ratio()+1
+    a.frontdata1 = models.trainningstatusdetail.objects.all().count()+1
     a.frontdata2 = data02
     a.frontdata3 = data03
     a.frontdata4 = data04

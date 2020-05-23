@@ -66,6 +66,94 @@
         a.frontdata15 = i[15]
         a.frontdata16 = i[16]
 		
-<input type="text" id="studentname" name="data1" placeholder="zhang" value="{{ studentname }}"required>
-	
+培训类别 <input type="text" id="data01" name="data01" placeholder="" value=""required>
+月份 <input type="text" id="data02" name="data02" placeholder="" value=""required>
+培训内容	 <input type="text" id="data03" name="data03" placeholder="" value=""required>
+培训地点	 <input type="text" id="data04" name="data04" placeholder="" value=""required>
+教员	 <input type="text" id="data05" name="data05" placeholder="" value=""required>
+培训对象	 <input type="text" id="data06" name="data06" placeholder="" value=""required>
+机长	 <input type="text" id="data07" name="data07" placeholder="" value=""required>
+学员人数	 <input type="text" id="data08" name="data08" placeholder="" value=""required>
+培训经费 <input type="text" id="data09" name="data09" placeholder="" value=""required>
+培训计划时间	 <input type="text" id="data10" name="data10" placeholder="" value=""required>
+培训完成时间：具体到几月、几日、几时、几分。 <input type="text" id="data11" name="data11" placeholder="" value=""required>
+备注 <input type="text" id="data12" name="data12" placeholder="" value=""required>
+ <input type="text" id="data13" name="data13" placeholder="" value=""required>
+ <input type="text" id="data14" name="data14" placeholder="" value=""required>
+ <input type="text" id="data15" name="data15" placeholder="" value=""required>
+ <input type="text" id="data16" name="data16" placeholder="" value=""required>
 
+01 
+02 	
+03 
+04 
+05 
+06 
+07 
+08 
+09 
+10
+11
+12
+13
+14
+15
+16
+
+	
+培训类别
+月份
+培训内容	
+培训地点	
+教员	
+培训对象	
+机长	
+学员人数	
+培训经费
+培训计划时间	
+培训完成时间：具体到几月、几日、几时、几分。	
+备注
+ 
+ data02 = request.POST.get('data02')
+ data03 = request.POST.get('data03')
+ data04 = request.POST.get('data04')
+ data05 = request.POST.get('data05')
+ data06 = request.POST.get('data06')
+ data07 = request.POST.get('data07')
+ data08 = request.POST.get('data08')
+ data09 = request.POST.get('data09')
+ data10 = request.POST.get('data10')
+ data11 = request.POST.get('data11')
+ data12 = request.POST.get('data12')
+ data13 = request.POST.get('data13')
+ data14 = request.POST.get('data14')
+ data15 = request.POST.get('data15')
+ data16 = request.POST.get('data16')
+ score = request.POST.get('data')
+                          
+						  
+    a.frontdata2 = data02
+    a.frontdata3 = data03
+    a.frontdata4 = data04
+    a.frontdata5 = data05
+    a.frontdata6 = data06
+    a.frontdata7 = data07
+    a.frontdata8 = data08
+    a.frontdata9 = data09
+    a.frontdata10 =data10
+    a.frontdata11 =data11
+    a.frontdata12 =data12
+    a.frontdata13 = data13
+    a.frontdata14 = data14
+    a.frontdata15 = data15
+    a.frontdata16 =	data16 
+	  月 份          <br><input type="text" style="width:50%;"  id="data03" name="data03" placeholder="" value="" required><br>
+        培 训 内 容  <br><input type="text" style="width:50%;" id="data05" name="data05" placeholder="" value="" required><br>
+        培 训 地 点  <br><input type="text" style="width:50%;" id="data06" name="data06" placeholder="" value="" required><br>
+        培 训 对 象  <br><input type="text" style="width:50%;" id="data08" name="data08" placeholder="" value="" required><br>
+        机 长        <br><input type="text" style="width:50%;" id="data09" name="data09" placeholder="" value="" required><br>
+        学 员 人 数  <br><input type="text" style="width:50%;" id="data10" name="data10" placeholder="" value="" required><br>
+        培 训 经 费  <br><input type="text" style="width:50%;" id="data13" name="data13" placeholder="" value="" required><br>
+        培训计划时间 <br><input type="text" style="width:50%;" id="data14" name="data14" placeholder="" value="" required><br>
+        培训完成时间 <br><input type="text" style="width:50%;" id="data15" name="data15" placeholder="具体到几月、几日、几时、几分" value="" required><br>
+        备注         <br><input type="text" style="width:50%;" id="data16" name="data16" placeholder="" value="" required><br>
