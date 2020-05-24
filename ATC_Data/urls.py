@@ -43,18 +43,9 @@ urlpatterns = [
     path('getsheet/', view.getsheet, name="getsheet"),
     path('getinfo/', view.getinfo, name="getinfo"),
     path('saveevaluationresult/', view.saveevaluationresult, name="saveevaluationresult"),
-    path('trainningstatusdetail/', view.trainningstatusdetail, name="trainningstatusdetail"),
     # path('^ajax/',ajax),
-
-path('addtrainningrecord/', view.addtrainningrecord, name="addtrainningrecord"),
-path('addtrainningrecord1/', view.addtrainningrecord1, name="addtrainningrecord1"),
-
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
-url(r'^ajax_add/', view.ajax_add),
-url(r'^ajax_addtrainningrecord/', view.ajax_addtrainningrecord),
-url(r'^ajax_addtrainningrecord2/', view.ajax_addtrainningrecord),
-
-
+    url(r'^trainningcompletion/', include('trainningcompletion.urls')),
 
 ]
