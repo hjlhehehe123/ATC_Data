@@ -306,8 +306,8 @@ def addtrainningrecord1(request):
 
     global data09
     data09 = data09
-    a = len(data09)
-    print('人数' + '*********' + str(a))
+    b = len(data09)
+    print('人数' + '*********' + str(b))
     j = ''
     for i in data09:
         j = j + i + ' '
@@ -315,7 +315,7 @@ def addtrainningrecord1(request):
     print(j)
     data09 = j
 
-    data10 = request.POST.get('data10')
+    data10 = str(a)
     data11 = ''
     data12 = ''
     data13 = request.POST.get('data13')

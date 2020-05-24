@@ -168,21 +168,6 @@
                     <label><input type="checkbox">{{ i.atcName }}</label>
                 </li>
             {% endfor %}
-            <li>
-                <label><input type="checkbox">CSS</label>
-            </li>
-            <li>
-                <label><input type="checkbox">JavaScript</label>
-            </li>
-            <li>
-                <label><input type="checkbox">jQuery</label>
-            </li>
-            <li>
-                <label><input type="checkbox">PHP</label>
-            </li>
-            <li>
-                <label><input type="checkbox">MySQL</label>
-            </li>
         </ul>
         <br>
         机 长 <br>
@@ -194,23 +179,12 @@
                     <label><input type="checkbox">{{ i.atcName }}</label>
                 </li>
             {% endfor %}
-            <li>
-                <label><input type="checkbox">Java</label>
-            </li>
-            <li>
-                <label><input type="checkbox">C#</label>
-            </li>
-            <li>
-                <label><input type="checkbox">C++</label>
-            </li>
-            <li>
-                <label><input type="checkbox">Pyhton</label>
-            </li>
+
         </ul>
         <br>
         {#        <input type="button" onclick="console.log({'tag1':tag1,'tag2':tag2,})" value="查看字段"><br>#}
-        学 员 人 数 <br><input type="text" style="width:50%;" id="data10" name="data10" placeholder="" value=""
-                           required><br>
+{#        学 员 人 数 <br><input type="text" style="width:50%;" id="data10" name="data10" placeholder="" value=""#}
+{#                           required><br>#}
         培 训 经 费 <br><input type="text" style="width:50%;" id="data13" name="data13" placeholder="" value=""
                            required><br>
         培训计划时间 <br>从<input type="text" style="width:23.5%;" id="data14" name="data14" placeholder="" value=""
@@ -361,7 +335,7 @@
 
         });
 
-         $.ajax({
+        $.ajax({
             url: "http://localhost:8000/ajax_addtrainningrecord2/",
             type: "POST",
             {#发送json数据到服务器#}
