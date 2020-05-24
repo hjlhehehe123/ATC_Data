@@ -1,12 +1,16 @@
 # def hello(request):
 #    return HttpResponse("Hello world ! ")
 import json
+from datetime import datetime
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
+import TestModel
 from atcInfo import models
+
+from TestModel.views import name1
 
 
 def login(request):
@@ -157,8 +161,15 @@ def getinfo(request):
     context['爱岗敬业信息'] = getatcinfo.爱岗敬业信息
     context['职称信息'] = getatcinfo.职称信息
     context['特殊技能信息'] = getatcinfo.特殊技能信息
+    context['科室信息'] = getatcinfo.科室信息
 
     return render(request, 'personnalinfo.html', context)
+
+
+def global_params(request):
+    name = models.info.objects.all().only("name")
+
+    return {"name": name}
 
 
 def trainningstatusdetail(request):
@@ -204,9 +215,6 @@ def trainningstatusdetail(request):
     return render(request, 'trainningstatusdetail.html', {'data': data})
 
 
-
-
-
 def ajax_add(request):
     data = json.loads(request.body.decode("utf-8"))
     print(data)
@@ -221,9 +229,6 @@ def ajax_add(request):
     print(data)
     print(fileuri)
     print("每一行")
-
-
-
 
     for i in data:
         # print(i)
@@ -250,32 +255,102 @@ def ajax_add(request):
         a.save()
 
         # for j in i:
-            # print(j)
+        # print(j)
 
     return HttpResponse(json.dumps(post_data
                                    ), content_type='application/json')
-def addtrainningrecord(request):
 
-    return render(request, 'addtrainningrecord.html')
+
+def addtrainningrecord(request):
+    data = models.info.objects.all()
+    data = list(data)
+    return render(request, 'addtrainningrecord.html', {'data': data})
+
+
+def dateDiffInHours(t1, t2):
+    td = t2 - t1
+    return td.days * 24 + td.seconds / 3600 + 1
+
+
 def addtrainningrecord1(request):
+    name1 = TestModel.views.name1
+    if name1 == '0':
+        data04 = "未知"
+        data07 = "未知"
+        print(name1 + '*********' + '表示没有登陆')
+    else:
+        try:
+            print(name1 + '*********' + '登陆人')
+            getatcinfo = models.info.objects.get(atcName=name1)
+            print(getatcinfo.科室信息)
+            data04 = getatcinfo.科室信息
+            data07 = getatcinfo.atcName
+        except ObjectDoesNotExist:
+            print('没查到')
+
     data02 = request.POST.get('data02')
     data03 = request.POST.get('data03')
-    data04 = request.POST.get('data04')
+
     data05 = request.POST.get('data05')
     data06 = request.POST.get('data06')
-    data07 = request.POST.get('data07')
-    data08 = request.POST.get('data08')
-    data09 = request.POST.get('data09')
+    global data08
+    data08 = data08
+    a = len(data08)
+    print('人数' + '*********' + str(a))
+    j = ''
+    for i in data08:
+        j = j + i + ' '
+    print(data08)
+    print(j)
+    data08 = j
+
+    global data09
+    data09 = data09
+    a = len(data09)
+    print('人数' + '*********' + str(a))
+    j = ''
+    for i in data09:
+        j = j + i + ' '
+    print(data09)
+    print(j)
+    data09 = j
+
     data10 = request.POST.get('data10')
-    data11 = request.POST.get('data11')
-    data12 = request.POST.get('data12')
+    data11 = ''
+    data12 = ''
     data13 = request.POST.get('data13')
     data14 = request.POST.get('data14')
+    data141 = request.POST.get('data141')
     data15 = request.POST.get('data15')
+    data151 = request.POST.get('data151')
     data16 = request.POST.get('data16')
-    a = models.trainningstatusdetail()
+    t1 = datetime.strptime(data15, '%Y-%m-%d %H:%M')
+    t2 = datetime.strptime(data151, '%Y-%m-%d %H:%M')
 
-    a.frontdata1 = models.trainningstatusdetail.objects.all().count()+1
+    print(dateDiffInHours(t1, t2))
+    data11 = dateDiffInHours(t1, t2) * a
+    data12 = 0.5
+    if data11 < 6:
+        data12 = 0.5
+    if 8 > data11 > 6:
+        data12 = 1
+    if data11 > 8:
+        data12 = 1.5
+
+    print('--------------------------')
+    # 获取日期对象并格式化输出
+    t3 = datetime.strptime(data14, '%Y-%m-%d %H:%M')
+    t4 = datetime.strptime(data141, '%Y-%m-%d %H:%M')
+    data14 = data14 + " " + t4.strftime('%H:%M')
+    data15 = data15 + " " + t2.strftime('%H:%M')
+
+    # data15 = data15 + datetime.strptime(data15, '%Y-%m-%d %H:%M').strftime('%H:%M')
+    # print(datetime.strptime(data14, '%Y-%m-%d %H:%M').strftime('%Y-%m-%d %Z %H:%M:%S %A %x %X 星期 %w'))
+    print(data14)
+    print(data15)
+
+    a = models.trainningstatusdetail()
+    a.frontdata1 = models.trainningstatusdetail.objects.all().count() + 1
     a.frontdata2 = data02
     a.frontdata3 = data03
     a.frontdata4 = data04
@@ -295,5 +370,36 @@ def addtrainningrecord1(request):
     a.is_active = 0
     a.save()
 
-
     return render(request, 'ok.html')
+
+
+data08 = []
+
+
+def ajax_addtrainningrecord(request):
+    global data08
+    data08 = json.loads(request.body.decode("utf-8"))
+
+    print("培训对象")
+    print(data08)
+    post_data = {
+        "name": "1"
+    }
+
+    return HttpResponse(json.dumps(post_data), content_type='application/json')
+
+
+data09 = []
+
+
+def ajax_addtrainningrecord2(request):
+    global data09
+    data09 = json.loads(request.body.decode("utf-8"))
+
+    print("培训对象")
+    print(data09)
+    post_data = {
+        "name": "1"
+    }
+
+    return HttpResponse(json.dumps(post_data), content_type='application/json')

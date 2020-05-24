@@ -7,7 +7,7 @@ import json
 # Create your views here.
 
 def getinfo(request):
-    getatcinfo=info.objects.get(id=123)
+    getatcinfo=info.objects.get(id=1)
     context = {}
     context['atcName'] = getatcinfo.atcName
     context['atcOld'] = getatcinfo.atcOld

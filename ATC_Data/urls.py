@@ -52,6 +52,9 @@ path('addtrainningrecord1/', view.addtrainningrecord1, name="addtrainningrecord1
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
 url(r'^ajax_add/', view.ajax_add),
+url(r'^ajax_addtrainningrecord/', view.ajax_addtrainningrecord),
+url(r'^ajax_addtrainningrecord2/', view.ajax_addtrainningrecord),
+
 
 
 ]

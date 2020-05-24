@@ -157,3 +157,28 @@
         培训计划时间 <br><input type="text" style="width:50%;" id="data14" name="data14" placeholder="" value="" required><br>
         培训完成时间 <br><input type="text" style="width:50%;" id="data15" name="data15" placeholder="具体到几月、几日、几时、几分" value="" required><br>
         备注         <br><input type="text" style="width:50%;" id="data16" name="data16" placeholder="" value="" required><br>
+		
+		
+		
+    context['atcName'] = getatcinfo.atcName
+    context['atcOld'] = getatcinfo.atcOld
+    context['基本信息'] = getatcinfo.基本信息
+    context['管制员等级信息'] = getatcinfo.管制员等级信息
+    context['执照信息'] = getatcinfo.执照信息
+    context['英语等级信息'] = getatcinfo.英语等级信息
+    context['非管制学历信息'] = getatcinfo.非管制学历信息
+    context['管制学历信息'] = getatcinfo.管制学历信息
+    context['管制工作经历信息'] = getatcinfo.管制工作经历信息
+    context['体检信息'] = getatcinfo.体检信息
+    context['奖励信息'] = getatcinfo.奖励信息
+    context['惩罚信息'] = getatcinfo.惩罚信息
+    context['管制教员信息'] = getatcinfo.管制教员信息
+    context['检查员信息'] = getatcinfo.检查员信息
+    context['检查员考核信息'] = getatcinfo.检查员考核信息
+    context['赴外培训信息'] = getatcinfo.赴外培训信息
+    context['岗位培训信息'] = getatcinfo.岗位培训信息
+    context['放单考核信息'] = getatcinfo.放单考核信息
+    context['执照检查信息'] = getatcinfo.执照检查信息
+    context['爱岗敬业信息'] = getatcinfo.爱岗敬业信息
+    context['职称信息'     ] = getatcinfo.职称信息
+    context['特殊技能信息'] = getatcinfo.特殊技能信息

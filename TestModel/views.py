@@ -7,16 +7,23 @@ from TestModel.models import logins
 
 #加载登录页面
 def login (request):
-    return render(request,'index.html')
-
+    return render(request, 'index.html')
+name1 = '0'
 # 验证登录
 def do_login(request):
     account = request.POST.get('account')
     password = request.POST.get('password')
 
     ac = logins.objects.filter(atcAccount=account)
-    if ac.exists() and password==logins.objects.get(atcAccount=account).atcPassword:
-        return render(request, 'main.html')
+
+    if ac.exists() and password == logins.objects.get(atcAccount=account).atcPassword:
+        global name1
+        name1 = account
+        context = {}
+        context['atcName'] = ac.get(atcAccount=account).atcAccount
+
+
+        return render(request, 'main.html', context)
     else:
         return render(request, 'index.html')
 

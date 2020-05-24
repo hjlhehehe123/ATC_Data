@@ -5,10 +5,50 @@
     <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
 
     <script src="{% static 'handsontable.full.js' %}"></script>
+
     <link rel="stylesheet" href="{% static 'handsontable.full.css' %}"/>
     {#     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>#}
     <title>简单表格操作</title>
     <style type="text/css">
+        {#div {#}
+        {#    display: inline-block;#}
+
+        #}
+        {##}
+        {#select {#}
+        {#    width: 50%;#}
+        {#min-width: 200px;#}
+        {#height: 25px;#}
+        {#    border: 1px solid #000;#}
+
+        #}
+        {##}
+        ul {
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #000;
+        }
+
+        {#label {#}
+        {#    display: block;#}
+        {#    padding: 2px 10px;#}
+        {#    white-space: nowrap;#}
+
+        #}
+
+
+        ul li:hover {
+        {#background-color: #aabbcc;#}
+        }
+
+        ul li {
+            font: 14px Helvetica Neue, Helvetica, PingFang SC, \5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif;
+
+        }
+
+
         body {
             line-height: 24px;
             font: 14px Helvetica Neue, Helvetica, PingFang SC, \5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif;
@@ -106,34 +146,246 @@
     <br>
     <div>
         培 训 类 别<br>
-        <select name="data02" id="data02">
+        <select name="data02" id="data02" style="width:50%;">
             <option value="0">资格培训</option>
             <option value="1">复习培训</option>
             <option value="2">追加培训</option>
 
         </select><br>
-       月 份         <br><input type="text" style="width:50%;"  id="data03" name="data03" placeholder="" value="" required><br>
-        培 训 内 容  <br><input type="text" style="width:50%;" id="data05" name="data05" placeholder="" value="" required><br>
-        培 训 地 点  <br><input type="text" style="width:50%;" id="data06" name="data06" placeholder="" value="" required><br>
-        培 训 对 象  <br><input type="text" style="width:50%;" id="data08" name="data08" placeholder="" value="" required><br>
-        机 长        <br><input type="text" style="width:50%;" id="data09" name="data09" placeholder="" value="" required><br>
-        学 员 人 数  <br><input type="text" style="width:50%;" id="data10" name="data10" placeholder="" value="" required><br>
-        培 训 经 费  <br><input type="text" style="width:50%;" id="data13" name="data13" placeholder="" value="" required><br>
-        培训计划时间 <br><input type="text" style="width:50%;" id="data14" name="data14" placeholder="" value="" required><br>
-        培训完成时间 <br><input type="text" style="width:50%;" id="data15" name="data15" placeholder="具体到几月、几日、几时、几分" value="" required><br>
-        备注         <br><input type="text" style="width:50%;" id="data16" name="data16" placeholder="" value="" required><br>
-        {#        <input type="text" id="data12" name="data1" placeholder="zhang" value="" required>#}
-        {#        <input type="text" id="data13" name="data1" placeholder="zhang" value="" required>#}
-        {#        <input type="text" id="data14" name="data1" placeholder="zhang" value="" required>#}
-        {#        <input type="text" id="data15" name="data1" placeholder="zhang" value="" required>#}
-        {#        <input type="text" id="data16" name="data1" placeholder="zhang" value="" required>#}
+        月 份 <br><input type="text" style="width:50%;" id="data03" name="data03" placeholder="" value="" required><br>
+        培 训 内 容 <br><input type="text" style="width:50%;" id="data05" name="data05" placeholder="" value=""
+                           required><br>
+        培 训 地 点 <br><input type="text" style="width:50%;" id="data06" name="data06" placeholder="" value=""
+                           required><br>
+        {#        培 训 对 象 <br><input type="text" style="width:50%;" id="data08" name="data08" placeholder="" value=""#}
+        {#                           required><br>#}
+        {#        机 长 <br><input type="text" style="width:50%;" id="data09" name="data09" placeholder="" value="" required><br>#}
+        培 训 对 象 <br>
+        <select name="" id="lang1" style="width:50%;"></select>
+        <ul id="ck1">
+            {% for i in data %}
+                <li>
+                    <label><input type="checkbox">{{ i.atcName }}</label>
+                </li>
+            {% endfor %}
+            <li>
+                <label><input type="checkbox">CSS</label>
+            </li>
+            <li>
+                <label><input type="checkbox">JavaScript</label>
+            </li>
+            <li>
+                <label><input type="checkbox">jQuery</label>
+            </li>
+            <li>
+                <label><input type="checkbox">PHP</label>
+            </li>
+            <li>
+                <label><input type="checkbox">MySQL</label>
+            </li>
+        </ul>
+        <br>
+        机 长 <br>
+
+        <select name="" id="lang2" style="width:50%;"></select>
+        <ul id="ck2">
+            {% for i in data %}
+                <li>
+                    <label><input type="checkbox">{{ i.atcName }}</label>
+                </li>
+            {% endfor %}
+            <li>
+                <label><input type="checkbox">Java</label>
+            </li>
+            <li>
+                <label><input type="checkbox">C#</label>
+            </li>
+            <li>
+                <label><input type="checkbox">C++</label>
+            </li>
+            <li>
+                <label><input type="checkbox">Pyhton</label>
+            </li>
+        </ul>
+        <br>
+        {#        <input type="button" onclick="console.log({'tag1':tag1,'tag2':tag2,})" value="查看字段"><br>#}
+        学 员 人 数 <br><input type="text" style="width:50%;" id="data10" name="data10" placeholder="" value=""
+                           required><br>
+        培 训 经 费 <br><input type="text" style="width:50%;" id="data13" name="data13" placeholder="" value=""
+                           required><br>
+        培训计划时间 <br>从<input type="text" style="width:23.5%;" id="data14" name="data14" placeholder="" value=""
+                           required readonly>
+        到<input type="text" style="width:23.2%;" id="data141" name="data141" placeholder="" value=""
+                required readonly>
+        <br>
+        培训完成时间 <br>从<input type="text" style="width:23.5%;" id="data15" name="data15" placeholder="" value=""
+                           required readonly>
+        到<input type="text" style="width:23.2%;" id="data151" name="data151" placeholder="" value=""
+                required readonly>
+        <br>
+        备注 <br><input type="text" style="width:50%;" id="data16" name="data16" placeholder="" value="" required><br>
+        <label>Select your preferred code editor:</label>
+
+
+        <!-- XDSoft DateTimePicker  时间选择 -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
+              integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+                integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+        <script>
+
+
+            $(function () {
+                $("#data14").datetimepicker({
+                    format: 'Y-m-d H:i',
+                });
+            });
+            $(function () {
+                $("#data15").datetimepicker({
+                    format: 'Y-m-d H:i',
+                });
+            });
+            $(function () {
+                $("#data141").datetimepicker({
+                    format: 'Y-m-d H:i',
+                });
+            });
+            $(function () {
+                $("#data151").datetimepicker({
+                    format: 'Y-m-d H:i',
+                });
+            });
+
+
+            /**
+             * [dropDownCk 下拉复选框]
+             * @param  {[String]} boxId    [父级元素id]
+             * @param  {[String]} selectId [下拉选id]
+             * @param  {[String]} hiddenId [隐藏区域id]
+             * @return {[Array]}          [description]
+             */
+            function dropDownCk(selectId, hiddenId) {
+
+                var boxId = "#" + boxId,
+                    selectId = "#" + selectId,
+                    hiddenId = "#" + hiddenId;
+
+                $(hiddenId).mouseleave(function () { // 鼠标离开隐藏复选区域
+
+                    $(this).hide();
+
+                });
+
+                $(selectId).click(function () { // 切换显示与隐藏
+
+                    $(hiddenId).toggle();
+
+                });
+
+                var tagArr = []; // 接收复选字段数组
+
+                $(selectId).html("<option checked='true' style='display:none;'>" + "请选择项目" + "</option>");
+
+                $(hiddenId + ' label').find('input').click(function () { // 点击向数组添加元素
+
+                    if ($(this).is(':checked')) {
+
+                        tagArr.push($(this).parent().text());
+
+                        $(selectId).html("<option checked='true' style='display:none;'>" + tagArr.join(",") + "</option>");
+
+                    } else {
+
+                        tagArr.splice(tagArr.indexOf($(this).parent().text()), 1); // 删除对应元素
+
+                        if (tagArr.length == 0) {
+
+                            $(selectId).html("<option checked='true' style='display:none;'>" + "请选择项目" + "</option>");
+
+                        } else {
+
+                            $(selectId).html("<option checked='true' style='display:none;'>" + tagArr.join(",") + "</option>");
+
+                        }
+
+                    }
+
+                });
+
+                return tagArr;
+            }
+
+            var tag1 = dropDownCk("lang1", "ck1");
+            var tag2 = dropDownCk("lang2", "ck2");
+
+
+        </script>
+
 
     </div>
 
-    <button class="btn1" type="submit">确定</button>
-</form>
-</body>
+    <button id="send1" class="btn1" type="submit">确定</button>
 
+</form>
+<button id="send2" class="btn1" type="submit">确定</button>
+<script type="text/javascript">
+
+    $("#send1").click(function () {
+
+        {#json数据#}
+        {#var post_data =JSON.stringify( hot.getData() );#}
+        var post_data1 = JSON.stringify(tag1);
+        var post_data2 = JSON.stringify(tag2);
+        {#alert("发送中")#}
+
+        $.ajax({
+            url: "http://localhost:8000/ajax_addtrainningrecord/",
+            type: "POST",
+            {#发送json数据到服务器#}
+            data: post_data1,
+            dataType: "json",
+
+            {#请求成功回调函数#}
+            success: function (data) {
+                data = JSON.parse(data);
+
+
+                alert(data);
+                alert("请求成功")
+            },
+            {#请求失败回调函数#}
+            error: function () {
+                {#alert("服务器请求超时,请重试!")#}
+            }
+
+        });
+
+         $.ajax({
+            url: "http://localhost:8000/ajax_addtrainningrecord2/",
+            type: "POST",
+            {#发送json数据到服务器#}
+            data: post_data2,
+            dataType: "json",
+
+            {#请求成功回调函数#}
+            success: function (data) {
+                data = JSON.parse(data);
+
+
+                alert(data);
+                alert("请求成功")
+            },
+            {#请求失败回调函数#}
+            error: function () {
+                {#alert("服务器请求超时,请重试!")#}
+            }
+
+        });
+
+    });
+</script>
+</body>
 
 
 
