@@ -1,4 +1,3 @@
-
 import json
 from datetime import datetime
 
@@ -10,6 +9,8 @@ import TestModel
 from atcInfo.models import info
 from trainningcompletion import models
 from TestModel.views import name1
+
+
 # Create your views here.
 def ajax(request):
     if request.method == "POST":
@@ -147,7 +148,7 @@ def addtrainningrecord1(request):
     else:
         try:
             print(name1 + '*********' + '登陆人')
-            getatcinfo =info.objects.get(atcName=name1)
+            getatcinfo = info.objects.get(atcName=name1)
             print(getatcinfo.科室信息)
             data04 = getatcinfo.科室信息
             data07 = getatcinfo.atcName
@@ -155,6 +156,12 @@ def addtrainningrecord1(request):
             print('没查到')
 
     data02 = request.POST.get('data02')
+    if data02 == '0':
+        data02 = '资格培训'
+    if data02 == '1':
+        data02 = '复习培训'
+    if data02 == '2':
+        data02 = '追加培训'
     data03 = request.POST.get('data03')
 
     data05 = request.POST.get('data05')

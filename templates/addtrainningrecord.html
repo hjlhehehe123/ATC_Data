@@ -179,7 +179,6 @@
                     <label><input type="checkbox">{{ i.atcName }}</label>
                 </li>
             {% endfor %}
-
         </ul>
         <br>
         {#        <input type="button" onclick="console.log({'tag1':tag1,'tag2':tag2,})" value="查看字段"><br>#}
@@ -314,7 +313,7 @@
         {#alert("发送中")#}
 
         $.ajax({
-            url: "http://localhost:8000/ajax_addtrainningrecord/",
+            url: "http://localhost:8000/trainningcompletion/ajax_addtrainningrecord/",
             type: "POST",
             {#发送json数据到服务器#}
             data: post_data1,
@@ -336,7 +335,7 @@
         });
 
         $.ajax({
-            url: "http://localhost:8000/ajax_addtrainningrecord2/",
+            url: "http://localhost:8000/trainningcompletion/ajax_addtrainningrecord2/",
             type: "POST",
             {#发送json数据到服务器#}
             data: post_data2,
