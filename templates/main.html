@@ -52,7 +52,8 @@
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="#">{{atcName}}</a></li>
+                <li><a href="{% url 'do_logout' %}">登出</a></li>do_logout
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">
@@ -75,7 +76,7 @@
                     </ul>
                 </li>
                 <li class="active"><a href="{% url 'trainningstatus' %}" target="iframe_a">培训计划查询 <span class="sr-only">(current)</span></a>
-                <li class="active"><a href="{% url 'trainningstatusdetail' %}">培训完成情况 <span
+                <li class="active"><a href="#">培训完成情况 <span
                         class="sr-only">(current)</span></a>
                     <ul>
                         <li><a href="{% url 'addtrainningrecord' %}" target="iframe_a">•增加培训记录</a></li>

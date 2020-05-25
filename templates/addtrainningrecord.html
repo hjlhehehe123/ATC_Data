@@ -134,6 +134,19 @@
             position: relative;
             top: 1px;
         }
+        .btn1 {
+            display: inline-block;
+            height: 20px;
+            line-height: 38px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
 
     </style>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -197,7 +210,7 @@
                 required readonly>
         <br>
         备注 <br><input type="text" style="width:50%;" id="data16" name="data16" placeholder="" value="" required><br>
-        <label>Select your preferred code editor:</label>
+{#        <label>Select your preferred code editor:</label>#}
 
 
         <!-- XDSoft DateTimePicker  时间选择 -->
@@ -297,11 +310,14 @@
 
 
     </div>
+<br>
+<div>
+    <button id="send1" class="btn1" style="width:50%;height:50% "type="submit">确定</button>
+</div>
 
-    <button id="send1" class="btn1" type="submit">确定</button>
 
 </form>
-<button id="send2" class="btn1" type="submit">确定</button>
+{#<button id="send2" class="btn1" type="submit">确定</button>#}
 <script type="text/javascript">
 
     $("#send1").click(function () {

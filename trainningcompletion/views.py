@@ -79,6 +79,11 @@ def trainningstatusdetail(request):
     data15 = request.POST.get('data15')
     data16 = request.POST.get('data16')
 
+
+    if request.session.get('status'):  # 在判断网页请求的状态时，直接调用request.session从djang_session表中读取数据验证
+        name2 = request.session.get('name')
+        print(name2 + '*********' + 'session登陆人')
+
     return render(request, 'trainningstatusdetail.html', {'data': data})
 
 
@@ -140,20 +145,36 @@ def dateDiffInHours(t1, t2):
 
 
 def addtrainningrecord1(request):
-    name1 = TestModel.views.name1
-    if name1 == '0':
-        data04 = "未知"
-        data07 = "未知"
-        print(name1 + '*********' + '表示没有登陆')
-    else:
-        try:
-            print(name1 + '*********' + '登陆人')
-            getatcinfo = info.objects.get(atcName=name1)
-            print(getatcinfo.科室信息)
-            data04 = getatcinfo.科室信息
-            data07 = getatcinfo.atcName
-        except ObjectDoesNotExist:
-            print('没查到')
+    # name1 = TestModel.views.name1
+    #     # if name1 == '0':
+    #     #     data04 = "未知"
+    #     #     data07 = "未知"
+    #     #     print(name1 + '*********' + '表示没有登陆')
+    #     # else:
+    #     #     try:
+    #     #         print(name1 + '*********' + '登陆人')
+    #     #         getatcinfo = info.objects.get(atcName=name1)
+    #     #         print(getatcinfo.科室信息)
+    #     #         data04 = getatcinfo.科室信息
+    #     #         data07 = getatcinfo.atcName
+    #     #     except ObjectDoesNotExist:
+    #     #         print('没查到')
+    if request.session.get('status'):  # 在判断网页请求的状态时，直接调用request.session从djang_session表中读取数据验证
+        name2 = request.session.get('name')
+        print(name2 + '*********' + 'session登陆人')
+        if name2 == '0':
+            data04 = "未知"
+            data07 = "未知"
+            print(name2 + '*********' + '表示没有登陆')
+        else:
+            try:
+                print(name2 + '*********' + '登陆人')
+                getatcinfo = info.objects.get(atcName=name2)
+                print(getatcinfo.科室信息)
+                data04 = getatcinfo.科室信息
+                data07 = getatcinfo.atcName
+            except ObjectDoesNotExist:
+                print('没查到')
 
     data02 = request.POST.get('data02')
     if data02 == '0':
@@ -276,3 +297,7 @@ def ajax_addtrainningrecord2(request):
     }
 
     return HttpResponse(json.dumps(post_data), content_type='application/json')
+
+
+def test(request):
+    return render(request, 'test.html', )

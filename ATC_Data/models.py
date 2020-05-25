@@ -4,6 +4,8 @@ from django.db import models
 # python manage.py makemigrations atcInfo
 # python manage.py migrate atcInfo
 # Create your models here.
+# python manage.py makemigrations sessions
+# python manage.py migrate sessions
 
 
 class evalution1(models.Model):

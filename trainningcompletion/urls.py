@@ -8,5 +8,6 @@ url(r'^ajax_add/$', views.ajax_add),
 url(r'^ajax_addtrainningrecord/$', views.ajax_addtrainningrecord),
 url(r'^ajax_addtrainningrecord2/$', views.ajax_addtrainningrecord),
 url(r'^trainningstatusdetail/$', views.trainningstatusdetail, name="trainningstatusdetail"),
+url(r'^test/$', views.test, name="test"),
 
 ]
