@@ -52,8 +52,9 @@
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">{{atcName}}</a></li>
-                <li><a href="{% url 'do_logout' %}">登出</a></li>do_logout
+                <li><a href="#">{{ atcName }}</a></li>
+                <li><a href="{% url 'do_logout' %}">登出</a></li>
+                do_logout
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">
@@ -79,9 +80,19 @@
                 <li class="active"><a href="#">培训完成情况 <span
                         class="sr-only">(current)</span></a>
                     <ul>
-                        <li><a href="{% url 'addtrainningrecord' %}" target="iframe_a">•增加培训记录</a></li>
+                        {#                        <li class="active"><a href="#">增加培训记录 <span#}
+                        {#                                class="sr-only">(current)</span></a>#}
+                        {#                        <ul>#}
+                        {#                                <li><a href="{% url 'addtrainningrecord' %}" target="iframe_a">•增加模拟机培训记录</a></li>#}
+                        {#                                <li><a href="{% url 'addtrainningrecord' %}" target="iframe_a">•增加其他培训记录</a></li>#}
+                        {#                        </ul>#}
+                        {#                        </li>#}
+
+                        <li><a href="{% url 'addtrainningrecord' %}" target="iframe_a">•增加模拟机培训记录</a></li>
+                        <li><a href="{% url 'addtrainningrecordother' %}" target="iframe_a">•增加其他培训记录</a></li>
+                        {#                        <li><a href="{% url 'addtrainningrecord' %}" target="iframe_a">•增加培训记录</a></li>#}
                         <li><a href="{% url 'trainningstatusdetail' %}" target="iframe_a">•模拟机培训记录</a></li>
-                        <li><a href="{% url 'trainningstatusdetail' %}" target="iframe_a">•理论培训记录</a></li>
+                        <li><a href="{% url 'trainningstatusdetailother' %}" target="iframe_a">•其他培训记录</a></li>
                     </ul>
                 </li>
 

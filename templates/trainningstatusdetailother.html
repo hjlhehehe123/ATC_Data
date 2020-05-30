@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
+
+    <script src="{% static 'handsontable.full.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'handsontable.full.css' %}"/>
+    {#     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>#}
+    <title>简单表格操作</title>
+    <style type="text/css">
+        body {
+            line-height: 24px;
+            font: 14px Helvetica Neue, Helvetica, PingFang SC, \5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif;
+        }
+
+        .layui-btn {
+            background: #1E9FFF;
+            display: inline-block;
+            height: 38px;
+            line-height: 38px;
+            padding: 0 18px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .layui-btn:hover {
+            opacity: .8;
+            filter: alpha(opacity=80);
+            color: #fff;
+        }
+
+        table {
+            margin-top: 10px;
+            border-spacing: 0;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #E6E6E6;
+        }
+
+        table thead tr th {
+            background: #F2F2F2;
+            height: 28px;
+            line-height: 28px;
+            padding: 5px 15px;
+            border-bottom: 1px solid #E6E6E6;
+            border-right: 1px solid #E6E6E6;
+            text-align: center;
+        }
+
+        table tbody tr td {
+            width: 20%;
+            height: 28px;
+            line-height: 28px;
+            padding: 5px 15px;
+            border-bottom: 1px solid #E6E6E6;
+            border-right: 1px solid #E6E6E6;
+        }
+
+        table tbody tr td input {
+            height: 22px;
+            border: 0px;
+            border-bottom: 1px solid #DEDEDE;
+        }
+
+        table tbody tr:hover td {
+            background: #F2F2F2;
+        }
+
+        a {
+            display: inline-block;
+            margin: 3px 5px;
+            color: #009688;
+        }
+
+        a:hover {
+            cursor: pointer;
+            color: #1E9FFF;
+            text-decoration: underline;
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        label input {
+            cursor: pointer;
+            position: relative;
+            top: 1px;
+        }
+
+    </style>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+{#<div>#}
+{#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
+{#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
+
+<button class="layui-btn" id="send3" onclick="savedata()" >新增数据</button>
+<button class="layui-btn" id="send1" onclick="addRow()">保存</button>
+<div id="example"></div>
+
+{#</div>#}
+
+{#<div class="block-content collapse in">#}
+{#    <div class="span12">#}
+{#        <table id="test" class="table table-bordered"#}
+{#               width="100%" border="1" cellpadding="0" cellspacing="0" style="table-layout:fixed">#}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>序号</th>#}
+{#                <th>培训类别</th>#}
+{#                <th>月份</th>#}
+{#                <th>科室</th>#}
+{#                <th>培训内容</th>#}
+{#                <th>培训地点</th>#}
+{#                <th>教员</th>#}
+{#                <th>培训对象</th>#}
+{#                <th>机长席人员</th>#}
+{#                <th>学员人数</th>#}
+{#                <th>培训小时数</th>#}
+{#                <th>培训天数</th>#}
+{#                <th>培训经费</th>#}
+{#                <th>培训计划时间</th>#}
+{#                <th>培训完成时间：具体到几月、几日、几时、几分</th>#}
+{#                <th>备注</th>#}
+{##}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            <tr>#}
+{#                // {#            {%for i in data1 %}#}
+{##}
+<tr>
+    <form action="{% url 'trainningstatusdetail' %}" method="POST">
+        <td><label>
+            <input type="text" name="data1" value="{{ i.frontdata1 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data2" value="{{ i.frontdata2 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data3" value="{{ i.frontdata3 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data4" value="{{ i.frontdata4 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data5" value="{{ i.frontdata5 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data6" value="{{ i.frontdata6 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data7" value="{{ i.frontdata7 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data8" value="{{ i.frontdata8 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data9" value="{{ i.frontdata9 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data10" value="{{ i.frontdata10 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data11" value="{{ i.frontdata11 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data12" value="{{ i.frontdata12 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data13" value="{{ i.frontdata13 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data14" value="{{ i.frontdata14 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data15" value="{{ i.frontdata15 }}" style="border-style:none">
+        </label></td>
+        <td><label>
+            <input type="text" name="data16" value="{{ i.frontdata16 }}" style="border-style:none">
+        </label></td>
+
+    </form>
+
+</tr>
+{##}
+{##}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{#</div>#}
+
+
+<script type="text/javascript">
+
+    {#var data = [['Column A', 'Column B', 'Column C'], ['1', '2', '3']];#}
+
+    {#alert(#}
+    {#{{ data| safe}}#}
+    {#)#}
+    {#;#}
+    console.log(
+        {{ data| safe}}
+    )
+    ;
+
+    document.onmousemove = function (event) {
+
+
+    }
+    {#var data = [['Column A', 'Column B', 'Column C'], ['1', '2', '3']];#}
+    var data = {{ data | safe}};
+    var cell_width = [
+        80,
+        80,
+        80,
+
+        80,
+        80,
+        160,
+        80,
+        80,
+        120,
+        120,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+
+    ];
+    var cell_height = [
+        50, 20, 40, 100
+    ];
+
+    var container = document.getElementById("example");
+    var hot = new Handsontable(container, {
+        data: data,
+        licenseKey: 'non-commercial-and-evaluation',
+
+
+        {#fixedColumnsLeft: 17 ,//固定前两列#}
+        {#stretchH: 'all',#}
+        {#width: 813,#}
+        {#autoWrapRow: true,#}
+        {#height: 487,#}
+        {#maxRows: 22,#}
+        {#rowHeaders: true,#}
+
+        autoColumnSize: false,
+        autoRowSize: false,//禁止行列自动计算距离
+        dropdownMenu: true,
+        manualRowResize: true,
+        manualColumnResize: true,//行列可拉缩
+        manualColumnMove: true,//可整行整列移动
+        manualRowMove: true,
+        mergeCells: true,//合并单元格
+        contextMenu: true,//使用菜单
+        colWidths: cell_width,//定义列宽度
+        rowHeights: cell_height,//定义行高度
+        //水平：htLeft，htCenter，htRight，htJustify，
+        //垂直：htTop，htMiddle，htBottom。
+        //只读: readOnly htDimmed
+        {#fixedRowsBottom: 1,#}
+        fixedRowsTop: 1,
+
+
+    });
+    // single callback, added globally
+    console.log(
+        hot.getData()
+    )
+    ;
+
+    $("#send1").click(function () {
+
+        {#json数据#}
+        {#var post_data =JSON.stringify( hot.getData() );#}
+        var post_data = JSON.stringify(hot.getData(hot.countRows() - 1, 0, hot.countRows() - 1, hot.countCols() - 1));
+
+        $.ajax({
+            url: "http://localhost:8000/ajax_add/",
+            type: "POST",
+            {#发送json数据到服务器#}
+            data: post_data,
+            dataType: "json",
+
+            {#请求成功回调函数#}
+            success: function (data) {
+
+
+                alert(data);
+                alert("请求成功")
+            },
+            {#请求失败回调函数#}
+            error: function () {
+                alert("服务器请求超时,请重试!")
+            }
+
+        });
+    });
+    $("#send2").click(function () {
+        hot.alter('insert_row', hot.countRows(), 1);
+        {#json数据#}
+
+
+    });
+     function savedata() {
+         window.location.href="http://127.0.0.1:8000/addtrainningrecord";
+
+    }
+
+
+
+
+
+
+    $(function () {
+        //load加载动态修改表格样式
+        if ($("#test tbody tr").length > 0) {
+            $("#test").css("border-bottom", "0px");
+            $("#test").css("border-right", "0px");
+        }
+
+        //注册表格操作点击事件
+        registerClick();
+    });
+
+    //注册表格操作点击事件
+    function registerClick() {
+        //防止重复注册事件：.off("click")
+        $("#test tbody tr td a").off("click").on("click", function () {
+            var text = $(this).text();
+            switch (text) {
+                case "修改":
+                    updateRow($(this));
+                    break;
+                case "保存":
+                    saveRow($(this));
+                    break;
+                case "删除":
+                    deleteRow($(this));
+                    break;
+            }
+        });
+    }
+
+    //新增行
+    function addRow() {
+        if ($("#saverow").is(':checked')) {
+            saveAllRow();//保存所有行
+        }
+        var rowindex = $("#test tbody tr").length + 1;
+        var str = "<tr><td>" + rowindex + "</td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a>保存</a><a>删除</a></td></tr>";
+        $("#test tbody").append(str);
+        registerClick();//注册表格操作点击事件
+    }
+
+    //修改行
+    function updateRow(t) {
+        $(t).text("保存");
+        var tr = $(t).parent().parent();
+        var tds = $(tr).children();
+        for (var i = 0; i < tds.length; i++) {
+            if (i > 0 && i < tds.length - 1) {
+                var td = tds[i];
+                var text = $(td).text();
+                $(td).html("<input type='text' value='" + text + "'>");
+            }
+        }
+    }
+
+    //保存行
+    function saveRow(t) {
+        $(t).text("修改");
+        var tr = $(t).parent().parent();
+        var tds = $(tr).children();
+        for (var i = 0; i < tds.length; i++) {
+            if (i > 0 && i < tds.length - 1) {
+                var td = tds[i];
+                var text = $(td).children("input").val();
+                $(td).html(text);
+            }
+        }
+    }
+
+    //删除行
+    function deleteRow(t) {
+        if (confirm("是否删除行?")) {
+            var tr = $(t).parent().parent();
+            $(tr).remove();
+            resetSerialNum();//重置序号
+        }
+    }
+
+    //新增行前保存所有行
+    function saveAllRow() {
+        var trs = $("#test tbody tr");
+        for (var i = 0; i < trs.length; i++) {
+            if ($(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").text() == "保存") {
+                $(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").click();
+            }
+        }
+    }
+
+    //重置序号
+    function resetSerialNum() {
+        var trs = $("#test tbody tr");
+        for (var i = 0; i < trs.length; i++) {
+            $("#test tbody tr:nth-child(" + (i + 1) + ") td:nth-child(1)").text(i + 1);
+        }
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
