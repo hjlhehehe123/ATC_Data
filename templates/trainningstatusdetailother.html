@@ -104,8 +104,8 @@
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 
-<button class="layui-btn" id="send3" onclick="savedata()" >新增数据</button>
-<button class="layui-btn" id="send1" onclick="addRow()">保存</button>
+<button class="layui-btn" id="send3" onclick=window.location.href="{% url 'addtrainningrecordother' %}" >新增数据</button>
+{#<button class="layui-btn" id="send1" onclick="addRow()">保存</button>#}
 <div id="example"></div>
 
 {#</div>#}
@@ -177,12 +177,7 @@
         <td><label>
             <input type="text" name="data12" value="{{ i.frontdata12 }}" style="border-style:none">
         </label></td>
-        <td><label>
-            <input type="text" name="data13" value="{{ i.frontdata13 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data14" value="{{ i.frontdata14 }}" style="border-style:none">
-        </label></td>
+
         <td><label>
             <input type="text" name="data15" value="{{ i.frontdata15 }}" style="border-style:none">
         </label></td>
@@ -233,8 +228,6 @@
         80,
         120,
         120,
-        80,
-        80,
         80,
         80,
         80,

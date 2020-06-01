@@ -4,6 +4,7 @@ from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 import TestModel
 from atcInfo.models import info
@@ -137,7 +138,17 @@ def ajax_add(request):#保存模拟机培训记录页面的数据，暂时不用
 def addtrainningrecord(request):#获取增加模拟机培训记录的页面
     data = info.objects.all()
     data = list(data)
-    return render(request, 'addtrainningrecord.html', {'data': data})
+    plan = models.monthplan.objects.values_list().all()
+    plan = list(plan)
+    fileuri = []
+    # 先从库表中获取到与该应用相关的全部配置文件路径与文件信息，即fileuri
+    for i in plan:
+        fileuri.append(i)
+    # 此时fileuri是一个python list类型，无法在页面js脚本中作为数组类型使用，需要转为json字符串
+    plan = json.dumps(fileuri, ensure_ascii=False)
+    print(plan)
+    print("@@@@@@@@@@@@@@")
+    return render(request, 'addtrainningrecord.html', {'data': data,'plan': plan})
 
 
 def dateDiffInHours(t1, t2):#时间计算，两个时间相差的小时数
@@ -184,38 +195,42 @@ def addtrainningrecord1(request):#获取增加模拟机培训记录的数据并�
         data02 = '复习培训'
     if data02 == '2':
         data02 = '追加培训'
-    data03 = request.POST.get('data03')
+
+    now_time = datetime.now()
+    month = datetime.strftime(now_time, "%m")
+    data03 = month + "月"
 
     data05 = request.POST.get('data05')
     data06 = request.POST.get('data06')
+    if data06 == '0':
+        data06 = '塔台模拟机房'
+    if data06 == '1':
+        data06 = '雷达模拟机房'
     global data08
-    data08 = data08
-    a = len(data08)
-    print('人数' + '*********' + str(a))
-    j = ''
+    data081 = request.POST.get('data081').strip()
+    data082 = request.POST.get('data082').strip()
+    data083 = request.POST.get('data083').strip()
+    data084 = request.POST.get('data084').strip()
+    data08=data081 + ' ' + data082 + ' ' + data083 + ' ' + data084
+    data08=data08.rstrip()
+    a=1
     for i in data08:
-        j = j + i + ' '
-    print(data08)
-    print(j)
-    data08 = j
+
+        if ord(i) == 32 :
+            a=a+1
+
+    print('人数' + '*********' + str(a))
 
     global data09
-    data09 = data09
-    b = len(data09)
-    print('人数' + '*********' + str(b))
-    j = ''
-    for i in data09:
-        j = j + i + ' '
-    print(data09)
-    print(j)
-    data09 = j
+    data091 = request.POST.get('data091').strip()
+    data092 = request.POST.get('data092').strip()
+    data09 = data091 + ' ' + data092
+    data09 = data09.rstrip()
 
-    data10 = str(a)
+    data10 = a
     data11 = ''
     data12 = ''
-    data13 = request.POST.get('data13')
-    data14 = request.POST.get('data14')
-    data141 = request.POST.get('data141')
+
     data15 = request.POST.get('data15')
     data151 = request.POST.get('data151')
     data16 = request.POST.get('data16')
@@ -234,14 +249,11 @@ def addtrainningrecord1(request):#获取增加模拟机培训记录的数据并�
 
     print('--------------------------')
     # 获取日期对象并格式化输出
-    t3 = datetime.strptime(data14, '%Y-%m-%d %H:%M')
-    t4 = datetime.strptime(data141, '%Y-%m-%d %H:%M')
-    data14 = data14 + " " + t4.strftime('%H:%M')
+
     data15 = data15 + " " + t2.strftime('%H:%M')
 
     # data15 = data15 + datetime.strptime(data15, '%Y-%m-%d %H:%M').strftime('%H:%M')
     # print(datetime.strptime(data14, '%Y-%m-%d %H:%M').strftime('%Y-%m-%d %Z %H:%M:%S %A %x %X 星期 %w'))
-    print(data14)
     print(data15)
 
     a = models.trainningstatusdetail()
@@ -257,15 +269,13 @@ def addtrainningrecord1(request):#获取增加模拟机培训记录的数据并�
     a.frontdata10 = data10
     a.frontdata11 = data11
     a.frontdata12 = data12
-    a.frontdata13 = data13
-    a.frontdata14 = data14
     a.frontdata15 = data15
     a.frontdata16 = data16
 
     a.is_active = 0
     a.save()
 
-    return render(request, 'ok.html')
+    return render(request, 'trainningstatusdetail.html')
 
 
 data08 = []
@@ -433,12 +443,30 @@ def ajax_addother(request):#保存其他培训记录页面的数据，暂时不�
 def addtrainningrecordother(request):#获取增加其他培训记录的页面
     data = info.objects.all()
     data = list(data)
-    return render(request, 'addtrainningrecordother.html', {'data': data})
+    plan = models.monthplan.objects.values_list().all()
+    plan = list(plan)
+    banzu = models.banzu.objects.values_list().all()
+    banzu = list(banzu)
+    fileuri = []
+    # 先从库表中获取到与该应用相关的全部配置文件路径与文件信息，即fileuri
+    for i in plan:
+        fileuri.append(i)
+    # 此时fileuri是一个python list类型，无法在页面js脚本中作为数组类型使用，需要转为json字符串
+    plan = json.dumps(fileuri, ensure_ascii=False)
+    print(plan)
+    print("@@@@@@@@@@@@@@")
+    fileuri2 = []
+    for i in banzu:
+        fileuri2.append(i)
+    banzu = json.dumps(fileuri2, ensure_ascii=False)
+    print(banzu)
+    print("@@@@@@@@@@@@@@")
+    return render(request, 'addtrainningrecordother.html', {'data': data,'plan': plan,'banzu':banzu})
 
 
 def dateDiffInHours(t1, t2):##时间计算，两个时间相差的小时数
     td = t2 - t1
-    return td.days * 24 + td.seconds / 3600 + 1
+    return td.days * 24 + td.seconds / 3600
 
 
 def addtrainningrecordother1(request):##获取增加其他培训记录的数据并保存
@@ -480,38 +508,23 @@ def addtrainningrecordother1(request):##获取增加其他培训记录的数据�
         data02 = '复习培训'
     if data02 == '2':
         data02 = '追加培训'
-    data03 = request.POST.get('data03')
+    now_time = datetime.now()
+    month = datetime.strftime(now_time, "%m")
+    data03 = month + "月"
 
     data05 = request.POST.get('data05')
     data06 = request.POST.get('data06')
-    global data08
-    data08 = data08
-    a = len(data08)
-    print('人数' + '*********' + str(a))
-    j = ''
+    data08 = request.POST.get('data08').strip()
+
+    a = 1
     for i in data08:
-        j = j + i + ' '
-    print(data08)
-    print(j)
-    data08 = j
 
-    # global data09
-    # data09 = data09
-    # b = len(data09)
-    # print('人数' + '*********' + str(b))
-    # j = ''
-    # for i in data09:
-    #     j = j + i + ' '
-    # print(data09)
-    # print(j)
-    # data09 = j
-
+        if ord(i) == 32:
+            a = a + 1
     data10 = str(a)
     data11 = ''
     data12 = ''
-    data13 = request.POST.get('data13')
-    data14 = request.POST.get('data14')
-    data141 = request.POST.get('data141')
+
     data15 = request.POST.get('data15')
     data151 = request.POST.get('data151')
     data16 = request.POST.get('data16')
@@ -530,14 +543,10 @@ def addtrainningrecordother1(request):##获取增加其他培训记录的数据�
 
     print('--------------------------')
     # 获取日期对象并格式化输出
-    t3 = datetime.strptime(data14, '%Y-%m-%d %H:%M')
-    t4 = datetime.strptime(data141, '%Y-%m-%d %H:%M')
-    data14 = data14 + " " + t4.strftime('%H:%M')
     data15 = data15 + " " + t2.strftime('%H:%M')
 
     # data15 = data15 + datetime.strptime(data15, '%Y-%m-%d %H:%M').strftime('%H:%M')
     # print(datetime.strptime(data14, '%Y-%m-%d %H:%M').strftime('%Y-%m-%d %Z %H:%M:%S %A %x %X 星期 %w'))
-    print(data14)
     print(data15)
 
     a = models.trainningstatusdetailother()
@@ -553,15 +562,14 @@ def addtrainningrecordother1(request):##获取增加其他培训记录的数据�
     a.frontdata10 = data10
     a.frontdata11 = data11
     a.frontdata12 = data12
-    a.frontdata13 = data13
-    a.frontdata14 = data14
+
     a.frontdata15 = data15
     a.frontdata16 = data16
 
     a.is_active = 0
     a.save()
 
-    return render(request, 'ok.html')
+    return render(request, 'trainningstatusdetailother.html')
 
 
 data08 = []
@@ -579,7 +587,6 @@ def ajax_addtrainningrecordother(request):##获取增加其他培训记录的数
     }
 
     return HttpResponse(json.dumps(post_data), content_type='application/json')
-
 
 
 

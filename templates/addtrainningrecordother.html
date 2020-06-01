@@ -159,31 +159,26 @@
     <br>
     <div>
         培 训 类 别<br>
-        <select name="data02" id="data02" style="width:50%;">
+        <select name="data02" id="data02" style="width:15%;">
             <option value="0">资格培训</option>
             <option value="1">复习培训</option>
             <option value="2">追加培训</option>
 
         </select><br>
-        月 份 <br><input type="text" style="width:50%;" id="data03" name="data03" placeholder="" value="" required><br>
-        培 训 内 容 <br><input type="text" style="width:50%;" id="data05" name="data05" placeholder="" value=""
+        培 训 内 容<input type="text" style="width:10%;" id="mon" name="mon" onkeyup="showHint(this.value)" placeholder="" required>月
+        <br><textarea style="width:30%;height: 200px;" id="data05" name="data05" placeholder=""   required></textarea><br>
+        培 训 地 点 <br><input type="text" style="width:15%;" id="data06" name="data06" placeholder="" value=""
                            required><br>
-        培 训 地 点 <br><input type="text" style="width:50%;" id="data06" name="data06" placeholder="" value=""
-                           required><br>
-        {#        培 训 对 象 <br><input type="text" style="width:50%;" id="data08" name="data08" placeholder="" value=""#}
-        {#                           required><br>#}
-        {#        机 长 <br><input type="text" style="width:50%;" id="data09" name="data09" placeholder="" value="" required><br>#}
-        培 训 对 象 <br>
-        <select name="" id="lang1" style="width:50%;"></select>
-        <ul id="ck1">
-            {% for i in data %}
-                <li>
-                    <label><input type="checkbox">{{ i.atcName }}</label>
-                </li>
-            {% endfor %}
-        </ul>
-        <br>
-{#        机 长 <br>#}
+        培 训 对 象<br>
+        <select name="data081" id="data081" style="width:10%;" onclick="addperson()">
+            <option value="T01">T01</option>
+            <option value="C01">C01</option>
+         <option value="all">全部</option></select>
+        <br><br><textarea style="width15%;height: 200px;" id="data082" name="data082" placeholder=""   required></textarea>
+        <button id="ok1" onclick="addpersonok()">添加→</button>
+         <textarea style="width15%;height: 200px;" id="data08" name="data08" placeholder="" value=""  required></textarea><br>
+
+        {#        机 长 <br>#}
 {##}
 {#        <select name="" id="lang2" style="width:50%;"></select>#}
 {#        <ul id="ck2">#}
@@ -197,13 +192,7 @@
         {#        <input type="button" onclick="console.log({'tag1':tag1,'tag2':tag2,})" value="查看字段"><br>#}
 {#        学 员 人 数 <br><input type="text" style="width:50%;" id="data10" name="data10" placeholder="" value=""#}
 {#                           required><br>#}
-        培 训 经 费 <br><input type="text" style="width:50%;" id="data13" name="data13" placeholder="" value=""
-                           required><br>
-        培训计划时间 <br>从<input type="text" style="width:23.5%;" id="data14" name="data14" placeholder="" value=""
-                           required readonly>
-        到<input type="text" style="width:23.2%;" id="data141" name="data141" placeholder="" value=""
-                required readonly>
-        <br>
+
         培训完成时间 <br>从<input type="text" style="width:23.5%;" id="data15" name="data15" placeholder="" value=""
                            required readonly>
         到<input type="text" style="width:23.2%;" id="data151" name="data151" placeholder="" value=""
@@ -354,6 +343,37 @@
 
 
     });
+
+function addperson() {
+    var p = document.getElementById("data081");
+    var i = p.selectedIndex;
+    var v = p.options[i].value;
+    var List = {{ banzu|safe }};
+    var input= document.getElementById("data082");
+    if (v==="all"){
+         for(var t=0;t<List.length;t++){
+             input.innerText=input.value + List[t][2];
+         }
+    }
+    for(var x=0;List[x][1];x++)
+        if (v === List[x][1] ){
+            input.innerText=List[x][2];
+         }
+}
+
+function addpersonok() {
+    var p = document.getElementById("data082").value;
+    var p2 = document.getElementById("data08").value;
+    var input= document.getElementById("data08");
+    input.innerText=p2+p;
+}
+
+  function showHint(str) {
+      document.getElementById("data05").innerText = str;
+       var List = {{ plan|safe }};
+       document.getElementById("data05").innerText =  List[str-1][2];
+
+      }
 </script>
 </body>
 

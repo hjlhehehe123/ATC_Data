@@ -29,6 +29,7 @@ class info(models.Model):
     职称信息 = models.CharField(max_length=300)
     特殊技能信息 = models.CharField(max_length=300)
     科室信息 = models.CharField(max_length=300)
+    班组信息 = models.CharField(max_length=300)
 
 
 

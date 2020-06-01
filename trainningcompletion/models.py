@@ -14,8 +14,8 @@ class trainningstatusdetail(models.Model):
     frontdata10 = models.CharField(max_length=300)
     frontdata11 = models.CharField(max_length=300)
     frontdata12 = models.CharField(max_length=300)
-    frontdata13 = models.CharField(max_length=300)
-    frontdata14 = models.CharField(max_length=300)
+#    frontdata13 = models.CharField(max_length=300)
+#    frontdata14 = models.CharField(max_length=300)
     frontdata15 = models.CharField(max_length=300)
     frontdata16 = models.CharField(max_length=300)
 
@@ -33,7 +33,15 @@ class trainningstatusdetailother(models.Model):
     frontdata10 = models.CharField(max_length=300)
     frontdata11 = models.CharField(max_length=300)
     frontdata12 = models.CharField(max_length=300)
-    frontdata13 = models.CharField(max_length=300)
-    frontdata14 = models.CharField(max_length=300)
+ #   frontdata13 = models.CharField(max_length=300)
+#    frontdata14 = models.CharField(max_length=300)
     frontdata15 = models.CharField(max_length=300)
     frontdata16 = models.CharField(max_length=300)
+
+class monthplan(models.Model):
+    month = models.CharField(max_length=300)
+    plan = models.CharField(max_length=300)
+
+class banzu(models.Model):
+    bzname = models.CharField(max_length=300)
+    bzperson = models.CharField(max_length=300)

@@ -21,6 +21,7 @@ def banzu(request):
     return render(request, 'banzu.html')
 
 
+
 def instruction(request):
     return render(request, 'instruction.html')
 
