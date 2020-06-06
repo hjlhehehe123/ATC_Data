@@ -203,3 +203,157 @@
     爱岗敬业信息      = models.CharField(max_length=300)
     职称信息          = models.CharField(max_length=300)
     特殊技能信息       = models.CharField(max_length=300)
+	data01 = models.CharField(max_length=300)#年份
+    data02 = models.CharField(max_length=300)#月份
+    data03 = models.CharField(max_length=300)#上岗前培训 学时
+    data04 = models.CharField(max_length=300)#上岗前培训 人次
+    data05 = models.CharField(max_length=300)#资格培训    学时
+    data06 = models.CharField(max_length=300)#资格培训    人次
+    data07 = models.CharField(max_length=300)#复习培训
+    data08 = models.CharField(max_length=300)#
+    data09 = models.CharField(max_length=300)#
+    data10 = models.CharField(max_length=300)#
+    data11 = models.CharField(max_length=300)#
+    data12 = models.CharField(max_length=300)#
+    data13 = models.CharField(max_length=300)#
+    data14 = models.CharField(max_length=300)#
+    data15 = models.CharField(max_length=300)#
+    data16 = models.CharField(max_length=300)#
+	data17 = models.CharField(max_length=300)#
+    data18 = models.CharField(max_length=300)#
+    data19 = models.CharField(max_length=300)#
+    data20 = models.CharField(max_length=300)#
+    data21 = models.CharField(max_length=300)#
+	data22 = models.CharField(max_length=300)#
+    data23 = models.CharField(max_length=300)#
+    data24 = models.CharField(max_length=300)#
+    data25 = models.CharField(max_length=300)#
+    data26 = models.CharField(max_length=300)#
+	data27 = models.CharField(max_length=300)#
+	data28 = models.CharField(max_length=300)#
+    data29 = models.CharField(max_length=300)#
+    data30 = models.CharField(max_length=300)#
+		上岗前培训		资格培训		复习培训		附加培训		追加培训		补习培训		设备培训		熟练培训		专项培训		合计	
+	学时	人次	学时	人次	学时	人次	学时	人次	学时	人次	学时	人次	学时	人次	学时	人次	学时	人次	学时	人次
+
+"data01",
+"data02",	
+"data03",	
+"data04",
+"data05",
+"data06",
+"data07",
+"data08",
+"data09",
+"data10",
+"data11",
+"data12",
+"data13",
+"data14",
+"data15",
+"data16",
+"data17",
+"data18",
+"data19",
+"data20",
+"data21",
+
+
+
+a.objects.filter(frontdata1=i[1]).frontdata2  = i[2 ]
+a.objects.filter(frontdata1=i[1]).frontdata3  = i[3 ]
+a.objects.filter(frontdata1=i[1]).frontdata4  = i[4 ]
+a.objects.filter(frontdata1=i[1]).frontdata5  = i[5 ]
+a.objects.filter(frontdata1=i[1]).frontdata6  = i[6 ]
+a.objects.filter(frontdata1=i[1]).frontdata7  = i[7 ]
+a.objects.filter(frontdata1=i[1]).frontdata8  = i[8 ]
+a.objects.filter(frontdata1=i[1]).frontdata9  = i[9 ]
+a.objects.filter(frontdata1=i[1]).frontdata10 = i[10]
+a.objects.filter(frontdata1=i[1]).frontdata11 = i[11]
+a.objects.filter(frontdata1=i[1]).frontdata12 = i[12]
+a.objects.filter(frontdata1=i[1]).frontdata13 = i[13]
+a.objects.filter(frontdata1=i[1]).frontdata14 = i[14]
+a.objects.filter(frontdata1=i[1]).frontdata15 = i[15]
+a.objects.filter(frontdata1=i[1]).frontdata16 = i[16]
+a.objects.get(frontdata1=i[1]).frontdata = i[1]
+a.objects.get(frontdata1=i[1]).frontdata = i[1]
+a.objects.get(frontdata1=i[1]).frontdata = i[1]
+a.objects.get(frontdata1=i[1]).frontdata = i[1]
+a.objects.get(frontdata1=i[1]).frontdata = i[1]
+
+
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata2 = i[2]  )
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata3 = i[3]  )
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata4 = i[4]  )
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata5 = i[5]  )
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata6 = i[6]  )
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata7 = i[7]  )
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata8 = i[8]  )
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata9 = i[9]  )
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata10 = i[10])
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata11 = i[11])
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata12 = i[12])
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata13 = i[13])
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata14 = i[14])
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata15 = i[15])
+        models.trainningstatusdetail.objects.filter(frontdata1=i[1]).update(frontdata16 = i[16])
+		
+ 月份 = ["1月",
+		"2月",
+		"3月",
+		"4月",
+		"5月",
+		"6月",
+		"7月",
+		"8月",
+		"9月",
+		"10月",
+		"11月",
+		"12月", ]
+		
+		"1月",
+		"2月",
+		"3月",
+		"4月",
+		"5月",
+		"6月",
+		"7月",
+		"8月",
+		"9月",
+		"10月",
+		"11月",
+		"12月",
+		"1月",
+		"1月",
+		"1月",
+		
+		
+                if i == "上岗前培训":
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data03 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data04 = 人次 )
+                if i == "资格培训":                                          
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data05 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data06 = 人次 )
+                if i == "复习培训":                                        
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data07 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data08 = 人次 )
+                if i == "附加培训":                                          
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data09 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data10 = 人次 )
+                if i == "追加培训":                                          
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data11 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data12 = 人次 )
+                if i == "补习培训":                                         
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data13 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data14 = 人次 )
+                if i == "设备培训":                                        
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data15 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data16 = 人次 )
+                if i == "熟练培训":                                        
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data17 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data18 = 人次 )
+                if i == "专项培训":                                          
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data19 = 学时 )
+                    models.tower_trainning_total_time.objects.filter(data02=j).update(data20 = 人次 )
+
+		

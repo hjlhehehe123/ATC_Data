@@ -159,20 +159,24 @@
     <br>
     <div>
         培 训 类 别<br>
-        <select name="data02" id="data02" style="width:15%;">
+        <select name="data02" id="data02" onmousemove="showHint(this.value)" style="width:15%;">
             <option value="0">资格培训</option>
             <option value="1">复习培训</option>
             <option value="2">追加培训</option>
 
         </select><br>
-        培 训 内 容<input type="text" style="width:10%;" id="mon" name="mon" onkeyup="showHint(this.value)" placeholder="" required>月
-        <br><textarea style="width:30%;height: 200px;" id="data05" name="data05" placeholder=""   required></textarea><br>
+{#        月<input type="text" style="width:10%;" id="mon" name="mon" onkeyup="showHint(this.value)" placeholder="" required>#}
+        培 训 内 容<br><textarea style="width:30%;height: 200px;" id="data05" name="data05" placeholder=""   required></textarea><br>
         培 训 地 点 <br><input type="text" style="width:15%;" id="data06" name="data06" placeholder="" value=""
                            required><br>
         培 训 对 象<br>
         <select name="data081" id="data081" style="width:10%;" onclick="addperson()">
             <option value="T01">T01</option>
-            <option value="C01">C01</option>
+            <option value="T02">T02</option>
+            <option value="T03">T03</option>
+            <option value="T04">T04</option>
+            <option value="见习">见习</option>
+
          <option value="all">全部</option></select>
         <br><br><textarea style="width15%;height: 200px;" id="data082" name="data082" placeholder=""   required></textarea>
         <button id="ok1" onclick="addpersonok()">添加→</button>
@@ -364,9 +368,12 @@ function addpersonok() {
 }
 
   function showHint(str) {
-      document.getElementById("data05").innerText = str;
+      {#document.getElementById("data05").innerText = str;#}
        var List = {{ plan|safe }};
-       document.getElementById("data05").innerText =  List[str-1][2];
+       {#document.getElementById("data05").innerText = str+ List[1][2];#}
+       for(var t=0;t<List.length;t++){
+            document.getElementById("data05").innerText =str + List[t][2];
+         }
 
       }
 </script>

@@ -105,7 +105,7 @@
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 
 <button class="layui-btn" id="send3" onclick=window.location.href="{% url 'addtrainningrecord' %}" >新增数据</button>
-  <button class="layui-btn" id="send1" onclick=window.location.href="{% url 'change_trainning_record' %}">更改</button>
+{#  <button class="layui-btn" id="send1" onclick="addRow()">保存</button>#}
 <div id="example"></div>
 
 {#</div>#}
@@ -283,7 +283,7 @@
         var post_data = JSON.stringify(hot.getData(hot.countRows() - 1, 0, hot.countRows() - 1, hot.countCols() - 1));
 
         $.ajax({
-            url: "http://localhost:8000/trainningcompletion/ajax_add/",
+            url: "http://localhost:8000/ajax_add/",
             type: "POST",
             {#发送json数据到服务器#}
             data: post_data,
@@ -310,7 +310,7 @@
 
     });
      function savedata() {
-         window.location.href="http://127.0.0.1:8000/trainningcompletion/addtrainningrecord";
+         window.location.href="http://127.0.0.1:8000/addtrainningrecord";
 
     }
 

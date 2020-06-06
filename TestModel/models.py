@@ -4,7 +4,7 @@
 # models.py
 # python manage.py makemigrations atcinfo
 # python manage.py migrate atcinfo
-# atcinfo
+# atcinfo trainningcompletion
 from django.db import models
 
 
