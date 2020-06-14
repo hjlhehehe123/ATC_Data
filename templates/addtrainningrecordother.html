@@ -152,7 +152,7 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 
-<body>
+<body >
 <form class="form-signin" action="{% url 'addtrainningrecordother1' %}" method="post">
     {% csrf_token %}
     <h2 class="form-signin-heading">增加培训记录</h2>
@@ -178,10 +178,12 @@
             <option value="见习">见习</option>
 
          <option value="all">全部</option></select>
-        <br><br><textarea style="width15%;height: 200px;" id="data082" name="data082" placeholder=""   required></textarea>
-        <button id="ok1" onclick="addpersonok()">添加→</button>
-         <textarea style="width15%;height: 200px;" id="data08" name="data08" placeholder="" value=""  required></textarea><br>
-
+        <br><br>
+         <div style="width:450px;height: 200px;">
+        <div style="width:150px;height: 200px; border: 1px;border-style: solid;border-color: #343434;float: left" id="data084" name="data084" placeholder=""   required></div>
+        <button  style="float: left;margin-top: 160px;margin-left: 5px;margin-right: 5px;" id="ok1" onclick="addpersonok()">添加→</button>
+         <textarea style="float: left;width:150px;height: 200px; border: 1px;border-style: solid;border-color: #343434" id="data08" name="data08" placeholder="" value=""  required></textarea><br>
+        </div>
         {#        机 长 <br>#}
 {##}
 {#        <select name="" id="lang2" style="width:50%;"></select>#}
@@ -197,7 +199,7 @@
 {#        学 员 人 数 <br><input type="text" style="width:50%;" id="data10" name="data10" placeholder="" value=""#}
 {#                           required><br>#}
 
-        培训完成时间 <br>从<input type="text" style="width:23.5%;" id="data15" name="data15" placeholder="" value=""
+        <br>培训完成时间 <br>从<input type="text" style="width:23.5%;" id="data15" name="data15" placeholder="" value=""
                            required readonly>
         到<input type="text" style="width:23.2%;" id="data151" name="data151" placeholder="" value=""
                 required readonly>
@@ -348,34 +350,60 @@ function addperson() {
     var i = p.selectedIndex;
     var v = p.options[i].value;
     var List = {{ banzu|safe }};
-    var input= document.getElementById("data082");
-    if (v==="all"){
-         for(var t=0;t<List.length;t++){
-             input.innerText=input.value + List[t][2];
-         }
+    var add = document.getElementById("data084");
+    var op="";
+    if (v === "all") {
+        for (var x = 0; x < List.length-1; x++) {
+            op = op + List[x][2] + " ";
+        }
+        op=op.replace(/^\s+|\s+$/g,'');
+        op=op.split(' ');
+        add.innerHTML ="";
+        for (var z = 0; z < op.length; z++){
+            add.innerHTML += "<input type=\"checkbox\" id='"+op[z]+"' name=\"姓名\" value='"+op[z]+"' >"+op[z]+"<br>";
+        }
     }
-    for(var x=0;List[x][1];x++)
-        if (v === List[x][1] ){
-            input.innerText=List[x][2];
-         }
+
+    for (var x = 0; List[x][1]; x++) {
+        if (v === List[x][1]) {
+            op = List[x][2].toString();
+            op=op.split(' ');
+            add.innerHTML ="";
+            for (var z = 0; z < op.length; z++){
+              add.innerHTML += "<input type=\"checkbox\" id='"+op[z]+"' name=\"姓名\" value='"+op[z]+"' >"+op[z]+"<br>";
+            }
+        }
+    }
 }
+
 
 function addpersonok() {
-    var p = document.getElementById("data082").value;
-    var p2 = document.getElementById("data08").value;
-    var input= document.getElementById("data08");
-    input.innerText=p2+p;
+    var req = document.getElementsByName("姓名");
+    var value = new Array();
+    for (var i = 0; i < req.length; i++) {
+        if (req[i].checked)
+            value.push(req[i].value);
+    }
+         var p2 = document.getElementById("data08").value;
+         var add = document.getElementById("data08");
+            t="";
+            for (var z = 0; z < value.length; z++){
+               t=t+value[z]+"\n";
+            }
+
+            add.innerText = p2+t;
+
 }
 
+
   function showHint(str) {
-      {#document.getElementById("data05").innerText = str;#}
        var List = {{ plan|safe }};
-       {#document.getElementById("data05").innerText = str+ List[1][2];#}
        for(var t=0;t<List.length;t++){
             document.getElementById("data05").innerText =str + List[t][2];
          }
 
       }
+
 </script>
 </body>
 

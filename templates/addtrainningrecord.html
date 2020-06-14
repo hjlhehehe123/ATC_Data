@@ -154,7 +154,7 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 
-<body>
+<body onload="showHint(document.getElementById('mon').value)">
 
 <form class="form-signin" action="{% url 'addtrainningrecord1' %}" method="post">
     {% csrf_token %}
@@ -169,8 +169,13 @@
 
         </select><br>
 
-        培 训 内 容<input type="text" style="width:10%;" id="mon" name="mon" onkeyup="showHint(this.value)" placeholder="" required>月
-        <br><textarea style="width:30%;height: 200px;" id="data05" name="data05" placeholder=""   required></textarea><br>
+        培 训 内 容<input type="text" style="width:10%;" id="mon" name="mon" onkeyup="showHint(this.value)" placeholder="" value=""  required>月
+        <br><div style="width:350px;height: 200px;border: 1px;border-style: solid;border-color: #343434;" id="data050" name="data050" placeholder=""   required></div><br>
+        <input type="text" style="width:10%;" id="data051" name="data051" placeholder="" value="" required>&nbsp;
+        <input type="text" style="width:10%;" id="data052" name="data052" placeholder="" value=" " required>&nbsp;
+        <input type="text" style="width:10%;" id="data053" name="data053" placeholder="" value=" " required>&nbsp;
+        <input type="text" style="width:10%;" id="data054" name="data054" placeholder="" value=" " required><br>
+         <textarea style="visibility:hidden;float: left;width:1px;height: 1px; border: 1px;border-style: solid;border-color: #343434" id="data05" name="data05" placeholder="" value=""  required></textarea><br>
         培 训 地 点<br>
         <select name="data06" id="data06" style="width:15%;">
             <option value="0">塔台模拟机房</option>
@@ -213,7 +218,7 @@
         到<input type="text" style="width:23.2%;" id="data151" name="data151" placeholder="" value=""
                 required readonly>
         <br>
-        备注 <br><input type="text" style="width:50%;" id="data16" name="data16" placeholder="" value="" required><br>
+        备注 <br><input type="text" style="width:50%;" id="data16" name="data16" placeholder="" value="" required ><br>
 {#        <label>Select your preferred code editor:</label>#}
 
 
@@ -314,7 +319,7 @@
     </div>
 <br>
 <div>
-    <button id="send1" class="btn1" style="width:50%;height:50% "type="submit">确定</button>
+    <button id="send1" class="btn1" style="width:50%;height:50% "type="submit" onmousemove="saveplan()">确定</button>
 </div>
 
 
@@ -377,14 +382,44 @@
     });
 
   function showHint(str) {
-      document.getElementById("data05").innerText = str;
+      document.getElementById("data050").innerText = str;
        var List = {{ plan|safe }};
-       document.getElementById("data05").innerText =  List[str-1][2];
+        var add = document.getElementById("data050");
+        add.innerHTML ="";
+        var op="";
+       op=List[str-1][2].toString();
+       op=op.split('\r\n');
+       add.innerHTML ="";
+            for (var z = 0; z < op.length; z++){
+              add.innerHTML += "<input type=\"checkbox\" id='"+op[z]+"' name=\"内容\" value='"+op[z]+"' checked=\"checked\" >"+op[z]+"<br>";
+            }
 
       }
 
+ function saveplan() {
+ var req = document.getElementsByName("内容");
+ var req1=document.getElementById("data051").value.replace(/(^\s*)|(\s*$)/g,"");
+ var req2=document.getElementById("data052").value.replace(/(^\s*)|(\s*$)/g,"");
+ var req3=document.getElementById("data053").value.replace(/(^\s*)|(\s*$)/g,"");
+ var req4=document.getElementById("data054").value.replace(/(^\s*)|(\s*$)/g,"");
+    var value = new Array();
+    for (var i = 0; i < req.length; i++) {
+        if (req[i].checked)
+            value.push(req[i].value);
+    }
+    var add = document.getElementById("data05");
+    t="";
+     for (var z = 0; z < value.length; z++){
+         t=t+value[z]+"\n";
+     }
+     s=t+req1+'\n'+req2+'\n'+req3+'\n'+req4 ;
+     s=s.replace(/^\s+|\s+$/g,'');
+    add.innerText = s ;
+ }
 
-
+var date = new Date();
+  var m = date.getMonth()+1;
+ $('#mon').val(m);
 </script>
 </body>
 

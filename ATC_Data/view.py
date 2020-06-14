@@ -10,11 +10,26 @@ from django.shortcuts import render
 from atcInfo import models
 
 
+import json
+from datetime import datetime
+
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
+
 
 def login(request):
     # context = {}
     # context['hello'] = 'Hello World!'
     return render(request, 'index.html')
+
+
+def test(request):
+    # context = {}
+    # context['hello'] = 'Hello World!'
+    return render(request, 'test.html')
 
 
 def banzu(request):

@@ -516,7 +516,8 @@ def addtrainningrecordother1(request):  ##获取增加其他培训记录的数�
 
     data05 = request.POST.get('data05')
     data06 = request.POST.get('data06')
-    data08 = request.POST.get('data08').strip()
+    data08 = request.POST.get('data08').replace("\n"," ").strip()
+    print(data08)
 
     a = 1
     for i in data08:
