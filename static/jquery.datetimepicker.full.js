@@ -554,7 +554,7 @@ var datetimepickerFactory = function ($) {
 		formatDate:	'Y/m/d',
 
 		startDate:	false, // new Date(), '1986/12/08', '-1970/01/05','-1970/01/05',
-		step: 5,//之前是60，我改成10
+		step: 1,                 //之前是60，我改成10
 		monthChangeSpinner: true,
 
 		closeOnDateSelect: false,
@@ -564,7 +564,7 @@ var datetimepickerFactory = function ($) {
 		openOnFocus: true,
 
 		timepicker: true,
-		datepicker: true,
+		datepicker: false,       //之前是true，我改成false
 		weeks: false,
 
 		defaultTime: false,	// use formatTime format (ex. '10:00' for formatTime:	'H:i')
