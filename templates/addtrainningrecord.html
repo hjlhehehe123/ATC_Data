@@ -228,24 +228,37 @@
         <script>
 
 
-            $(function () {
-                $("#data14").datetimepicker({
-                    format: 'Y-m-d H:i',
-                });
-            });
-            $(function () {
+            {#$(function () {#}
+            {#    $("#data14").datetimepicker({#}
+            {#        format: 'Y-m-d H:i',#}
+            {#        formatTime:	'H:i',#}
+            {#        todayButton: true,#}
+            {##}
+            {#    });#}
+            {#});#}
+
+            {#$(function () {#}
+            {#    $("#data141").datetimepicker({#}
+            {##}
+            {#        format: 'Y-m-d H:i',#}
+            {#        formatTime:	'H:i',#}
+            {#        todayButton: true,#}
+            {#    });#}
+            {#});#}
+             $(function () {
                 $("#data15").datetimepicker({
+
                     format: 'Y-m-d H:i',
-                });
-            });
-            $(function () {
-                $("#data141").datetimepicker({
-                    format: 'Y-m-d H:i',
+                    formatTime:	'H:i',
+                    todayButton: true,
                 });
             });
             $(function () {
                 $("#data151").datetimepicker({
+
                     format: 'Y-m-d H:i',
+                    formatTime:	'H:i',
+                    todayButton: true,
                 });
             });
 

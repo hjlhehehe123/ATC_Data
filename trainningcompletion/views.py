@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 import TestModel
 from atcInfo.models import info
+from data_anaiysis.views import 创建数据模拟机培训学时
 from trainningcompletion import models
 from TestModel.views import name1
 
@@ -562,7 +563,7 @@ def addtrainningrecordother1(request):  ##获取增加其他培训记录的数�
     a.frontdata7 = data07
     a.frontdata8 = data08
     # a.frontdata9 = data09
-    a.frontdata10 = data10
+    # a.frontdata10 = data10
     a.frontdata11 = data11
     a.frontdata12 = data12
 
@@ -571,6 +572,7 @@ def addtrainningrecordother1(request):  ##获取增加其他培训记录的数�
 
     a.is_active = 0
     a.save()
+    创建数据模拟机培训学时()
 
     return render(request, 'trainningstatusdetailother.html')
 
@@ -662,320 +664,6 @@ def change_trainning_record_other_save(request):  # 保存更改的其他培训�
     return HttpResponse(json.dumps(post_data
                                    ), content_type='application/json')
 
-
-# 以下是# 模拟机培训学时（塔台）
-def tower_trainning_total_time(request):  # 获取模拟机培训学时（塔台）
-
-    # a = models.tower_trainning_total_time()
-    # a.objects.get(data02="1月").data03 = models.trainningstatusdetail.objects.filter(frontdata3="1月",
-    #                                                                              frontdata2="上岗前培训",
-    #                                                                              frontdata4="塔台管制室", ).frontdata11.values_list().all()
-    # print(models.trainningstatusdetail.objects.filter(frontdata3="3月",
-    #                                                frontdata2="资格培训",
-    #                                                frontdata4="区域管制室", ).values_list().all())
-    培训类别 = ["上岗前培训", "资格培训", "复习培训", "附加培训", "追加培训", "补习培训"
-        , "设备培训", "熟练培训", "专项培训", ]
-    月份 = ["1月",
-          "2月",
-          "3月",
-          "4月",
-          "5月",
-          "6月",
-          "7月",
-          "8月",
-          "9月",
-          "10月",
-          "11月",
-          "12月", ]
-    try:
-        if models.tower_trainning_total_time.objects.filter(data01="年份", data02="月份", ):
-            print("已经有表头")
-        else:
-
-            models.tower_trainning_total_time.objects.create(
-                data01="年份",
-                data02="月份",
-                data03="上岗前培训",
-                data04="",
-                data05="资格培训",
-                data06="",
-                data07="复习培训",
-                data08="",
-                data09="附加培训",
-                data10="",
-                data11="追加培训",
-                data12="",
-                data13="补习培训",
-                data14="",
-                data15="设备培训",
-                data16="",
-                data17="熟练培训",
-                data18="",
-                data19="专项培训",
-                data20="",
-                data21="合计",
-                data22="", )
-
-            models.tower_trainning_total_time.objects.create(
-                data01="",
-                data02="",
-                data03="学时",
-                data04="人次",
-                data05="学时",
-                data06="人次",
-                data07="学时",
-                data08="人次",
-                data09="学时",
-                data10="人次",
-                data11="学时",
-                data12="人次",
-                data13="学时",
-                data14="人次",
-                data15="学时",
-                data16="人次",
-                data17="学时",
-                data18="人次",
-                data19="学时",
-                data20="人次",
-                data21="学时",
-                data22="人次", )
-            print("创建了表头:")
-
-        for j1 in 月份:
-            if models.tower_trainning_total_time.objects.filter(data01="2020", data02=j1, ):
-                print("已经有月份")
-            else:
-                models.tower_trainning_total_time.objects.create(data01="2020", data02=j1, )
-                print("创建了:" + j1)
-
-        for i in 培训类别:
-            for j in 月份:
-                # print(i)
-                # a = models.tower_trainning_total_time
-                学时 = 0
-                for k in models.trainningstatusdetail.objects.filter(frontdata3=j,
-                                                                     frontdata2=i,
-                                                                     frontdata4="塔台管制室", ).values_list('frontdata11'):
-                    for m in k:
-                        学时 = 学时 + int(m)
-                print(学时)
-                人次 = 0
-                for k1 in models.trainningstatusdetail.objects.filter(frontdata3=j,
-                                                                      frontdata2=i,
-                                                                      frontdata4="塔台管制室", ).values_list('frontdata10'):
-                    for m1 in k1:
-                        人次 = 人次 + int(m1)
-                print(人次)
-                if i == "上岗前培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data03=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data04=人次)
-                if i == "资格培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data05=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data06=人次)
-                if i == "复习培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data07=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data08=人次)
-                if i == "附加培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data09=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data10=人次)
-                if i == "追加培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data11=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data12=人次)
-                if i == "补习培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data13=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data14=人次)
-                if i == "设备培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data15=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data16=人次)
-                if i == "熟练培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data17=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data18=人次)
-                if i == "专项培训":
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data19=学时)
-                    models.tower_trainning_total_time.objects.filter(data02=j).update(data20=人次)
-
-        计算行的和()
-        if models.tower_trainning_total_time.objects.filter(data01="", data02="合计",):
-            print("已经有列合计")
-        else:
-            models.tower_trainning_total_time.objects.create(data01="", data02="合计", )
-        计算列的和()
-
-
-    except ObjectDoesNotExist:
-        print('没查到')
-
-    data = models.tower_trainning_total_time.objects.values_list("data01",
-                                                                 "data02",
-                                                                 "data03",
-                                                                 "data04",
-                                                                 "data05",
-                                                                 "data06",
-                                                                 "data07",
-                                                                 "data08",
-                                                                 "data09",
-                                                                 "data10",
-                                                                 "data11",
-                                                                 "data12",
-                                                                 "data13",
-                                                                 "data14",
-                                                                 "data15",
-                                                                 "data16",
-                                                                 "data17",
-                                                                 "data18",
-                                                                 "data19",
-                                                                 "data20",
-                                                                 "data21",
-                                                                 "data22",
-
-                                                                 ).all()
-
-    data = list(data)
-    # JsonResponse(ret_list, safe=False)
-    # data = np.array(data)
-    # data = json.dumps(data, safe=False)
-
-    fileuri = []
-    for i in data:
-        fileuri.append(i)
-    # 此时fileuri是一个python list类型，无法在页面js脚本中作为数组类型使用，需要转为json字符串
-    data = json.dumps(fileuri, ensure_ascii=False)
-
-    # ls = []
-    #
-    # path_type = data.replace("'", "").strip("[]").strip().split(',')
-    #
-    # for i in range(len(path_type)):
-    #     my_data = {path_type[i]}  # 组装成一个字典。
-    #     ls.append(my_data)  # 把字典放进一个大的list中给后面程序使用。
-    # print(data)
-    if request.session.get('status'):  # 在判断网页请求的状态时，直接调用request.session从djang_session表中读取数据验证
-        name2 = request.session.get('name')
-        print(name2 + '*********' + 'session登陆人')
-
-    return render(request, 'tower_trainning_total_time.html', {'data': data})
-
-
-def 计算行的和():
-
-    月份 = ["1月",
-          "2月",
-          "3月",
-          "4月",
-          "5月",
-          "6月",
-          "7月",
-          "8月",
-          "9月",
-          "10月",
-          "11月",
-          "12月", ]
-    for i3 in 月份:
-
-        data21 = 0  # 每行的学时和
-        data22 = 0 # 每行的人次和
-        for k3 in range(3, 21, 2):
-            # print(k3)
-            k4 = ""
-            k5 = ""
-            if k3 < 10:
-                k4 = "0" + str(k3)
-            else:
-                k4 = str(k3)
-            if k3 < 9:
-                k5 = "0" + str(k3 + 1)
-            else:
-                k5 = str(k3 + 1)
-            for m in models.tower_trainning_total_time.objects.filter(data02=i3).values_list('data' + str(k4), ):
-                for k6 in m:
-                    data21 = data21 + int(k6.strip())
-
-            for n in models.tower_trainning_total_time.objects.filter(data02=i3).values_list('data' + str(k5), ):
-                for k7 in n:
-                    data22 = data22 + int(k7.strip())
-        models.tower_trainning_total_time.objects.filter(data02=i3).update(
-            data21=data21,
-            data22=data22, )
-
-
-def 计算列的和():
-    aa = []
-    月份 = ["1月",
-          "2月",
-          "3月",
-          "4月",
-          "5月",
-          "6月",
-          "7月",
-          "8月",
-          "9月",
-          "10月",
-          "11月",
-          "12月", ]
-
-    for i in range(3, 22, 2):
-        列合计学时 = 0
-        列合计人次 = 0
-        for i3 in 月份:
-            k4 = ""
-            k5 = ""
-            if i < 10:
-                k4 = "0" + str(i)
-            else:
-                k4 = str(i)
-            if i < 9:
-                k5 = "0" + str(i + 1)
-            else:
-                k5 = str(i + 1)
-
-            # 计算列合计学时，人次
-
-            for k in models.tower_trainning_total_time.objects.filter(data02=i3).values_list(
-                    'data' + str(k4)):
-                for m in k:
-                    列合计学时 = 列合计学时 + int(m.strip())  # 不可转换空字符串为整型
-
-
-            for k1 in models.tower_trainning_total_time.objects.filter(data02=i3).values_list(
-                    'data' + str(k5)):
-                for m1 in k1:
-                    列合计人次 = 列合计人次 + int(m1.strip())
-
-
-        aa.append(列合计学时)
-        aa.append(列合计人次)
-        # print(列合计人次)
-        # print(列合计学时)
-        # print(i)
-        # names = locals()
-        # for i in range(3, 22, 2):
-        #     names['data0' + str(i)] = i
-
-
-    models.tower_trainning_total_time.objects.filter(data02="合计").update(
-        data03=aa[0],
-        data04=aa[1],
-        data05=aa[2],
-        data06=aa[3],
-        data07=aa[4],
-        data08=aa[5],
-        data09=aa[6],
-        data10=aa[7],
-        data11=aa[8],
-        data12=aa[9],
-        data13=aa[10],
-        data14=aa[11],
-        data15=aa[12],
-        data16=aa[13],
-        data17=aa[14],
-        data18=aa[15],
-        data19=aa[16],
-        data20=aa[17],
-        data21=aa[18],
-        data22=aa[19],
-    )
-
-
 def test(request):  # 测试
 
     培训类别 = {"上岗前培训", "资格培训", "复习培训", "附加培训", "追加培训", "补习培训"
@@ -986,3 +674,7 @@ def test(request):  # 测试
         print('data' + str({i}))
 
     return render(request, 'ok.html', )
+
+
+
+

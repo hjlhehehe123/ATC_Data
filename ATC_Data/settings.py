@@ -40,8 +40,12 @@ INSTALLED_APPS = [
     'atcInfo',
     'TestModel',
     'trainningcompletion',
-# python manage.py startapp app
+     'data_anaiysis',
+
+# python manage.py startapp data_anaiysis
+#py manage.py startapp data_anaiysis
 # 'tower_trainning_total_time',
+
 
 
     ]
@@ -107,7 +111,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  # 或者使用 mysql.connector.django
         'NAME': 'atc',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '12345678',
         'HOST':'127.0.0.1',
         'PORT':'3306',
     }

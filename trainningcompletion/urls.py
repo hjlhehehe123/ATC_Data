@@ -31,8 +31,6 @@ url(r'^change_trainning_record_other_save/$', views.change_trainning_record_othe
 
 
 
-# 模拟机培训学时（塔台）
-url(r'^tower_trainning_total_time/$', views.tower_trainning_total_time, name="tower_trainning_total_time"),
 
 
 

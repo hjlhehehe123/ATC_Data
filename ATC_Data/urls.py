@@ -48,5 +48,6 @@ urlpatterns = [
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
     url(r'^trainningcompletion/', include('trainningcompletion.urls')),
+    url(r'^data_anaiysis/', include('data_anaiysis.urls')),
 
 ]

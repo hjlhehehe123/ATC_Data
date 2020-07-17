@@ -54,7 +54,7 @@
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">{{ atcName }}</a></li>
                 <li><a href="{% url 'do_logout' %}">登出</a></li>
-                do_logout
+
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">
@@ -65,10 +65,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar" id="menu">
+        <div class="col-sm-3 col-md-2 sidebar" style="width:130px;">
+            <ul class="nav nav-sidebar" id="menu"  >
                 <li><a href="{% url 'test' %}" target="iframe_a">系统使用说明</a>
-                <li class="active"><a href="{% url 'infosearch' %}" target="iframe_a">人员信息查询 <span class="sr-only">(current)</span></a>
+                <li class="active"><a href="{% url 'infosearch' %}" target="iframe_a" >人员信息查询 <span class="sr-only" >(current)</span></a>
 
                 <li class="active"><a href="#">制定培训计划 <span class="sr-only">(current)</span></a>
                     <ul>
@@ -93,12 +93,21 @@
                         {#                        <li><a href="{% url 'addtrainningrecord' %}" target="iframe_a">•增加培训记录</a></li>#}
                         <li><a href="{% url 'trainningstatusdetail' %}" target="iframe_a">•模拟机培训记录</a></li>
                         <li><a href="{% url 'trainningstatusdetailother' %}" target="iframe_a">•其他培训记录</a></li>
-                        <li><a href="{% url 'tower_trainning_total_time' %}" target="iframe_a">培训学时统计</a></li>
+
                     </ul>
                 </li>
 
 
                 <li class="active"><a href="{% url 'analysis' %}" target="iframe_a">月度报表分析 <span class="sr-only">(current)</span></a>
+                <ul>
+                        <li><a href="{% url 'tower_trainning_total_time' %}" target="iframe_a"  >•培训学时统计</a></li>
+                    <li><a href="{% url 'instructor_total_time' %}" target="iframe_a"  >•教员教学学时统计</a></li>
+
+{#已做好#}
+{#                     <li><a href="{% url 'instructor_teach_record_instructorlist' %}" target="iframe_a"  >•单个教员教学记录</a></li>#}
+
+                    </ul>
+                </li>
                 <li class="active"><a href="{% url 'sheet' %}" target="iframe_a">考核评估表 <span
                         class="sr-only">(current)</span></a>
                 <li class="active"><a href="#">培训项目管理 <span class="sr-only">(current)</span></a>
@@ -113,8 +122,14 @@
             </ul>
 
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <iframe id="iframe_a" width="100%" height="450px" frameborder="no" name="iframe_a"></iframe>
+{#        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">#}
+             <div
+style="margin-left:12%;margin-right:1%;"
+{#                     class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main" #}
+             >
+            <iframe id="iframe_a"
+                    width="100%" height="550px"
+                    frameborder="no" name="iframe_a"></iframe>
             <!-- <h1 class="page-header">Welcome！</h1>-->
         </div>
     </div>

@@ -103,33 +103,18 @@
 {#<div>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
-<form class="form-signin" action="{% url 'tower_trainning_total_time_post' %}" method="post">
+<form class="form-signin" action="{% url 'instructor_teach_record_instructorlist_post' %}" method="post">
     {% csrf_token %}
-    起始年月<select name="year1" id="year1" style="width:15%;">
-        {% for i in year %}
+    教员选择<select name="instructor" id="instructor" style="width:15%;">
+        {% for i in instructorlist %}
             <option value={{ i }}>{{ i }}</option>
         {% endfor %}
     </select>
-<select name="month1" id="month1" style="width:15%;">
-           {% for i in month %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
+
 <br>
-终止年月<select name="year2" id="year2" style="width:15%;">
-        {% for i in year %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
-<select name="month2" id="month2" style="width:15%;">
-           {% for i in month %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
+
     <button class="layui-btn" type="submit">查询</button>
 </form>
-{#<button class="layui-btn" id="send3" onclick=window.location.href="{% url 'addtrainningrecord' %}">查询</button>#}
-{#  <button class="layui-btn" id="send1" onclick="addRow()">保存</button>#}
 <div id="example"></div>
 
 
@@ -153,16 +138,18 @@
     {#var data = [['Column A', 'Column B', 'Column C'], ['1', '2', '3']];#}
     var data = {{ data | safe}};
     var cell_width = [
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        250,
+        80,
+        80,
+        80,
+        80,
+        80,
 
     ];
     var cell_height = [
