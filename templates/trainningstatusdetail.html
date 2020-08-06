@@ -139,54 +139,54 @@
 {#            <tr>#}
 {#                // {#            {%for i in data1 %}#}
 {##}
-<tr>
-    <form action="{% url 'trainningstatusdetail' %}" method="POST">
-        <td><label>
-            <input type="text" name="data1" value="{{ i.frontdata1 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data2" value="{{ i.frontdata2 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data3" value="{{ i.frontdata3 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data4" value="{{ i.frontdata4 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data5" value="{{ i.frontdata5 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data6" value="{{ i.frontdata6 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data7" value="{{ i.frontdata7 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data8" value="{{ i.frontdata8 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data9" value="{{ i.frontdata9 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data10" value="{{ i.frontdata10 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data11" value="{{ i.frontdata11 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data12" value="{{ i.frontdata12 }}" style="border-style:none">
-        <td><label>
-            <input type="text" name="data15" value="{{ i.frontdata15 }}" style="border-style:none">
-        </label></td>
-        <td><label>
-            <input type="text" name="data16" value="{{ i.frontdata16 }}" style="border-style:none">
-        </label></td>
-
-
-    </form>
-
-</tr>
+{#<tr>#}
+{#    <form action="{% url 'trainningstatusdetail' %}" method="POST">#}
+{#        <td><label>#}
+{#            <input type="text" name="data1" value="{{ i.frontdata1 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data2" value="{{ i.frontdata2 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data3" value="{{ i.frontdata3 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data4" value="{{ i.frontdata4 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data5" value="{{ i.frontdata5 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data6" value="{{ i.frontdata6 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data7" value="{{ i.frontdata7 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data8" value="{{ i.frontdata8 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data9" value="{{ i.frontdata9 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data10" value="{{ i.frontdata10 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data11" value="{{ i.frontdata11 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data12" value="{{ i.frontdata12 }}" style="border-style:none">#}
+{#        <td><label>#}
+{#            <input type="text" name="data15" value="{{ i.frontdata15 }}" style="border-style:none">#}
+{#        </label></td>#}
+{#        <td><label>#}
+{#            <input type="text" name="data16" value="{{ i.frontdata16 }}" style="border-style:none">#}
+{#        </label></td>#}
+{##}
+{##}
+{#    </form>#}
+{##}
+{#</tr>#}
 {##}
 {##}
 {#            {% endfor %}#}
@@ -297,7 +297,7 @@
             },
             {#请求失败回调函数#}
             error: function () {
-                alert("服务器请求超时,请重试!")
+                {#alert("服务器请求超时,请重试!")#}
             }
 
         });
