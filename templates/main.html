@@ -95,16 +95,19 @@
                         <li><a href="{% url 'trainningstatusdetailother' %}" target="iframe_a">•其他培训记录</a></li>
 
                     </ul>
-                </li>
+            </li>
 
 
                 <li class="active"><a href="{% url 'analysis' %}" target="iframe_a">月度报表分析 <span class="sr-only">(current)</span></a>
-                <ul>
-                        <li><a href="{% url 'tower_trainning_total_time' %}" target="iframe_a"  >•培训学时统计</a></li>
-                    <li><a href="{% url 'instructor_total_time' %}" target="iframe_a"  >•教员教学学时统计</a></li>
+                    <ul>
+                        <li><a href="{% url 'tower_trainning_total_time' %}" target="iframe_a">•培训学时统计</a></li>
+                        <li><a href="{% url 'instructor_total_time' %}" target="iframe_a">•教员教学学时统计</a></li>
 
-{#已做好#}
-{#                     <li><a href="{% url 'instructor_teach_record_instructorlist' %}" target="iframe_a"  >•单个教员教学记录</a></li>#}
+                        {#已做好#}
+                        <li><a href="{% url 'instructor_teach_record_instructorlist' %}" target="iframe_a">•单个教员教学记录</a>
+                        </li>
+                        <li><a href="{% url 'single_person_trainning_record' %}" target="iframe_a">•个人培训记录</a></li>
+
 
                     </ul>
                 </li>

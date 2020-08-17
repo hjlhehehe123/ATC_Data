@@ -73,6 +73,7 @@ class area_trainning_total_time(models.Model):  # 模拟机培训学时（塔台
 
 class instructor_total_time(models.Model):  # 教员教学学时统计
     data26 = models.CharField(max_length=300)  #
+    data27 = models.CharField(max_length=300)  #
     data01 = models.CharField(max_length=300)  # 年份
     data02 = models.CharField(max_length=300)  # 月份
     data03 = models.CharField(max_length=300)  #  姓名
@@ -99,7 +100,6 @@ class instructor_total_time(models.Model):  # 教员教学学时统计
     data24 = models.CharField(max_length=300)  #
     data25 = models.CharField(max_length=300)  #
 
-    data27 = models.CharField(max_length=300)  #
     data28 = models.CharField(max_length=300)  #
     data29 = models.CharField(max_length=300)  #
     data30 = models.CharField(max_length=300)  #

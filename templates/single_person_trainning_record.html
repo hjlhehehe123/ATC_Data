@@ -7,7 +7,7 @@
     <script src="{% static 'handsontable.full.js' %}"></script>
     <link rel="stylesheet" href="{% static 'handsontable.full.css' %}"/>
     {#     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>#}
-    <title>简单表格操作</title>
+    <title></title>
     <style type="text/css">
         body {
             line-height: 24px;
@@ -103,7 +103,7 @@
 {#<div>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
-<form class="form-signin" action="{% url 'instructor_total_time_post' %}" method="post">
+<form class="form-signin" action="{% url 'single_person_trainning_record_post' %}" method="post">
     {% csrf_token %}
     选择人员<select name="人员" id="人员" style="width:15%;">
     {% for i in 人员 %}
@@ -159,16 +159,19 @@
     {#var data = [['Column A', 'Column B', 'Column C'], ['1', '2', '3']];#}
     var data = {{ data | safe}};
     var cell_width = [
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
-        {#80,#}
+        80,
+        80,
+        80,
+        80,
+        80,
+        200,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
+        80,
 
     ];
     var cell_height = [

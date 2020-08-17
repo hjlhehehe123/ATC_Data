@@ -103,15 +103,16 @@
 {#<div>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
+<h2 class="form-signin-heading">{{ instructor }}的教学记录</h2>
 <form class="form-signin" action="{% url 'instructor_teach_record_instructorlist_post' %}" method="post">
     {% csrf_token %}
     教员选择<select name="instructor" id="instructor" style="width:15%;">
-        {% for i in instructorlist %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
+    {% for i in instructorlist %}
+        <option value={{ i }}>{{ i }}</option>
+    {% endfor %}
+</select>
 
-<br>
+    <br>
 
     <button class="layui-btn" type="submit">查询</button>
 </form>
