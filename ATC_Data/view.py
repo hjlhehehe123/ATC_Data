@@ -29,7 +29,7 @@ def login(request):
 def test(request):
     # context = {}
     # context['hello'] = 'Hello World!'
-    return render(request, 'test.html')
+    return render(request, 'ACkhbgb.html')
 
 
 def banzu(request):
