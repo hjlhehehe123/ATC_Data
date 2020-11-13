@@ -1,16 +1,16 @@
 import json
 from datetime import datetime
-
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 import TestModel
+from TestModel.views import name1
 from atcInfo.models import info
+from data_anaiysis.views import 创建教员教学总学时
 from data_anaiysis.views import 创建数据模拟机培训学时
 from trainningcompletion import models
-from TestModel.views import name1
 
 
 # Create your views here.
@@ -41,52 +41,146 @@ def global_params(request):  # 学习用的，没实际用处
     return {"name": name}
 
 
+年份 = []
+月份 = ["1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月", ]
+
+
+def 获取所有可能的年份(年份):
+    a1 = []
+    for k1 in models.trainningstatusdetail.objects.filter().values_list('frontdata15'):
+        for k11 in k1:
+            if k11 == "培训完成时间":
+                print("培训完成时间")
+            else:
+                t2 = datetime.strptime(k11.split()[0], '%Y-%m-%d')
+                a1.append(t2.year)
+
+    年份.append(a1[0])
+    for a2 in a1:
+        if a2 in 年份:
+            print("年份存在" + str(a2))
+        else:
+            年份.append(a2)
+    print(年份)
+
+
 # 以下是模拟机培训相关的
 def trainningstatusdetail(request):  # 获取模拟机培训记录页面
-    data = models.trainningstatusdetail.objects.values_list().all()
-
+    获取所有可能的年份(年份)
+    data = models.trainningstatusdetail.objects.values_list(
+        "frontdata1",
+        "frontdata2",
+        "frontdata3",
+        "frontdata4",
+        "frontdata5",
+        "frontdata6",
+        "frontdata7",
+        "frontdata8",
+        "frontdata9",
+        "frontdata10",
+        "frontdata11",
+        "frontdata12",
+        "frontdata15",
+        "frontdata16", ).all()
     data = list(data)
-    # JsonResponse(ret_list, safe=False)
-    # data = np.array(data)
-    # data = json.dumps(data, safe=False)
-
     fileuri = []
-    # 先从库表中获取到与该应用相关的全部配置文件路径与文件信息，即fileuri
     for i in data:
         fileuri.append(i)
-    # 此时fileuri是一个python list类型，无法在页面js脚本中作为数组类型使用，需要转为json字符串
     data = json.dumps(fileuri, ensure_ascii=False)
-
-    # ls = []
-    #
-    # path_type = data.replace("'", "").strip("[]").strip().split(',')
-    #
-    # for i in range(len(path_type)):
-    #     my_data = {path_type[i]}  # 组装成一个字典。
-    #     ls.append(my_data)  # 把字典放进一个大的list中给后面程序使用。
-    print(data)
-    data1 = request.POST.get('data1')
-    data2 = request.POST.get('data2')
-    data3 = request.POST.get('data3')
-    data4 = request.POST.get('data4')
-    data5 = request.POST.get('data5')
-    data6 = request.POST.get('data6')
-    data7 = request.POST.get('data7')
-    data8 = request.POST.get('data8')
-    data9 = request.POST.get('data9')
-    data10 = request.POST.get('data10')
-    data11 = request.POST.get('data11')
-    data12 = request.POST.get('data12')
-    data13 = request.POST.get('data13')
-    data14 = request.POST.get('data14')
-    data15 = request.POST.get('data15')
-    data16 = request.POST.get('data16')
-
-    if request.session.get('status'):  # 在判断网页请求的状态时，直接调用request.session从djang_session表中读取数据验证
+    if request.session.get('status'):
         name2 = request.session.get('name')
         print(name2 + '*********' + 'session登陆人')
 
-    return render(request, 'trainningstatusdetail.html', {'data': data})
+    return render(request, 'trainningstatusdetail.html', {'data': data, 'year': 年份, 'month': 月份, })
+
+
+def trainningstatusdetail_post(request):  # 获取模拟机培训记录页面
+    post_year1 = int(request.POST.get('year1'))
+    month1 = request.POST.get('month1')
+    month1 = int(''.join(month1).split("月")[0])
+
+    post_year2 = int(request.POST.get('year2'))
+    month2 = request.POST.get('month2')
+    month2 = int(''.join(month2).split("月")[0])
+
+    获取所有可能的年份(年份)
+    data = models.trainningstatusdetail.objects.values_list(
+        "frontdata1",
+        "frontdata2",
+        "frontdata3",
+        "frontdata4",
+        "frontdata5",
+        "frontdata6",
+        "frontdata7",
+        "frontdata8",
+        "frontdata9",
+        "frontdata10",
+        "frontdata11",
+        "frontdata12",
+        "frontdata15",
+        "frontdata16", ).all()
+    data = list(data)
+    ee = []
+    for gg in data:
+        ff = []
+        for hh in gg:
+            ff.append(hh)
+        ee.append(ff)
+
+    aa = []
+    aa.append(ee[0])
+    print("hhhhhhhhhhhhhhhhh")
+    print(aa)
+
+    for bb in ee[1:]:
+
+        # print(data)
+        # print(bb[12])
+
+        cc = int(''.join(bb[12]).split("-")[0])
+        dd = int(''.join(bb[12]).split("-")[1])
+        # print(cc)
+        # print(dd)
+        if post_year1 > post_year2:
+            print("年份选择错误")
+        if post_year1 == post_year2:
+            if post_year1 == cc:
+                for mm1 in range(month1 - 1, month2, 1):
+                    if mm1 + 1 == dd:
+                        aa.append(bb)
+
+        if post_year1 < post_year2:
+            if post_year2 >= cc >= post_year1:
+                for mm1 in range(month1 - 1, 12, 1):
+                    if mm1 + 1 == dd & post_year1 == cc:
+                        aa.append(bb)
+
+                for yy in range(post_year1 + 1, post_year2, 1):
+                    for mm2 in range(0, 12, 1):
+                        if mm2 + 1 == dd & yy == cc:
+                            aa.append(bb)
+
+                for mm3 in range(0, month2, 1):
+                    if mm3 + 1 == dd & post_year2 == cc:
+                        aa.append(bb)
+
+    print(aa)
+
+    if request.session.get('status'):
+        name2 = request.session.get('name')
+        print(name2 + '*********' + 'session登陆人')
+    return render(request, 'trainningstatusdetail.html', {'data': aa, 'year': 年份, 'month': 月份, })
 
 
 def addtrainningrecord(request):  # 获取增加模拟机培训记录的页面
@@ -228,8 +322,30 @@ def addtrainningrecord1(request):  # 获取增加模拟机培训记录的数据�
 
     a.is_active = 0
     a.save()
+    创建数据模拟机培训学时()
+    创建教员教学总学时()
+    data = models.trainningstatusdetail.objects.values_list(
+        "frontdata1",
+        "frontdata2",
+        "frontdata3",
+        "frontdata4",
+        "frontdata5",
+        "frontdata6",
+        "frontdata7",
+        "frontdata8",
+        "frontdata9",
+        "frontdata10",
+        "frontdata11",
+        "frontdata12",
+        "frontdata15",
+        "frontdata16", ).all()
+    data = list(data)
+    fileuri = []
+    for i in data:
+        fileuri.append(i)
+    data = json.dumps(fileuri, ensure_ascii=False)
 
-    return render(request, 'trainningstatusdetail.html')
+    return render(request, 'trainningstatusdetail.html', {'data': data})
 
 
 data08 = []
@@ -339,27 +455,26 @@ def change_trainning_record_save(request):  # 保存更改的模拟机培训记�
 
 # 以下是其他培训的
 def trainningstatusdetailother(request):  # 获取其他培训记录页面
-    data = models.trainningstatusdetailother.objects.values_list().all()
-
+    data = models.trainningstatusdetailother.objects.values_list(
+        "frontdata1",
+        "frontdata2",
+        "frontdata3",
+        "frontdata4",
+        "frontdata5",
+        "frontdata6",
+        "frontdata7",
+        "frontdata8",
+        "frontdata10",
+        "frontdata11",
+        "frontdata12",
+        "frontdata15",
+        "frontdata16", ).all()
     data = list(data)
-    # JsonResponse(ret_list, safe=False)
-    # data = np.array(data)
-    # data = json.dumps(data, safe=False)
     fileuri = []
-    # 先从库表中获取到与该应用相关的全部配置文件路径与文件信息，即fileuri
     for i in data:
         fileuri.append(i)
-    # 此时fileuri是一个python list类型，无法在页面js脚本中作为数组类型使用，需要转为json字符串
     data = json.dumps(fileuri, ensure_ascii=False)
-
-    # ls = []
-    #
-    # path_type = data.replace("'", "").strip("[]").strip().split(',')
-    #
-    # for i in range(len(path_type)):
-    #     my_data = {path_type[i]}  # 组装成一个字典。
-    #     ls.append(my_data)  # 把字典放进一个大的list中给后面程序使用。
-    print(data)
+    # print(data)
     data1 = request.POST.get('data1')
     data2 = request.POST.get('data2')
     data3 = request.POST.get('data3')
@@ -517,7 +632,7 @@ def addtrainningrecordother1(request):  ##获取增加其他培训记录的数�
 
     data05 = request.POST.get('data05')
     data06 = request.POST.get('data06')
-    data08 = request.POST.get('data08').replace("\n"," ").strip()
+    data08 = request.POST.get('data08').replace("\n", " ").strip()
     print(data08)
 
     a = 1
@@ -572,9 +687,28 @@ def addtrainningrecordother1(request):  ##获取增加其他培训记录的数�
 
     a.is_active = 0
     a.save()
-    创建数据模拟机培训学时()
 
-    return render(request, 'trainningstatusdetailother.html')
+    data = models.trainningstatusdetailother.objects.values_list(
+        "frontdata1",
+        "frontdata2",
+        "frontdata3",
+        "frontdata4",
+        "frontdata5",
+        "frontdata6",
+        "frontdata7",
+        "frontdata8",
+        "frontdata10",
+        "frontdata11",
+        "frontdata12",
+        "frontdata15",
+        "frontdata16", ).all()
+    data = list(data)
+    fileuri = []
+    for i in data:
+        fileuri.append(i)
+    data = json.dumps(fileuri, ensure_ascii=False)
+
+    return render(request, 'trainningstatusdetailother.html', {'data': data})
 
 
 data08 = []
@@ -664,6 +798,7 @@ def change_trainning_record_other_save(request):  # 保存更改的其他培训�
     return HttpResponse(json.dumps(post_data
                                    ), content_type='application/json')
 
+
 def test(request):  # 测试
 
     培训类别 = {"上岗前培训", "资格培训", "复习培训", "附加培训", "追加培训", "补习培训"
@@ -674,7 +809,3 @@ def test(request):  # 测试
         print('data' + str({i}))
 
     return render(request, 'ok.html', )
-
-
-
-

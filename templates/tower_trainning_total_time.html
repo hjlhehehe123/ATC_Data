@@ -105,27 +105,267 @@
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 <form class="form-signin" action="{% url 'tower_trainning_total_time_post' %}" method="post">
     {% csrf_token %}
-    起始年月<select name="year1" id="year1" style="width:15%;">
-        {% for i in year %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
+    起始
+    <select name="year1" id="year1">
+        <option value={{ post_year1 }}>{{ post_year1 }}</option>
+    </select>年
+    <select name="month1" id="month1">
+        <option value={{ month1 }}>{{ month1 }}</option>
+    </select>月
+    <select name="day1" id="day1">
+        <option value={{ day1 }}>{{ day1 }}</option>
+    </select>日
+    <!--<span id="result"></span>-->
+
+
+    <script>
+        //生成日期
+        function creatDate() {
+            //生成1900年-2100年
+            for (i in {{ year|safe }}) {
+                var option = document.createElement('option');
+                option.setAttribute('value', {{ year|safe }}[i]);
+                option.innerHTML = {{ year|safe }}[i];
+                year1.appendChild(option);
+            }
+            //生成1月-12月
+            for (var i = 1; i <= 12; i++) {
+                var option = document.createElement('option');
+                option.setAttribute('value', i);
+                option.innerHTML = i;
+                month1.appendChild(option);
+            }
+            //生成1日—31日
+            for (var i = 1; i <= 31; i++) {
+                var option = document.createElement('option');
+                option.setAttribute('value', i);
+                option.innerHTML = i;
+                day1.appendChild(option);
+            }
+        }
+
+        creatDate();
+        //保存某年某月的天数
+        var days;
+        //年份点击
+        year1.onclick = function () {
+            //月份显示默认值
+            month1.options[0].selected = true;
+            //天数显示默认值
+            day1.options[0].selected = true;
+        }
+        //月份点击
+        month1.onclick = function () {
+            //天数显示默认值
+            day1.options[0].selected = true;
+            //计算天数的显示范围
+            //如果是2月
+            if (month1.value == 2) {
+                //如果是闰年
+                if ((year1.value % 4 === 0 && year1.value % 100 !== 0) || year1.value % 400 === 0) {
+                    days = 29;
+                    //如果是平年
+                } else {
+                    days = 28;
+                }
+                //如果是第4、6、9、11月
+            } else if (month1.value == 4 || month1.value == 6 || month1.value == 9 || month1.value == 11) {
+                days = 30;
+            } else {
+                days = 31;
+            }
+            //增加或删除天数
+            //如果是28天，则删除29、30、31天(即使他们不存在也不报错)
+            if (days == 28) {
+                day1.remove(31);
+                day1.remove(30);
+                day1.remove(29);
+            }
+            //如果是29天
+            if (days == 29) {
+                day1.remove(31);
+                day1.remove(30);
+                //如果第29天不存在，则添加第29天
+                if (!day1.options[29]) {
+                    day1.add(new Option('29', '29'), undefined)
+                }
+            }
+            //如果是30天
+            if (days == 30) {
+                day1.remove(31);
+                //如果第29天不存在，则添加第29天
+                if (!day1.options[29]) {
+                    day1.add(new Option('29', '29'), undefined)
+                }
+                //如果第30天不存在，则添加第30天
+                if (!day1.options[30]) {
+                    day1.add(new Option('30', '30'), undefined)
+                }
+            }
+            //如果是31天
+            if (days == 31) {
+                //如果第29天不存在，则添加第29天
+                if (!day1.options[29]) {
+                    day1.add(new Option('29', '29'), undefined)
+                }
+                //如果第30天不存在，则添加第30天
+                if (!day1.options[30]) {
+                    day1.add(new Option('30', '30'), undefined)
+                }
+                //如果第31天不存在，则添加第31天
+                if (!day1.options[31]) {
+                    day1.add(new Option('31', '31'), undefined)
+                }
+            }
+        }
+    </script>
+    终止
+    <select name="year2" id="year2">
+        <option value={{ post_year2 }}>{{ post_year2 }}</option>
+    </select>年
+    <select name="month2" id="month2">
+        <option value={{ month2 }}>{{ month2 }}</option>
+    </select>月
+    <select name="day2" id="day2">
+        <option value={{ day2 }}>{{ day2 }}</option>
+    </select>日
+    塔进区
+    <select name="塔进区" id="塔进区">
+        <option value="3">所有</option>
+        <option value="0">塔台</option>
+        <option value="1">进近</option>
+        <option value="2">区调</option>
+
     </select>
-<select name="month1" id="month1" style="width:15%;">
-           {% for i in month %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
-<br>
-终止年月<select name="year2" id="year2" style="width:15%;">
-        {% for i in year %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
-<select name="month2" id="month2" style="width:15%;">
-           {% for i in month %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
+
+
+    <script>
+        //生成日期
+        function creatDate() {
+            //生成1900年-2100年
+            for (i in {{ year|safe }}) {
+                var option = document.createElement('option');
+                option.setAttribute('value', {{ year|safe }}[i]);
+                option.innerHTML = {{ year|safe }}[i];
+                year2.appendChild(option);
+            }
+            //生成1月-12月
+            for (var i = 1; i <= 12; i++) {
+                var option = document.createElement('option');
+                option.setAttribute('value', i);
+                option.innerHTML = i;
+                month2.appendChild(option);
+            }
+            //生成1日—31日
+            for (var i = 1; i <= 31; i++) {
+                var option = document.createElement('option');
+                option.setAttribute('value', i);
+                option.innerHTML = i;
+                day2.appendChild(option);
+            }
+        }
+
+        creatDate();
+        //保存某年某月的天数
+        var days;
+        //年份点击
+        year2.onclick = function () {
+            //月份显示默认值
+            month2.options[0].selected = true;
+            //天数显示默认值
+            day2.options[0].selected = true;
+        }
+        //月份点击
+        month2.onclick = function () {
+            //天数显示默认值
+            day2.options[0].selected = true;
+            //计算天数的显示范围
+            //如果是2月
+            if (month2.value == 2) {
+                //如果是闰年
+                if ((year2.value % 4 === 0 && year2.value % 100 !== 0) || year2.value % 400 === 0) {
+                    days = 29;
+                    //如果是平年
+                } else {
+                    days = 28;
+                }
+                //如果是第4、6、9、11月
+            } else if (month2.value == 4 || month2.value == 6 || month2.value == 9 || month2.value == 11) {
+                days = 30;
+            } else {
+                days = 31;
+            }
+            //增加或删除天数
+            //如果是28天，则删除29、30、31天(即使他们不存在也不报错)
+            if (days == 28) {
+                day2.remove(31);
+                day2.remove(30);
+                day2.remove(29);
+            }
+            //如果是29天
+            if (days == 29) {
+                day2.remove(31);
+                day2.remove(30);
+                //如果第29天不存在，则添加第29天
+                if (!day2.options[29]) {
+                    day2.add(new Option('29', '29'), undefined)
+                }
+            }
+            //如果是30天
+            if (days == 30) {
+                day2.remove(31);
+                //如果第29天不存在，则添加第29天
+                if (!day2.options[29]) {
+                    day2.add(new Option('29', '29'), undefined)
+                }
+                //如果第30天不存在，则添加第30天
+                if (!day2.options[30]) {
+                    day2.add(new Option('30', '30'), undefined)
+                }
+            }
+            //如果是31天
+            if (days == 31) {
+                //如果第29天不存在，则添加第29天
+                if (!day2.options[29]) {
+                    day2.add(new Option('29', '29'), undefined)
+                }
+                //如果第30天不存在，则添加第30天
+                if (!day2.options[30]) {
+                    day2.add(new Option('30', '30'), undefined)
+                }
+                //如果第31天不存在，则添加第31天
+                if (!day2.options[31]) {
+                    day2.add(new Option('31', '31'), undefined)
+                }
+            }
+        }
+    </script>
+    {#    起始年月<select name="year1" id="year1" style="width:15%;">#}
+    {#        {% for i in year %}#}
+    {#            <option value={{ i }}>{{ i }}</option>#}
+    {#        {% endfor %}#}
+    {#    </select>#}
+    {#<select name="month1" id="month1" style="width:15%;">#}
+    {#           {% for i in month %}#}
+    {#            <option value={{ i }}>{{ i }}</option>#}
+    {#        {% endfor %}#}
+    {#    </select>#}
+    {#<select name="day1" id="day1" style="width:15%;">#}
+    {#           {% for i in day1 %}#}
+    {#            <option value=1>1</option>#}
+    {#        {% endfor %}#}
+    {#    </select>#}
+    {#<br>#}
+    {#终止年月<select name="year2" id="year2" style="width:15%;">#}
+    {#        {% for i in year %}#}
+    {#            <option value={{ i }}>{{ i }}</option>#}
+    {#        {% endfor %}#}
+    {#    </select>#}
+    {#<select name="month2" id="month2" style="width:15%;">#}
+    {#           {% for i in month %}#}
+    {#            <option value={{ i }}>{{ i }}</option>#}
+    {#        {% endfor %}#}
+    {#    </select>#}
     <button class="layui-btn" type="submit">查询</button>
 </form>
 {#<button class="layui-btn" id="send3" onclick=window.location.href="{% url 'addtrainningrecord' %}">查询</button>#}

@@ -104,9 +104,39 @@
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 {#    <button class="layui-btn" onclick="addRow()">新增行</button>#}
 
-<button class="layui-btn" id="send3" onclick=window.location.href="{% url 'addtrainningrecord' %}" >新增数据</button>
-  <button class="layui-btn" id="send1" onclick=window.location.href="{% url 'change_trainning_record' %}">更改</button>
+<button class="layui-btn" id="send3" onclick=window.location.href="{% url 'addtrainningrecord' %}">新增数据</button>
+<button class="layui-btn" id="send1" onclick=window.location.href="{% url 'change_trainning_record' %}">更改</button>
+
+<br>
+<form class="form-signin" action="{% url 'trainningstatusdetail_post' %}" method="post">
+    {% csrf_token %}
+    起始年月<select name="year1" id="year1" style="width:15%;">
+    {% for i in year %}
+        <option value={{ i }}>{{ i }}</option>
+    {% endfor %}
+</select>
+    <select name="month1" id="month1" style="width:15%;">
+        {% for i in month %}
+            <option value={{ i }}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    终止年月<select name="year2" id="year2" style="width:15%;">
+    {% for i in year %}
+        <option value={{ i }}>{{ i }}</option>
+    {% endfor %}
+</select>
+    <select name="month2" id="month2" style="width:15%;">
+        {% for i in month %}
+            <option value={{ i }}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    <button class="layui-btn" type="submit">查询</button>
+</form>
+
+{#表格#}
 <div id="example"></div>
+
 
 {#</div>#}
 
@@ -216,7 +246,6 @@
     {#var data = [['Column A', 'Column B', 'Column C'], ['1', '2', '3']];#}
     var data = {{ data | safe}};
     var cell_width = [
-        80,
         80,
         80,
         80,

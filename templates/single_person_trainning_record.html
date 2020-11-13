@@ -106,28 +106,39 @@
 <form class="form-signin" action="{% url 'single_person_trainning_record_post' %}" method="post">
     {% csrf_token %}
     选择人员<select name="人员" id="人员" style="width:15%;">
+    <option value={{ 选的人员 }}>{{ 选的人员 }}</option>
     {% for i in 人员 %}
+        <option value={{ i }}>{{ i }}</option>
+    {% endfor %}
+</select>
+    培训类别<select name="培训类别" id="培训类别" style="width:15%;">
+    <option value={{ 选的培训类别 }}>{{ 选的培训类别 }}</option>
+    {% for i in 培训类别 %}
         <option value={{ i }}>{{ i }}</option>
     {% endfor %}
 </select>
     <br>
     起始年月<select name="year1" id="year1" style="width:15%;">
+    <option value={{ year1 }}>{{ year1 }}</option>
     {% for i in year %}
         <option value={{ i }}>{{ i }}</option>
     {% endfor %}
 </select>
     <select name="month1" id="month1" style="width:15%;">
+        <option value={{ month1 }}>{{ month1 }}</option>
         {% for i in month %}
             <option value={{ i }}>{{ i }}</option>
         {% endfor %}
     </select>
-    <br>
+
     终止年月<select name="year2" id="year2" style="width:15%;">
+    <option value={{ year2 }}>{{ year2 }}</option>
     {% for i in year %}
         <option value={{ i }}>{{ i }}</option>
     {% endfor %}
 </select>
     <select name="month2" id="month2" style="width:15%;">
+        <option value={{ month2 }}>{{ month2 }}</option>
         {% for i in month %}
             <option value={{ i }}>{{ i }}</option>
         {% endfor %}

@@ -1,11 +1,11 @@
 import json
 from datetime import datetime
-
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from django.shortcuts import render
 
 import trainningcompletion
+from TestModel.models import logins
 from data_anaiysis import models
 
 # Create your views here.
@@ -29,9 +29,9 @@ def 获取所有可能的年份(年份):
     a1 = []
     for k1 in trainningcompletion.models.trainningstatusdetail.objects.filter().values_list('frontdata15'):
         for k11 in k1:
-            if k11 == "培训完成时间":
-                print("培训完成时间")
-            else:
+            if k11 != "培训完成时间":
+                # print("培训完成时间")
+
                 t2 = datetime.strptime(k11.split()[0], '%Y-%m-%d')
                 a1.append(t2.year)
 
@@ -47,10 +47,10 @@ def 获取所有可能的年份(年份):
 # 以下是# 模拟机培训学时（塔台）
 
 def tower_trainning_total_time(request):  # 获取模拟机培训学时（塔台）
+    # 创建数据模拟机培训学时()
+
     年份 = []
     获取所有可能的年份(年份)
-    创建数据模拟机培训学时()
-
     月份 = ["1月",
           "2月",
           "3月",
@@ -65,22 +65,27 @@ def tower_trainning_total_time(request):  # 获取模拟机培训学时（塔台
           "12月", ]
 
     now_time = datetime.now()
-    year = datetime.strftime(now_time, "%y")
-    year = str(2000 + int(year))
+    now_year = datetime.strftime(now_time, "%y")
+    now_year = str(2000 + int(now_year))
+    now_month = datetime.strftime(now_time, "%m")
+    day1 = 1
+    day2 = 31
 
-    print("year" + "*****" + year)
+    print("now_month" + "*****" + now_month)
+
+    # print("year" + "*****" + now_year)
     data = models.tower_trainning_total_time.objects \
-        .filter(Q(data03__contains='上岗前培训') | Q(data03__contains='学时') | Q(data01=year, )).values_list("data01",
-                                                                                                       "data02",
-                                                                                                       "data03",
-                                                                                                       "data04",
-                                                                                                       "data05",
-                                                                                                       "data06",
-                                                                                                       "data07",
-                                                                                                       "data08",
-                                                                                                       "data09",
-                                                                                                       "data10",
-                                                                                                       "data11",
+        .filter(Q(data03__contains='上岗前培训') | Q(data03__contains='学时') | Q(data01=now_year, )).values_list("data01",
+                                                                                                           "data02",
+                                                                                                           "data03",
+                                                                                                           "data04",
+                                                                                                           "data05",
+                                                                                                           "data06",
+                                                                                                           "data07",
+                                                                                                           "data08",
+                                                                                                           "data09",
+                                                                                                           "data10",
+                                                                                                           "data11",
                                                                                                        "data12",
                                                                                                        "data13",
                                                                                                        "data14",
@@ -120,22 +125,737 @@ def tower_trainning_total_time(request):  # 获取模拟机培训学时（塔台
         name2 = request.session.get('name')
         print(name2 + '*********' + 'session登陆人')
 
-    return render(request, 'tower_trainning_total_time.html', {'data': data, 'year': 年份, 'month': 月份, })
+    return render(request, 'tower_trainning_total_time.html', {'data': data,
+                                                               'year': 年份, 'month': 月份, 'post_year1': now_year,
+                                                               'month1': "1", 'day1': day1,
+                                                               'post_year2': now_year, 'month2': "12", 'day2': day2, })
 
 
 def tower_trainning_total_time_post(request):
     post_year1 = int(request.POST.get('year1'))
     month1 = request.POST.get('month1')
     month1 = int(''.join(month1).split("月")[0])
+    day1 = int(request.POST.get('day1'))
 
     post_year2 = int(request.POST.get('year2'))
     month2 = request.POST.get('month2')
     month2 = int(''.join(month2).split("月")[0])
+    day2 = int(request.POST.get('day2'))
+    塔进区 = request.POST.get('塔进区')
+    # 机房=["塔台模拟机房","雷达模拟机房"]
+    # 科室=["塔台管制室","区域管制室"]
+    a1 = ""
+    b1 = ""
+    if 塔进区 == "0":
+        a1 = "塔台模拟机房"
+        b1 = "塔台管制室"
 
-    创建数据模拟机培训学时()
+    if 塔进区 == "1":
+        a1 = "雷达模拟机房"
+        b1 = "塔台管制室"
+
+    if 塔进区 == "2":
+        a1 = "雷达模拟机房"
+        b1 = "区域管制室"
+
+    # 创建数据模拟机培训学时()
     年份 = []
     获取所有可能的年份(年份)
 
+    # 查询最小到日
+    temp1 = []
+    # 表头
+    hh = []
+    hh.append("年份")
+    hh.append("月份")
+    hh.append("上岗前培训")
+    hh.append("")
+    hh.append("资格培训")
+    hh.append("")
+    hh.append("复习培训")
+    hh.append("")
+    hh.append("附加培训")
+    hh.append("")
+    hh.append("追加培训 ")
+    hh.append("")
+    hh.append("补习培训")
+    hh.append("")
+    hh.append("设备培训")
+    hh.append("")
+    hh.append("熟练培训")
+    hh.append("")
+    hh.append("专项培训 ")
+    hh.append("")
+    hh.append("合计 ")
+    hh.append("")
+    temp1.append(hh)
+
+    gg = []
+    gg.append("")
+    gg.append("")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    temp1.append(gg)
+    jj = trainningcompletion.models.trainningstatusdetail.objects \
+        .filter().values_list().all()
+    kk = list(jj)
+    ll = []
+    for gg in kk:
+        ff = []
+        for hh in gg:
+            ff.append(hh)
+        ll.append(ff)
+
+    学时 = 0
+    学时0 = 0
+    学时1 = 0
+    学时2 = 0
+    学时3 = 0
+    学时4 = 0
+    学时5 = 0
+    学时6 = 0
+    学时7 = 0
+    学时8 = 0
+    人次0 = 0
+    人次1 = 0
+    人次2 = 0
+    人次3 = 0
+    人次4 = 0
+    人次5 = 0
+    人次6 = 0
+    人次7 = 0
+    人次8 = 0
+    培训类别 = ["上岗前培训", "资格培训", "复习培训", "附加培训", "追加培训", "补习培训"
+        , "设备培训", "熟练培训", "专项培训", ]
+
+    print("range")
+    print(31 in range(31, 31, 1))
+    print(30 in range(30, 31, 1))  # 31是不会循环到的
+    # if (a1==m[6]) & (b1==m[4]):一定要加括号
+    for m in ll[1:]:
+        mm = datetime.strptime(m[13].split()[0], '%Y-%m-%d').year
+        oo = datetime.strptime(m[13].split()[0], '%Y-%m-%d').month
+        pp = datetime.strptime(m[13].split()[0], '%Y-%m-%d').day
+        # print(pp)
+        print(a1)
+        print(b1)
+        print(m[6])
+        print(m[4])
+        # print(m[10])
+        if post_year1 == post_year2:
+            if month1 == month2:
+                if pp in range(day1, day2 + 1, 1):
+                    if 塔进区 == "3":
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+                    else:
+                        if (a1 == m[6]) & (b1 == m[4]):
+                            # print("")
+                            if m[2] == 培训类别[0]:
+                                学时0 = 学时0 + int(m[11])
+                                人次0 = 人次0 + int(m[10])
+                            if m[2] == 培训类别[1]:
+                                学时1 = 学时1 + int(m[11])
+                                人次1 = 人次1 + int(m[10])
+                            if m[2] == 培训类别[2]:
+                                学时2 = 学时2 + int(m[11])
+                                人次2 = 人次2 + int(m[10])
+                            if m[2] == 培训类别[3]:
+                                学时3 = 学时3 + int(m[11])
+                                人次3 = 人次3 + int(m[10])
+                            if m[2] == 培训类别[4]:
+                                学时4 = 学时4 + int(m[11])
+                                人次4 = 人次4 + int(m[10])
+                            if m[2] == 培训类别[5]:
+                                学时5 = 学时6 + int(m[11])
+                                人次5 = 人次6 + int(m[10])
+                            if m[2] == 培训类别[6]:
+                                学时6 = 学时6 + int(m[11])
+                                人次6 = 人次6 + int(m[10])
+                            if m[2] == 培训类别[7]:
+                                学时7 = 学时7 + int(m[11])
+                                人次7 = 人次7 + int(m[10])
+                            if m[2] == 培训类别[8]:
+                                学时8 = 学时8 + int(m[11])
+                                人次8 = 人次8 + int(m[10])
+
+            if month1 < month2:
+                if (pp in range(day1, 31 + 1, 1)) & (oo in range(month1, month1 + 1, 1)):
+                    if 塔进区 == "3":
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+                    else:
+                        if (a1 == m[6]) & (b1 == m[4]):
+                            # print("")
+                            if m[2] == 培训类别[0]:
+                                学时0 = 学时0 + int(m[11])
+                                人次0 = 人次0 + int(m[10])
+                            if m[2] == 培训类别[1]:
+                                学时1 = 学时1 + int(m[11])
+                                人次1 = 人次1 + int(m[10])
+                            if m[2] == 培训类别[2]:
+                                学时2 = 学时2 + int(m[11])
+                                人次2 = 人次2 + int(m[10])
+                            if m[2] == 培训类别[3]:
+                                学时3 = 学时3 + int(m[11])
+                                人次3 = 人次3 + int(m[10])
+                            if m[2] == 培训类别[4]:
+                                学时4 = 学时4 + int(m[11])
+                                人次4 = 人次4 + int(m[10])
+                            if m[2] == 培训类别[5]:
+                                学时5 = 学时6 + int(m[11])
+                                人次5 = 人次6 + int(m[10])
+                            if m[2] == 培训类别[6]:
+                                学时6 = 学时6 + int(m[11])
+                                人次6 = 人次6 + int(m[10])
+                            if m[2] == 培训类别[7]:
+                                学时7 = 学时7 + int(m[11])
+                                人次7 = 人次7 + int(m[10])
+                            if m[2] == 培训类别[8]:
+                                学时8 = 学时8 + int(m[11])
+                                人次8 = 人次8 + int(m[10])
+                if (pp in range(1, 31 + 1, 1)) & (oo in range(month1 + 1, month2, 1)):
+                    if 塔进区 == "3":
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+                    else:
+                        if (a1 == m[6]) & (b1 == m[4]):
+                            # print("")
+                            if m[2] == 培训类别[0]:
+                                学时0 = 学时0 + int(m[11])
+                                人次0 = 人次0 + int(m[10])
+                            if m[2] == 培训类别[1]:
+                                学时1 = 学时1 + int(m[11])
+                                人次1 = 人次1 + int(m[10])
+                            if m[2] == 培训类别[2]:
+                                学时2 = 学时2 + int(m[11])
+                                人次2 = 人次2 + int(m[10])
+                            if m[2] == 培训类别[3]:
+                                学时3 = 学时3 + int(m[11])
+                                人次3 = 人次3 + int(m[10])
+                            if m[2] == 培训类别[4]:
+                                学时4 = 学时4 + int(m[11])
+                                人次4 = 人次4 + int(m[10])
+                            if m[2] == 培训类别[5]:
+                                学时5 = 学时6 + int(m[11])
+                                人次5 = 人次6 + int(m[10])
+                            if m[2] == 培训类别[6]:
+                                学时6 = 学时6 + int(m[11])
+                                人次6 = 人次6 + int(m[10])
+                            if m[2] == 培训类别[7]:
+                                学时7 = 学时7 + int(m[11])
+                                人次7 = 人次7 + int(m[10])
+                            if m[2] == 培训类别[8]:
+                                学时8 = 学时8 + int(m[11])
+                                人次8 = 人次8 + int(m[10])
+                if (pp in range(1, day2 + 1, 1)) & (oo in range(month2, month2 + 1, 1)):
+                    if 塔进区 == "3":
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+                    else:
+                        if (a1 == m[6]) & (b1 == m[4]):
+                            # print("")
+                            if m[2] == 培训类别[0]:
+                                学时0 = 学时0 + int(m[11])
+                                人次0 = 人次0 + int(m[10])
+                            if m[2] == 培训类别[1]:
+                                学时1 = 学时1 + int(m[11])
+                                人次1 = 人次1 + int(m[10])
+                            if m[2] == 培训类别[2]:
+                                学时2 = 学时2 + int(m[11])
+                                人次2 = 人次2 + int(m[10])
+                            if m[2] == 培训类别[3]:
+                                学时3 = 学时3 + int(m[11])
+                                人次3 = 人次3 + int(m[10])
+                            if m[2] == 培训类别[4]:
+                                学时4 = 学时4 + int(m[11])
+                                人次4 = 人次4 + int(m[10])
+                            if m[2] == 培训类别[5]:
+                                学时5 = 学时6 + int(m[11])
+                                人次5 = 人次6 + int(m[10])
+                            if m[2] == 培训类别[6]:
+                                学时6 = 学时6 + int(m[11])
+                                人次6 = 人次6 + int(m[10])
+                            if m[2] == 培训类别[7]:
+                                学时7 = 学时7 + int(m[11])
+                                人次7 = 人次7 + int(m[10])
+                            if m[2] == 培训类别[8]:
+                                学时8 = 学时8 + int(m[11])
+                                人次8 = 人次8 + int(m[10])
+        if post_year1 < post_year2:
+            if (pp in range(day1, 31 + 1, 1)) & (oo in range(month1, month1 + 1, 1)) \
+                    & (mm in range(post_year1, post_year1 + 1, 1)):
+                if 塔进区 == "3":
+                    if m[2] == 培训类别[0]:
+                        学时0 = 学时0 + int(m[11])
+                        人次0 = 人次0 + int(m[10])
+                    if m[2] == 培训类别[1]:
+                        学时1 = 学时1 + int(m[11])
+                        人次1 = 人次1 + int(m[10])
+                    if m[2] == 培训类别[2]:
+                        学时2 = 学时2 + int(m[11])
+                        人次2 = 人次2 + int(m[10])
+                    if m[2] == 培训类别[3]:
+                        学时3 = 学时3 + int(m[11])
+                        人次3 = 人次3 + int(m[10])
+                    if m[2] == 培训类别[4]:
+                        学时4 = 学时4 + int(m[11])
+                        人次4 = 人次4 + int(m[10])
+                    if m[2] == 培训类别[5]:
+                        学时5 = 学时6 + int(m[11])
+                        人次5 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[6]:
+                        学时6 = 学时6 + int(m[11])
+                        人次6 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[7]:
+                        学时7 = 学时7 + int(m[11])
+                        人次7 = 人次7 + int(m[10])
+                    if m[2] == 培训类别[8]:
+                        学时8 = 学时8 + int(m[11])
+                        人次8 = 人次8 + int(m[10])
+                else:
+                    if (a1 == m[6]) & (b1 == m[4]):
+                        # print("")
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+            if (pp in (range(1, 31 + 1, 1))) & (oo in range(month1 + 1, 12 + 1, 1)) \
+                    & (mm in range(post_year1, post_year1 + 1, 1)):
+                if 塔进区 == "3":
+                    if m[2] == 培训类别[0]:
+                        学时0 = 学时0 + int(m[11])
+                        人次0 = 人次0 + int(m[10])
+                    if m[2] == 培训类别[1]:
+                        学时1 = 学时1 + int(m[11])
+                        人次1 = 人次1 + int(m[10])
+                    if m[2] == 培训类别[2]:
+                        学时2 = 学时2 + int(m[11])
+                        人次2 = 人次2 + int(m[10])
+                    if m[2] == 培训类别[3]:
+                        学时3 = 学时3 + int(m[11])
+                        人次3 = 人次3 + int(m[10])
+                    if m[2] == 培训类别[4]:
+                        学时4 = 学时4 + int(m[11])
+                        人次4 = 人次4 + int(m[10])
+                    if m[2] == 培训类别[5]:
+                        学时5 = 学时6 + int(m[11])
+                        人次5 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[6]:
+                        学时6 = 学时6 + int(m[11])
+                        人次6 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[7]:
+                        学时7 = 学时7 + int(m[11])
+                        人次7 = 人次7 + int(m[10])
+                    if m[2] == 培训类别[8]:
+                        学时8 = 学时8 + int(m[11])
+                        人次8 = 人次8 + int(m[10])
+                else:
+                    if (a1 == m[6]) & (b1 == m[4]):
+                        # print("")
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+            if (pp in range(1, 31 + 1, 1)) & (oo in range(1, 12 + 1, 1)) \
+                    & (mm in range(post_year1 + 1, post_year1 - 1 + 1, 1)):
+                if 塔进区 == "3":
+                    if m[2] == 培训类别[0]:
+                        学时0 = 学时0 + int(m[11])
+                        人次0 = 人次0 + int(m[10])
+                    if m[2] == 培训类别[1]:
+                        学时1 = 学时1 + int(m[11])
+                        人次1 = 人次1 + int(m[10])
+                    if m[2] == 培训类别[2]:
+                        学时2 = 学时2 + int(m[11])
+                        人次2 = 人次2 + int(m[10])
+                    if m[2] == 培训类别[3]:
+                        学时3 = 学时3 + int(m[11])
+                        人次3 = 人次3 + int(m[10])
+                    if m[2] == 培训类别[4]:
+                        学时4 = 学时4 + int(m[11])
+                        人次4 = 人次4 + int(m[10])
+                    if m[2] == 培训类别[5]:
+                        学时5 = 学时6 + int(m[11])
+                        人次5 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[6]:
+                        学时6 = 学时6 + int(m[11])
+                        人次6 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[7]:
+                        学时7 = 学时7 + int(m[11])
+                        人次7 = 人次7 + int(m[10])
+                    if m[2] == 培训类别[8]:
+                        学时8 = 学时8 + int(m[11])
+                        人次8 = 人次8 + int(m[10])
+                else:
+                    if (a1 == m[6]) & (b1 == m[4]):
+                        # print("")
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+            if (pp in range(1, 31 + 1, 1)) & (oo in range(1, month2 - 1 + 1, 1)) \
+                    & (mm in range(post_year2, post_year2 + 1, 1)):
+                if 塔进区 == "3":
+                    if m[2] == 培训类别[0]:
+                        学时0 = 学时0 + int(m[11])
+                        人次0 = 人次0 + int(m[10])
+                    if m[2] == 培训类别[1]:
+                        学时1 = 学时1 + int(m[11])
+                        人次1 = 人次1 + int(m[10])
+                    if m[2] == 培训类别[2]:
+                        学时2 = 学时2 + int(m[11])
+                        人次2 = 人次2 + int(m[10])
+                    if m[2] == 培训类别[3]:
+                        学时3 = 学时3 + int(m[11])
+                        人次3 = 人次3 + int(m[10])
+                    if m[2] == 培训类别[4]:
+                        学时4 = 学时4 + int(m[11])
+                        人次4 = 人次4 + int(m[10])
+                    if m[2] == 培训类别[5]:
+                        学时5 = 学时6 + int(m[11])
+                        人次5 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[6]:
+                        学时6 = 学时6 + int(m[11])
+                        人次6 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[7]:
+                        学时7 = 学时7 + int(m[11])
+                        人次7 = 人次7 + int(m[10])
+                    if m[2] == 培训类别[8]:
+                        学时8 = 学时8 + int(m[11])
+                        人次8 = 人次8 + int(m[10])
+                else:
+                    if (a1 == m[6]) & (b1 == m[4]):
+                        # print("")
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+            if (pp in range(1, day2 + 1, 1)) & (oo in range(month2, month2 + 1, 1)) \
+                    & (mm in range(post_year2, post_year2 + 1, 1)):
+                if 塔进区 == "3":
+                    if m[2] == 培训类别[0]:
+                        学时0 = 学时0 + int(m[11])
+                        人次0 = 人次0 + int(m[10])
+                    if m[2] == 培训类别[1]:
+                        学时1 = 学时1 + int(m[11])
+                        人次1 = 人次1 + int(m[10])
+                    if m[2] == 培训类别[2]:
+                        学时2 = 学时2 + int(m[11])
+                        人次2 = 人次2 + int(m[10])
+                    if m[2] == 培训类别[3]:
+                        学时3 = 学时3 + int(m[11])
+                        人次3 = 人次3 + int(m[10])
+                    if m[2] == 培训类别[4]:
+                        学时4 = 学时4 + int(m[11])
+                        人次4 = 人次4 + int(m[10])
+                    if m[2] == 培训类别[5]:
+                        学时5 = 学时6 + int(m[11])
+                        人次5 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[6]:
+                        学时6 = 学时6 + int(m[11])
+                        人次6 = 人次6 + int(m[10])
+                    if m[2] == 培训类别[7]:
+                        学时7 = 学时7 + int(m[11])
+                        人次7 = 人次7 + int(m[10])
+                    if m[2] == 培训类别[8]:
+                        学时8 = 学时8 + int(m[11])
+                        人次8 = 人次8 + int(m[10])
+                else:
+                    if (a1 == m[6]) & (b1 == m[4]):
+                        # print("")
+                        if m[2] == 培训类别[0]:
+                            学时0 = 学时0 + int(m[11])
+                            人次0 = 人次0 + int(m[10])
+                        if m[2] == 培训类别[1]:
+                            学时1 = 学时1 + int(m[11])
+                            人次1 = 人次1 + int(m[10])
+                        if m[2] == 培训类别[2]:
+                            学时2 = 学时2 + int(m[11])
+                            人次2 = 人次2 + int(m[10])
+                        if m[2] == 培训类别[3]:
+                            学时3 = 学时3 + int(m[11])
+                            人次3 = 人次3 + int(m[10])
+                        if m[2] == 培训类别[4]:
+                            学时4 = 学时4 + int(m[11])
+                            人次4 = 人次4 + int(m[10])
+                        if m[2] == 培训类别[5]:
+                            学时5 = 学时6 + int(m[11])
+                            人次5 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[6]:
+                            学时6 = 学时6 + int(m[11])
+                            人次6 = 人次6 + int(m[10])
+                        if m[2] == 培训类别[7]:
+                            学时7 = 学时7 + int(m[11])
+                            人次7 = 人次7 + int(m[10])
+                        if m[2] == 培训类别[8]:
+                            学时8 = 学时8 + int(m[11])
+                            人次8 = 人次8 + int(m[10])
+
+    ee = []
+    ee.append(str(mm) + "")
+    ee.append("")
+    ee.append(学时0)
+    ee.append(人次0)
+    ee.append(学时1)
+    ee.append(人次1)
+    ee.append(学时2)
+    ee.append(人次2)
+    ee.append(学时3)
+    ee.append(人次3)
+    ee.append(学时4)
+    ee.append(人次4)
+    ee.append(学时5)
+    ee.append(人次5)
+    ee.append(学时6)
+    ee.append(人次6)
+    ee.append(学时7)
+    ee.append(人次7)
+    ee.append(学时8)
+    ee.append(人次8)
+    ee.append(学时0
+              + 学时1
+              + 学时2
+              + 学时3
+              + 学时4
+              + 学时5
+              + 学时6
+              + 学时7
+              + 学时8)
+    ee.append(人次0
+              + 人次1
+              + 人次2
+              + 人次3
+              + 人次4
+              + 人次5
+              + 人次6
+              + 人次7
+              + 人次8)
+    temp1.append(ee)
+    print("temp1")
+    print(temp1)
+    # if post_year1 == post_year2:
+    #     if int(mm) == post_year1:
+    #         for mm1 in range(month1 - 1, month2, 1):
+    #             if oo ==mm1+1:
+    #                 if month1 == month2:
+    #                     for nn1 in range(day1 - 1, day2, 1):
+    #                         if pp == nn1:
+    #                             ee = []
+    #                             ee.append(mm)
+    #                             ee.append(oo)
+
+    # 查询最小到月
     temp = []
     # 表头
     aa1 = models.tower_trainning_total_time.objects \
@@ -304,6 +1024,7 @@ def tower_trainning_total_time_post(request):
             aa = list(aa)
             for i in aa:
                 temp.append(i)
+    print("temp")
     print(temp)
 
     # 计算最后一行合计
@@ -315,23 +1036,26 @@ def tower_trainning_total_time_post(request):
         dd = dd + (c,)
 
     temp.append(dd)
-
-    data = json.dumps(temp, ensure_ascii=False)
+    temp = json.dumps(temp, ensure_ascii=False)
     if request.session.get('status'):  # 在判断网页请求的状态时，直接调用request.session从djang_session表中读取数据验证
         name2 = request.session.get('name')
         print(name2 + '*********' + 'session登陆人')
+        print(str(day1) + str(day2) + '*********' + 'day12')
+    if day1 == 0 & day2 == 0:
+        qq = temp
 
-    return render(request, 'tower_trainning_total_time.html', {'data': data, 'year': 年份, 'month': 月份, })
+    else:
+        qq = temp1
+        print('*********' + 'day1 != 0')
+
+    return render(request, 'tower_trainning_total_time.html', {'data': qq,
+                                                               'year': 年份, 'month': 月份, 'post_year1': post_year1,
+                                                               'month1': month1, 'day1': day1,
+                                                               'post_year2': post_year2, 'month2': month2,
+                                                               'day2': day2, })
 
 
 def 创建数据模拟机培训学时():
-    # a = models.tower_trainning_total_time()
-    # a.objects.get(data02="1月").data03 = trainningcompletion.models.trainningstatusdetail.objects.filter(frontdata3="1月",
-    #                                                                              frontdata2="上岗前培训",
-    #                                                                              frontdata4="塔台管制室", ).frontdata11.values_list().all()
-    # print(trainningcompletion.models.trainningstatusdetail.objects.filter(frontdata3="3月",
-    #                                                frontdata2="资格培训",
-    #                                                frontdata4="区域管制室", ).values_list().all())
     年份 = []
     获取所有可能的年份(年份)
 
@@ -577,7 +1301,7 @@ def test(request):  # 测试
 教员 = ["何升恒", "周星言", "林文", "廖海艺"]
 # 以下是#•教员教学学时统计
 def instructor_total_time(request):  # •教员教学学时统计
-    创建教员教学总学时()
+
     年份 = []
     获取所有可能的年份(年份)
 
@@ -897,7 +1621,7 @@ def instructor_total_time_post(request):
     month2 = int(''.join(month2).split("月")[0])
     选的人员 = request.POST.get('人员')
 
-    创建数据模拟机培训学时()
+    # 创建数据模拟机培训学时()
     年份 = []
     获取所有可能的年份(年份)
 
@@ -1154,9 +1878,10 @@ def instructor_teach_record_instructorlist_post(request):
     hh.append("教学表现")
     hh.append("备注    ")
     data.append(hh)
+    ff = trainningcompletion.models.trainningstatusdetail.objects \
+        .filter(frontdata7=instructor, ).values_list().all()
 
-    for k in trainningcompletion.models.trainningstatusdetail.objects \
-            .filter(frontdata7=instructor, ).values_list().all():
+    for k in ff:
         m = list(k)
         ee = []
         # zhuyi  frontdata13  14  meiyou   id 那一项也是数据
@@ -1187,14 +1912,23 @@ def single_person_trainning_record(request):  #
 
     年份 = []
     获取所有可能的年份(年份)
-    人员 = ["马朝兵", "廖永祥"]
-    本人 = ["马朝兵"]
+    人员 = 获取所有的登陆人()
+    if request.session.get('status'):
+        name = request.session.get('name')
+    本人 = []
+    本人.append(name)
 
     data = 生成所有个人培训记录(年份, 本人)
 
     return render(request, 'single_person_trainning_record.html',
                   {'data': data, 'year': 年份, 'month': 月份,
-                   '人员': 人员, })
+                   '人员': 人员,
+                   '选的人员': name,
+                   '培训类别': 培训类别,
+                   '选的培训类别': "所有",
+                   'year1': "2020", 'month1': "1月",
+                   'year2': "2020", 'month2': "12月",
+                   })
 
 
 def 生成所有个人培训记录(年份, 本人):
@@ -1229,8 +1963,9 @@ def 生成所有个人培训记录(年份, 本人):
                     #                     # data.append(mm)
 
                     ii = []
-                    for k in trainningcompletion.models.trainningstatusdetail.objects \
-                            .filter().values_list().all():
+                    ff = trainningcompletion.models.trainningstatusdetail.objects \
+                        .filter().values_list().all()
+                    for k in ff:
                         m = list(k)
                         ee = []
                         # zhuyi  frontdata13  14  meiyou   id 那一项也是数据
@@ -1250,19 +1985,21 @@ def 生成所有个人培训记录(年份, 本人):
 
                                 if yf == m[3]:
                                     if lb == m[2]:
-                                        ee.append(nf)
-                                        ee.append(yf)
-                                        ee.append(lb)
-                                        ee.append(m[13].split()[0] + "-" + m[13].split()[1])
-                                        ee.append(m[13].split()[0] + "-" + m[13].split()[2])
-                                        ee.append(m[5])
-                                        ee.append(m[11])
-                                        ee.append(m[7])
-                                        ee.append('')
-                                        ee.append('')
-                                        ee.append('')
-                                        ii.append(ee)
-                                        data.append(ee)
+                                        if m[11] != "0":
+                                            ee.append(nf)
+                                            ee.append(yf)
+                                            ee.append(lb)
+                                            ee.append(m[13].split()[0] + "-" + m[13].split()[1])
+                                            ee.append(m[13].split()[0] + "-" + m[13].split()[2])
+                                            ee.append(m[5])
+                                            ee.append(m[11])
+                                            ee.append(m[7])
+                                            ee.append('')
+                                            ee.append('')
+                                            ee.append('')
+                                            ii.append(ee)
+                                            data.append(ee)
+
                     jj = []
                     jj.append(nf)
                     jj.append(yf)
@@ -1279,35 +2016,43 @@ def 生成所有个人培训记录(年份, 本人):
                     jj.append(ll)
                     jj.append('')
                     jj.append('')
-                    data.append(jj)
-                    pp = []
-                    pp.append('')
-                    pp.append('')
-                    pp.append('')
-                    pp.append('')
-                    pp.append('')
-                    pp.append('')
-                    pp.append('')
-                    pp.append('')
-                    data.append(pp)
+                    if ll != 0:
+                        data.append(jj)
+
+                    # pp = []
+                    # pp.append('')
+                    # pp.append('')
+                    # pp.append('')
+                    # pp.append('')
+                    # pp.append('')
+                    # pp.append('')
+                    # pp.append('')
+                    # pp.append('')
+                    # data.append(pp)
 
     return data
 
 
 def single_person_trainning_record_post(request):
     post_year1 = int(request.POST.get('year1'))
-    month1 = request.POST.get('month1')
-    month1 = int(''.join(month1).split("月")[0])
+    month11 = request.POST.get('month1')
+    month1 = int(''.join(month11).split("月")[0])
 
     post_year2 = int(request.POST.get('year2'))
-    month2 = request.POST.get('month2')
-    month2 = int(''.join(month2).split("月")[0])
+    month21 = request.POST.get('month2')
+    month2 = int(''.join(month21).split("月")[0])
 
     选的人员 = request.POST.get('人员')
+    选的培训类别 = request.POST.get('培训类别')
+    培训类别1 = ["所有", "上岗前培训", "资格培训", "复习培训", "附加培训", "追加培训", "补习培训"
+        , "设备培训", "熟练培训", "专项培训", ]
+
+    print('选的人员')
     print(选的人员)
     年份 = []
     获取所有可能的年份(年份)
-    人员 = ["马朝兵", "廖永祥"]
+    人员 = 获取所有的登陆人()
+
     本人 = []
     本人.append(选的人员)
     # 本人 = ["马朝兵"]
@@ -1331,29 +2076,92 @@ def single_person_trainning_record_post(request):
     hh.append("备注    ")
     oo = []
     oo.append(hh)
+    # print("data[1:]")
+    # print(data[1:])
     for nn in data[1:]:
+        # print("nn")
+        # print(nn)
         # print(str(nn))
-        if post_year1 == post_year2:
-            if int(nn[0]) == post_year1:
-                for mm1 in range(month1 - 1, month2, 1):
-                    if (nn[1] == 月份[mm1]) & (int(nn[0]) == post_year1):
-                        oo.append(nn)
+        if 选的培训类别 == "所有":
+            if nn[0] != "":
+                if post_year1 == post_year2:
+                    if int(nn[0]) == post_year1:
+                        for mm1 in range(month1 - 1, month2, 1):
+                            if (nn[1] == 月份[mm1]) & (int(nn[0]) == post_year1):
+                                oo.append(nn)
 
-        if post_year1 < post_year2:
-            if post_year2 >= int(nn[0]) >= post_year1:
-                for mm1 in range(month1 - 1, 12, 1):
-                    if (nn[1] == 月份[mm1]) & (int(nn[0]) == post_year1):  # index是从0开始的
-                        oo.append(nn)
+                if post_year1 < post_year2:
+                    if post_year2 >= int(nn[0]) >= post_year1:
+                        for mm1 in range(month1 - 1, 12, 1):
+                            if (nn[1] == 月份[mm1]) & (int(nn[0]) == post_year1):  # index是从0开始的
+                                oo.append(nn)
 
-                for yy in range(post_year1 + 1, post_year2 - 1, 1):
-                    for mm2 in range(0, 12, 1):
-                        if (nn[1] == 月份[mm2]) & (int(nn[0]) == yy):
-                            oo.append(nn)
+                        for yy in range(post_year1 + 1, post_year2 - 1, 1):
+                            for mm2 in range(0, 12, 1):
+                                if (nn[1] == 月份[mm2]) & (int(nn[0]) == yy):
+                                    oo.append(nn)
 
-                for mm3 in range(0, month2, 1):
-                    if (nn[1] == 月份[mm3]) & (int(nn[0]) == post_year2):
-                        oo.append(nn)
+                        for mm3 in range(0, month2, 1):
+                            if (nn[1] == 月份[mm3]) & (int(nn[0]) == post_year2):
+                                oo.append(nn)
+        else:
+            if (nn[2] == 选的培训类别) or (nn[2] == 选的培训类别 + "合计"):
+                if nn[0] != "":
+                    if post_year1 == post_year2:
+                        if int(nn[0]) == post_year1:
+                            for mm1 in range(month1 - 1, month2, 1):
+                                if (nn[1] == 月份[mm1]) & (int(nn[0]) == post_year1):
+                                    oo.append(nn)
 
+                    if post_year1 < post_year2:
+                        if post_year2 >= int(nn[0]) >= post_year1:
+                            for mm1 in range(month1 - 1, 12, 1):
+                                if (nn[1] == 月份[mm1]) & (int(nn[0]) == post_year1):  # index是从0开始的
+                                    oo.append(nn)
+
+                            for yy in range(post_year1 + 1, post_year2 - 1, 1):
+                                for mm2 in range(0, 12, 1):
+                                    if (nn[1] == 月份[mm2]) & (int(nn[0]) == yy):
+                                        oo.append(nn)
+
+                            for mm3 in range(0, month2, 1):
+                                if (nn[1] == 月份[mm3]) & (int(nn[0]) == post_year2):
+                                    oo.append(nn)
+    qq = []
+    ll = 0
+    for pp in oo[1:]:
+        if (pp[2] == 选的培训类别 + "合计"):
+            ll = ll + int(pp[6])
+    qq.append('')
+    qq.append('')
+    qq.append('总合计')
+    qq.append('')
+    qq.append('')
+    qq.append('')
+    qq.append(ll)
+    qq.append('')
+    qq.append('')
+    qq.append('')
+    qq.append('')
+    if 选的培训类别 != "所有":
+        oo.append(qq)
+
+    print(oo)
     return render(request, 'single_person_trainning_record.html',
                   {'data': oo, 'year': 年份, 'month': 月份,
-                   '人员': 人员, })
+                   '人员': 人员, '培训类别': 培训类别1,
+                   '选的人员': 选的人员,
+                   '选的培训类别': 选的培训类别,
+                   'year1': post_year1, 'month1': month11,
+                   'year2': post_year1, 'month2': month21, })
+
+
+def 获取所有的登陆人():
+    from TestModel.models import logins
+    jj = logins.objects \
+        .filter().values_list().all()
+    kk = list(jj)
+    ll = []
+    for gg in kk:
+        ll.append(gg[1])
+    return ll
