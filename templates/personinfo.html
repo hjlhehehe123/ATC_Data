@@ -1,0 +1,1438 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {#    必备的三个#}
+    <script src="{% static 'handsontable.full.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'handsontable.full.css' %}"/>
+    <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <style>
+        #t1 th {
+            background-color: #F0F0F0;
+        }
+
+        #t2 td {
+            text-align: left;
+            width: 100px;
+        }
+
+        #t2 th {
+            text-align: left;
+        }
+    </style>
+    <style>
+        table, table tr th, table tr td {
+            border: 1px solid #A9A9A9;
+        }
+
+        table {
+            text-align: center;
+            border-collapse: collapse;
+            padding: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div>
+    {#    <form>#}
+    {#        <input style="border-style:none" type="text" placeholder="输入人员姓名查询">#}
+    {#    </form>#}
+
+    <form class="form-signin" action="{% url 'getinfo' %}" method="post">
+        {% csrf_token %}
+        选择人员<select name="人员" id="人员" style="width:15%;">
+        <option value={{ 选的人员 }}>{{ 选的人员 }}</option>
+
+        {% for i in 人员 %}
+            <option value={{ i }}>{{ i }}</option>
+        {% endfor %}
+    </select>
+
+        <button class="layui-btn" type="submit">查询</button>
+    </form>
+</div>
+
+<br><br>
+
+
+<FORM id="{{ i.10 }}" action="{% url 'getinfo_input' %}?人员={{ data_01_01 }}" method="post">
+
+
+    <button class="layui-btn" type="submit">个人数据录入</button>
+</FORM>
+
+<form class="form-signin" action="{% url 'getinfo_save' %}" method="post">
+    {% csrf_token %}
+    <button class="layui-btn" type="submit" id="send1">保存</button>
+    <div>
+
+        <table border="1" id="t1" border="0" align="left" width="1060px">
+
+            <tr>
+                <td colspan="7" bgcolor="#A9A9A9" align="center">
+                    <input readonly="readonly" style="border-style:none" type="text" id="data_01_01" name="data_01_01"
+                           placeholder=""
+                           value={{ data_01_01 }}>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="8" width="150px"><p><img height="130" width="100"
+                        {#                                                      src="https://i02piccdn.sogoucdn.com/a0a5a9f200f8a9fa"/>#}
+                                                      src="/static/{{ data_01_01 }}.jpg"/>
+                </p></td>
+                <th colspan="1">曾用名:</th>
+                <td colspan="1">
+                    <input style="border-style:none" type="text" id="data_02_01" name="data_02_01" placeholder=""
+                           value={{ data_02_01 }}>
+                </td>
+                <td rowspan="12" colspan="4"><p><img border="0" height="300" width="400"
+                                                     src="/static/{{ data_01_01 }}_01.jpg"/></p></td>
+            </tr>
+
+            <tr>
+                <th colspan="1">性别:</th>
+                <td colspan="1">
+                    <input style="border-style:none" type="text" id="data_03_01" name="data_03_01" placeholder=""
+                           value={{ data_03_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">身份证:</th>
+                <td colspan="1">
+                    <input style="border-style:none" type="text" id="data_04_01" name="data_04_01" placeholder=""
+                           value={{ data_04_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">民族:</th>
+                <td colspan="1">
+                    <input style="border-style:none" type="text" id="data_05_01" name="data_05_01" placeholder=""
+                           value={{ data_05_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">出生日期:</th>
+                <td colspan="1">
+                    <input style="border-style:none" type="text" id="data_06_01" name="data_06_01" placeholder=""
+                           value={{ data_06_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">政治面貌:</th>
+                <td colspan="1">
+                    <input style="border-style:none" type="text" id="data_07_01" name="data_07_01" placeholder=""
+                           value={{ data_07_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">机构:</th>
+                <td colspan="1">
+                    <input style="border-style:none" type="text" id="data_08_01" name="data_08_01" placeholder=""
+                           value={{ data_08_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">地区:</th>
+                <td colspan="1">
+                    <input style="border-style:none" type="text" id="data_09_01" name="data_09_01" placeholder=""
+                           value={{ data_09_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">单位:</th>
+                <td colspan="2">
+                    <input style="border-style:none" type="text" id="data_10_01" name="data_10_01" placeholder=""
+                           value={{ data_10_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">部门:</th>
+                <td colspan="2">
+                    <input style="border-style:none" type="text" id="data_11_01" name="data_11_01" placeholder=""
+                           value={{ data_11_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">参加工作时间:</th>
+                <td colspan="2">
+                    <input style="border-style:none" type="text" id="data_12_01" name="data_12_01" placeholder=""
+                           value={{ data_12_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">职称:</th>
+                <td colspan="2">
+                    <input style="border-style:none" type="text" id="data_13_01" name="data_13_01" placeholder=""
+                           value={{ data_13_01 }}>
+
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="1">职务:</th>
+                <td colspan="2">
+                    <input style="border-style:none" type="text" id="data_14_01" name="data_14_01" placeholder=""
+                           value={{ data_14_01 }}>
+
+                </td>
+                <th width="100px">状态:</th>
+                <td bgcolor="green" colspan="3"></td>
+                {#    <input style="border-style:none" type="text"  id="data_01_01" name="data_01_01" placeholder="" value={{ data_01_01 }}>#}
+            </tr>
+
+        </table>
+    </div>
+    <br>
+
+    <div>
+        <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0" width="1060px">
+            <tr>
+                <th>关键指标</th>
+            </tr>
+            <tr>
+                <td>通话用语</td>
+                <td>雷达监控</td>
+                <td>间隔效率</td>
+                <td>通报协调</td>
+                <td>管制程序</td>
+                <td>特情处置</td>
+                <td>其他</td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="border-style:none" type="text" id="data_02_02" name="data_02_02" placeholder=""
+                           value={{ data_02_02 }}>
+                </td>
+                <td>
+                    <input style="border-style:none" type="text" id="data_03_02" name="data_03_02" placeholder=""
+                           value={{ data_03_02 }}>
+                </td>
+                <td>
+                    <input style="border-style:none" type="text" id="data_04_02" name="data_04_02" placeholder=""
+                           value={{ data_04_02 }}>
+                </td>
+                <td>
+                    <input style="border-style:none" type="text" id="data_05_02" name="data_05_02" placeholder=""
+                           value={{ data_05_02 }}>
+                </td>
+                <td>
+                    <input style="border-style:none" type="text" id="data_06_02" name="data_06_02" placeholder=""
+                           value={{ data_06_02 }}>
+                </td>
+                <td>
+                    <input style="border-style:none" type="text" id="data_07_02" name="data_07_02" placeholder=""
+                           value={{ data_07_02 }}>
+                </td>
+                <td>
+                    <input style="border-style:none" type="text" id="data_08_02" name="data_08_02" placeholder=""
+                           value={{ data_08_02 }}>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>执照信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>执照编号</td>#}
+    {#            <td>变更情况</td>#}
+    {#            <td>类标签注</td>#}
+    {#            <td>吊销原因</td>#}
+    {#            <td>依据年份</td>#}
+    {#            <td>签注依据</td>#}
+    {#            <td>获取时间</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_03" name="data_02_03" placeholder=""#}
+    {#                       value={{ data_02_03 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_03" name="data_03_03" placeholder=""#}
+    {#                       value={{ data_03_03 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_03" name="data_04_03" placeholder=""#}
+    {#                       value={{ data_04_03 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_03" name="data_05_03" placeholder=""#}
+    {#                       value={{ data_05_03 }}>#}
+    {#            </td>#}
+    {#            <td><input style="border-style:none" type="text" id="data_06_03" name="data_06_03" placeholder=""#}
+    {#                       value={{ data_06_03 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_07_03" name="data_07_03" placeholder=""#}
+    {#                       value={{ data_07_03 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_08_03" name="data_08_03" placeholder=""#}
+    {#                       value={{ data_08_03 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>管制员等级</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>管制职级</td>#}
+    {#            <td>管制等级</td>#}
+    {#            <td>评定时间</td>#}
+    {#            <td>评定依据</td>#}
+    {#            <td>聘用状态</td>#}
+    {#            <td>聘用时间</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_04" name="data_02_04" placeholder=""#}
+    {#                       value={{ data_02_04 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_04" name="data_03_04" placeholder=""#}
+    {#                       value={{ data_03_04 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_04" name="data_04_04" placeholder=""#}
+    {#                       value={{ data_04_04 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_04" name="data_05_04" placeholder=""#}
+    {#                       value={{ data_05_04 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_04" name="data_06_04" placeholder=""#}
+    {#                       value={{ data_06_04 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_07_04" name="data_07_04" placeholder=""#}
+    {#                       value={{ data_07_04 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>英语等级信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>英语类别</td>#}
+    {#            <td>英语等级</td>#}
+    {#            <td>获取时间</td>#}
+    {#            <td>获取依据</td>#}
+    {#            <td>证书编号</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_05" name="data_02_05" placeholder=""#}
+    {#                       value={{ data_02_05 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_05" name="data_03_05" placeholder=""#}
+    {#                       value={{ data_03_05 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_05" name="data_04_05" placeholder=""#}
+    {#                       value={{ data_04_05 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_05" name="data_05_05" placeholder=""#}
+    {#                       value={{ data_05_05 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_05" name="data_06_05" placeholder=""#}
+    {#                       value={{ data_06_05 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {#    <br>#}
+    {##}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>体检合格证</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>合格证级别</td>#}
+    {#            <td>编号</td>#}
+    {#            <td>颁发时间</td>#}
+    {#            <td>依据</td>#}
+    {#            <td>限制条件</td>#}
+    {#            <td>备注</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_06" name="data_02_06" placeholder=""#}
+    {#                       value={{ data_02_06 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_06" name="data_03_06" placeholder=""#}
+    {#                       value={{ data_03_06 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_06" name="data_04_06" placeholder=""#}
+    {#                       value={{ data_04_06 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_06" name="data_05_06" placeholder=""#}
+    {#                       value={{ data_05_06 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_06" name="data_06_06" placeholder=""#}
+    {#                       value={{ data_06_06 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_07_06" name="data_07_06" placeholder=""#}
+    {#                       value={{ data_07_06 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>赴外培训</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>培训项目</td>#}
+    {#            <td>组织单位</td>#}
+    {#            <td>培训地点</td>#}
+    {#            <td>培训类别</td>#}
+    {#            <td>开始时间</td>#}
+    {#            <td>结束时间</td>#}
+    {#            <td>任务批件</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_07" name="data_02_07" placeholder=""#}
+    {#                       value={{ data_02_07 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_07" name="data_02_07" placeholder=""#}
+    {#                       value={{ data_03_07 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_07" name="data_04_07" placeholder=""#}
+    {#                       value={{ data_04_07 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_07" name="data_05_07" placeholder=""#}
+    {#                       value={{ data_05_07 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_07" name="data_06_07" placeholder=""#}
+    {#                       value={{ data_06_07 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_07_07" name="data_07_07" placeholder=""#}
+    {#                       value={{ data_07_07 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_08_07" name="data_08_07" placeholder=""#}
+    {#                       value={{ data_08_07 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <<br>#}
+    {#    <br>#}
+    {##}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>岗位培训</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>培训项目</td>#}
+    {#            <td>组织单位</td>#}
+    {#            <td>培训地点</td>#}
+    {#            <td>培训类别</td>#}
+    {#            <td>培训内容</td>#}
+    {#            <td>培训执照类别签注</td>#}
+    {#            <td>依据</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_08" name="data_02_08" placeholder=""#}
+    {#                       value={{ data_02_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_08" name="data_03_08" placeholder=""#}
+    {#                       value={{ data_03_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_08" name="data_04_08" placeholder=""#}
+    {#                       value={{ data_04_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_08" name="data_05_08" placeholder=""#}
+    {#                       value={{ data_05_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_08" name="data_06_08" placeholder=""#}
+    {#                       value={{ data_06_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_07_08" name="data_07_08" placeholder=""#}
+    {#                       value={{ data_07_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_08_08" name="data_08_08" placeholder=""#}
+    {#                       value={{ data_08_08 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>开始时间</td>#}
+    {#            <td>结束时间</td>#}
+    {#            <td>理论课时数</td>#}
+    {#            <td>模拟机课时数</td>#}
+    {#            <td>操作课时数</td>#}
+    {#            <td>理论考核方式</td>#}
+    {#            <td>模拟机考核方式</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_09_08" name="data_09_08" placeholder=""#}
+    {#                       value={{ data_09_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_10_08" name="data_10_08" placeholder=""#}
+    {#                       value={{ data_10_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_11_08" name="data_11_08" placeholder=""#}
+    {#                       value={{ data_11_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_12_08" name="data_12_08" placeholder=""#}
+    {#                       value={{ data_12_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_13_08" name="data_13_08" placeholder=""#}
+    {#                       value={{ data_13_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_14_08" name="data_14_08" placeholder=""#}
+    {#                       value={{ data_14_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_15_08" name="data_15_08" placeholder=""#}
+    {#                       value={{ data_15_08 }}>#}
+    {#            </td>#}
+    {##}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>操作考核方式</td>#}
+    {#            <td>培训教员</td>#}
+    {#            <td>模拟机培训方式</td>#}
+    {#            <td>理论考核成绩</td>#}
+    {#            <td>模拟机考核分数</td>#}
+    {#            <td>操作考核分数</td>#}
+    {#            <td>总分</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_16_08" name="data_16_08" placeholder=""#}
+    {#                       value={{ data_16_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_17_08" name="data_17_08" placeholder=""#}
+    {#                       value={{ data_17_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_18_08" name="data_18_08" placeholder=""#}
+    {#                       value={{ data_18_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_19_08" name="data_19_08" placeholder=""#}
+    {#                       value={{ data_19_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_20_08" name="data_20_08" placeholder=""#}
+    {#                       value={{ data_20_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_21_08" name="data_21_08" placeholder=""#}
+    {#                       value={{ data_21_08 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_22_08" name="data_22_08" placeholder=""#}
+    {#                       value={{ data_22_08 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>放单考核</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>考核时间</td>#}
+    {#            <td>当前放单</td>#}
+    {#            <td>依据</td>#}
+    {#            <td>放单考核</td>#}
+    {#            <td>放单说明</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_09" name="data_02_09" placeholder=""#}
+    {#                       value={{ data_02_09 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_09" name="data_03_09" placeholder=""#}
+    {#                       value={{ data_03_09 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_09" name="data_04_09" placeholder=""#}
+    {#                       value={{ data_04_09 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_09" name="data_05_09" placeholder=""#}
+    {#                       value={{ data_05_09 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_09" name="data_06_09" placeholder=""#}
+    {#                       value={{ data_06_09 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>执照检查</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>考核时间</td>#}
+    {#            <td>类别签注</td>#}
+    {#            <td>基础理论成绩</td>#}
+    {#            <td>专业理论成绩</td>#}
+    {#            <td>放单说明</td>#}
+    {#            <td>技能考核成绩</td>#}
+    {#            <td>检查员姓名</td>#}
+    {#            <td>检查员身份证</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_10" name="data_02_10" placeholder=""#}
+    {#                       value={{ data_02_10 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_10" name="data_03_10" placeholder=""#}
+    {#                       value={{ data_03_10 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_10" name="data_04_10" placeholder=""#}
+    {#                       value={{ data_04_10 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_10" name="data_05_10" placeholder=""#}
+    {#                       value={{ data_05_10 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_10" name="data_06_10" placeholder=""#}
+    {#                       value={{ data_06_10 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_07_10" name="data_07_10" placeholder=""#}
+    {#                       value={{ data_07_10 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_08_10" name="data_08_10" placeholder=""#}
+    {#                       value={{ data_08_10 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_09_10" name="data_09_10" placeholder=""#}
+    {#                       value={{ data_09_10 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>特殊技能信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>技能类别</td>#}
+    {#            <td>获取时间</td>#}
+    {#            <td>依据</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_11" name="data_02_11" placeholder=""#}
+    {#                       value={{ data_02_11 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_11" name="data_03_11" placeholder=""#}
+    {#                       value={{ data_03_11 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_11" name="data_04_11" placeholder=""#}
+    {#                       value={{ data_04_11 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>奖励信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>奖励名称</td>#}
+    {#            <td>奖励级别</td>#}
+    {#            <td>获取时间</td>#}
+    {#            <td>获取依据</td>#}
+    {#        </tr>#}
+    {##}
+    {##}
+    {##}
+    {##}
+    {#        <tr>#}
+    {##}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_12" name="data_02_12" placeholder=""#}
+    {#                       value={{ data_02_12 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_12" name="data_03_12" placeholder=""#}
+    {#                       value={{ data_03_12 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_12" name="data_04_12" placeholder=""#}
+    {#                       value={{ data_04_12 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_12" name="data_05_12" placeholder=""#}
+    {#                       value={{ data_05_12 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {#    <br>#}
+    {##}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>惩罚信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>处罚原因</td>#}
+    {#            <td>专业处罚</td>#}
+    {#            <td>暂停时间</td>#}
+    {#            <td>事件发生时间</td>#}
+    {#            <td>处罚依据</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_13" name="data_02_13" placeholder=""#}
+    {#                       value={{ data_02_13 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_13" name="data_03_13" placeholder=""#}
+    {#                       value={{ data_03_13 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_13" name="data_04_13" placeholder=""#}
+    {#                       value={{ data_04_13 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_13" name="data_05_13" placeholder=""#}
+    {#                       value={{ data_05_13 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_13" name="data_06_13" placeholder=""#}
+    {#                       value={{ data_06_13 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>管制教员信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>教员级别</td>#}
+    {#            <td>教员类别</td>#}
+    {#            <td>聘任时间</td>#}
+    {#            <td>解聘时间</td>#}
+    {#            <td>依据</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_14" name="data_02_14" placeholder=""#}
+    {#                       value={{ data_02_14 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_14" name="data_03_14" placeholder=""#}
+    {#                       value={{ data_03_14 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_14" name="data_04_14" placeholder=""#}
+    {#                       value={{ data_04_14 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_14" name="data_05_14" placeholder=""#}
+    {#                       value={{ data_05_14 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_14" name="data_06_14" placeholder=""#}
+    {#                       value={{ data_06_14 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>检查员信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>检查员类别</td>#}
+    {#            <td>委任时间</td>#}
+    {#            <td>终止委任时间</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_15" name="data_02_15" placeholder=""#}
+    {#                       value={{ data_02_15 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_15" name="data_03_15" placeholder=""#}
+    {#                       value={{ data_03_15 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_15" name="data_04_15" placeholder=""#}
+    {#                       value={{ data_04_15 }}>#}
+    {#            </td>#}
+    {##}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>检查员考核</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>检查员类别</td>#}
+    {#            <td>考核时间</td>#}
+    {#            <td>考核结果</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_16" name="data_02_16" placeholder=""#}
+    {#                       value={{ data_02_16 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_16" name="data_03_16" placeholder=""#}
+    {#                       value={{ data_03_16 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_16" name="data_04_16" placeholder=""#}
+    {#                       value={{ data_04_16 }}>#}
+    {#            </td>#}
+    {##}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>爱岗敬业信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>类别</td>#}
+    {#            <td>影响范围</td>#}
+    {#            <td>采用时间</td>#}
+    {#            <td>名称</td>#}
+    {#            <td>标题</td>#}
+    {#            <td>文号</td>#}
+    {#            <td>概要</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_17" name="data_02_17" placeholder=""#}
+    {#                       value={{ data_02_17 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_17" name="data_03_17" placeholder=""#}
+    {#                       value={{ data_03_17 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_17" name="data_04_17" placeholder=""#}
+    {#                       value={{ data_04_17 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_17" name="data_05_17" placeholder=""#}
+    {#                       value={{ data_05_17 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_17" name="data_06_17" placeholder=""#}
+    {#                       value={{ data_06_17 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_07_17" name="data_07_17" placeholder=""#}
+    {#                       value={{ data_07_17 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_08_17" name="data_08_17" placeholder=""#}
+    {#                       value={{ data_08_17 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+    {##}
+    {#    <br>#}
+    {#    <table border="1" id="t2" border="0" align="left" bgcolor="#F0F0F0">#}
+    {#        <tr>#}
+    {#            <th>职称信息</th>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>职称级别</td>#}
+    {#            <td>获取时间</td>#}
+    {#            <td>依据</td>#}
+    {#            <td>聘任情况</td>#}
+    {#            <td>聘任详情</td>#}
+    {#        </tr>#}
+    {#        <tr>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_02_18" name="data_02_18" placeholder=""#}
+    {#                       value={{ data_02_18 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_03_18" name="data_03_18" placeholder=""#}
+    {#                       value={{ data_03_18 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_04_18" name="data_04_18" placeholder=""#}
+    {#                       value={{ data_04_18 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_05_18" name="data_05_18" placeholder=""#}
+    {#                       value={{ data_05_18 }}>#}
+    {#            </td>#}
+    {#            <td>#}
+    {#                <input style="border-style:none" type="text" id="data_06_18" name="data_06_18" placeholder=""#}
+    {#                       value={{ data_06_18 }}>#}
+    {#            </td>#}
+    {#        </tr>#}
+    {#    </table>#}
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+<label for="account" class="sr-only" style="">执照信息</label>
+<br>
+
+<div id="table_03"></div>
+<label for="account" class="sr-only">管制员等级</label>
+
+<div id="table_04"></div>
+<label for="account" class="sr-only">英语等级信息</label>
+<div id="table_05"></div>
+<label for="account" class="sr-only">体检合格证</label>
+<div style="width:1060px; height:200px; overflow:scroll;">
+    <div id="table_06"></div>
+</div>
+
+
+<label for="account" class="sr-only">赴外培训</label>
+
+<div style="width:1060px; height:200px; overflow:scroll;">
+    <div id="table_07"></div>
+</div>
+<label for="account" class="sr-only">岗位培训</label>
+<div style="width:1060px; height:400px; overflow:scroll;">
+    <div id="table_08"></div>
+</div>
+<label for="account" class="sr-only">放单考核</label>
+<div id="table_09"></div>
+<label for="account" class="sr-only">执照检查</label>
+<div style="width:1060px; height:200px; overflow:scroll;">
+    <div id="table_10"></div>
+</div>
+<label for="account" class="sr-only">特殊技能信息</label>
+
+<div style="width:1060px; height:200px; overflow:scroll;">
+    <div id="table_11"></div>
+</div>
+
+<label for="account" class="sr-only">奖励信息</label>
+<div style="width:1060px; height:200px; overflow:scroll;">
+    <div id="table_12"></div>
+</div>
+<label for="account" class="sr-only">惩罚信息</label>
+
+<div style="width:1060px; height:200px; overflow:scroll;">
+    <div id="table_13"></div>
+</div>
+
+<label for="account" class="sr-only">管制教员信息</label>
+<div id="table_14"></div>
+<label for="account" class="sr-only">检查员信息</label>
+<div id="table_15"></div>
+<label for="account" class="sr-only">检查员考核</label>
+<div id="table_16"></div>
+<label for="account" class="sr-only">爱岗敬业信息</label>
+<div id="table_17"></div>
+<label for="account" class="sr-only">职称信息</label>
+<div id="table_18">
+
+
+    <script type="text/javascript">
+
+
+        console.log(
+            {{ data_00_12| safe}}
+        );
+        document.onmousemove = function (event) {
+        }
+        {#var data = [['Column A', 'Column B', 'Column C'], ['1', '2', '3']];#}
+
+        {#必须要有，不能简化，否则识别为空#}
+        var data_03 = {{ data_00_03 | safe}};
+        var data_04 = {{ data_00_04 | safe}};
+        var data_05 = {{ data_00_05 | safe}};
+        var data_06 = {{ data_00_06 | safe}};
+        var data_07 = {{ data_00_07 | safe}};
+        var data_08 = {{ data_00_08 | safe}};
+        var data_09 = {{ data_00_09 | safe}};
+        var data_10 = {{ data_00_10 | safe}};
+        var data_11 = {{ data_00_11 | safe}};
+        var data_12 = {{ data_00_12 | safe}};
+        var data_13 = {{ data_00_13 | safe}};
+        var data_14 = {{ data_00_14 | safe}};
+        var data_15 = {{ data_00_15 | safe}};
+        var data_16 = {{ data_00_16 | safe}};
+        var data_17 = {{ data_00_17 | safe}};
+        var data_18 = {{ data_00_18 | safe}};
+
+        var basic_width = 151
+        var cell_width = [basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width,
+            basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width,
+            basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width,];
+        var cell_height = [{#50, 20, 40, 100#}];
+        var container = document.getElementById("table_03");
+        var hot_03 = new Handsontable(container, {
+            data: data_03,
+            licenseKey: 'non-commercial-and-evaluation',
+            {#fixedColumnsLeft: 17 ,//固定前两列#}
+            {#stretchH: 'all',#}
+            {#width: 813,#}
+            {#autoWrapRow: true,#}
+            {#height: 487,#}
+            {#maxRows: 22,#}
+            {#rowHeaders: true,#}
+
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            //水平：htLeft，htCenter，htRight，htJustify，
+            //垂直：htTop，htMiddle，htBottom。
+            //只读: readOnly htDimmed
+            {#fixedRowsBottom: 1,#}
+            fixedRowsTop: 1,
+            colHeaders: ["执照编号", "变更情况", "类别签注", "吊销原因", "依据年份", "签注依据", "获取时间",], {#7个#}
+
+
+        });
+
+        var hot_04 = new Handsontable(document.getElementById("table_04"), {
+            data: data_04,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["管制职级", "管制等级", "评定时间", "评定依据", "聘用状态", "聘用时间",], {#6个#}
+        });
+        var hot_05 = new Handsontable(document.getElementById("table_05"), {
+            data: data_05,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["英语类别", "英语等级", "获取时间", "获取依据", "证书编号",], {#5个#}
+        });
+        var hot_06 = new Handsontable(document.getElementById("table_06"), {
+            data: data_06,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["合格证级别", "编号", "颁发时间", "依据", "限制条件", "备注",], {#6个#}
+        });
+        var hot_07 = new Handsontable(document.getElementById("table_07"), {
+            data: data_07,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["培训项目", "组织单位", "培训地点", "培训类别", "开始时间", "结束时间", "任务批件",], {#7个#}
+        });
+        var hot_08 = new Handsontable(document.getElementById("table_08"), {
+            data: data_08,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151, 151, 151, 151, 450, 151, 151, 151,
+                151, 151, 151, 151, 151, 151, 151, 151,
+                151, 151, 151, 151, 151, 151, 151, 151, 151, 151,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            {#fixedRowsTop: 1,#}
+            colHeaders: ["培训项目", "组织单位", "培训地点", "培训类别", "培训内容", "培训执照类别签注", "依据",
+                "开始时间", "结束时间", "理论课时数", "模拟机课时数", "操作课时数", "理论考核方式", "模拟机考核方式",
+                "操作考核方式", "培训教员", "模拟机培训方式", "理论考核成绩", "模拟机考核分数", "操作考核分数", "总分",
+            ], {#21个#}
+        });
+        var hot_09 = new Handsontable(document.getElementById("table_09"), {
+            data: data_09,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["考核时间", "当前放单", "依据", "放单考核", "放单说明",], {#5个#}
+        });
+        var hot_10 = new Handsontable(document.getElementById("table_10"), {
+            data: data_10,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["考核时间", "类别签注", "基础理论成绩", "专业理论成绩",
+                "放单说明", "技能考核成绩", "检查员姓名", "检查员身份证",], {#8个#}
+        });
+        var hot_11 = new Handsontable(document.getElementById("table_11"), {
+            data: data_11,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["技能类别", "获取时间", "依据",], {#3个#}
+        });
+        var hot_12 = new Handsontable(document.getElementById("table_12"), {
+            data: data_12,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["奖励名称", "奖励级别", "获取时间", "获取依据",], {#4个#}
+        });
+        var hot_13 = new Handsontable(document.getElementById("table_13"), {
+            data: data_13,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["处罚原因", "专业处罚", "暂停时间", "事件发生时间", "处罚依据",], {#5个#}
+        });
+        var hot_14 = new Handsontable(document.getElementById("table_14"), {
+            data: data_14,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["教员级别", "教员类别", "聘任时间", "解聘时间", "依据",], {#5个#}
+        });
+        var hot_15 = new Handsontable(document.getElementById("table_15"), {
+            data: data_15,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["检查员类别", "委任时间", "终止委任时间",], {#4个#}
+        });
+        var hot_16 = new Handsontable(document.getElementById("table_16"), {
+            data: data_16,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["检查员类别", "考核时间", "考核结果",], {#3个#}
+        });
+        var hot_17 = new Handsontable(document.getElementById("table_17"), {
+            data: data_17,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["类别", "影响范围", "采用时间", "名称", "标题", "文号", "概要",], {#7个#}
+        });
+        var hot_18 = new Handsontable(document.getElementById("table_18"), {
+            data: data_18,
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["职称级别", "获取时间", "依据", "聘任情况", "聘任详情",], {#5个#}
+        });
+
+
+        // single callback, added globally
+        {#console.log(#}
+        {#    hot.getData()#}
+        {#)#}
+        {#;#}
+
+        $("#send1").click(function () {
+
+            {#json数据#}
+            {#var post_data =JSON.stringify( hot.getData() );#}
+            {#var post_data = JSON.stringify(hot.getData(hot.countRows() - 1, 0, hot.countRows() - 1, hot.countCols() - 1));#}
+            var post_data = [
+                hot_03.getData(0, 0, hot_03.countRows() - 1, hot_03.countCols() - 1),
+                hot_04.getData(0, 0, hot_04.countRows() - 1, hot_04.countCols() - 1),
+                hot_05.getData(0, 0, hot_05.countRows() - 1, hot_05.countCols() - 1),
+                hot_06.getData(0, 0, hot_06.countRows() - 1, hot_06.countCols() - 1),
+                hot_07.getData(0, 0, hot_07.countRows() - 1, hot_07.countCols() - 1),
+                hot_08.getData(0, 0, hot_08.countRows() - 1, hot_08.countCols() - 1),
+                hot_09.getData(0, 0, hot_09.countRows() - 1, hot_09.countCols() - 1),
+                hot_10.getData(0, 0, hot_10.countRows() - 1, hot_10.countCols() - 1),
+                hot_11.getData(0, 0, hot_11.countRows() - 1, hot_11.countCols() - 1),
+                hot_12.getData(0, 0, hot_12.countRows() - 1, hot_12.countCols() - 1),
+                hot_13.getData(0, 0, hot_13.countRows() - 1, hot_13.countCols() - 1),
+                hot_14.getData(0, 0, hot_14.countRows() - 1, hot_14.countCols() - 1),
+                hot_15.getData(0, 0, hot_15.countRows() - 1, hot_15.countCols() - 1),
+                hot_16.getData(0, 0, hot_16.countRows() - 1, hot_16.countCols() - 1),
+                hot_17.getData(0, 0, hot_17.countRows() - 1, hot_17.countCols() - 1),
+                hot_18.getData(0, 0, hot_18.countRows() - 1, hot_18.countCols() - 1)
+            ];
+            console.log(
+                post_data
+            )
+            ;
+            $.ajax({
+                url: "http://localhost:8000/atcInfo/getinfo_save_ajax/",
+                type: "POST",
+                {#发送json数据到服务器#}
+                data: JSON.stringify(post_data),
+                dataType: "json",
+
+                {#请求成功回调函数#}
+                success: function (data) {
+
+
+                    alert(data);
+                    alert("请求成功")
+                },
+                {#请求失败回调函数#}
+                error: function () {
+                    alert("保存成功")
+                }
+
+            });
+        });
+        $("#send2").click(function () {
+            hot.alter('insert_row', hot.countRows(), 1);
+            {#json数据#}
+
+
+        });
+
+        function savedata() {
+            window.location.href = "http://127.0.0.1:8000/trainningcompletion/addtrainningrecord";
+
+        }
+
+
+    </script>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>#}
+    {#    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>#}
+    {#    <script src="../../dist/js/bootstrap.min.js"></script>#}
+    {#    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->#}
+    {#    <script src="../../assets/js/vendor/holder.min.js"></script>#}
+    {#    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->#}
+    {#    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>#}
+</body>
+</html>
+

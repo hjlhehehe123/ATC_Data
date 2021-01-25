@@ -1,115 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	 <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
-{#     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>#}
-	<title>简单表格操作</title>
-	<style type="text/css">
-		body {
-			line-height: 24px;
-			font: 14px Helvetica Neue, Helvetica, PingFang SC, \5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif;
-		}
+    <meta charset="utf-8"/>
 
-		.layui-btn {
-			background: #1E9FFF;
-			display: inline-block;
-	    height: 38px;
-	    line-height: 38px;
-	    padding: 0 18px;
-	    background-color: #009688;
-  		color: #fff;
-	    white-space: nowrap;
-	    text-align: center;
-	    font-size: 14px;
-	    border: none;
-	    border-radius: 2px;
-	    cursor: pointer;
-		}
+    <script src="{% static 'handsontable.full.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'handsontable.full.css' %}"/>
+    <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
 
-		.layui-btn:hover {
-	    opacity: .8;
-	    filter: alpha(opacity=80);
-	    color: #fff;
-		}
 
-		table {
-			margin-top: 10px;
-			border-spacing: 0;
-			width: 100%;
-			text-align: center;
-			border: 1px solid #E6E6E6;
-		}
+    {#     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>#}
+    <title>简单表格操作</title>
+    <style type="text/css">
+        body {
+            line-height: 24px;
+            font: 14px Helvetica Neue, Helvetica, PingFang SC, \5FAE\8F6F\96C5\9ED1, Tahoma, Arial, sans-serif;
+        }
 
-		table thead tr th {
-			background: #F2F2F2;
-			height: 28px;
-			line-height: 28px;
-			padding: 5px 15px;
-			border-bottom: 1px solid #E6E6E6;
-			border-right: 1px solid #E6E6E6;
+        .layui-btn {
+            background: #1E9FFF;
+            display: inline-block;
+            height: 38px;
+            line-height: 38px;
+            padding: 0 18px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
             text-align: center;
-		}
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
 
-		table tbody tr td {
-			width: 20%;
-			height: 28px;
-			line-height: 28px;
-			padding: 5px 15px;
-			border-bottom: 1px solid #E6E6E6;
-			border-right: 1px solid #E6E6E6;
-		}
+        .layui-btn:hover {
+            opacity: .8;
+            filter: alpha(opacity=80);
+            color: #fff;
+        }
 
-		table tbody tr td input {
-			height: 22px;
-			border: 0px;
-			border-bottom: 1px solid #DEDEDE;
-		}
+        table {
+            margin-top: 10px;
+            border-spacing: 0;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #E6E6E6;
+        }
 
-		table tbody tr:hover td {
-			background: #F2F2F2;
-		}
+        table thead tr th {
+            background: #F2F2F2;
+            height: 28px;
+            line-height: 28px;
+            padding: 5px 15px;
+            border-bottom: 1px solid #E6E6E6;
+            border-right: 1px solid #E6E6E6;
+            text-align: center;
+        }
 
-		a {
-			display: inline-block;
-			margin: 3px 5px;
-			color: #009688;
-		}
+        table tbody tr td {
+            width: 20%;
+            height: 28px;
+            line-height: 28px;
+            padding: 5px 15px;
+            border-bottom: 1px solid #E6E6E6;
+            border-right: 1px solid #E6E6E6;
+        }
 
-		a:hover {
-			cursor: pointer;
-			color: #1E9FFF;
-			text-decoration: underline;
-		}
+        table tbody tr td input {
+            height: 22px;
+            border: 0px;
+            border-bottom: 1px solid #DEDEDE;
+        }
 
-		label {
-			cursor: pointer;
-		}
+        table tbody tr:hover td {
+            background: #F2F2F2;
+        }
 
-		label input {
-			cursor: pointer;
-			position: relative;
-			top: 1px;
-		}
+        a {
+            display: inline-block;
+            margin: 3px 5px;
+            color: #009688;
+        }
 
-	</style>
-     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        a:hover {
+            cursor: pointer;
+            color: #1E9FFF;
+            text-decoration: underline;
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        label input {
+            cursor: pointer;
+            position: relative;
+            top: 1px;
+        }
+
+    </style>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 
 <body>
 <div>
     <button class="layui-btn" onclick="addRow()">新增行</button>
+    <FORM id="{{ i.10 }}" action="{% url 'getinfo' %}?人员={{ i.0 }}" method="post">
+
+        <button class="layui-btn" type="submit">个人数据录入</button>
+    </FORM>
+
 </div>
+
+
 <div class="block-content collapse in">
     <div class="span12">
         <table id="test" class="table table-bordered"
                width="100%" border="1" cellpadding="0" cellspacing="0" style="table-layout:fixed">
             <thead>
             <tr>
-                <th>序号</th>
+                {#                <th>序号</th>#}
                 <th>姓名</th>
                 <th>性别</th>
                 <th>岗位</th>
+
                 <th>管制员等级</th>
                 <th>岗位领班</th>
                 <th>岗位教员</th>
@@ -120,192 +133,235 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>张三</td>
-                <td>女</td> <!-- <input type="text"> -->
-				<td>塔台</td>
-                <td>1</td>
-				<td>否</td>
-				<td>否</td> <!-- <input type="text"> -->
-				<td>中</td>
-                <td>否</td>
-				<td>全席位</td>
-				<td bgcolor="green"></td> <!-- <input type="text"> -->
-			</tr>
-            <tr>
-                <td>2</td>
-                <td>李四</td>
-                <td>男</td> <!-- <input type="text"> -->
-				<td>区调</td>
-                <td>1</td>
-				<td>否</td>
-				<td>否</td> <!-- <input type="text"> -->
-				<td>中</td>
-                <td>否</td>
-				<td>全席位</td>
-				<td bgcolor="orange"></td> <!-- <input type="text"> -->
-			</tr>
-            <tr>
-				<td>3</td>
-                <td>王五</td>
-                <td>男</td> <!-- <input type="text"> -->
-				<td>区调</td>
-                <td>1</td>
-				<td>否</td>
-				<td>否</td> <!-- <input type="text"> -->
-				<td>中</td>
-                <td>否</td>
-				<td>全席位</td>
-				<td bgcolor="red"></td> <!-- <input type="text"> -->
-			</tr>
-            <tr>
-				<td>4</td>
-                <td>张一</td>
-                <td>男</td> <!-- <input type="text"> -->
-				<td>区调</td>
-                <td>1</td>
-				<td>否</td>
-				<td>否</td> <!-- <input type="text"> -->
-				<td>中</td>
-                <td>否</td>
-				<td>全席位</td>
-				<td bgcolor="green"></td> <!-- <input type="text"> -->
-			</tr>
-{#			<tr>#}
-{#				<td>2</td>#}
-{#				<td>zhangsan</td>#}
-{#				<td>张三</td>#}
-{#				<td>123</td>#}
-{#				<td><a>修改</a><a>删除</a></td>#}
-{#			</tr>#}
-{#			<tr>#}
-{#				<td>3</td>#}
-{#				<td>lisi</td>#}
-{#				<td>李四</td>#}
-{#				<td>123</td>#}
-{#				<td><a>修改</a><a>删除</a></td>#}
-{#			</tr>#}
-{#			<tr>#}
-{#				<td>4</td>#}
-{#				<td>wangwu</td>#}
-{#				<td>王五</td>#}
-{#				<td>123</td>#}
-{#				<td><a>修改</a><a>删除</a></td>#}
-{#			</tr>#}
-{#			<tr>#}
-{#				<td>5</td>#}
-{#				<td>chengliu</td>#}
-{#				<td>陈六</td>#}
-{#				<td>123</td>#}
-{#				<td><a>修改</a><a>删除</a></td>#}
-{#			</tr>#}
-          </div>
-        </div>
-		</tbody>
-	</table>
+            {#            <tr>#}
+            {#                <td>1</td>#}
+            {#                <td>张三</td>#}
+            {#                <td>女</td> <!-- <input type="text"> -->#}
+            {#				<td>塔台</td>#}
+            {#                <td>1</td>#}
+            {#				<td>否</td>#}
+            {#				<td>否</td> <!-- <input type="text"> -->#}
+            {#				<td>中</td>#}
+            {#                <td>否</td>#}
+            {#				<td>全席位</td>#}
+            {#				<td bgcolor="green"></td> <!-- <input type="text"> -->#}
+            {#			</tr>#}
+            {#            <tr>#}
+            {#                <td>2</td>#}
+            {#                <td>李四</td>#}
+            {#                <td>男</td> <!-- <input type="text"> -->#}
+            {#				<td>区调</td>#}
+            {#                <td>1</td>#}
+            {#				<td>否</td>#}
+            {#				<td>否</td> <!-- <input type="text"> -->#}
+            {#				<td>中</td>#}
+            {#                <td>否</td>#}
+            {#				<td>全席位</td>#}
+            {#				<td bgcolor="orange"></td> <!-- <input type="text"> -->#}
+            {#			</tr>#}
+            {#            <tr>#}
+            {#				<td>3</td>#}
+            {#                <td>王五</td>#}
+            {#                <td>男</td> <!-- <input type="text"> -->#}
+            {#				<td>区调</td>#}
+            {#                <td>1</td>#}
+            {#				<td>否</td>#}
+            {#				<td>否</td> <!-- <input type="text"> -->#}
+            {#				<td>中</td>#}
+            {#                <td>否</td>#}
+            {#				<td>全席位</td>#}
+            {#				<td bgcolor="red"></td> <!-- <input type="text"> -->#}
+            {#			</tr>#}
+            {#            <tr>#}
+            {#				<td>4</td>#}
+            {#                <td>张一</td>#}
+            {#                <td>男</td> <!-- <input type="text"> -->#}
+            {#				<td>区调</td>#}
+            {#                <td>1</td>#}
+            {#				<td>否</td>#}
+            {#				<td>否</td> <!-- <input type="text"> -->#}
+            {#				<td>中</td>#}
+            {#                <td>否</td>#}
+            {#				<td>全席位</td>#}
+            {#				<td bgcolor="green"></td> <!-- <input type="text"> -->#}
+            {#			</tr>#}
 
-	<script type="text/javascript">
-		$(function(){
-			//load加载动态修改表格样式
-			if($("#test tbody tr").length > 0){
-				$("#test").css("border-bottom", "0px");
-				$("#test").css("border-right", "0px");
-			}
 
-			//注册表格操作点击事件
-			registerClick();
-		});
+            {% for i in data %}
+                <tr onclick="submit1({{ i.10 }})">
+                    {#                {% for j in i %}#}
 
-		//注册表格操作点击事件
-		function registerClick(){
-			//防止重复注册事件：.off("click")
-			$("#test tbody tr td a").off("click").on("click", function(){
-				var text = $(this).text();
-				switch(text){
-					case "修改":
-						updateRow($(this));
-						break;
-					case "保存":
-						saveRow($(this));
-						break;
-					case "删除":
-						deleteRow($(this));
-						break;
-				}
-			});
-		}
+                    <FORM id="{{ i.10 }}" action="{% url 'getinfo' %}?人员={{ i.0 }}" method="post">
 
-		//新增行
-		function addRow(){
-			if($("#saverow").is(':checked')){
-				saveAllRow();//保存所有行
-			}
-			var rowindex = $("#test tbody tr").length+1;
-			var str = "<tr><td>"+rowindex+"</td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a>保存</a><a>删除</a></td></tr>";
-			$("#test tbody").append(str);
-			registerClick();//注册表格操作点击事件
-		}
 
-		//修改行
-		function updateRow(t){
-			$(t).text("保存");
-			var tr = $(t).parent().parent();
-			var tds = $(tr).children();
-			for (var i = 0; i < tds.length; i++) {
-				if(i>0 && i<tds.length-1){
-					var td = tds[i];
-					var text = $(td).text();
-					$(td).html("<input type='text' value='"+text+"'>");
-				}
-			}
-		}
+                        <td>
+                            {#                            <INPUT type="password" style="display:none"#}
+                            {#                                   name="人员"  id="人员" value="{{ i.0 }}">#}
+                            <a>{{ i.0 }}</a>
+                        </td>
 
-		//保存行
-		function saveRow(t){
-			$(t).text("修改");
-			var tr = $(t).parent().parent();
-			var tds = $(tr).children();
-			for (var i = 0; i < tds.length; i++) {
-				if(i>0 && i<tds.length-1){
-					var td = tds[i];
-					var text = $(td).children("input").val();
-					$(td).html(text);
-				}
-			}
-		}
+                        <td
+                                {#            onclick="window.location.href='{% url 'getinfo' %}'"#}
+                        >{{ i.1 }}</td>
+                    </FORM>
+                    <td>
+                        {#            <a href="'{% url 'getinfo' %}'">#}
+                        {{ i.2 }}
+                        {#            </a>#}
+                    </td>
+                    <td>{{ i.3 }}</td>
+                    <td>{{ i.4 }}</td>
+                    <td>{{ i.5 }}</td>
+                    <td>{{ i.6 }}</td>
+                    <td>{{ i.7 }}</td>
+                    <td>{{ i.8 }}</td>
 
-		//删除行
-		function deleteRow(t){
-			if(confirm("是否删除行?")){
-				var tr = $(t).parent().parent();
-				$(tr).remove();
-				resetSerialNum();//重置序号
-			}
-		}
+                    {#        {% endfor %}#}
+                    <td bgcolor="{{ i.9 }}"></td> <!-- <input type="text"> -->
+                </tr>
+            {% endfor %}
+            {#			<tr>#}
+            {#				<td>2</td>#}
+            {#				<td>zhangsan</td>#}
+            {#				<td>张三</td>#}
+            {#				<td>123</td>#}
+            {#				<td><a>修改</a><a>删除</a></td>#}
+            {#			</tr>#}
+            {#			<tr>#}
+            {#				<td>3</td>#}
+            {#				<td>lisi</td>#}
+            {#				<td>李四</td>#}
+            {#				<td>123</td>#}
+            {#				<td><a>修改</a><a>删除</a></td>#}
+            {#			</tr>#}
+            {#			<tr>#}
+            {#				<td>4</td>#}
+            {#				<td>wangwu</td>#}
+            {#				<td>王五</td>#}
+            {#				<td>123</td>#}
+            {#				<td><a>修改</a><a>删除</a></td>#}
+            {#			</tr>#}
+            {#			<tr>#}
+            {#				<td>5</td>#}
+            {#				<td>chengliu</td>#}
+            {#				<td>陈六</td>#}
+            {#				<td>123</td>#}
+            {#				<td><a>修改</a><a>删除</a></td>#}
+            {#			</tr>#}
+    </div>
+</div>
+</tbody>
+</table>
 
-		//新增行前保存所有行
-		function saveAllRow(){
-			var trs = $("#test tbody tr");
-			for (var i = 0; i < trs.length; i++) {
-				if($(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").text() == "保存"){
-					$(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").click();
-				}
-			}
-		}
+<script type="text/javascript">
 
-		//重置序号
-		function resetSerialNum(){
-			var trs = $("#test tbody tr");
-			for (var i=0;i<trs.length;i++) {
-				$("#test tbody tr:nth-child("+(i+1)+") td:nth-child(1)").text(i+1);
-			}
-		}
 
-	</script>
+    function submit1(x) {
+
+        $("#" + x).submit();
+
+
+    }
+
+    $(function () {
+        //load加载动态修改表格样式
+        if ($("#test tbody tr").length > 0) {
+            $("#test").css("border-bottom", "0px");
+            $("#test").css("border-right", "0px");
+        }
+
+        //注册表格操作点击事件
+        registerClick();
+    });
+
+    //注册表格操作点击事件
+    function registerClick() {
+        //防止重复注册事件：.off("click")
+        $("#test tbody tr td a").off("click").on("click", function () {
+            var text = $(this).text();
+            switch (text) {
+                case "修改":
+                    updateRow($(this));
+                    break;
+                case "保存":
+                    saveRow($(this));
+                    break;
+                case "删除":
+                    deleteRow($(this));
+                    break;
+            }
+        });
+    }
+
+    //新增行
+    function addRow() {
+        if ($("#saverow").is(':checked')) {
+            saveAllRow();//保存所有行
+        }
+        var rowindex = $("#test tbody tr").length + 1;
+        var str = "<tr><td>" + rowindex + "</td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><a>保存</a><a>删除</a></td></tr>";
+        $("#test tbody").append(str);
+        registerClick();//注册表格操作点击事件
+    }
+
+    //修改行
+    function updateRow(t) {
+        $(t).text("保存");
+        var tr = $(t).parent().parent();
+        var tds = $(tr).children();
+        for (var i = 0; i < tds.length; i++) {
+            if (i > 0 && i < tds.length - 1) {
+                var td = tds[i];
+                var text = $(td).text();
+                $(td).html("<input type='text' value='" + text + "'>");
+            }
+        }
+    }
+
+    //保存行
+    function saveRow(t) {
+        $(t).text("修改");
+        var tr = $(t).parent().parent();
+        var tds = $(tr).children();
+        for (var i = 0; i < tds.length; i++) {
+            if (i > 0 && i < tds.length - 1) {
+                var td = tds[i];
+                var text = $(td).children("input").val();
+                $(td).html(text);
+            }
+        }
+    }
+
+    //删除行
+    function deleteRow(t) {
+        if (confirm("是否删除行?")) {
+            var tr = $(t).parent().parent();
+            $(tr).remove();
+            resetSerialNum();//重置序号
+        }
+    }
+
+    //新增行前保存所有行
+    function saveAllRow() {
+        var trs = $("#test tbody tr");
+        for (var i = 0; i < trs.length; i++) {
+            if ($(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").text() == "保存") {
+                $(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").click();
+            }
+        }
+    }
+
+    //重置序号
+    function resetSerialNum() {
+        var trs = $("#test tbody tr");
+        for (var i = 0; i < trs.length; i++) {
+            $("#test tbody tr:nth-child(" + (i + 1) + ") td:nth-child(1)").text(i + 1);
+        }
+    }
+
+</script>
 </body>
 </html>
-
 
 
 {#{% load static %}#}

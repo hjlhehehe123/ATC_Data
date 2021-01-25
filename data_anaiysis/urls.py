@@ -38,4 +38,8 @@ url(r'^test/$', views.test, name="test"),
         views.single_person_trainning_record_post,
         name="single_person_trainning_record_post"),
 
+    # 最新学时统计
+    url(r'^training_time/$', views.training_time, name="training_time"),
+    url(r'^training_time_post/$', views.training_time_post, name="training_time_post"),
+    url(r'^test/$', views.test, name="test"),
 ]

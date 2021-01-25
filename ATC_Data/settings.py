@@ -40,24 +40,32 @@ INSTALLED_APPS = [
     'atcInfo',
     'TestModel',
     'trainningcompletion',
-     'data_anaiysis',
+    'data_anaiysis',
 
-# python manage.py startapp data_anaiysis
-#py manage.py startapp data_anaiysis
-# 'tower_trainning_total_time',
+    'corsheaders',  # 非常重要
+
+    # python manage.py startapp data_anaiysis
+    # py manage.py startapp data_anaiysis
+    # 'tower_trainning_total_time',
+
+]
+MIDDLEWARE_CLASSES = (
 
 
 
-    ]
-
+)
+CORS_ORIGIN_ALLOW_ALL = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',#重要
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'ATC_Data.urls'
@@ -148,7 +156,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -157,8 +164,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-	os.path.join(BASE_DIR,"static")
+    os.path.join(BASE_DIR, "static")
 ]
-
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 X_FRAME_OPTIONS = 'ALLOWALL'

@@ -6,7 +6,7 @@
 
     <script src="{% static 'handsontable.full.js' %}"></script>
 
-
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
 
     <link rel="stylesheet" href="{% static 'handsontable.full.css' %}"/>
     {#     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>#}
@@ -136,6 +136,7 @@
             position: relative;
             top: 1px;
         }
+
         .btn1 {
             display: inline-block;
             height: 20px;
@@ -161,7 +162,9 @@
     <h2 class="form-signin-heading">增加培训记录</h2>
     <br>
     <div>
-        培 训 类 别<br>
+        <span style="color: #FF0000; ">*</span>培 训 类 别
+
+        <br>
         <select name="data02" id="data02" style="width:15%;">
             <option value="0">资格培训</option>
             <option value="1">复习培训</option>
@@ -169,9 +172,17 @@
 
         </select><br>
 
-        培 训 内 容<input type="text" style="width:10%;" id="mon" name="mon" onkeyup="showHint(this.value)" placeholder=""
-                      value="" required>月
+        <span style="color: #FF0000; ">*</span>培 训 内 容
+        <input type="text" style="width:10%;" id="mon" name="mon" onkeyup="showHint(this.value)" placeholder=""
+               value="" required>月
         <br>
+        {#        <input value="1" type="checkbox" name="checkbox1" />大流量#}
+        {#        <input value="2" type="checkbox" name="checkbox2" />雷雨绕飞#}
+        {#        <input value="3" type="checkbox" name="checkbox3" />冲突解脱#}
+        {#        <input value="" type="checkbox" name="checkbox4" />相似航班号#}
+        {#        <input value="" type="checkbox" name="checkbox5" />军民航开飞调配技巧#}
+
+
         <div style="width:350px;height: 200px;border: 1px;border-style: solid;border-color: #343434;" id="data050"
              name="data050" placeholder="" required></div>
         <br>
@@ -182,50 +193,1211 @@
         <textarea
                 style="visibility:hidden;float: left;width:1px;height: 1px; border: 1px;border-style: solid;border-color: #343434"
                 id="data05" name="data05" placeholder="" value="" required></textarea><br>
-        培 训 地 点<br>
+        <span style="color: #FF0000; ">*</span>培 训 地 点<br>
         <select name="data06" id="data06" style="width:15%;">
             <option value="0">塔台模拟机房</option>
             <option value="1">雷达模拟机房</option>
         </select><br>
 
-        培 训 对 象
-        <br><input type="text" style="width:10%;" id="data081" name="data081" placeholder="" value="" required>&nbsp;
-        <input type="text" style="width:10%;" id="data082" name="data082" placeholder="" value=" " required>&nbsp;
-        <input type="text" style="width:10%;" id="data083" name="data083" placeholder="" value=" " required>&nbsp;
-        <input type="text" style="width:10%;" id="data084" name="data084" placeholder="" value=" " required><br>
-        机 长
-        <br><input type="text" style="width:10%;" id="data091" name="data091" placeholder="" value="" required>&nbsp;
-        <input type="text" style="width:10%;" id="data092" name="data092" placeholder="" value=" " required>&nbsp;<br>
+        {#        培 训 对 象#}
+        {#        <br><input type="text" style="width:10%;" id="data081" name="data081" placeholder="" value="" required>&nbsp;#}
+        {#        <input type="text" style="width:10%;" id="data082" name="data082" placeholder="" value=" " required>&nbsp;#}
+        {#        <input type="text" style="width:10%;" id="data083" name="data083" placeholder="" value=" " required>&nbsp;#}
+        {#        <input type="text" style="width:10%;" id="data084" name="data084" placeholder="" value=" " required><br>#}
+        {#        机 长#}
+        {#        <br><input type="text" style="width:10%;" id="data091" name="data091" placeholder="" value="" required>&nbsp;#}
+        {#        <input type="text" style="width:10%;" id="data092" name="data092" placeholder="" value=" " required>&nbsp;<br>#}
+
+        <span style="color: #FF0000; ">*</span>培 训 对 象
+        <br>
+        <style type="text/css">
+            #search1 {
+                text-align: center;
+                position: relative;
+                display: inline-block;
+
+            }
+
+            .droplist1 {
+                border: 1px solid #9ACCFB;
+                background-color: white;
+                text-align: left;
+                overflow: auto;
+                position: relative;
+            }
+
+            .droplist1 li {
+                list-style-type: none;
+            }
+
+            .clickable {
+                cursor: default;
+            }
+
+            .highlight {
+                background-color: #9ACCFB;
+            }
+        </style>
+        <div id="search1">
+            <input type="text" id="search-text1" name="search-text1" autocomplete="off"/>
+            <div class="droplist1"></div>
+            <div class="droplist1-btn"><i class="fa fa-plus"></i></div>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                //取得div层
+                var $search1 = $('#search1');
+                //取得输入框JQuery对象
+                var $searchInput1 = $search1.find('#search-text1');
+
+                //创建自动完成的下拉列表，用于显示服务器返回的数据,插入在搜索按钮的后面，等显示的时候再调整位置
+                var $autocomplete1 = $(".droplist1").hide();
+                var $autocompbtn1 = $(".droplist1-btn").hide().insertAfter('.droplist1');
+                //清空下拉列表的内容并且隐藏下拉列表区
+                var clear = function () {
+                    $autocomplete1.empty().hide();
+                    $autocompbtn1.hide();
+                };
+                //注册事件，当输入框失去焦点的时候清空下拉列表并隐藏
+                $searchInput1.blur(function () {
+                    setTimeout(clear, 500);
+                });
+                //下拉列表中高亮的项目的索引，当显示下拉列表项的时候，移动鼠标或者键盘的上下键就会移动高亮的项目，想百度搜索那样
+                var selectedItem = null;
+                //timeout的ID
+                var timeoutid = null;
+                //设置下拉项的高亮背景
+                var setSelectedItem = function (item) {
+                    //更新索引变量
+                    selectedItem = item;
+                    //按上下键是循环显示的，小于0就置成最大的值，大于最大值就置成0
+                    if (selectedItem < 0) {
+                        selectedItem = $autocomplete1.find('li').length - 1;
+                    } else if (selectedItem > $autocomplete1.find('li').length - 1) {
+                        selectedItem = 0;
+                    }
+                    //首先移除其他列表项的高亮背景，然后再高亮当前索引的背景
+                    $autocomplete1.find('li').removeClass('highlight')
+                        .eq(selectedItem).addClass('highlight');
+                };
+                var ajax_request = function () {
+                    //ajax服务端通信
+                    $.ajax({
+                        'url': "http://localhost:8000/trainningcompletion/ajax_addtrainningrecord3/", //服务器的地址
+                        'data': JSON.stringify($searchInput1.val()), //参数
+                        'dataType': 'json', //返回数据类型
+                        'type': 'post', //请求类型
+                        'success': function (data) {
+                            console.log('success')
+
+                            console.log(data)
+
+                            if (data.length) {
+                                var liNum;
+                                //遍历data，添加到自动完成区
+                                $.each(data, function (index, term) {
+                                    liNum = index;
+                                    //创建li标签,添加到下拉列表中
+                                    $('<li>' + term + '</li>').appendTo($autocomplete1).addClass('clickable')
+                                        .hover(function () {
+                                            //下拉列表每一项的事件，鼠标移进去的操作
+                                            $(this).siblings().removeClass('highlight');
+                                            $(this).addClass('highlight');
+                                            selectedItem = index;
+                                        }, function () {
+                                            //下拉列表每一项的事件，鼠标离开的操作
+                                            $(this).removeClass('highlight');
+                                            //当鼠标离开时索引置-1，当作标记
+                                            selectedItem = -1;
+                                        })
+                                        .click(function () {
+                                            //鼠标单击下拉列表的这一项的话，就将这一项的值添加到输入框中
+                                            $searchInput1.val(term);
+                                            //清空并隐藏下拉列表
+                                            $autocomplete1.empty().hide();
+                                            $autocompbtn1.hide();
+                                        });
+                                });//事件注册完毕
+                                //设置下拉列表的位置，然后显示下拉列表
+                                if (liNum >= 6) {
+                                    $autocomplete1.css('height', '150px');
+                                } else {
+                                    $autocomplete1.css('height', 'auto');
+                                }
+                                var ypos = $searchInput1.position().top;
+                                var xpos = $searchInput1.position().left;
+                                $autocomplete1.css('width', $searchInput1.css('width'));
+                                $autocomplete1.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                                setSelectedItem(0);
+                                //显示下拉列表
+                                $autocomplete1.show();
+                                $autocompbtn1.show();
+                            }
+                        }
+                    });
+                };
+                //对输入框进行事件注册
+                $searchInput1
+                    .keyup(function (event) {
+                        //字母数字，退格，空格
+                        if (event.keyCode > 40 || event.keyCode == 8 || event.keyCode == 32) {
+                            //首先删除下拉列表中的信息
+                            $autocomplete1.empty().hide();
+                            $autocompbtn1.hide();
+                            clearTimeout(timeoutid);
+                            timeoutid = setTimeout(ajax_request, 1);
+                        } else if (event.keyCode == 38) {
+                            //上
+                            //selectedItem = -1 代表鼠标离开
+                            if (selectedItem == -1) {
+                                setSelectedItem($autocomplete1.find('li').length - 1);
+                            } else {
+                                //索引减1
+                                setSelectedItem(selectedItem - 1);
+                            }
+                            event.preventDefault();
+                        } else if (event.keyCode == 40) {
+                            //下
+                            //selectedItem = -1 代表鼠标离开
+                            $autocomplete1.scroll();
+                            if (selectedItem == -1) {
+                                setSelectedItem(0);
+                            } else {
+                                //索引加1
+                                setSelectedItem(selectedItem + 1);
+                            }
+                            event.preventDefault();
+                        }
+                    })
+                    .keypress(function (event) {
+                        //enter键
+                        if (event.keyCode == 13) {
+                            //列表为空或者鼠标离开导致当前没有索引值
+                            if ($autocomplete1.find('li').length == 0 || selectedItem == -1) {
+                                return;
+                            }
+                            $searchInput1.val($autocomplete1.find('li').eq(selectedItem).text());
+                            $autocomplete1.empty().hide();
+                            $autocompbtn1.hide();
+                            event.preventDefault();
+                        }
+                    })
+                    .keydown(function (event) {
+                        //esc键
+                        if (event.keyCode == 27) {
+                            $autocomplete1.empty().hide();
+                            $autocompbtn1.hide();
+                            event.preventDefault();
+                        }
+                    });
+                //注册窗口大小改变的事件，重新调整下拉列表的位置
+                $(window).resize(function () {
+                    var ypos = $searchInput1.position().top;
+                    var xpos = $searchInput1.position().left;
+                    $autocomplete1.css('width', $searchInput1.css('width'));
+                    $autocomplete1.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                });
+            });
+        </script>
+
+
+        <style type="text/css">
+            #search2 {
+                text-align: center;
+                position: relative;
+                display: inline-block;
+
+            }
+
+            .droplist2 {
+                border: 1px solid #9ACCFB;
+                background-color: white;
+                text-align: left;
+                overflow: auto;
+                position: relative;
+            }
+
+            .droplist2 li {
+                list-style-type: none;
+            }
+
+            .clickable {
+                cursor: default;
+            }
+
+            .highlight {
+                background-color: #9ACCFB;
+            }
+        </style>
+        <div id="search2">
+            <input type="text" id="search-text2" name="search-text2" autocomplete="off"/>
+            <div class="droplist2"></div>
+            <div class="droplist2-btn"><i class="fa fa-plus"></i></div>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                //取得div层
+                var $search2 = $('#search2');
+                //取得输入框JQuery对象
+                var $searchInput2 = $search2.find('#search-text2');
+
+                //创建自动完成的下拉列表，用于显示服务器返回的数据,插入在搜索按钮的后面，等显示的时候再调整位置
+                var $autocomplete2 = $(".droplist2").hide();
+                var $autocompbtn2 = $(".droplist2-btn").hide().insertAfter('.droplist2');
+                //清空下拉列表的内容并且隐藏下拉列表区
+                var clear = function () {
+                    $autocomplete2.empty().hide();
+                    $autocompbtn2.hide();
+                };
+                //注册事件，当输入框失去焦点的时候清空下拉列表并隐藏
+                $searchInput2.blur(function () {
+                    setTimeout(clear, 500);
+                });
+                //下拉列表中高亮的项目的索引，当显示下拉列表项的时候，移动鼠标或者键盘的上下键就会移动高亮的项目，想百度搜索那样
+                var selectedItem = null;
+                //timeout的ID
+                var timeoutid = null;
+                //设置下拉项的高亮背景
+                var setSelectedItem = function (item) {
+                    //更新索引变量
+                    selectedItem = item;
+                    //按上下键是循环显示的，小于0就置成最大的值，大于最大值就置成0
+                    if (selectedItem < 0) {
+                        selectedItem = $autocomplete2.find('li').length - 1;
+                    } else if (selectedItem > $autocomplete2.find('li').length - 1) {
+                        selectedItem = 0;
+                    }
+                    //首先移除其他列表项的高亮背景，然后再高亮当前索引的背景
+                    $autocomplete2.find('li').removeClass('highlight')
+                        .eq(selectedItem).addClass('highlight');
+                };
+                var ajax_request = function () {
+                    //ajax服务端通信
+                    $.ajax({
+                        'url': "http://localhost:8000/trainningcompletion/ajax_addtrainningrecord3/", //服务器的地址
+                        'data': JSON.stringify($searchInput2.val()), //参数
+                        'dataType': 'json', //返回数据类型
+                        'type': 'post', //请求类型
+                        'success': function (data) {
+                            console.log('success')
+
+                            console.log(data)
+
+                            if (data.length) {
+                                var liNum;
+                                //遍历data，添加到自动完成区
+                                $.each(data, function (index, term) {
+                                    liNum = index;
+                                    //创建li标签,添加到下拉列表中
+                                    $('<li>' + term + '</li>').appendTo($autocomplete2).addClass('clickable')
+                                        .hover(function () {
+                                            //下拉列表每一项的事件，鼠标移进去的操作
+                                            $(this).siblings().removeClass('highlight');
+                                            $(this).addClass('highlight');
+                                            selectedItem = index;
+                                        }, function () {
+                                            //下拉列表每一项的事件，鼠标离开的操作
+                                            $(this).removeClass('highlight');
+                                            //当鼠标离开时索引置-1，当作标记
+                                            selectedItem = -1;
+                                        })
+                                        .click(function () {
+                                            //鼠标单击下拉列表的这一项的话，就将这一项的值添加到输入框中
+                                            $searchInput2.val(term);
+                                            //清空并隐藏下拉列表
+                                            $autocomplete2.empty().hide();
+                                            $autocompbtn2.hide();
+                                        });
+                                });//事件注册完毕
+                                //设置下拉列表的位置，然后显示下拉列表
+                                if (liNum >= 6) {
+                                    $autocomplete2.css('height', '150px');
+                                } else {
+                                    $autocomplete2.css('height', 'auto');
+                                }
+                                var ypos = $searchInput2.position().top;
+                                var xpos = $searchInput2.position().left;
+                                $autocomplete2.css('width', $searchInput2.css('width'));
+                                $autocomplete2.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                                setSelectedItem(0);
+                                //显示下拉列表
+                                $autocomplete2.show();
+                                $autocompbtn2.show();
+                            }
+                        }
+                    });
+                };
+                //对输入框进行事件注册
+                $searchInput2
+                    .keyup(function (event) {
+                        //字母数字，退格，空格
+                        if (event.keyCode > 40 || event.keyCode == 8 || event.keyCode == 32) {
+                            //首先删除下拉列表中的信息
+                            $autocomplete2.empty().hide();
+                            $autocompbtn2.hide();
+                            clearTimeout(timeoutid);
+                            timeoutid = setTimeout(ajax_request, 1);
+                        } else if (event.keyCode == 38) {
+                            //上
+                            //selectedItem = -1 代表鼠标离开
+                            if (selectedItem == -1) {
+                                setSelectedItem($autocomplete2.find('li').length - 1);
+                            } else {
+                                //索引减1
+                                setSelectedItem(selectedItem - 1);
+                            }
+                            event.preventDefault();
+                        } else if (event.keyCode == 40) {
+                            //下
+                            //selectedItem = -1 代表鼠标离开
+                            $autocomplete2.scroll();
+                            if (selectedItem == -1) {
+                                setSelectedItem(0);
+                            } else {
+                                //索引加1
+                                setSelectedItem(selectedItem + 1);
+                            }
+                            event.preventDefault();
+                        }
+                    })
+                    .keypress(function (event) {
+                        //enter键
+                        if (event.keyCode == 13) {
+                            //列表为空或者鼠标离开导致当前没有索引值
+                            if ($autocomplete2.find('li').length == 0 || selectedItem == -1) {
+                                return;
+                            }
+                            $searchInput2.val($autocomplete2.find('li').eq(selectedItem).text());
+                            $autocomplete2.empty().hide();
+                            $autocompbtn2.hide();
+                            event.preventDefault();
+                        }
+                    })
+                    .keydown(function (event) {
+                        //esc键
+                        if (event.keyCode == 27) {
+                            $autocomplete2.empty().hide();
+                            $autocompbtn2.hide();
+                            event.preventDefault();
+                        }
+                    });
+                //注册窗口大小改变的事件，重新调整下拉列表的位置
+                $(window).resize(function () {
+                    var ypos = $searchInput2.position().top;
+                    var xpos = $searchInput2.position().left;
+                    $autocomplete2.css('width', $searchInput2.css('width'));
+                    $autocomplete2.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                });
+            });
+        </script>
+
+
+        <style type="text/css">
+            #search3 {
+                text-align: center;
+                position: relative;
+                display: inline-block;
+
+            }
+
+            .droplist3 {
+                border: 1px solid #9ACCFB;
+                background-color: white;
+                text-align: left;
+                overflow: auto;
+                position: relative;
+            }
+
+            .droplist3 li {
+                list-style-type: none;
+            }
+
+            .clickable {
+                cursor: default;
+            }
+
+            .highlight {
+                background-color: #9ACCFB;
+            }
+        </style>
+        <div id="search3">
+            <input type="text" id="search-text3" name="search-text3" autocomplete="off"/>
+            <div class="droplist3"></div>
+            <div class="droplist3-btn"><i class="fa fa-plus"></i></div>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                //取得div层
+                var $search3 = $('#search3');
+                //取得输入框JQuery对象
+                var $searchInput3 = $search3.find('#search-text3');
+
+                //创建自动完成的下拉列表，用于显示服务器返回的数据,插入在搜索按钮的后面，等显示的时候再调整位置
+                var $autocomplete3 = $(".droplist3").hide();
+                var $autocompbtn3 = $(".droplist3-btn").hide().insertAfter('.droplist3');
+                //清空下拉列表的内容并且隐藏下拉列表区
+                var clear = function () {
+                    $autocomplete3.empty().hide();
+                    $autocompbtn3.hide();
+                };
+                //注册事件，当输入框失去焦点的时候清空下拉列表并隐藏
+                $searchInput3.blur(function () {
+                    setTimeout(clear, 500);
+                });
+                //下拉列表中高亮的项目的索引，当显示下拉列表项的时候，移动鼠标或者键盘的上下键就会移动高亮的项目，想百度搜索那样
+                var selectedItem = null;
+                //timeout的ID
+                var timeoutid = null;
+                //设置下拉项的高亮背景
+                var setSelectedItem = function (item) {
+                    //更新索引变量
+                    selectedItem = item;
+                    //按上下键是循环显示的，小于0就置成最大的值，大于最大值就置成0
+                    if (selectedItem < 0) {
+                        selectedItem = $autocomplete3.find('li').length - 1;
+                    } else if (selectedItem > $autocomplete3.find('li').length - 1) {
+                        selectedItem = 0;
+                    }
+                    //首先移除其他列表项的高亮背景，然后再高亮当前索引的背景
+                    $autocomplete3.find('li').removeClass('highlight')
+                        .eq(selectedItem).addClass('highlight');
+                };
+                var ajax_request = function () {
+                    //ajax服务端通信
+                    $.ajax({
+                        'url': "http://localhost:8000/trainningcompletion/ajax_addtrainningrecord3/", //服务器的地址
+                        'data': JSON.stringify($searchInput3.val()), //参数
+                        'dataType': 'json', //返回数据类型
+                        'type': 'post', //请求类型
+                        'success': function (data) {
+                            console.log('success')
+
+                            console.log(data)
+
+                            if (data.length) {
+                                var liNum;
+                                //遍历data，添加到自动完成区
+                                $.each(data, function (index, term) {
+                                    liNum = index;
+                                    //创建li标签,添加到下拉列表中
+                                    $('<li>' + term + '</li>').appendTo($autocomplete3).addClass('clickable')
+                                        .hover(function () {
+                                            //下拉列表每一项的事件，鼠标移进去的操作
+                                            $(this).siblings().removeClass('highlight');
+                                            $(this).addClass('highlight');
+                                            selectedItem = index;
+                                        }, function () {
+                                            //下拉列表每一项的事件，鼠标离开的操作
+                                            $(this).removeClass('highlight');
+                                            //当鼠标离开时索引置-1，当作标记
+                                            selectedItem = -1;
+                                        })
+                                        .click(function () {
+                                            //鼠标单击下拉列表的这一项的话，就将这一项的值添加到输入框中
+                                            $searchInput3.val(term);
+                                            //清空并隐藏下拉列表
+                                            $autocomplete3.empty().hide();
+                                            $autocompbtn3.hide();
+                                        });
+                                });//事件注册完毕
+                                //设置下拉列表的位置，然后显示下拉列表
+                                if (liNum >= 6) {
+                                    $autocomplete3.css('height', '150px');
+                                } else {
+                                    $autocomplete3.css('height', 'auto');
+                                }
+                                var ypos = $searchInput3.position().top;
+                                var xpos = $searchInput3.position().left;
+                                $autocomplete3.css('width', $searchInput3.css('width'));
+                                $autocomplete3.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                                setSelectedItem(0);
+                                //显示下拉列表
+                                $autocomplete3.show();
+                                $autocompbtn3.show();
+                            }
+                        }
+                    });
+                };
+                //对输入框进行事件注册
+                $searchInput3
+                    .keyup(function (event) {
+                        //字母数字，退格，空格
+                        if (event.keyCode > 40 || event.keyCode == 8 || event.keyCode == 32) {
+                            //首先删除下拉列表中的信息
+                            $autocomplete3.empty().hide();
+                            $autocompbtn3.hide();
+                            clearTimeout(timeoutid);
+                            timeoutid = setTimeout(ajax_request, 1);
+                        } else if (event.keyCode == 38) {
+                            //上
+                            //selectedItem = -1 代表鼠标离开
+                            if (selectedItem == -1) {
+                                setSelectedItem($autocomplete3.find('li').length - 1);
+                            } else {
+                                //索引减1
+                                setSelectedItem(selectedItem - 1);
+                            }
+                            event.preventDefault();
+                        } else if (event.keyCode == 40) {
+                            //下
+                            //selectedItem = -1 代表鼠标离开
+                            $autocomplete3.scroll();
+                            if (selectedItem == -1) {
+                                setSelectedItem(0);
+                            } else {
+                                //索引加1
+                                setSelectedItem(selectedItem + 1);
+                            }
+                            event.preventDefault();
+                        }
+                    })
+                    .keypress(function (event) {
+                        //enter键
+                        if (event.keyCode == 13) {
+                            //列表为空或者鼠标离开导致当前没有索引值
+                            if ($autocomplete3.find('li').length == 0 || selectedItem == -1) {
+                                return;
+                            }
+                            $searchInput3.val($autocomplete3.find('li').eq(selectedItem).text());
+                            $autocomplete3.empty().hide();
+                            $autocompbtn3.hide();
+                            event.preventDefault();
+                        }
+                    })
+                    .keydown(function (event) {
+                        //esc键
+                        if (event.keyCode == 27) {
+                            $autocomplete3.empty().hide();
+                            $autocompbtn3.hide();
+                            event.preventDefault();
+                        }
+                    });
+                //注册窗口大小改变的事件，重新调整下拉列表的位置
+                $(window).resize(function () {
+                    var ypos = $searchInput3.position().top;
+                    var xpos = $searchInput3.position().left;
+                    $autocomplete3.css('width', $searchInput3.css('width'));
+                    $autocomplete3.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                });
+            });
+        </script>
+
+
+        <style type="text/css">
+            #search4 {
+                text-align: center;
+                position: relative;
+                display: inline-block;
+
+            }
+
+            .droplist4 {
+                border: 1px solid #9ACCFB;
+                background-color: white;
+                text-align: left;
+                overflow: auto;
+                position: relative;
+            }
+
+            .droplist4 li {
+                list-style-type: none;
+            }
+
+            .clickable {
+                cursor: default;
+            }
+
+            .highlight {
+                background-color: #9ACCFB;
+            }
+        </style>
+        <div id="search4">
+            <input type="text" id="search-text4" name="search-text4" autocomplete="off"/>
+            <div class="droplist4"></div>
+            <div class="droplist4-btn"><i class="fa fa-plus"></i></div>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                //取得div层
+                var $search4 = $('#search4');
+                //取得输入框JQuery对象
+                var $searchInput4 = $search4.find('#search-text4');
+
+                //创建自动完成的下拉列表，用于显示服务器返回的数据,插入在搜索按钮的后面，等显示的时候再调整位置
+                var $autocomplete4 = $(".droplist4").hide();
+                var $autocompbtn4 = $(".droplist4-btn").hide().insertAfter('.droplist4');
+                //清空下拉列表的内容并且隐藏下拉列表区
+                var clear = function () {
+                    $autocomplete4.empty().hide();
+                    $autocompbtn4.hide();
+                };
+                //注册事件，当输入框失去焦点的时候清空下拉列表并隐藏
+                $searchInput4.blur(function () {
+                    setTimeout(clear, 500);
+                });
+                //下拉列表中高亮的项目的索引，当显示下拉列表项的时候，移动鼠标或者键盘的上下键就会移动高亮的项目，想百度搜索那样
+                var selectedItem = null;
+                //timeout的ID
+                var timeoutid = null;
+                //设置下拉项的高亮背景
+                var setSelectedItem = function (item) {
+                    //更新索引变量
+                    selectedItem = item;
+                    //按上下键是循环显示的，小于0就置成最大的值，大于最大值就置成0
+                    if (selectedItem < 0) {
+                        selectedItem = $autocomplete4.find('li').length - 1;
+                    } else if (selectedItem > $autocomplete4.find('li').length - 1) {
+                        selectedItem = 0;
+                    }
+                    //首先移除其他列表项的高亮背景，然后再高亮当前索引的背景
+                    $autocomplete4.find('li').removeClass('highlight')
+                        .eq(selectedItem).addClass('highlight');
+                };
+                var ajax_request = function () {
+                    //ajax服务端通信
+                    $.ajax({
+                        'url': "http://localhost:8000/trainningcompletion/ajax_addtrainningrecord3/", //服务器的地址
+                        'data': JSON.stringify($searchInput4.val()), //参数
+                        'dataType': 'json', //返回数据类型
+                        'type': 'post', //请求类型
+                        'success': function (data) {
+                            console.log('success')
+
+                            console.log(data)
+
+                            if (data.length) {
+                                var liNum;
+                                //遍历data，添加到自动完成区
+                                $.each(data, function (index, term) {
+                                    liNum = index;
+                                    //创建li标签,添加到下拉列表中
+                                    $('<li>' + term + '</li>').appendTo($autocomplete4).addClass('clickable')
+                                        .hover(function () {
+                                            //下拉列表每一项的事件，鼠标移进去的操作
+                                            $(this).siblings().removeClass('highlight');
+                                            $(this).addClass('highlight');
+                                            selectedItem = index;
+                                        }, function () {
+                                            //下拉列表每一项的事件，鼠标离开的操作
+                                            $(this).removeClass('highlight');
+                                            //当鼠标离开时索引置-1，当作标记
+                                            selectedItem = -1;
+                                        })
+                                        .click(function () {
+                                            //鼠标单击下拉列表的这一项的话，就将这一项的值添加到输入框中
+                                            $searchInput4.val(term);
+                                            //清空并隐藏下拉列表
+                                            $autocomplete4.empty().hide();
+                                            $autocompbtn4.hide();
+                                        });
+                                });//事件注册完毕
+                                //设置下拉列表的位置，然后显示下拉列表
+                                if (liNum >= 6) {
+                                    $autocomplete4.css('height', '150px');
+                                } else {
+                                    $autocomplete4.css('height', 'auto');
+                                }
+                                var ypos = $searchInput4.position().top;
+                                var xpos = $searchInput4.position().left;
+                                $autocomplete4.css('width', $searchInput4.css('width'));
+                                $autocomplete4.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                                setSelectedItem(0);
+                                //显示下拉列表
+                                $autocomplete4.show();
+                                $autocompbtn4.show();
+                            }
+                        }
+                    });
+                };
+                //对输入框进行事件注册
+                $searchInput4
+                    .keyup(function (event) {
+                        //字母数字，退格，空格
+                        if (event.keyCode > 40 || event.keyCode == 8 || event.keyCode == 32) {
+                            //首先删除下拉列表中的信息
+                            $autocomplete4.empty().hide();
+                            $autocompbtn4.hide();
+                            clearTimeout(timeoutid);
+                            timeoutid = setTimeout(ajax_request, 1);
+                        } else if (event.keyCode == 38) {
+                            //上
+                            //selectedItem = -1 代表鼠标离开
+                            if (selectedItem == -1) {
+                                setSelectedItem($autocomplete4.find('li').length - 1);
+                            } else {
+                                //索引减1
+                                setSelectedItem(selectedItem - 1);
+                            }
+                            event.preventDefault();
+                        } else if (event.keyCode == 40) {
+                            //下
+                            //selectedItem = -1 代表鼠标离开
+                            $autocomplete4.scroll();
+                            if (selectedItem == -1) {
+                                setSelectedItem(0);
+                            } else {
+                                //索引加1
+                                setSelectedItem(selectedItem + 1);
+                            }
+                            event.preventDefault();
+                        }
+                    })
+                    .keypress(function (event) {
+                        //enter键
+                        if (event.keyCode == 13) {
+                            //列表为空或者鼠标离开导致当前没有索引值
+                            if ($autocomplete4.find('li').length == 0 || selectedItem == -1) {
+                                return;
+                            }
+                            $searchInput4.val($autocomplete4.find('li').eq(selectedItem).text());
+                            $autocomplete4.empty().hide();
+                            $autocompbtn4.hide();
+                            event.preventDefault();
+                        }
+                    })
+                    .keydown(function (event) {
+                        //esc键
+                        if (event.keyCode == 27) {
+                            $autocomplete4.empty().hide();
+                            $autocompbtn4.hide();
+                            event.preventDefault();
+                        }
+                    });
+                //注册窗口大小改变的事件，重新调整下拉列表的位置
+                $(window).resize(function () {
+                    var ypos = $searchInput4.position().top;
+                    var xpos = $searchInput4.position().left;
+                    $autocomplete4.css('width', $searchInput4.css('width'));
+                    $autocomplete4.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                });
+            });
+        </script>
+
+
+        <br>
+        <span style="color: #FF0000; ">*</span>机 长
+        <br>
+        <style type="text/css">
+            #search5 {
+                text-align: center;
+                position: relative;
+                display: inline-block;
+
+            }
+
+            .droplist5 {
+                border: 1px solid #9ACCFB;
+                background-color: white;
+                text-align: left;
+                overflow: auto;
+                position: relative;
+            }
+
+            .droplist5 li {
+                list-style-type: none;
+            }
+
+            .clickable {
+                cursor: default;
+            }
+
+            .highlight {
+                background-color: #9ACCFB;
+            }
+        </style>
+        <div id="search5">
+            <input type="text" id="search-text5" name="search-text5" autocomplete="off"/>
+            <div class="droplist5"></div>
+            <div class="droplist5-btn"><i class="fa fa-plus"></i></div>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                //取得div层
+                var $search5 = $('#search5');
+                //取得输入框JQuery对象
+                var $searchInput5 = $search5.find('#search-text5');
+
+                //创建自动完成的下拉列表，用于显示服务器返回的数据,插入在搜索按钮的后面，等显示的时候再调整位置
+                var $autocomplete5 = $(".droplist5").hide();
+                var $autocompbtn5 = $(".droplist5-btn").hide().insertAfter('.droplist5');
+                //清空下拉列表的内容并且隐藏下拉列表区
+                var clear = function () {
+                    $autocomplete5.empty().hide();
+                    $autocompbtn5.hide();
+                };
+                //注册事件，当输入框失去焦点的时候清空下拉列表并隐藏
+                $searchInput5.blur(function () {
+                    setTimeout(clear, 500);
+                });
+                //下拉列表中高亮的项目的索引，当显示下拉列表项的时候，移动鼠标或者键盘的上下键就会移动高亮的项目，想百度搜索那样
+                var selectedItem = null;
+                //timeout的ID
+                var timeoutid = null;
+                //设置下拉项的高亮背景
+                var setSelectedItem = function (item) {
+                    //更新索引变量
+                    selectedItem = item;
+                    //按上下键是循环显示的，小于0就置成最大的值，大于最大值就置成0
+                    if (selectedItem < 0) {
+                        selectedItem = $autocomplete5.find('li').length - 1;
+                    } else if (selectedItem > $autocomplete5.find('li').length - 1) {
+                        selectedItem = 0;
+                    }
+                    //首先移除其他列表项的高亮背景，然后再高亮当前索引的背景
+                    $autocomplete5.find('li').removeClass('highlight')
+                        .eq(selectedItem).addClass('highlight');
+                };
+                var ajax_request = function () {
+                    //ajax服务端通信
+                    $.ajax({
+                        'url': "http://localhost:8000/trainningcompletion/ajax_addtrainningrecord3/", //服务器的地址
+                        'data': JSON.stringify($searchInput5.val()), //参数
+                        'dataType': 'json', //返回数据类型
+                        'type': 'post', //请求类型
+                        'success': function (data) {
+                            console.log('success')
+
+                            console.log(data)
+
+                            if (data.length) {
+                                var liNum;
+                                //遍历data，添加到自动完成区
+                                $.each(data, function (index, term) {
+                                    liNum = index;
+                                    //创建li标签,添加到下拉列表中
+                                    $('<li>' + term + '</li>').appendTo($autocomplete5).addClass('clickable')
+                                        .hover(function () {
+                                            //下拉列表每一项的事件，鼠标移进去的操作
+                                            $(this).siblings().removeClass('highlight');
+                                            $(this).addClass('highlight');
+                                            selectedItem = index;
+                                        }, function () {
+                                            //下拉列表每一项的事件，鼠标离开的操作
+                                            $(this).removeClass('highlight');
+                                            //当鼠标离开时索引置-1，当作标记
+                                            selectedItem = -1;
+                                        })
+                                        .click(function () {
+                                            //鼠标单击下拉列表的这一项的话，就将这一项的值添加到输入框中
+                                            $searchInput5.val(term);
+                                            //清空并隐藏下拉列表
+                                            $autocomplete5.empty().hide();
+                                            $autocompbtn5.hide();
+                                        });
+                                });//事件注册完毕
+                                //设置下拉列表的位置，然后显示下拉列表
+                                if (liNum >= 6) {
+                                    $autocomplete5.css('height', '150px');
+                                } else {
+                                    $autocomplete5.css('height', 'auto');
+                                }
+                                var ypos = $searchInput5.position().top;
+                                var xpos = $searchInput5.position().left;
+                                $autocomplete5.css('width', $searchInput5.css('width'));
+                                $autocomplete5.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                                setSelectedItem(0);
+                                //显示下拉列表
+                                $autocomplete5.show();
+                                $autocompbtn5.show();
+                            }
+                        }
+                    });
+                };
+                //对输入框进行事件注册
+                $searchInput5
+                    .keyup(function (event) {
+                        //字母数字，退格，空格
+                        if (event.keyCode > 40 || event.keyCode == 8 || event.keyCode == 32) {
+                            //首先删除下拉列表中的信息
+                            $autocomplete5.empty().hide();
+                            $autocompbtn5.hide();
+                            clearTimeout(timeoutid);
+                            timeoutid = setTimeout(ajax_request, 1);
+                        } else if (event.keyCode == 38) {
+                            //上
+                            //selectedItem = -1 代表鼠标离开
+                            if (selectedItem == -1) {
+                                setSelectedItem($autocomplete5.find('li').length - 1);
+                            } else {
+                                //索引减1
+                                setSelectedItem(selectedItem - 1);
+                            }
+                            event.preventDefault();
+                        } else if (event.keyCode == 40) {
+                            //下
+                            //selectedItem = -1 代表鼠标离开
+                            $autocomplete5.scroll();
+                            if (selectedItem == -1) {
+                                setSelectedItem(0);
+                            } else {
+                                //索引加1
+                                setSelectedItem(selectedItem + 1);
+                            }
+                            event.preventDefault();
+                        }
+                    })
+                    .keypress(function (event) {
+                        //enter键
+                        if (event.keyCode == 13) {
+                            //列表为空或者鼠标离开导致当前没有索引值
+                            if ($autocomplete5.find('li').length == 0 || selectedItem == -1) {
+                                return;
+                            }
+                            $searchInput5.val($autocomplete5.find('li').eq(selectedItem).text());
+                            $autocomplete5.empty().hide();
+                            $autocompbtn5.hide();
+                            event.preventDefault();
+                        }
+                    })
+                    .keydown(function (event) {
+                        //esc键
+                        if (event.keyCode == 27) {
+                            $autocomplete5.empty().hide();
+                            $autocompbtn5.hide();
+                            event.preventDefault();
+                        }
+                    });
+                //注册窗口大小改变的事件，重新调整下拉列表的位置
+                $(window).resize(function () {
+                    var ypos = $searchInput5.position().top;
+                    var xpos = $searchInput5.position().left;
+                    $autocomplete5.css('width', $searchInput5.css('width'));
+                    $autocomplete5.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                });
+            });
+        </script>
+
+
+        <style type="text/css">
+            #search6 {
+                text-align: center;
+                position: relative;
+                display: inline-block;
+
+            }
+
+            .droplist5 {
+                border: 1px solid #9ACCFB;
+                background-color: white;
+                text-align: left;
+                overflow: auto;
+                position: relative;
+            }
+
+            .droplist6 li {
+                list-style-type: none;
+            }
+
+            .clickable {
+                cursor: default;
+            }
+
+            .highlight {
+                background-color: #9ACCFB;
+            }
+        </style>
+        <div id="search6">
+            <input type="text" id="search-text6" name="search-text6" autocomplete="off"/>
+            <div class="droplist6"></div>
+            <div class="droplist6-btn"><i class="fa fa-plus"></i></div>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                //取得div层
+                var $search6 = $('#search6');
+                //取得输入框JQuery对象
+                var $searchInput6 = $search6.find('#search-text6');
+
+                //创建自动完成的下拉列表，用于显示服务器返回的数据,插入在搜索按钮的后面，等显示的时候再调整位置
+                var $autocomplete6 = $(".droplist6").hide();
+                var $autocompbtn6 = $(".droplist6-btn").hide().insertAfter('.droplist6');
+                //清空下拉列表的内容并且隐藏下拉列表区
+                var clear = function () {
+                    $autocomplete6.empty().hide();
+                    $autocompbtn6.hide();
+                };
+                //注册事件，当输入框失去焦点的时候清空下拉列表并隐藏
+                $searchInput6.blur(function () {
+                    setTimeout(clear, 500);
+                });
+                //下拉列表中高亮的项目的索引，当显示下拉列表项的时候，移动鼠标或者键盘的上下键就会移动高亮的项目，想百度搜索那样
+                var selectedItem = null;
+                //timeout的ID
+                var timeoutid = null;
+                //设置下拉项的高亮背景
+                var setSelectedItem = function (item) {
+                    //更新索引变量
+                    selectedItem = item;
+                    //按上下键是循环显示的，小于0就置成最大的值，大于最大值就置成0
+                    if (selectedItem < 0) {
+                        selectedItem = $autocomplete6.find('li').length - 1;
+                    } else if (selectedItem > $autocomplete6.find('li').length - 1) {
+                        selectedItem = 0;
+                    }
+                    //首先移除其他列表项的高亮背景，然后再高亮当前索引的背景
+                    $autocomplete6.find('li').removeClass('highlight')
+                        .eq(selectedItem).addClass('highlight');
+                };
+                var ajax_request = function () {
+                    //ajax服务端通信
+                    $.ajax({
+                        'url': "http://localhost:8000/trainningcompletion/ajax_addtrainningrecord3/", //服务器的地址
+                        'data': JSON.stringify($searchInput6.val()), //参数
+                        'dataType': 'json', //返回数据类型
+                        'type': 'post', //请求类型
+                        'success': function (data) {
+                            console.log('success')
+
+                            console.log(data)
+
+                            if (data.length) {
+                                var liNum;
+                                //遍历data，添加到自动完成区
+                                $.each(data, function (index, term) {
+                                    liNum = index;
+                                    //创建li标签,添加到下拉列表中
+                                    $('<li>' + term + '</li>').appendTo($autocomplete6).addClass('clickable')
+                                        .hover(function () {
+                                            //下拉列表每一项的事件，鼠标移进去的操作
+                                            $(this).siblings().removeClass('highlight');
+                                            $(this).addClass('highlight');
+                                            selectedItem = index;
+                                        }, function () {
+                                            //下拉列表每一项的事件，鼠标离开的操作
+                                            $(this).removeClass('highlight');
+                                            //当鼠标离开时索引置-1，当作标记
+                                            selectedItem = -1;
+                                        })
+                                        .click(function () {
+                                            //鼠标单击下拉列表的这一项的话，就将这一项的值添加到输入框中
+                                            $searchInput6.val(term);
+                                            //清空并隐藏下拉列表
+                                            $autocomplete6.empty().hide();
+                                            $autocompbtn6.hide();
+                                        });
+                                });//事件注册完毕
+                                //设置下拉列表的位置，然后显示下拉列表
+                                if (liNum >= 6) {
+                                    $autocomplete6.css('height', '150px');
+                                } else {
+                                    $autocomplete6.css('height', 'auto');
+                                }
+                                var ypos = $searchInput6.position().top;
+                                var xpos = $searchInput6.position().left;
+                                $autocomplete6.css('width', $searchInput6.css('width'));
+                                $autocomplete6.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                                setSelectedItem(0);
+                                //显示下拉列表
+                                $autocomplete6.show();
+                                $autocompbtn6.show();
+                            }
+                        }
+                    });
+                };
+                //对输入框进行事件注册
+                $searchInput6
+                    .keyup(function (event) {
+                        //字母数字，退格，空格
+                        if (event.keyCode > 40 || event.keyCode == 8 || event.keyCode == 32) {
+                            //首先删除下拉列表中的信息
+                            $autocomplete6.empty().hide();
+                            $autocompbtn6.hide();
+                            clearTimeout(timeoutid);
+                            timeoutid = setTimeout(ajax_request, 1);
+                        } else if (event.keyCode == 38) {
+                            //上
+                            //selectedItem = -1 代表鼠标离开
+                            if (selectedItem == -1) {
+                                setSelectedItem($autocomplete6.find('li').length - 1);
+                            } else {
+                                //索引减1
+                                setSelectedItem(selectedItem - 1);
+                            }
+                            event.preventDefault();
+                        } else if (event.keyCode == 40) {
+                            //下
+                            //selectedItem = -1 代表鼠标离开
+                            $autocomplete6.scroll();
+                            if (selectedItem == -1) {
+                                setSelectedItem(0);
+                            } else {
+                                //索引加1
+                                setSelectedItem(selectedItem + 1);
+                            }
+                            event.preventDefault();
+                        }
+                    })
+                    .keypress(function (event) {
+                        //enter键
+                        if (event.keyCode == 13) {
+                            //列表为空或者鼠标离开导致当前没有索引值
+                            if ($autocomplete6.find('li').length == 0 || selectedItem == -1) {
+                                return;
+                            }
+                            $searchInput6.val($autocomplete6.find('li').eq(selectedItem).text());
+                            $autocomplete6.empty().hide();
+                            $autocompbtn6.hide();
+                            event.preventDefault();
+                        }
+                    })
+                    .keydown(function (event) {
+                        //esc键
+                        if (event.keyCode == 27) {
+                            $autocomplete6.empty().hide();
+                            $autocompbtn6.hide();
+                            event.preventDefault();
+                        }
+                    });
+                //注册窗口大小改变的事件，重新调整下拉列表的位置
+                $(window).resize(function () {
+                    var ypos = $searchInput6.position().top;
+                    var xpos = $searchInput6.position().left;
+                    $autocomplete6.css('width', $searchInput6.css('width'));
+                    $autocomplete6.css({'position': 'relative', 'left': xpos + "px", 'top': ypos + "px"});
+                });
+            });
+        </script>
+
+
         {# 培 训 对 象 <br>#}
-         {#<select name="" id="lang1" style="width:50%;"></select>#}
-         {#<ul id="ck1">#}
-          {#   {% for i in data %}#}
-           {#      <li>#}
-            {#         <label><input type="checkbox">{{ i.atcName }}</label>#}
-             {#    </li>#}
-             {#{% endfor %}#}
+        {#<select name="" id="lang1" style="width:50%;"></select>#}
+        {#<ul id="ck1">#}
+        {#   {% for i in data %}#}
+        {#      <li>#}
+        {#         <label><input type="checkbox">{{ i.atcName }}</label>#}
+        {#    </li>#}
+        {#{% endfor %}#}
         {# </ul>#}
-         {#<br>#}
+        {#<br>#}
 
         {#机 长 <br>#}
 
         {#<select name="" id="lang2" style="width:50%;"></select>#}
         {#<ul id="ck2">#}
-         {#   {% for i in data %}#}
-         {#       <li>#}
-          {#          <label><input type="checkbox">{{ i.atcName }}</label>#}
-           {#     </li>#}
-           {# {% endfor %}#}
-       {# </ul>#}
-       {# <br>#}
-
-        培训完成时间 <br>从<input type="text" style="width:23.5%;" id="data15" name="data15" placeholder="" value=""
-                           required readonly>
-        到<input type="text" style="width:23.2%;" id="data151" name="data151" placeholder="" value=""
-                required readonly>
+        {#   {% for i in data %}#}
+        {#       <li>#}
+        {#          <label><input type="checkbox">{{ i.atcName }}</label>#}
+        {#     </li>#}
+        {# {% endfor %}#}
+        {# </ul>#}
+        {# <br>#}
+        <br>
+        培训完成时间 <br>
+        <span style="color: #FF0000; ">*</span>从<input type="text" style="width:23.5%;" id="data15" name="data15"
+                                                       placeholder="" value=""
+                                                       required readonly>
+        <span style="color: #FF0000; ">*</span>到<input type="text" style="width:23.2%;" id="data151" name="data151"
+                                                       placeholder="" value=""
+                                                       required readonly>
         <br>
         备注 <br><input type="text" style="width:50%;" id="data16" name="data16" placeholder="" value=""><br>
-{#        <label>Select your preferred code editor:</label>#}
+        {#        <label>Select your preferred code editor:</label>#}
 
 
         <!-- XDSoft DateTimePicker  时间选择 -->
@@ -241,7 +1413,9 @@
             {#        todayButton: true,#}
             {##}
             {#    });#}
-            {#});#}
+            {#})
+            ;
+            #}
 
             {#$(function () {#}
             {#    $("#data141").datetimepicker({#}
@@ -250,12 +1424,14 @@
             {#        formatTime:	'H:i',#}
             {#        todayButton: true,#}
             {#    });#}
-            {#});#}
-             $(function () {
+            {#})
+            ;
+            #}
+            $(function () {
                 $("#data15").datetimepicker({
 
                     format: 'Y-m-d H:i',
-                    formatTime:	'H:i',
+                    formatTime: 'H:i',
                     todayButton: true,
                 });
             });
@@ -263,7 +1439,7 @@
                 $("#data151").datetimepicker({
 
                     format: 'Y-m-d H:i',
-                    formatTime:	'H:i',
+                    formatTime: 'H:i',
                     todayButton: true,
                 });
             });
@@ -334,12 +1510,11 @@
         </script>
 
 
-
     </div>
-<br>
-<div>
-    <button id="send1" class="btn1" style="width:50%;height:50% "type="submit" onmousemove="saveplan()">确定</button>
-</div>
+    <br>
+    <div>
+        <button id="send1" class="btn1" style="width:50%;height:50% " type="submit" onmousemove="saveplan()">确定</button>
+    </div>
 
 
 </form>
@@ -363,11 +1538,11 @@
 
             {#请求成功回调函数#}
             success: function (data) {
-                data = JSON.parse(data);
+                {#data = JSON.parse(data);#}
 
 
-                alert(data);
-                alert("请求成功")
+                {#alert(data);#}
+                {#alert("请求成功")#}
             },
             {#请求失败回调函数#}
             error: function () {
@@ -385,11 +1560,11 @@
 
             {#请求成功回调函数#}
             success: function (data) {
-                data = JSON.parse(data);
+                {#data = JSON.parse(data);#}
 
 
-                alert(data);
-                alert("请求成功")
+                {#alert(data);#}
+                {#alert("请求成功")#}
             },
             {#请求失败回调函数#}
             error: function () {
@@ -400,46 +1575,48 @@
 
     });
 
-  function showHint(str) {
-      document.getElementById("data050").innerText = str;
-       var List = {{ plan|safe }};
+    function showHint(str) {
+        document.getElementById("data050").innerText = str;
+        var List = {{ plan|safe }};
         var add = document.getElementById("data050");
-        add.innerHTML ="";
-        var op="";
-       op=List[str-1][2].toString();
-       op=op.split('\r\n');
-       add.innerHTML ="";
-            for (var z = 0; z < op.length; z++){
-              add.innerHTML += "<input type=\"checkbox\" id='"+op[z]+"' name=\"内容\" value='"+op[z]+"' checked=\"checked\" >"+op[z]+"<br>";
-            }
+        add.innerHTML = "";
+        var op = "";
+        op = List[str - 1][2].toString();
+        op = op.split('\r\n');
+        add.innerHTML = "";
+        for (var z = 0; z < op.length; z++) {
+            add.innerHTML += "<input type=\"checkbox\" id='" + op[z] + "' name=\"内容\" value='" + op[z] + "' checked=\"checked\" >" + op[z] + "<br>";
+        }
 
-      }
-
- function saveplan() {
- var req = document.getElementsByName("内容");
- var req1=document.getElementById("data051").value.replace(/(^\s*)|(\s*$)/g,"");
- var req2=document.getElementById("data052").value.replace(/(^\s*)|(\s*$)/g,"");
- var req3=document.getElementById("data053").value.replace(/(^\s*)|(\s*$)/g,"");
- var req4=document.getElementById("data054").value.replace(/(^\s*)|(\s*$)/g,"");
-    var value = new Array();
-    for (var i = 0; i < req.length; i++) {
-        if (req[i].checked)
-            value.push(req[i].value);
     }
-    var add = document.getElementById("data05");
-    t="";
-     for (var z = 0; z < value.length; z++){
-         t=t+value[z]+"\n";
-     }
-     s=t+req1+'\n'+req2+'\n'+req3+'\n'+req4 ;
-     s=s.replace(/^\s+|\s+$/g,'');
-    add.innerText = s ;
- }
 
-var date = new Date();
-  var m = date.getMonth()+1;
- $('#mon').val(m);
+    function saveplan() {
+        var req = document.getElementsByName("内容");
+        var req1 = document.getElementById("data051").value.replace(/(^\s*)|(\s*$)/g, "");
+        var req2 = document.getElementById("data052").value.replace(/(^\s*)|(\s*$)/g, "");
+        var req3 = document.getElementById("data053").value.replace(/(^\s*)|(\s*$)/g, "");
+        var req4 = document.getElementById("data054").value.replace(/(^\s*)|(\s*$)/g, "");
+        var value = new Array();
+        for (var i = 0; i < req.length; i++) {
+            if (req[i].checked)
+                value.push(req[i].value);
+        }
+        var add = document.getElementById("data05");
+        t = "";
+        for (var z = 0; z < value.length; z++) {
+            t = t + value[z] + "\n";
+        }
+        s = t + req1 + '\n' + req2 + '\n' + req3 + '\n' + req4;
+        s = s.replace(/^\s+|\s+$/g, '');
+        add.innerText = s;
+    }
+
+    var date = new Date();
+    var m = date.getMonth() + 1;
+    $('#mon').val(m);
 </script>
+
+
 </body>
 
 

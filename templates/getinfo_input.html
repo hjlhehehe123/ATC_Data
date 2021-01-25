@@ -1,0 +1,1100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    {#    必备的三个#}
+    <script src="{% static 'handsontable.full.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'handsontable.full.css' %}"/>
+    <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery.cookie.js' %}"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <style>
+        #t1 th {
+            background-color: #F0F0F0;
+        }
+
+        #t2 td {
+            text-align: left;
+            width: 100px;
+        }
+
+        #t2 th {
+            text-align: left;
+        }
+    </style>
+    <style>
+        table, table tr th, table tr td {
+            border: 1px solid #A9A9A9;
+        }
+
+        table {
+            text-align: center;
+            border-collapse: collapse;
+            padding: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+{#<br><br>#}
+
+<button onclick="addRow('test03')">新增行</button>
+<form class="form-signin" action="{% url 'getinfo_save' %}" method="post">
+    {% csrf_token %}
+    <button class="layui-btn" type="submit" id="send1">保存</button>
+    <div>
+
+        <table border="1" id="t1" border="0" align="left" width="1060px">
+
+            <tr>
+                <td colspan="7" bgcolor="#A9A9A9" align="center">
+                    <input readonly="readonly" type="text" id="data_01_01" name="data_01_01"
+                           placeholder=""
+                           value={{ 选的人员 }}>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="8" width="150px"><p>
+                    {#                    <img height="130" width="100"#}
+                    {#                                                      src="https://i02piccdn.sogoucdn.com/a0a5a9f200f8a9fa"/>#}
+                    {#                    src="/static/{{ data_01_01 }}.jpg"/>#}
+                </p></td>
+                <th colspan="1">曾用名:</th>
+                <td colspan="1">
+                    <input type="text" id="data_02_01" name="data_02_01" placeholder=""
+                           value={{ data_02_01 }}>
+                </td>
+                <td rowspan="12" colspan="4"><p><img border="0" height="300" width="400"
+                                                     src="/static/{{ data_01_01 }}_01.jpg"/></p></td>
+            </tr>
+
+            <tr>
+                <th colspan="1">性别:</th>
+                <td colspan="1">
+                    <input type="text" id="data_03_01" name="data_03_01" placeholder=""
+                           value={{ data_03_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">身份证:</th>
+                <td colspan="1">
+                    <input type="text" id="data_04_01" name="data_04_01" placeholder=""
+                           value={{ data_04_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">民族:</th>
+                <td colspan="1">
+                    <input type="text" id="data_05_01" name="data_05_01" placeholder=""
+                           value={{ data_05_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">出生日期:</th>
+                <td colspan="1">
+                    <input type="text" id="data_06_01" name="data_06_01" placeholder=""
+                           value={{ data_06_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">政治面貌:</th>
+                <td colspan="1">
+                    <input type="text" id="data_07_01" name="data_07_01" placeholder=""
+                           value={{ data_07_01 }}>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">机构:</th>
+                <td colspan="1">
+                    <input type="text" id="data_08_01" name="data_08_01" placeholder=""
+                           value={{ data_08_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">地区:</th>
+                <td colspan="1">
+                    <input type="text" id="data_09_01" name="data_09_01" placeholder=""
+                           value={{ data_09_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">单位:</th>
+                <td colspan="2">
+                    <input type="text" id="data_10_01" name="data_10_01" placeholder=""
+                           value={{ data_10_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">部门:</th>
+                <td colspan="2">
+                    <input type="text" id="data_11_01" name="data_11_01" placeholder=""
+                           value={{ data_11_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">参加工作时间:</th>
+                <td colspan="2">
+                    <input type="text" id="data_12_01" name="data_12_01" placeholder=""
+                           value={{ data_12_01 }}>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="1">职称:</th>
+                <td colspan="2">
+                    <input type="text" id="data_13_01" name="data_13_01" placeholder=""
+                           value={{ data_13_01 }}>
+
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="1">职务:</th>
+                <td colspan="2">
+                    <input type="text" id="data_14_01" name="data_14_01" placeholder=""
+                           value={{ data_14_01 }}>
+
+                </td>
+                <th width="100px">状态:</th>
+                <td bgcolor="green" colspan="3"></td>
+                {#    <input  type="text"  id="data_01_01" name="data_01_01" placeholder="" value={{ data_01_01 }}>#}
+            </tr>
+
+        </table>
+    </div>
+    <br>
+</form>
+
+<div>
+    <table id="" border="1" id="test02" border="0" align="left" bgcolor="#F0F0F0" width="1060px">
+        <tr>
+            <th>关键指标</th>
+        </tr>
+        <tr>
+            <td>通话用语</td>
+            <td>雷达监控</td>
+            <td>间隔效率</td>
+            <td>通报协调</td>
+            <td>管制程序</td>
+            <td>特情处置</td>
+            <td>其他</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="data_02_02" name="data_02_02" placeholder=""
+                       value={{ data_02_02 }}>
+            </td>
+            <td>
+                <input type="text" id="data_03_02" name="data_03_02" placeholder=""
+                       value={{ data_03_02 }}>
+            </td>
+            <td>
+                <input type="text" id="data_04_02" name="data_04_02" placeholder=""
+                       value={{ data_04_02 }}>
+            </td>
+            <td>
+                <input type="text" id="data_05_02" name="data_05_02" placeholder=""
+                       value={{ data_05_02 }}>
+            </td>
+            <td>
+                <input type="text" id="data_06_02" name="data_06_02" placeholder=""
+                       value={{ data_06_02 }}>
+            </td>
+            <td>
+                <input type="text" id="data_07_02" name="data_07_02" placeholder=""
+                       value={{ data_07_02 }}>
+            </td>
+            <td>
+                <input style="border-style:none" type="text" id="data_08_02" name="data_08_02" placeholder=""
+                       value={{ data_08_02 }}>
+            </td>
+
+        </tr>
+    </table>
+</div>
+<br>
+
+<button onclick="addRow('test03')">新增行</button>
+<form class="form-signin" action="{% url 'getinfo_save' %}" method="post">
+    {% csrf_token %}
+    <button class="layui-btn" type="submit" id="send1">保存</button>
+    <table border="1" id="test03" border="0" align="left" bgcolor="#F0F0F0">
+        <thead>
+        <tr>
+            <th>执照信息</th>
+        </tr>
+        <thead>
+        <tbody>
+        <tr>
+            <td>执照编号</td>
+            <td>变更情况</td>
+            <td>类标签注</td>
+            <td>吊销原因</td>
+            <td>依据年份</td>
+            <td>签注依据</td>
+            <td>获取时间</td>
+        </tr>
+        {#        {% for i in a03 %}#}
+        {##}
+        {#            <tr>#}
+        {#                <td>#}
+        {#                    <input type="text" id="data_02_03" name="data_02_03" placeholder=""#}
+        {#                           value={{ i.0 }}>#}
+        {#                </td>#}
+        {#                <td>#}
+        {#                    <input type="text" id="data_03_03" name="data_03_03" placeholder=""#}
+        {#                           value={{ i.1 }}>#}
+        {#                </td>#}
+        {#                <td>#}
+        {#                    <input type="text" id="data_04_03" name="data_04_03" placeholder=""#}
+        {#                           value={{ i.2 }}>#}
+        {#                </td>#}
+        {#                <td>#}
+        {#                    <input type="text" id="data_05_03" name="data_05_03" placeholder=""#}
+        {#                           value={{ i.3 }}>#}
+        {#                </td>#}
+        {#                <td><input type="text" id="data_06_03" name="data_06_03" placeholder=""#}
+        {#                           value={{ i.4 }}>#}
+        {#                </td>#}
+        {#                <td>#}
+        {#                    <input type="text" id="data_07_03" name="data_07_03" placeholder=""#}
+        {#                           value={{ i.5 }}>#}
+        {#                </td>#}
+        {#                <td>#}
+        {#                    <input type="text" id="data_08_03" name="data_08_03" placeholder=""#}
+        {#                           value={{ i.6 }}>#}
+        {#                </td>#}
+        {#                <td>#}
+        {#                    <a>修改</a>#}
+        {#                    <a>删除</a>#}
+        {#                </td>#}
+        {#            </tr>#}
+        {##}
+        {#        {% endfor %}#}
+        </tbody>
+    </table>
+</form>
+<br>
+<table border="1" id="test04" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>管制员等级</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>管制职级</td>
+        <td>管制等级</td>
+        <td>评定时间</td>
+        <td>评定依据</td>
+        <td>聘用状态</td>
+        <td>聘用时间</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test05" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>英语等级信息</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td>英语类别</td>
+        <td>英语等级</td>
+        <td>获取时间</td>
+        <td>获取依据</td>
+        <td>证书编号</td>
+    </tr>
+
+    </tbody>
+</table>
+<br>
+
+<table border="1" id="test06" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>体检合格证</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td>合格证级别</td>
+        <td>编号</td>
+        <td>颁发时间</td>
+        <td>依据</td>
+        <td>限制条件</td>
+        <td>备注</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test07" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>赴外培训</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>培训项目</td>
+        <td>组织单位</td>
+        <td>培训地点</td>
+        <td>培训类别</td>
+        <td>开始时间</td>
+        <td>结束时间</td>
+        <td>任务批件</td>
+    </tr>
+    </tbody>
+</table>
+
+<<br>
+<br>
+
+<table border="1" id="test08" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>岗位培训</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>培训项目</td>
+        <td>组织单位</td>
+        <td>培训地点</td>
+        <td>培训类别</td>
+        <td>培训内容</td>
+        <td>培训执照类别签注</td>
+        <td>依据</td>
+        <td>开始时间</td>
+        <td>结束时间</td>
+        <td>理论课时数</td>
+        <td>模拟机课时数</td>
+        <td>操作课时数</td>
+        <td>理论考核方式</td>
+        <td>模拟机考核方式</td>
+        <td>操作考核方式</td>
+        <td>培训教员</td>
+        <td>模拟机培训方式</td>
+        <td>理论考核成绩</td>
+        <td>模拟机考核分数</td>
+        <td>操作考核分数</td>
+        <td>总分</td>
+    </tr>
+    </tbody>
+
+
+</table>
+
+
+<br>
+<table border="1" id="test09" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>放单考核</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>考核时间</td>
+        <td>当前放单</td>
+        <td>依据</td>
+        <td>放单考核</td>
+        <td>放单说明</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test10" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>执照检查</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>考核时间</td>
+        <td>类别签注</td>
+        <td>基础理论成绩</td>
+        <td>专业理论成绩</td>
+        <td>放单说明</td>
+        <td>技能考核成绩</td>
+        <td>检查员姓名</td>
+        <td>检查员身份证</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test11" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>特殊技能信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>技能类别</td>
+        <td>获取时间</td>
+        <td>依据</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test12" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>奖励信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>奖励名称</td>
+        <td>奖励级别</td>
+        <td>获取时间</td>
+        <td>获取依据</td>
+    </tr>
+    </tbody>
+
+
+</table>
+<br>
+
+
+<br>
+<table border="1" id="test13" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>惩罚信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>处罚原因</td>
+        <td>专业处罚</td>
+        <td>暂停时间</td>
+        <td>事件发生时间</td>
+        <td>处罚依据</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test14" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>管制教员信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>教员级别</td>
+        <td>教员类别</td>
+        <td>聘任时间</td>
+        <td>解聘时间</td>
+        <td>依据</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test15" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>检查员信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>检查员类别</td>
+        <td>委任时间</td>
+        <td>终止委任时间</td>
+    </tr>
+    </thead>
+    <tbody>
+</table>
+
+<br>
+<table border="1" id="test16" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>检查员考核</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>检查员类别</td>
+        <td>考核时间</td>
+        <td>考核结果</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test17" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>爱岗敬业信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>类别</td>
+        <td>影响范围</td>
+        <td>采用时间</td>
+        <td>名称</td>
+        <td>标题</td>
+        <td>文号</td>
+        <td>概要</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<table border="1" id="test18" border="0" align="left" bgcolor="#F0F0F0">
+    <thead>
+    <tr>
+        <th>职称信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>职称级别</td>
+        <td>获取时间</td>
+        <td>依据</td>
+        <td>聘任情况</td>
+        <td>聘任详情</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+{#<label for="account" class="sr-only" style="">执照信息</label>#}
+{#<br>#}
+{##}
+{#<div id="table_03"></div>#}
+{#<label for="account" class="sr-only">管制员等级</label>#}
+{##}
+{#<div id="table_04"></div>#}
+{#<label for="account" class="sr-only">英语等级信息</label>#}
+{#<div id="table_05"></div>#}
+{#<label for="account" class="sr-only">体检合格证</label>#}
+{#<div style="width:1060px; height:200px; overflow:scroll;">#}
+{#    <div id="table_06"></div>#}
+{#</div>#}
+{##}
+{##}
+{#<label for="account" class="sr-only">赴外培训</label>#}
+{##}
+{#<div style="width:1060px; height:200px; overflow:scroll;">#}
+{#    <div id="table_07"></div>#}
+{#</div>#}
+{#<label for="account" class="sr-only">岗位培训</label>#}
+{#<div style="width:1060px; height:400px; overflow:scroll;">#}
+{#    <div id="table_08"></div>#}
+{#</div>#}
+{#<label for="account" class="sr-only">放单考核</label>#}
+{#<div id="table_09"></div>#}
+{#<label for="account" class="sr-only">执照检查</label>#}
+{#<div style="width:1060px; height:200px; overflow:scroll;">#}
+{#    <div id="table_10"></div>#}
+{#</div>#}
+{#<label for="account" class="sr-only">特殊技能信息</label>#}
+{##}
+{#<div style="width:1060px; height:200px; overflow:scroll;">#}
+{#    <div id="table_11"></div>#}
+{#</div>#}
+{##}
+{#<label for="account" class="sr-only">奖励信息</label>#}
+{#<div style="width:1060px; height:200px; overflow:scroll;">#}
+{#    <div id="table_12"></div>#}
+{#</div>#}
+{#<label for="account" class="sr-only">惩罚信息</label>#}
+{##}
+{#<div style="width:1060px; height:200px; overflow:scroll;">#}
+{#    <div id="table_13"></div>#}
+{#</div>#}
+{##}
+{#<label for="account" class="sr-only">管制教员信息</label>#}
+{#<div id="table_14"></div>#}
+{#<label for="account" class="sr-only">检查员信息</label>#}
+{#<div id="table_15"></div>#}
+{#<label for="account" class="sr-only">检查员考核</label>#}
+{#<div id="table_16"></div>#}
+{#<label for="account" class="sr-only">爱岗敬业信息</label>#}
+{#<div id="table_17"></div>#}
+{#<label for="account" class="sr-only">职称信息</label>#}
+{#<div id="table_18">#}
+{##}
+
+<script type="text/javascript">
+    var y03 = {{ a03 | safe}};
+    var y04 = {{ a04 | safe}};
+    var y05 = {{ a05 | safe}};
+    var y06 = {{ a06 | safe}};
+    var y07 = {{ a07 | safe}};
+    var y08 = {{ data_00_08 | safe}};
+    var y09 = {{ a09 | safe}};
+    var y10 = {{ a10 | safe}};
+    var y11 = {{ a11 | safe}};
+    var y12 = {{ a12 | safe}};
+    var y13 = {{ a13 | safe}};
+    var y14 = {{ a14 | safe}};
+    var y15 = {{ a15 | safe}};
+    var y16 = {{ a16 | safe}};
+    var y17 = {{ a17 | safe}};
+    var y18 = {{ a18 | safe}};
+
+    var x03 = "test03";
+    var x04 = "test04";
+    var x05 = "test05";
+    var x06 = "test06";
+    var x07 = "test07";
+    var x08 = "test08";
+    var x09 = "test09";
+    var x10 = "test10";
+    var x11 = "test11";
+    var x12 = "test12";
+    var x13 = "test13";
+    var x14 = "test14";
+    var x15 = "test15";
+    var x16 = "test16";
+    var x17 = "test17";
+    var x18 = "test18";
+
+    var a03 = "03";
+    var a04 = "04";
+    var a05 = "05";
+    var a06 = "06";
+    var a07 = "07";
+    var a08 = "08";
+    var a09 = "09";
+    var a10 = "10";
+    var a11 = "11";
+    var a12 = "12";
+    var a13 = "13";
+    var a14 = "14";
+    var a15 = "15";
+    var a16 = "16";
+    var a17 = "17";
+    var a18 = "18";
+
+
+    function submit1(x) {
+
+        $("#" + x).submit();
+
+
+    }
+
+    function create_td(y, x1, x2) {
+
+
+        console.log("a06");
+        console.log(y06);
+        console.log("y");
+        console.log(y);
+        var z = 0;
+        {#for (let i of y)相当于python for  in   ，但是js for in  是遍历index#}
+        for (let i of y) {
+            var str1 = "";
+            var x = 0;
+            {#console.log("i");#}
+            {#console.log(i);#}
+            for (let i1 of i) {
+                str1 = str1 +
+                    "<td id=td_b" + x + "_" + z + "_" + x2 + " " + "> <input  type=\"text\" id=b" + x + "_" + z + "_" + x2 + " " + " name=b" + x + "_" + z + "_" + x2 + " "
+                    + " placeholder=\"\"\n" + "value=" + i1 + "></td>"
+                {#console.log("i1");#}
+                {#console.log(i1);#}
+                x = x + 1
+            }
+            var str = "<tr> " + str1 +
+                "<td><a>删除</a></td></tr>";
+            $("#" + x1 + " tbody").append(str);
+            z = z + 1
+        }
+
+
+        var rowindex = $("#" + x1 + " tbody tr").length - 1;
+        var arrs = []
+
+        {#for (let i of y) {#}
+        {#    var arrs1=[];#}
+        {#    for (var j = 0; j <i.length ; j++) {#}
+        {#        arrs1[j]=i.index(j)#}
+        {##}
+        {#    }#}
+        {##}
+        {##}
+        {#}#}
+            var str3 = "";
+            var str4 = y[1];
+            for (var i = 0;
+                 i < x
+                ; i++) {
+
+                str3 = str3 +
+                    "<td id=td_b" + i + "_" + rowindex + "_" + x2 + " " + "> <input  type=\"text\" id=b" + i + "_" + rowindex + "_" + x2 + " " + " name=b" + i + "_" + rowindex + "_" + x2 + " "
+                    + " placeholder=\"\"\n" + "value=" + "" + "></td>"
+
+
+            }
+
+            var str2 = "<tr> " + str3 +
+                "<td><a>删除</a></td></tr>";
+            $("#" + x1 + " tbody").append(str2);
+
+
+            {#var str = "<tr> " +#}
+            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + "0" + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+            {#    "></td>" +#}
+            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+            {#    "></td>" +#}
+            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+            {#    "></td>" +#}
+            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+            {#    "></td>" +#}
+            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+            {#    "></td>" +#}
+            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+            {#    "></td>" +#}
+            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+            {#    "></td>" +#}
+            {#    "<td><a>删除</a></td></tr>";#}
+            {#$("#test tbody").append(str);#}
+
+
+            registerClick(x1);//注册表格操作点击事件
+
+
+        }
+
+
+        $(document).ready(function () {
+
+// 任何需要执行的js特效
+
+
+                {#var y = {{ a03 | safe}};#}
+                {#var x1 = "test";#}
+                {#var x2 = 3;#}
+                {#create_td(y, x1, x2);#}
+
+
+                create_td(y03, x03, a03);
+                create_td(y04, x04, a04);
+
+                str4 =
+                    {#"<form enctype=\"multipart/form-data\" action=\"{% url 'upload' %}\" method=\"POST\">\n" +#}
+                    " <input type=\"file\" name=\"myfile\"/>\n" +
+                    " <button id=\"input_01\" type=\"submit\" value=\"上传\">上传</button>\n"
+                {#" </form>"#}
+                ;
+                for (var i = 0;
+                     i < y04.length
+                    ; i++) {
+                    $("#" + "td_b3_" + i + "_" + "04").append(str4);
+                    $("#" + "b3_" + i + "_" + "04").remove()
+
+
+                }
+
+                var name = "{{ 选的人员  | safe}}";
+                $('#input_01').off("click").on("click", function () {
+                        console.log("sdfghgfdsdfgh ")
+                        var file = $('input[type=file]')[0].files[0];
+                        var csrf = $('input[name=csrfmiddlewaretoken]').val();
+                        var formdata = new FormData();
+
+                        formdata.append('username', name);
+                        formdata.append('file_obj', file);
+                        formdata.append('csrfmiddlewaretoken', csrf);
+                        $.ajax({
+                                url: "{% url 'upload' %}",
+                                type: 'post',
+                                data: formdata,
+                                processData: false, // 不处理数据( 必须有)
+                                contentType: false,  //不设置内容类型 ( 必须要)
+                                header: {
+                                    'X-CSRFToken': $.cookie('csrftoken'),
+                                },
+                                success: function (res) {
+                                    console.log("success");
+                                    console.log(res);
+
+
+                                    if (res.length) {
+
+                                        var file_list = res[0];
+                                        var ok = res[1];
+                                        var a = JSON.parse(res);
+                                        var selectedItem = null;
+                                        $.each(a, function (index, term) {
+
+
+                                            console.log("hahhahahah");
+                                            console.log(a);
+
+                                            str5 =
+                                                "<a href={% url 'upload' %}>" + term + "</a><br>";
+                                            $("#" + "td_b3_" + 0 + "_" + "04").append(str5);
+
+
+                                            $('<li color="blue">' + term + '</li>').appendTo($("#" + "td_b3_" + 0 + "_" + "04")).addClass('clickable')
+                                                .hover(function () {
+                                                    //下拉列表每一项的事件，鼠标移进去的操作
+                                                    $(this).siblings().removeClass('highlight');
+                                                    $(this).addClass('highlight');
+                                                    selectedItem = index;
+                                                }, function () {
+                                                    //下拉列表每一项的事件，鼠标离开的操作
+                                                    $(this).removeClass('highlight');
+                                                    //当鼠标离开时索引置-1，当作标记
+                                                    selectedItem = -1;
+                                                })
+                                                .click(function () {
+                                                    window.location.href = '{% url 'getinfo_input' %}';
+                                                });
+                                            {#str5.addClass('clickable'#}
+                                            {#).click(function () {#}
+                                            {#   window.location.href='{% url 'getinfo_input' %}'; //在同当前窗口中打开窗口#}
+                                        });
+
+
+                                    }
+                                    //事件注册完毕
+                                }
+
+                                {#$("#" + "td_b3_" + 0+ "_" + "04").append( res);#}
+
+
+
+                                {#$("#" + "td_b3_" + 0+ "_" + "04").append( res.file_list);#}
+                                {#$("#" + "td_b3_" + 0+ "_" + "04").append( res.file_list);#}
+                                {#$("#" + "td_b3_" + 0+ "_" + "04").append( "hahhahahah");#}
+
+
+                            }
+                        )
+                        ;
+                    }
+                )
+                ;
+
+
+                create_td(y05, x05, a05);
+                create_td(y06, x06, a06);
+                create_td(y07, x07, a07);
+                create_td(y08, x08, a08);
+                create_td(y09, x09, a09);
+                create_td(y10, x10, a10);
+                create_td(y11, x11, a11);
+                create_td(y12, x12, a12);
+                create_td(y13, x13, a13);
+                create_td(y14, x14, a14);
+                create_td(y15, x15, a15);
+                create_td(y16, x16, a16);
+                create_td(y17, x17, a17);
+                create_td(y18, x18, a18);
+
+
+            }
+        )
+        ;
+
+
+        $(function () {
+            //load加载动态修改表格样式
+            if ($("#test03 tbody tr").length > 0) {
+                $("#test03").css("border-bottom", "0px");
+                $("#test03").css("border-right", "0px");
+            }
+
+
+            //注册表格操作点击事件
+            registerClick(x03);
+            registerClick(x04);
+            registerClick(x05);
+            registerClick(x06);
+            registerClick(x07);
+            registerClick(x08);
+            registerClick(x09);
+            registerClick(x10);
+            registerClick(x11);
+            registerClick(x12);
+            registerClick(x13);
+            registerClick(x14);
+            registerClick(x15);
+            registerClick(x16);
+            registerClick(x17);
+            registerClick(x18);
+
+
+        });
+
+        //注册表格操作点击事件
+        function registerClick(z1) {
+            //防止重复注册事件：.off("click")
+            $("#" + z1 + " tbody tr td a").off("click").on("click", function () {
+                var text = $(this).text();
+                switch (text) {
+                    case "修改":
+                        updateRow($(this));
+                        break;
+                    case "保存":
+                        saveRow($(this));
+                        break;
+                    case "删除":
+                        deleteRow($(this));
+                        break;
+                }
+            });
+        }
+
+        //新增行
+        function addRow(z1) {
+            {#if ($("#saverow").is(':checked')) {#}
+            {#    saveAllRow();//保存所有行#}
+
+            var rowindex = $("#" + z1 + " tbody tr").length + 1;
+            var str = "<tr> " +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + "00" + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td><a>删除</a></td></tr>";
+            $("#" + z1 + " tbody").append(str);
+            registerClick(z1);//注册表格操作点击事件
+        }
+
+
+        //修改行
+        function updateRow(t) {
+            $(t).text("保存");
+            var tr = $(t).parent().parent();
+            var tds = $(tr).children();
+            for (var i = 0; i < tds.length; i++) {
+                if (i > 0 && i < tds.length - 1) {
+                    var td = tds[i];
+                    var text = $(td).text();
+                    $(td).html("<input type='text' value='" + text + "'>");
+                }
+            }
+        }
+
+        //保存行
+        function saveRow(t) {
+            $(t).text("修改");
+            var tr = $(t).parent().parent();
+            var tds = $(tr).children();
+            for (var i = 0; i < tds.length; i++) {
+                if (i > 0 && i < tds.length - 1) {
+                    var td = tds[i];
+                    var text = $(td).children("input").val();
+                    $(td).html(text);
+                }
+            }
+        }
+
+        //删除行
+        function deleteRow(t) {
+            if (confirm("是否删除行?")) {
+                var tr = $(t).parent().parent();
+                $(tr).remove();
+                {#resetSerialNum();//重置序号#}
+            }
+        }
+
+        //新增行前保存所有行
+        function saveAllRow() {
+            var trs = $("#test03 tbody tr");
+            for (var i = 0; i < trs.length; i++) {
+                if ($(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").text() == "保存") {
+                    $(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").click();
+                }
+            }
+        }
+
+        //重置序号
+        function resetSerialNum() {
+            var trs = $("#test03 tbody tr");
+            for (var i = 0; i < trs.length; i++) {
+                $("#test tbody tr:nth-child(" + (i + 1) + ") td:nth-child(1)").text(i + 1);
+            }
+        }
+
+
+</script>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>#}
+{#    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>#}
+{#    <script src="../../dist/js/bootstrap.min.js"></script>#}
+{#    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->#}
+{#    <script src="../../assets/js/vendor/holder.min.js"></script>#}
+{#    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->#}
+{#    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>#}
+</body>
+</html>
+

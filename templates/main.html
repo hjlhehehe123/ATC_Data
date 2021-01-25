@@ -66,9 +66,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="width:130px;">
-            <ul class="nav nav-sidebar" id="menu"  >
+            <ul class="nav nav-sidebar" id="menu">
                 <li><a href="{% url 'test' %}" target="iframe_a">系统使用说明</a>
-                <li class="active"><a href="{% url 'infosearch' %}" target="iframe_a" >人员信息查询 <span class="sr-only" >(current)</span></a>
+                <li class="active"><a href="{% url 'infosearch' %}" target="iframe_a">人员信息 <span class="sr-only">(current)</span></a>
 
                 <li class="active"><a href="#">制定培训计划 <span class="sr-only">(current)</span></a>
                     <ul>
@@ -107,6 +107,7 @@
                         <li><a href="{% url 'instructor_teach_record_instructorlist' %}" target="iframe_a">•单个教员教学记录</a>
                         </li>
                         <li><a href="{% url 'single_person_trainning_record' %}" target="iframe_a">•个人培训记录</a></li>
+                        <li><a href="{% url 'training_time' %}" target="iframe_a">•学时统计</a></li>
 
 
                     </ul>
@@ -121,15 +122,15 @@
                 </li>
                 <li class="active"><a href="{% url 'banzu' %}" target="iframe_a">班组成员维护 <span
                         class="sr-only">(current)</span></a>
-                <li class="active"><a href="{% url 'atcInfo' %}" target="iframe_a">个人技术档案 <span class="sr-only">(current)</span></a>
+                <li class="active"><a href="{% url 'getinfo' %}" target="iframe_a">个人技术档案 <span class="sr-only">(current)</span></a>
             </ul>
 
         </div>
-{#        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">#}
-             <div
-style="margin-left:12%;margin-right:1%;"
-{#                     class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main" #}
-             >
+        {#        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">#}
+        <div
+                style="margin-left:12%;margin-right:1%;"
+                {#                     class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main" #}
+        >
             <iframe id="iframe_a"
                     width="100%" height="550px"
                     frameborder="no" name="iframe_a"></iframe>

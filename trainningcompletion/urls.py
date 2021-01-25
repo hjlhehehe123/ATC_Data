@@ -10,6 +10,7 @@ urlpatterns = [
 
     url(r'^ajax_addtrainningrecord/$', views.ajax_addtrainningrecord),
     url(r'^ajax_addtrainningrecord2/$', views.ajax_addtrainningrecord2),
+    url(r'^ajax_addtrainningrecord3/$', views.ajax_addtrainningrecord3),
     url(r'^trainningstatusdetail/$', views.trainningstatusdetail, name="trainningstatusdetail"),
     url(r'^trainningstatusdetail_post/$', views.trainningstatusdetail_post, name="trainningstatusdetail_post"),
 

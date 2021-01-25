@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ATC_Data.iml" filepath="$PROJECT_DIR$/.idea/ATC_Data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../gis/.idea/gistandard.iml" filepath="$PROJECT_DIR$/../gis/.idea/gistandard.iml" />
     </modules>
   </component>
 </project>

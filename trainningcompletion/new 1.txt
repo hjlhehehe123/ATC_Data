@@ -1,0 +1,2209 @@
+
+姓名	科室	模拟机教学										其他教学												
+																								
+                data01="",
+                data02="",
+                data03="上岗前培训",
+                data04="资格培训",
+                data05="复习培训",
+                data06="附加培训",
+                data07="追加培训",
+                data08="补习培训",
+                data09="设备培训",
+                data10="熟练培训",
+                data11="专项培训",
+                data12="合计",
+                data13="上岗前培训",
+                data14="资格培训",
+                data15="理论复训",
+                data16="附加培训",
+                data17="追加培训",
+                data18="补习培训",
+                data19="设备培训",
+                data20="熟练培训",
+                data21="专项培训",
+                data22="案例分析",
+                data23="安全教育",
+                data24="空管大讲堂",
+                data25="合计",
+				
+				
+				 if i == "上岗前培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j , data02=i).update(data03=学时)
+                    if i == "资格培训":
+                        models.instructor_total_time.objects.filter(data26=y, data02=j).update(data04=学时)
+                    if i == "复习培训":
+                        models.instructor_total_time.objects.filter(data26=y, data02=j).update(data05=学时)
+                    if i == "附加培训":
+                        models.instructor_total_time.objects.filter(data26=y, data02=j).update(data06=学时)
+                    if i == "追加培训":
+                        models.instructor_total_time.objects.filter(data26=y, data02=j).update(data07=学时)
+                    if i == "补习培训":
+                        models.instructor_total_time.objects.filter(data26=y, data02=j).update(data08=学时)
+                    if i == "设备培训":
+                        models.instructor_total_time.objects.filter(data26=y, data02=j).update(data09=学时)
+                    if i == "熟练培训":
+                        models.instructor_total_time.objects.filter(data26=y, data02=j).update(data10=学时)
+                    if i == "专项培训":
+                        models.instructor_total_time.objects.filter(data26=y, data02=j).update(data11=学时)
+						 models.instructor_total_time.objects.filter(data26=y, data01=j , data02=i).update(data03=学时)
+						 
+						 
+						 
+						 
+	                if i == "上岗前培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j,).update(data03=学时)
+                    if i == "资格培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j).update(data04=学时)
+                    if i == "复习培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j).update(data05=学时)
+                    if i == "附加培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j).update(data06=学时)
+                    if i == "追加培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j).update(data07=学时)
+                    if i == "补习培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j).update(data08=学时)
+                    if i == "设备培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j).update(data09=学时)
+                    if i == "熟练培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j).update(data10=学时)
+                    if i == "专项培训":
+                        models.instructor_total_time.objects.filter(data26=y, data01=j).update(data11=学时)
+						
+						
+											  	  	  	
+	
+			hh.append("年      ")
+            hh.append("日期    ")
+            hh.append("主办单位")
+            hh.append("教学地点")
+            hh.append("培训类别")
+            hh.append("教学方式")
+            hh.append("教学内容")
+            hh.append("教学时段")
+            hh.append("课时    ")
+            hh.append("教学表现")
+            hh.append("备注    ")
+			hh.append("年份    ")
+    oo.append("月份    ")
+    oo.append("培训类型")
+    oo.append("开始时间")
+    oo.append("结束时间")
+    oo.append("训练科目")
+    oo.append("学时")
+    oo.append("责任教员")
+    oo.append("成绩    ")
+    oo.append("模拟机考核视频")
+    oo.append("备注    ")
+	                 pp = []
+                     pp.append('')
+                     pp.append('')
+                     pp.append('')
+                     pp.append('')
+                     pp.append('')
+                     pp.append('')    
+                     pp.append('')
+                     pp.append('')
+                     data.append(pp)
+					 
+	"frontdata1 ",
+    "frontdata2 ",
+    "frontdata3 ",
+    "frontdata4 ",
+    "frontdata5 ",
+    "frontdata6 ",
+    "frontdata7 ",
+    "frontdata8 ",
+    "frontdata9 ",
+    "frontdata10",
+    "frontdata11",
+    "frontdata12",
+	
+    "frontdata15",
+    "frontdata16",
+																					
+    hh.append("年份")
+    hh.append("月份")
+    hh.append("上岗前培训")
+    hh.append("")
+    hh.append("资格培训")
+    hh.append("")
+    hh.append("复习培训")
+    hh.append("")
+    hh.append("附加培训")
+    hh.append("")
+    hh.append("追加培训 ")
+	hh.append("")
+	hh.append("补习培训")
+    hh.append("")
+    hh.append("设备培训")
+    hh.append("")
+    hh.append("熟练培训")
+    hh.append("")
+    hh.append("专项培训 ")
+	hh.append("")
+    hh.append("合计 ")
+	hh.append("")
+	
+	gg.append("")
+    gg.append("")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+    gg.append("学时")
+    gg.append("人次")
+	
+	
+	                                    if m[1]==培训类别[0]:
+                                        学时0 = 学时0 + int(m[10])
+                                        人次0 = 人次0 + int(m[10])
+										if m[1]==培训类别[1]:
+                                        学时1 = 学时1 + int(m[10])
+                                        人次1 = 人次1 + int(m[10])
+										if m[1]==培训类别[2]:
+                                        学时2 = 学时2 + int(m[10])
+                                        人次2 = 人次2 + int(m[10])
+										if m[1]==培训类别[3]:
+                                        学时3 = 学时3 + int(m[10])
+                                        人次3 = 人次3 + int(m[10])
+										if m[1]==培训类别[4]:
+                                        学时4 = 学时4 + int(m[10])
+                                        人次4 = 人次4 + int(m[10])
+										if m[1]==培训类别[5]:
+                                        学时5 = 学时6 + int(m[10])
+                                        人次5 = 人次6 + int(m[10])
+										if m[1]==培训类别[6]:
+                                        学时6 = 学时6 + int(m[10])
+                                        人次6 = 人次6 + int(m[10])
+										if m[1]==培训类别[7]:
+                                        学时7 = 学时7 + int(m[10])
+                                        人次7 = 人次7 + int(m[10])
+										if m[1]==培训类别[8]:
+                                        学时8 = 学时8 + int(m[10])
+                                        人次8 = 人次8 + int(m[10])
+										学时0=0
+										学时1=0
+										学时2=0
+										学时3=0
+										学时4=0
+										学时5=0
+										学时6=0
+										学时7=0
+										学时8=0
+										人次0=0
+										人次1=0
+										人次2=0
+										人次3=0
+										人次4=0
+										人次5=0
+										人次6=0
+										人次7=0
+										人次8=0
+										 ee.append(oo)
+										 ee.append(oo)
+										 
+										 
+										 学时0
+                                         +学时1
+                                         +学时2
+                                         +学时3
+                                         +学时4
+                                         +学时5
+                                         +学时6
+                                         +学时7
+                                         +学时8
+										 人次0
+                                         +人次1
+                                         +人次2
+                                         +人次3
+                                         +人次4
+                                         +人次5
+                                         +人次6
+                                         +人次7
+                                         +人次8
+										 
+										 
+										 # pp = []
+                     qq.append('')
+                     qq.append('')
+                     qq.append('')
+                     qq.append('')
+                     qq.append('')
+                     qq.append('')
+                     qq.append('')
+                     qq.append('')
+                     data.append(pp)
+					 
+					 
+					 
+					 data_01  = models.CharField(max_length=300)
+					 data_02  = models.CharField(max_length=300)
+					 data_03  = models.CharField(max_length=300)
+					 data_04  = models.CharField(max_length=300)
+					 data_05  = models.CharField(max_length=300)
+					 data_06  = models.CharField(max_length=300)
+					 data_07  = models.CharField(max_length=300)
+					 data_08  = models.CharField(max_length=300)
+					 data_09  = models.CharField(max_length=300)
+					 data_10  = models.CharField(max_length=300)
+					 data_11  = models.CharField(max_length=300)
+					 data_12  = models.CharField(max_length=300)
+					 data_13  = models.CharField(max_length=300)
+					 data_14  = models.CharField(max_length=300)
+					 data_15  = models.CharField(max_length=300)
+					 data_16  = models.CharField(max_length=300)
+					 data_17  = models.CharField(max_length=300)
+					 data_18  = models.CharField(max_length=300)
+					 data_19  = models.CharField(max_length=300)
+					 data_20  = models.CharField(max_length=300)
+					 data_21  = models.CharField(max_length=300)
+					 data_22  = models.CharField(max_length=300)
+					 data_23  = models.CharField(max_length=300)
+					 data_24  = models.CharField(max_length=300)
+					 data_25  = models.CharField(max_length=300)
+					 data_26  = models.CharField(max_length=300)
+					 data_27  = models.CharField(max_length=300)
+					 data_28  = models.CharField(max_length=300)
+					 data_29  = models.CharField(max_length=300)
+					 data_30  = models.CharField(max_length=300)
+					 
+					 
+					 
+					 getatcinfo01 = info_01.objects.filter(data_01=name)
+					 getatcinfo02 = info_02.objects.filter(data_01=name)
+					 getatcinfo03 = info_03.objects.filter(data_01=name)
+					 getatcinfo04 = info_04.objects.filter(data_01=name)
+					 getatcinfo05 = info_05.objects.filter(data_01=name)
+					 getatcinfo06 = info_06.objects.filter(data_01=name)
+					 getatcinfo07 = info_07.objects.filter(data_01=name)
+					 getatcinfo08 = info_08.objects.filter(data_01=name)
+					 getatcinfo09 = info_09.objects.filter(data_01=name)
+					 getatcinfo10 = info_10.objects.filter(data_01=name)
+					 getatcinfo11 = info_11.objects.filter(data_01=name)
+					 getatcinfo12 = info_12.objects.filter(data_01=name)
+					 getatcinfo13 = info_13.objects.filter(data_01=name)
+					 getatcinfo14 = info_14.objects.filter(data_01=name)
+					 getatcinfo15 = info_15.objects.filter(data_01=name)
+					 getatcinfo16 = info_16.objects.filter(data_01=name)
+					 getatcinfo17 = info_17.objects.filter(data_01=name)
+					 getatcinfo18 = info_18.objects.filter(data_01=name)
+					 getatcinfo = info_01.objects.get(data01=name)
+					 getatcinfo = info_01.objects.get(data01=name)
+					 
+					 
+					 
+					 context['01data01'] = getatcinfo01.data01
+					 context['01data01'] = getatcinfo01.data02
+					 context['01data01'] = getatcinfo01.data03
+					 context['01data01'] = getatcinfo01.data04
+					 context['01data01'] = getatcinfo01.data05
+					 context['01data01'] = getatcinfo01.data06
+					 context['01data01'] = getatcinfo01.data07
+					 context['01data01'] = getatcinfo01.data08
+					 context['01data01'] = getatcinfo01.data09
+					 context['01data01'] = getatcinfo01.data10
+					 context['01data01'] = getatcinfo01.data11
+					 context['01data01'] = getatcinfo01.data12
+					 context['01data01'] = getatcinfo01.data13
+					 context['01data01'] = getatcinfo01.data14
+					 context['01data01'] = getatcinfo01.data15
+					 context['01data01'] = getatcinfo01.data16
+					 context['01data01'] = getatcinfo01.data17
+					 context['01data01'] = getatcinfo01.data18
+					 context['01data01'] = getatcinfo01.data19
+					 context['01data01'] = getatcinfo01.data20
+					 context['01data01'] = getatcinfo01.data
+					 context['01data01'] = getatcinfo01.data
+					 context['01data01'] = getatcinfo01.data
+					 context['01data01'] = getatcinfo01.data
+					 context['01data01'] = getatcinfo01.data
+					 
+					 
+					 
+					context['data_01_01'] = getatcinfo01.data_01
+    context['data_02_01'] = getatcinfo01.data_02
+    context['data_03_01'] = getatcinfo01.data_03
+    context['data_04_01'] = getatcinfo01.data_04
+    context['data_05_01'] = getatcinfo01.data_05
+    context['data_06_01'] = getatcinfo01.data_06
+    context['data_07_01'] = getatcinfo01.data_07
+    context['data_08_01'] = getatcinfo01.data_08
+    context['data_09_01'] = getatcinfo01.data_09
+    context['data_10_01'] = getatcinfo01.data_10
+    context['data_11_01'] = getatcinfo01.data_11
+    context['data_12_01'] = getatcinfo01.data_12
+    context['data_13_01'] = getatcinfo01.data_13
+    context['data_14_01'] = getatcinfo01.data_14
+    context['data_15_01'] = getatcinfo01.data_15
+    context['data_16_01'] = getatcinfo01.data_16
+    context['data_17_01'] = getatcinfo01.data_17
+    context['data_18_01'] = getatcinfo01.data_18
+    context['data_19_01'] = getatcinfo01.data_19
+    context['data_20_01'] = getatcinfo01.data_20
+
+    context['data_01_02'] = getatcinfo02.data_01
+    context['data_02_02'] = getatcinfo02.data_02
+    context['data_03_02'] = getatcinfo02.data_03
+    context['data_04_02'] = getatcinfo02.data_04
+    context['data_05_02'] = getatcinfo02.data_05
+    context['data_06_02'] = getatcinfo02.data_06
+    context['data_07_02'] = getatcinfo02.data_07
+    context['data_08_02'] = getatcinfo02.data_08
+    context['data_09_02'] = getatcinfo02.data_09
+    context['data_10_02'] = getatcinfo02.data_10
+    context['data_11_02'] = getatcinfo02.data_11
+    context['data_12_02'] = getatcinfo02.data_12
+    context['data_13_02'] = getatcinfo02.data_13
+    context['data_14_02'] = getatcinfo02.data_14
+    context['data_15_02'] = getatcinfo02.data_15
+    context['data_16_02'] = getatcinfo02.data_16
+    context['data_17_02'] = getatcinfo02.data_17
+    context['data_18_02'] = getatcinfo02.data_18
+    context['data_19_02'] = getatcinfo02.data_19
+    context['data_20_02'] = getatcinfo02.data_20
+
+    context['data_01_03'] = getatcinfo03.data_01
+    context['data_02_03'] = getatcinfo03.data_02
+    context['data_03_03'] = getatcinfo03.data_03
+    context['data_04_03'] = getatcinfo03.data_04
+    context['data_05_03'] = getatcinfo03.data_05
+    context['data_06_03'] = getatcinfo03.data_06
+    context['data_07_03'] = getatcinfo03.data_07
+    context['data_08_03'] = getatcinfo03.data_08
+    context['data_09_03'] = getatcinfo03.data_09
+    context['data_10_03'] = getatcinfo03.data_10
+    context['data_11_03'] = getatcinfo03.data_11
+    context['data_12_03'] = getatcinfo03.data_12
+    context['data_13_03'] = getatcinfo03.data_13
+    context['data_14_03'] = getatcinfo03.data_14
+    context['data_15_03'] = getatcinfo03.data_15
+    context['data_16_03'] = getatcinfo03.data_16
+    context['data_17_03'] = getatcinfo03.data_17
+    context['data_18_03'] = getatcinfo03.data_18
+    context['data_19_03'] = getatcinfo03.data_19
+    context['data_20_03'] = getatcinfo03.data_20
+
+    context['data_01_04'] = getatcinfo04.data_01
+    context['data_02_04'] = getatcinfo04.data_02
+    context['data_03_04'] = getatcinfo04.data_03
+    context['data_04_04'] = getatcinfo04.data_04
+    context['data_05_04'] = getatcinfo04.data_05
+    context['data_06_04'] = getatcinfo04.data_06
+    context['data_07_04'] = getatcinfo04.data_07
+    context['data_08_04'] = getatcinfo04.data_08
+    context['data_09_04'] = getatcinfo04.data_09
+    context['data_10_04'] = getatcinfo04.data_10
+    context['data_11_04'] = getatcinfo04.data_11
+    context['data_12_04'] = getatcinfo04.data_12
+    context['data_13_04'] = getatcinfo04.data_13
+    context['data_14_04'] = getatcinfo04.data_14
+    context['data_15_04'] = getatcinfo04.data_15
+    context['data_16_04'] = getatcinfo04.data_16
+    context['data_17_04'] = getatcinfo04.data_17
+    context['data_18_04'] = getatcinfo04.data_18
+    context['data_19_04'] = getatcinfo04.data_19
+    context['data_20_04'] = getatcinfo04.data_20
+
+    context['data_01_05'] = getatcinfo05.data_01
+    context['data_02_05'] = getatcinfo05.data_02
+    context['data_03_05'] = getatcinfo05.data_03
+    context['data_04_05'] = getatcinfo05.data_04
+    context['data_05_05'] = getatcinfo05.data_05
+    context['data_06_05'] = getatcinfo05.data_06
+    context['data_07_05'] = getatcinfo05.data_07
+    context['data_08_05'] = getatcinfo05.data_08
+    context['data_09_05'] = getatcinfo05.data_09
+    context['data_10_05'] = getatcinfo05.data_10
+    context['data_11_05'] = getatcinfo05.data_11
+    context['data_12_05'] = getatcinfo05.data_12
+    context['data_13_05'] = getatcinfo05.data_13
+    context['data_14_05'] = getatcinfo05.data_14
+    context['data_15_05'] = getatcinfo05.data_15
+    context['data_16_05'] = getatcinfo05.data_16
+    context['data_17_05'] = getatcinfo05.data_17
+    context['data_18_05'] = getatcinfo05.data_18
+    context['data_19_05'] = getatcinfo05.data_19
+    context['data_20_05'] = getatcinfo05.data_20
+
+    context['data_01_06'] = getatcinfo06.data_01
+    context['data_02_06'] = getatcinfo06.data_02
+    context['data_03_06'] = getatcinfo06.data_03
+    context['data_04_06'] = getatcinfo06.data_04
+    context['data_05_06'] = getatcinfo06.data_05
+    context['data_06_06'] = getatcinfo06.data_06
+    context['data_07_06'] = getatcinfo06.data_07
+    context['data_08_06'] = getatcinfo06.data_08
+    context['data_09_06'] = getatcinfo06.data_09
+    context['data_10_06'] = getatcinfo06.data_10
+    context['data_11_06'] = getatcinfo06.data_11
+    context['data_12_06'] = getatcinfo06.data_12
+    context['data_13_06'] = getatcinfo06.data_13
+    context['data_14_06'] = getatcinfo06.data_14
+    context['data_15_06'] = getatcinfo06.data_15
+    context['data_16_06'] = getatcinfo06.data_16
+    context['data_17_06'] = getatcinfo06.data_17
+    context['data_18_06'] = getatcinfo06.data_18
+    context['data_19_06'] = getatcinfo06.data_19
+    context['data_20_06'] = getatcinfo06.data_20
+
+    context['data_01_07'] = getatcinfo07.data_01
+    context['data_02_07'] = getatcinfo07.data_02
+    context['data_03_07'] = getatcinfo07.data_03
+    context['data_04_07'] = getatcinfo07.data_04
+    context['data_05_07'] = getatcinfo07.data_05
+    context['data_06_07'] = getatcinfo07.data_06
+    context['data_07_07'] = getatcinfo07.data_07
+    context['data_08_07'] = getatcinfo07.data_08
+    context['data_09_07'] = getatcinfo07.data_09
+    context['data_10_07'] = getatcinfo07.data_10
+    context['data_11_07'] = getatcinfo07.data_11
+    context['data_12_07'] = getatcinfo07.data_12
+    context['data_13_07'] = getatcinfo07.data_13
+    context['data_14_07'] = getatcinfo07.data_14
+    context['data_15_07'] = getatcinfo07.data_15
+    context['data_16_07'] = getatcinfo07.data_16
+    context['data_17_07'] = getatcinfo07.data_17
+    context['data_18_07'] = getatcinfo07.data_18
+    context['data_19_07'] = getatcinfo07.data_19
+    context['data_20_07'] = getatcinfo07.data_20
+
+    context['data_01_08'] = getatcinfo08.data_01
+    context['data_02_08'] = getatcinfo08.data_02
+    context['data_03_08'] = getatcinfo08.data_03
+    context['data_04_08'] = getatcinfo08.data_04
+    context['data_05_08'] = getatcinfo08.data_05
+    context['data_06_08'] = getatcinfo08.data_06
+    context['data_07_08'] = getatcinfo08.data_07
+    context['data_08_08'] = getatcinfo08.data_08
+    context['data_09_08'] = getatcinfo08.data_09
+    context['data_10_08'] = getatcinfo08.data_10
+    context['data_11_08'] = getatcinfo08.data_11
+    context['data_12_08'] = getatcinfo08.data_12
+    context['data_13_08'] = getatcinfo08.data_13
+    context['data_14_08'] = getatcinfo08.data_14
+    context['data_15_08'] = getatcinfo08.data_15
+    context['data_16_08'] = getatcinfo08.data_16
+    context['data_17_08'] = getatcinfo08.data_17
+    context['data_18_08'] = getatcinfo08.data_18
+    context['data_19_08'] = getatcinfo08.data_19
+    context['data_20_08'] = getatcinfo08.data_20
+    context['data_21_08'] = getatcinfo08.data_21
+    context['data_22_08'] = getatcinfo08.data_22
+    context['data_23_08'] = getatcinfo08.data_23
+    context['data_24_08'] = getatcinfo08.data_24
+    context['data_25_08'] = getatcinfo08.data_25
+    context['data_26_08'] = getatcinfo08.data_26
+    context['data_27_08'] = getatcinfo08.data_27
+    context['data_28_08'] = getatcinfo08.data_28
+    context['data_29_08'] = getatcinfo08.data_29
+    context['data_30_08'] = getatcinfo08.data_30
+
+    context['data_01_09'] = getatcinfo09.data_01
+    context['data_02_09'] = getatcinfo09.data_02
+    context['data_03_09'] = getatcinfo09.data_03
+    context['data_04_09'] = getatcinfo09.data_04
+    context['data_05_09'] = getatcinfo09.data_05
+    context['data_06_09'] = getatcinfo09.data_06
+    context['data_07_09'] = getatcinfo09.data_07
+    context['data_08_09'] = getatcinfo09.data_08
+    context['data_09_09'] = getatcinfo09.data_09
+    context['data_10_09'] = getatcinfo09.data_10
+    context['data_11_09'] = getatcinfo09.data_11
+    context['data_12_09'] = getatcinfo09.data_12
+    context['data_13_09'] = getatcinfo09.data_13
+    context['data_14_09'] = getatcinfo09.data_14
+    context['data_15_09'] = getatcinfo09.data_15
+    context['data_16_09'] = getatcinfo09.data_16
+    context['data_17_09'] = getatcinfo09.data_17
+    context['data_18_09'] = getatcinfo09.data_18
+    context['data_19_09'] = getatcinfo09.data_19
+    context['data_20_09'] = getatcinfo09.data_20
+
+    context['data_01_10'] = getatcinfo10.data_01
+    context['data_02_10'] = getatcinfo10.data_02
+    context['data_03_10'] = getatcinfo10.data_03
+    context['data_04_10'] = getatcinfo10.data_04
+    context['data_05_10'] = getatcinfo10.data_05
+    context['data_06_10'] = getatcinfo10.data_06
+    context['data_07_10'] = getatcinfo10.data_07
+    context['data_08_10'] = getatcinfo10.data_08
+    context['data_09_10'] = getatcinfo10.data_09
+    context['data_10_10'] = getatcinfo10.data_10
+    context['data_11_10'] = getatcinfo10.data_11
+    context['data_12_10'] = getatcinfo10.data_12
+    context['data_13_10'] = getatcinfo10.data_13
+    context['data_14_10'] = getatcinfo10.data_14
+    context['data_15_10'] = getatcinfo10.data_15
+    context['data_16_10'] = getatcinfo10.data_16
+    context['data_17_10'] = getatcinfo10.data_17
+    context['data_18_10'] = getatcinfo10.data_18
+    context['data_19_10'] = getatcinfo10.data_19
+    context['data_20_10'] = getatcinfo10.data_20
+
+    context['data_01_11'] = getatcinfo11.data_01
+    context['data_02_11'] = getatcinfo11.data_02
+    context['data_03_11'] = getatcinfo11.data_03
+    context['data_04_11'] = getatcinfo11.data_04
+    context['data_05_11'] = getatcinfo11.data_05
+    context['data_06_11'] = getatcinfo11.data_06
+    context['data_07_11'] = getatcinfo11.data_07
+    context['data_08_11'] = getatcinfo11.data_08
+    context['data_09_11'] = getatcinfo11.data_09
+    context['data_10_11'] = getatcinfo11.data_10
+    context['data_11_11'] = getatcinfo11.data_11
+    context['data_12_11'] = getatcinfo11.data_12
+    context['data_13_11'] = getatcinfo11.data_13
+    context['data_14_11'] = getatcinfo11.data_14
+    context['data_15_11'] = getatcinfo11.data_15
+    context['data_16_11'] = getatcinfo11.data_16
+    context['data_17_11'] = getatcinfo11.data_17
+    context['data_18_11'] = getatcinfo11.data_18
+    context['data_19_11'] = getatcinfo11.data_19
+    context['data_20_11'] = getatcinfo11.data_20
+
+    context['data_01_12'] = getatcinfo12.data_01
+    context['data_02_12'] = getatcinfo12.data_02
+    context['data_03_12'] = getatcinfo12.data_03
+    context['data_04_12'] = getatcinfo12.data_04
+    context['data_05_12'] = getatcinfo12.data_05
+    context['data_06_12'] = getatcinfo12.data_06
+    context['data_07_12'] = getatcinfo12.data_07
+    context['data_08_12'] = getatcinfo12.data_08
+    context['data_09_12'] = getatcinfo12.data_09
+    context['data_10_12'] = getatcinfo12.data_10
+    context['data_11_12'] = getatcinfo12.data_11
+    context['data_12_12'] = getatcinfo12.data_12
+    context['data_13_12'] = getatcinfo12.data_13
+    context['data_14_12'] = getatcinfo12.data_14
+    context['data_15_12'] = getatcinfo12.data_15
+    context['data_16_12'] = getatcinfo12.data_16
+    context['data_17_12'] = getatcinfo12.data_17
+    context['data_18_12'] = getatcinfo12.data_18
+    context['data_19_12'] = getatcinfo12.data_19
+    context['data_20_12'] = getatcinfo12.data_20
+
+    context['data_01_13'] = getatcinfo13.data_01
+    context['data_02_13'] = getatcinfo13.data_02
+    context['data_03_13'] = getatcinfo13.data_03
+    context['data_04_13'] = getatcinfo13.data_04
+    context['data_05_13'] = getatcinfo13.data_05
+    context['data_06_13'] = getatcinfo13.data_06
+    context['data_07_13'] = getatcinfo13.data_07
+    context['data_08_13'] = getatcinfo13.data_08
+    context['data_09_13'] = getatcinfo13.data_09
+    context['data_10_13'] = getatcinfo13.data_10
+    context['data_11_13'] = getatcinfo13.data_11
+    context['data_12_13'] = getatcinfo13.data_12
+    context['data_13_13'] = getatcinfo13.data_13
+    context['data_14_13'] = getatcinfo13.data_14
+    context['data_15_13'] = getatcinfo13.data_15
+    context['data_16_13'] = getatcinfo13.data_16
+    context['data_17_13'] = getatcinfo13.data_17
+    context['data_18_13'] = getatcinfo13.data_18
+    context['data_19_13'] = getatcinfo13.data_19
+    context['data_20_13'] = getatcinfo13.data_20
+
+    context['data_01_14'] = getatcinfo14.data_01
+    context['data_02_14'] = getatcinfo14.data_02
+    context['data_03_14'] = getatcinfo14.data_03
+    context['data_04_14'] = getatcinfo14.data_04
+    context['data_05_14'] = getatcinfo14.data_05
+    context['data_06_14'] = getatcinfo14.data_06
+    context['data_07_14'] = getatcinfo14.data_07
+    context['data_08_14'] = getatcinfo14.data_08
+    context['data_09_14'] = getatcinfo14.data_09
+    context['data_10_14'] = getatcinfo14.data_10
+    context['data_11_14'] = getatcinfo14.data_11
+    context['data_12_14'] = getatcinfo14.data_12
+    context['data_13_14'] = getatcinfo14.data_13
+    context['data_14_14'] = getatcinfo14.data_14
+    context['data_15_14'] = getatcinfo14.data_15
+    context['data_16_14'] = getatcinfo14.data_16
+    context['data_17_14'] = getatcinfo14.data_17
+    context['data_18_14'] = getatcinfo14.data_18
+    context['data_19_14'] = getatcinfo14.data_19
+    context['data_20_14'] = getatcinfo14.data_20
+
+    context['data_01_15'] = getatcinfo15.data_01
+    context['data_02_15'] = getatcinfo15.data_02
+    context['data_03_15'] = getatcinfo15.data_03
+    context['data_04_15'] = getatcinfo15.data_04
+    context['data_05_15'] = getatcinfo15.data_05
+    context['data_06_15'] = getatcinfo15.data_06
+    context['data_07_15'] = getatcinfo15.data_07
+    context['data_08_15'] = getatcinfo15.data_08
+    context['data_09_15'] = getatcinfo15.data_09
+    context['data_10_15'] = getatcinfo15.data_10
+    context['data_11_15'] = getatcinfo15.data_11
+    context['data_12_15'] = getatcinfo15.data_12
+    context['data_13_15'] = getatcinfo15.data_13
+    context['data_14_15'] = getatcinfo15.data_14
+    context['data_15_15'] = getatcinfo15.data_15
+    context['data_16_15'] = getatcinfo15.data_16
+    context['data_17_15'] = getatcinfo15.data_17
+    context['data_18_15'] = getatcinfo15.data_18
+    context['data_19_15'] = getatcinfo15.data_19
+    context['data_20_15'] = getatcinfo15.data_20
+
+    context['data_01_16'] = getatcinfo16.data_01
+    context['data_02_16'] = getatcinfo16.data_02
+    context['data_03_16'] = getatcinfo16.data_03
+    context['data_04_16'] = getatcinfo16.data_04
+    context['data_05_16'] = getatcinfo16.data_05
+    context['data_06_16'] = getatcinfo16.data_06
+    context['data_07_16'] = getatcinfo16.data_07
+    context['data_08_16'] = getatcinfo16.data_08
+    context['data_09_16'] = getatcinfo16.data_09
+    context['data_10_16'] = getatcinfo16.data_10
+    context['data_11_16'] = getatcinfo16.data_11
+    context['data_12_16'] = getatcinfo16.data_12
+    context['data_13_16'] = getatcinfo16.data_13
+    context['data_14_16'] = getatcinfo16.data_14
+    context['data_15_16'] = getatcinfo16.data_15
+    context['data_16_16'] = getatcinfo16.data_16
+    context['data_17_16'] = getatcinfo16.data_17
+    context['data_18_16'] = getatcinfo16.data_18
+    context['data_19_16'] = getatcinfo16.data_19
+    context['data_20_16'] = getatcinfo16.data_20
+
+    context['data_01_17'] = getatcinfo17.data_01
+    context['data_02_17'] = getatcinfo17.data_02
+    context['data_03_17'] = getatcinfo17.data_03
+    context['data_04_17'] = getatcinfo17.data_04
+    context['data_05_17'] = getatcinfo17.data_05
+    context['data_06_17'] = getatcinfo17.data_06
+    context['data_07_17'] = getatcinfo17.data_07
+    context['data_08_17'] = getatcinfo17.data_08
+    context['data_09_17'] = getatcinfo17.data_09
+    context['data_10_17'] = getatcinfo17.data_10
+    context['data_11_17'] = getatcinfo17.data_11
+    context['data_12_17'] = getatcinfo17.data_12
+    context['data_13_17'] = getatcinfo17.data_13
+    context['data_14_17'] = getatcinfo17.data_14
+    context['data_15_17'] = getatcinfo17.data_15
+    context['data_16_17'] = getatcinfo17.data_16
+    context['data_17_17'] = getatcinfo17.data_17
+    context['data_18_17'] = getatcinfo17.data_18
+    context['data_19_17'] = getatcinfo17.data_19
+    context['data_20_17'] = getatcinfo17.data_20
+
+    context['data_01_18'] = getatcinfo18.data_01
+    context['data_02_18'] = getatcinfo18.data_02
+    context['data_03_18'] = getatcinfo18.data_03
+    context['data_04_18'] = getatcinfo18.data_04
+    context['data_05_18'] = getatcinfo18.data_05
+    context['data_06_18'] = getatcinfo18.data_06
+    context['data_07_18'] = getatcinfo18.data_07
+    context['data_08_18'] = getatcinfo18.data_08
+    context['data_09_18'] = getatcinfo18.data_09
+    context['data_10_18'] = getatcinfo18.data_10
+    context['data_11_18'] = getatcinfo18.data_11
+    context['data_12_18'] = getatcinfo18.data_12
+    context['data_13_18'] = getatcinfo18.data_13
+    context['data_14_18'] = getatcinfo18.data_14
+    context['data_15_18'] = getatcinfo18.data_15
+    context['data_16_18'] = getatcinfo18.data_16
+    context['data_17_18'] = getatcinfo18.data_17
+    context['data_18_18'] = getatcinfo18.data_18
+    context['data_19_18'] = getatcinfo18.data_19
+    context['data_20_18'] = getatcinfo18.data_20
+	
+	
+	
+	info_01.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_01'))
+	info_01.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_01'))
+	info_01.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_01'))
+	info_01.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_01'))
+	info_01.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_01'))
+	info_01.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_01'))
+	info_01.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_01'))
+	info_01.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_01'))
+	info_01.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_01'))
+	info_01.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_01'))
+	info_01.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_01'))
+	info_01.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_01'))
+	info_01.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_01'))
+	info_01.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_01'))
+	info_01.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_01'))
+	info_01.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_01'))
+	info_01.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_01'))
+	info_01.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_01'))
+	info_01.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_01'))
+	
+	info_02.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_02'))
+	info_02.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_02'))
+	info_02.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_02'))
+	info_02.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_02'))
+	info_02.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_02'))
+	info_02.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_02'))
+	info_02.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_02'))
+	info_02.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_02'))
+	info_02.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_02'))
+	info_02.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_02'))
+	info_02.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_02'))
+	info_02.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_02'))
+	info_02.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_02'))
+	info_02.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_02'))
+	info_02.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_02'))
+	info_02.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_02'))
+	info_02.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_02'))
+	info_02.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_02'))
+	info_02.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_02'))
+	
+	info_03.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_03'))
+	info_03.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_03'))
+	info_03.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_03'))
+	info_03.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_03'))
+	info_03.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_03'))
+	info_03.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_03'))
+	info_03.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_03'))
+	info_03.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_03'))
+	info_03.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_03'))
+	info_03.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_03'))
+	info_03.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_03'))
+	info_03.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_03'))
+	info_03.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_03'))
+	info_03.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_03'))
+	info_03.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_03'))
+	info_03.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_03'))
+	info_03.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_03'))
+	info_03.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_03'))
+	info_03.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_03'))
+	
+	info_04.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_04'))
+	info_04.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_04'))
+	info_04.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_04'))
+	info_04.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_04'))
+	info_04.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_04'))
+	info_04.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_04'))
+	info_04.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_04'))
+	info_04.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_04'))
+	info_04.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_04'))
+	info_04.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_04'))
+	info_04.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_04'))
+	info_04.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_04'))
+	info_04.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_04'))
+	info_04.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_04'))
+	info_04.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_04'))
+	info_04.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_04'))
+	info_04.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_04'))
+	info_04.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_04'))
+	info_04.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_04'))
+	
+	info_05.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_05'))
+	info_05.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_05'))
+	info_05.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_05'))
+	info_05.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_05'))
+	info_05.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_05'))
+	info_05.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_05'))
+	info_05.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_05'))
+	info_05.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_05'))
+	info_05.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_05'))
+	info_05.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_05'))
+	info_05.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_05'))
+	info_05.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_05'))
+	info_05.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_05'))
+	info_05.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_05'))
+	info_05.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_05'))
+	info_05.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_05'))
+	info_05.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_05'))
+	info_05.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_05'))
+	info_05.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_05'))
+	
+	info_06.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_06'))
+	info_06.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_06'))
+	info_06.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_06'))
+	info_06.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_06'))
+	info_06.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_06'))
+	info_06.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_06'))
+	info_06.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_06'))
+	info_06.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_06'))
+	info_06.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_06'))
+	info_06.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_06'))
+	info_06.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_06'))
+	info_06.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_06'))
+	info_06.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_06'))
+	info_06.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_06'))
+	info_06.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_06'))
+	info_06.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_06'))
+	info_06.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_06'))
+	info_06.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_06'))
+	info_06.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_06'))
+	
+	info_07.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_07'))
+	info_07.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_07'))
+	info_07.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_07'))
+	info_07.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_07'))
+	info_07.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_07'))
+	info_07.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_07'))
+	info_07.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_07'))
+	info_07.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_07'))
+	info_07.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_07'))
+	info_07.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_07'))
+	info_07.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_07'))
+	info_07.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_07'))
+	info_07.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_07'))
+	info_07.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_07'))
+	info_07.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_07'))
+	info_07.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_07'))
+	info_07.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_07'))
+	info_07.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_07'))
+	info_07.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_07'))
+	
+	info_08.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_08'))
+	info_08.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_08'))
+	info_08.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_08'))
+	info_08.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_08'))
+	info_08.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_08'))
+	info_08.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_08'))
+	info_08.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_08'))
+	info_08.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_08'))
+	info_08.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_08'))
+	info_08.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_08'))
+	info_08.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_08'))
+	info_08.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_08'))
+	info_08.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_08'))
+	info_08.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_08'))
+	info_08.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_08'))
+	info_08.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_08'))
+	info_08.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_08'))
+	info_08.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_08'))
+	info_08.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_08'))
+	info_08.objects.filter(data_01=name).update(data_21=request.POST.get('data_21_08'))
+	info_08.objects.filter(data_01=name).update(data_22=request.POST.get('data_22_08'))
+	info_08.objects.filter(data_01=name).update(data_23=request.POST.get('data_23_08'))
+	info_08.objects.filter(data_01=name).update(data_24=request.POST.get('data_24_08'))
+	info_08.objects.filter(data_01=name).update(data_25=request.POST.get('data_25_08'))
+	info_08.objects.filter(data_01=name).update(data_26=request.POST.get('data_26_08'))
+	info_08.objects.filter(data_01=name).update(data_27=request.POST.get('data_27_08'))
+	info_08.objects.filter(data_01=name).update(data_28=request.POST.get('data_28_08'))
+	info_08.objects.filter(data_01=name).update(data_29=request.POST.get('data_29_08'))
+	info_08.objects.filter(data_01=name).update(data_30=request.POST.get('data_30_08'))
+	
+	info_09.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_09'))
+	info_09.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_09'))
+	info_09.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_09'))
+	info_09.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_09'))
+	info_09.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_09'))
+	info_09.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_09'))
+	info_09.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_09'))
+	info_09.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_09'))
+	info_09.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_09'))
+	info_09.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_09'))
+	info_09.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_09'))
+	info_09.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_09'))
+	info_09.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_09'))
+	info_09.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_09'))
+	info_09.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_09'))
+	info_09.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_09'))
+	info_09.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_09'))
+	info_09.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_09'))
+	info_09.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_09'))
+																				 
+	info_10.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_10'))
+	info_10.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_10'))
+	info_10.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_10'))
+	info_10.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_10'))
+	info_10.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_10'))
+	info_10.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_10'))
+	info_10.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_10'))
+	info_10.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_10'))
+	info_10.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_10'))
+	info_10.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_10'))
+	info_10.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_10'))
+	info_10.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_10'))
+	info_10.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_10'))
+	info_10.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_10'))
+	info_10.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_10'))
+	info_10.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_10'))
+	info_10.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_10'))
+	info_10.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_10'))
+	info_10.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_10'))
+	
+	info_11.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_11'))
+	info_11.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_11'))
+	info_11.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_11'))
+	info_11.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_11'))
+	info_11.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_11'))
+	info_11.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_11'))
+	info_11.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_11'))
+	info_11.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_11'))
+	info_11.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_11'))
+	info_11.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_11'))
+	info_11.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_11'))
+	info_11.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_11'))
+	info_11.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_11'))
+	info_11.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_11'))
+	info_11.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_11'))
+	info_11.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_11'))
+	info_11.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_11'))
+	info_11.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_11'))
+	info_11.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_11'))
+	
+	info_12.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_12'))
+	info_12.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_12'))
+	info_12.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_12'))
+	info_12.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_12'))
+	info_12.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_12'))
+	info_12.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_12'))
+	info_12.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_12'))
+	info_12.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_12'))
+	info_12.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_12'))
+	info_12.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_12'))
+	info_12.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_12'))
+	info_12.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_12'))
+	info_12.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_12'))
+	info_12.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_12'))
+	info_12.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_12'))
+	info_12.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_12'))
+	info_12.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_12'))
+	info_12.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_12'))
+	info_12.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_12'))
+	
+	info_13.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_13'))
+	info_13.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_13'))
+	info_13.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_13'))
+	info_13.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_13'))
+	info_13.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_13'))
+	info_13.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_13'))
+	info_13.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_13'))
+	info_13.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_13'))
+	info_13.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_13'))
+	info_13.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_13'))
+	info_13.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_13'))
+	info_13.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_13'))
+	info_13.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_13'))
+	info_13.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_13'))
+	info_13.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_13'))
+	info_13.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_13'))
+	info_13.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_13'))
+	info_13.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_13'))
+	info_13.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_13'))
+	
+	info_14.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_14'))
+	info_14.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_14'))
+	info_14.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_14'))
+	info_14.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_14'))
+	info_14.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_14'))
+	info_14.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_14'))
+	info_14.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_14'))
+	info_14.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_14'))
+	info_14.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_14'))
+	info_14.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_14'))
+	info_14.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_14'))
+	info_14.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_14'))
+	info_14.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_14'))
+	info_14.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_14'))
+	info_14.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_14'))
+	info_14.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_14'))
+	info_14.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_14'))
+	info_14.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_14'))
+	info_14.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_14'))
+	
+	info_15.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_15'))
+	info_15.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_15'))
+	info_15.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_15'))
+	info_15.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_15'))
+	info_15.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_15'))
+	info_15.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_15'))
+	info_15.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_15'))
+	info_15.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_15'))
+	info_15.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_15'))
+	info_15.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_15'))
+	info_15.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_15'))
+	info_15.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_15'))
+	info_15.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_15'))
+	info_15.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_15'))
+	info_15.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_15'))
+	info_15.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_15'))
+	info_15.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_15'))
+	info_15.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_15'))
+	info_15.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_15'))
+	
+	info_16.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_16'))
+	info_16.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_16'))
+	info_16.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_16'))
+	info_16.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_16'))
+	info_16.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_16'))
+	info_16.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_16'))
+	info_16.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_16'))
+	info_16.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_16'))
+	info_16.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_16'))
+	info_16.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_16'))
+	info_16.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_16'))
+	info_16.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_16'))
+	info_16.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_16'))
+	info_16.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_16'))
+	info_16.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_16'))
+	info_16.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_16'))
+	info_16.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_16'))
+	info_16.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_16'))
+	info_16.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_16'))
+	
+	info_17.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_17'))
+	info_17.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_17'))
+	info_17.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_17'))
+	info_17.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_17'))
+	info_17.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_17'))
+	info_17.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_17'))
+	info_17.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_17'))
+	info_17.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_17'))
+	info_17.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_17'))
+	info_17.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_17'))
+	info_17.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_17'))
+	info_17.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_17'))
+	info_17.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_17'))
+	info_17.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_17'))
+	info_17.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_17'))
+	info_17.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_17'))
+	info_17.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_17'))
+	info_17.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_17'))
+	info_17.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_17'))
+	
+	info_18.objects.filter(data_01=name).update(data_02=request.POST.get('data_02_18'))
+	info_18.objects.filter(data_01=name).update(data_03=request.POST.get('data_03_18'))
+	info_18.objects.filter(data_01=name).update(data_04=request.POST.get('data_04_18'))
+	info_18.objects.filter(data_01=name).update(data_05=request.POST.get('data_05_18'))
+	info_18.objects.filter(data_01=name).update(data_06=request.POST.get('data_06_18'))
+	info_18.objects.filter(data_01=name).update(data_07=request.POST.get('data_07_18'))
+	info_18.objects.filter(data_01=name).update(data_08=request.POST.get('data_08_18'))
+	info_18.objects.filter(data_01=name).update(data_09=request.POST.get('data_09_18'))
+	info_18.objects.filter(data_01=name).update(data_10=request.POST.get('data_10_18'))
+	info_18.objects.filter(data_01=name).update(data_11=request.POST.get('data_11_18'))
+	info_18.objects.filter(data_01=name).update(data_12=request.POST.get('data_12_18'))
+	info_18.objects.filter(data_01=name).update(data_13=request.POST.get('data_13_18'))
+	info_18.objects.filter(data_01=name).update(data_14=request.POST.get('data_14_18'))
+	info_18.objects.filter(data_01=name).update(data_15=request.POST.get('data_15_18'))
+	info_18.objects.filter(data_01=name).update(data_16=request.POST.get('data_16_18'))
+	info_18.objects.filter(data_01=name).update(data_17=request.POST.get('data_17_18'))
+	info_18.objects.filter(data_01=name).update(data_18=request.POST.get('data_18_18'))
+	info_18.objects.filter(data_01=name).update(data_19=request.POST.get('data_19_18'))
+	info_18.objects.filter(data_01=name).update(data_20=request.POST.get('data_20_18'))
+	
+	info_01.objects.create(data_01=name,)
+	info_02.objects.create(data_01=name,)
+	info_03.objects.create(data_01=name,)
+	info_04.objects.create(data_01=name,)
+	info_05.objects.create(data_01=name,)
+	info_06.objects.create(data_01=name,)
+	info_07.objects.create(data_01=name,)
+	info_08.objects.create(data_01=name,)
+	info_09.objects.create(data_01=name,)
+	info_10.objects.create(data_01=name,)
+	info_11.objects.create(data_01=name,)
+	info_12.objects.create(data_01=name,)
+	info_13.objects.create(data_01=name,)
+	info_14.objects.create(data_01=name,)
+	info_15.objects.create(data_01=name,)
+	info_16.objects.create(data_01=name,)
+	info_17.objects.create(data_01=name,)
+	info_18.objects.create(data_01=name,)
+	
+	 <td>奖励名称</td>#}
+{#            <td>奖励级别</td>#}
+{#            <td>获取时间</td>#}
+{#            <td>获取依据</td>#}
+
+
+["奖励名称","奖励级别","获取时间","获取依据",]
+
+
+
+
+
+
+<div id="table_03"></div>
+<div id="table_04"></div>
+<div id="table_05"></div>
+<div id="table_06"></div>
+<div id="table_07"></div>
+<div id="table_08"></div>
+<div id="table_09"></div>
+<div id="table_10"></div>
+<div id="table_11"></div>
+<div id="table_12"></div>
+<div id="table_13"></div>
+<div id="table_14"></div>
+<div id="table_15"></div>
+<div id="table_16"></div>
+<div id="table_17"></div>
+<div id="table_18"></div>
+
+<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+    var hot_04 = new Handsontable(document.getElementById("table_04"), {
+            data: {{ data_00_04 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["管制职级","管制等级","评定时间","评定依据","聘用状态","聘用时间",],
+        });
+    var hot_05 = new Handsontable(document.getElementById("table_05"), {
+            data: {{ data_00_05 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["英语类别","英语等级","获取时间","获取依据","证书编号",],
+        });
+    var hot_06 = new Handsontable(document.getElementById("table_06"), {
+            data: {{ data_00_06 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["合格证级别","编号","颁发时间","依据","限制条件","备注",],
+        });
+    var hot_07 = new Handsontable(document.getElementById("table_07"), {
+            data: {{ data_00_07 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["培训项目","组织单位","培训地点","培训类别","开始时间","结束时间","任务批件",],
+        });
+    var hot_08 = new Handsontable(document.getElementById("table_08"), {
+            data: {{ data_00_08 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["培训项目","组织单位","培训地点","培训类别","培训内容","培训执照类别签注","依据",
+    		"开始时间","结束时间","理论课时数","模拟机课时数","操作课时数","理论考核方式","模拟机考核方式",
+    		"操作考核方式","培训教员","模拟机培训方式","理论考核成绩","模拟机考核分数","操作考核分数","总分",
+    		],
+        });
+    var hot_09 = new Handsontable(document.getElementById("table_09"), {
+            data: {{ data_00_09 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["考核时间","当前放单","依据","放单考核","放单说明",],
+        });
+    var hot_10 = new Handsontable(document.getElementById("table_10"), {
+            data: {{ data_00_10 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["考核时间","类别签注","基础理论成绩","专业理论成绩",
+    		"放单说明","技能考核成绩","检查员姓名","检查员身份证",],
+        });
+    var hot_11 = new Handsontable(document.getElementById("table_11"), {
+            data: {{ data_00_11 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["技能类别","获取时间","依据",],
+        });
+    var hot_12 = new Handsontable(document.getElementById("table_12"), {
+            data: {{ data_00_12 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["奖励名称","奖励级别","获取时间","获取依据",],
+        });
+    var hot_13 = new Handsontable(document.getElementById("table_13"), {
+            data: {{ data_00_13 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["处罚原因","专业处罚","暂停时间","事件发生时间","处罚依据",],
+        });
+    var hot_14 = new Handsontable(document.getElementById("table_14"), {
+            data: {{ data_00_14 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["奖励名称","奖励级别","获取时间","获取依据",],
+        });
+    var hot_15 = new Handsontable(document.getElementById("table_15"), {
+            data: {{ data_00_15 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["奖励名称","奖励级别","获取时间","获取依据",],
+        });
+    var hot_16 = new Handsontable(document.getElementById("table_16"), {
+            data: {{ data_00_16 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["奖励名称","奖励级别","获取时间","获取依据",],
+        });
+    var hot_17 = new Handsontable(document.getElementById("table_17"), {
+            data: {{ data_00_17 | safe}},
+            licenseKey: 'non-commercial-and-evaluation',
+            autoColumnSize: false,
+            autoRowSize: false,//禁止行列自动计算距离
+            dropdownMenu: true,
+            manualRowResize: true,
+            manualColumnResize: true,//行列可拉缩
+            manualColumnMove: true,//可整行整列移动
+            manualRowMove: true,
+            mergeCells: true,//合并单元格
+            contextMenu: true,//使用菜单
+            colWidths: cell_width,//定义列宽度
+            rowHeights: cell_height,//定义行高度
+            fixedRowsTop: 1,
+            colHeaders: ["奖励名称","奖励级别","获取时间","获取依据",],
+        });
+    var hot_18 = new Handsontable(document.getElementById("table_18"), {
+        data: {{ data_00_18 | safe}},
+        licenseKey: 'non-commercial-and-evaluation',
+        autoColumnSize: false,
+        autoRowSize: false,//禁止行列自动计算距离
+        dropdownMenu: true,
+        manualRowResize: true,
+        manualColumnResize: true,//行列可拉缩
+        manualColumnMove: true,//可整行整列移动
+        manualRowMove: true,
+        mergeCells: true,//合并单元格
+        contextMenu: true,//使用菜单
+        colWidths: cell_width,//定义列宽度
+        rowHeights: cell_height,//定义行高度
+        fixedRowsTop: 1,
+        colHeaders: ["奖励名称","奖励级别","获取时间","获取依据",],
+    });
+	           
+	
+	
+	
+	
+	
+	
+	var data_04 = {{ data_00_04 | safe}};
+	var data_05 = {{ data_00_05 | safe}};
+	var data_06 = {{ data_00_06 | safe}};
+	var data_07 = {{ data_00_07 | safe}};
+	var data_08 = {{ data_00_08 | safe}};
+	var data_09 = {{ data_00_09 | safe}};
+	var data_10 = {{ data_00_10 | safe}};
+	var data_11 = {{ data_00_11 | safe}};
+	var data_12 = {{ data_00_12 | safe}};
+	var data_13 = {{ data_00_13 | safe}};
+	var data_14 = {{ data_00_14 | safe}};
+	var data_15 = {{ data_00_15 | safe}};
+	var data_16 = {{ data_00_16 | safe}};
+	var data_17 = {{ data_00_17 | safe}};
+	var data_18 = {{ data_00_18 | safe}};
+	
+	
+	
+    a12 = []
+    for i in list(info_12.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a12.append(i)
+    context['data_00_12'] = json.dumps(a12, ensure_ascii=False)
+   
+	
+	a03 = []
+	a04 = []
+	a05 = []
+	a06 = []
+	a07 = []
+	a08 = []
+	a09 = []
+	a10 = []
+	a11 = []
+	a12 = []
+	a13 = []
+	a14 = []
+	a15 = []
+	a16 = []
+	a17 = []
+	a18 = []
+	for i in list(info_03.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a03.append(i)
+	for i in list(info_04.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a04.append(i)
+	for i in list(info_05.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a05.append(i)
+	for i in list(info_06.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a06.append(i)
+	for i in list(info_07.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a07.append(i)
+	for i in list(info_08.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a08.append(i)
+	for i in list(info_09.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a09.append(i)
+	for i in list(info_10.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a10.append(i)
+	for i in list(info_11.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a11.append(i)
+	for i in list(info_12.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a12.append(i)
+	for i in list(info_13.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a13.append(i)
+	for i in list(info_14.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a14.append(i)
+	for i in list(info_15.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a15.append(i)
+	for i in list(info_16.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a16.append(i)
+	for i in list(info_17.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a17.append(i)
+	for i in list(info_18.objects.filter(data_01=name).values_list("data_02","data_03","data_04","data_05",)): a18.append(i)
+	
+	context['data_00_03'] = json.dumps(a03, ensure_ascii=False)
+	context['data_00_04'] = json.dumps(a04, ensure_ascii=False)
+	context['data_00_05'] = json.dumps(a05, ensure_ascii=False)
+	context['data_00_06'] = json.dumps(a06, ensure_ascii=False)
+	context['data_00_07'] = json.dumps(a07, ensure_ascii=False)
+	context['data_00_08'] = json.dumps(a08, ensure_ascii=False)
+	context['data_00_09'] = json.dumps(a09, ensure_ascii=False)
+	context['data_00_10'] = json.dumps(a10, ensure_ascii=False)
+	context['data_00_11'] = json.dumps(a11, ensure_ascii=False)
+	context['data_00_12'] = json.dumps(a12, ensure_ascii=False)
+	context['data_00_13'] = json.dumps(a13, ensure_ascii=False)
+	context['data_00_14'] = json.dumps(a14, ensure_ascii=False)
+	context['data_00_15'] = json.dumps(a15, ensure_ascii=False)
+	context['data_00_16'] = json.dumps(a16, ensure_ascii=False)
+	context['data_00_17'] = json.dumps(a17, ensure_ascii=False)
+	context['data_00_18'] = json.dumps(a18, ensure_ascii=False)
+	
+	
+    "data_02", "data_03", "data_04", "data_05","data_06", "data_07", "data_08",
+	
+	
+	
+	"data_09",
+	
+	
+	
+	var cell_width = [basic_width, basic_width, basic_width, ];
+	
+	 var hot03_data = JSON.stringify(hot_03.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot04_data = JSON.stringify(hot_04.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot05_data = JSON.stringify(hot_05.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot06_data = JSON.stringify(hot_06.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot07_data = JSON.stringify(hot_07.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot08_data = JSON.stringify(hot_08.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot09_data = JSON.stringify(hot_09.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot10_data = JSON.stringify(hot_10.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot11_data = JSON.stringify(hot_11.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot12_data = JSON.stringify(hot_12.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot13_data = JSON.stringify(hot_13.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot14_data = JSON.stringify(hot_14.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot15_data = JSON.stringify(hot_15.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot16_data = JSON.stringify(hot_16.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot17_data = JSON.stringify(hot_17.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var hot18_data = JSON.stringify(hot_18.getData(0, 0, hot.countRows() - 1, hot.countCols() - 1));
+	 var post_data =[
+	 hot_03.getData(0, 0, hot_03.countRows() - 1, hot_03.countCols() - 1),
+	 hot_04.getData(0, 0, hot_04.countRows() - 1, hot_04.countCols() - 1),				 
+	 hot_05.getData(0, 0, hot_05.countRows() - 1, hot_05.countCols() - 1),				 
+	 hot_06.getData(0, 0, hot_06.countRows() - 1, hot_06.countCols() - 1),				 
+     hot_07.getData(0, 0, hot_07.countRows() - 1, hot_07.countCols() - 1),
+     hot_08.getData(0, 0, hot_08.countRows() - 1, hot_08.countCols() - 1),
+     hot_09.getData(0, 0, hot_09.countRows() - 1, hot_09.countCols() - 1),
+     hot_10.getData(0, 0, hot_10.countRows() - 1, hot_10.countCols() - 1),
+     hot_11.getData(0, 0, hot_11.countRows() - 1, hot_11.countCols() - 1),
+     hot_12.getData(0, 0, hot_12.countRows() - 1, hot_12.countCols() - 1),
+     hot_13.getData(0, 0, hot_13.countRows() - 1, hot_13.countCols() - 1),
+     hot_14.getData(0, 0, hot_14.countRows() - 1, hot_14.countCols() - 1),
+     hot_15.getData(0, 0, hot_15.countRows() - 1, hot_15.countCols() - 1),
+     hot_16.getData(0, 0, hot_16.countRows() - 1, hot_16.countCols() - 1),
+     hot_17.getData(0, 0, hot_17.countRows() - 1, hot_17.countCols() - 1),
+     hot_18.getData(0, 0, hot_18.countRows() - 1, hot_18.countCols() - 1)
+	 ];
+	 
+	 hot03_data,
+	 hot04_data,				 
+	 hot05_data,				 
+	 hot06_data,				 
+     hot07_data,
+     hot08_data,
+     hot09_data,
+     hot10_data,
+     hot11_data,
+     hot12_data,
+     hot13_data,
+     hot14_data,
+     hot15_data,
+     hot16_data,
+     hot17_data,
+     hot18_data
+	 
+	 
+	 
+	time00 = 0
+    time01 = 0
+    time02 = 0
+    time03 = 0
+    time04 = 0
+    time05 = 0
+    time06 = 0
+    time07 = 0
+    time08 = 0
+    time09 = 0
+	
+	
+    time11 = 0
+    time12 = 0
+    time13 = 0
+    time14 = 0
+    time15 = 0
+    time16 = 0
+    time17 = 0
+    time18 = 0
+    time19 = 0
+	time20 = 0
+	time21 = 0
+    time22 = 0
+	
+	["上岗前培训",
+	"复习培训"
+	"资格培训"
+	"设备培训"
+	"熟练培训"
+	"补习培训"
+	"追加培训"
+	"附加培训"
+	]
+		
+		
+gg.append("上岗前培训")
+    gg.append("复习培训")
+    gg.append("资格培训")
+    gg.append("设备培训")
+    gg.append("熟练培训")
+    gg.append("补习培训")
+    gg.append("追加培训")
+    gg.append("附加培训")
+    gg.append("专项培训")
+	
+	
+	mysqlclient
+	
+	
+	
+	mm3['a01'] = gg2[1 ]
+	mm3['a02'] = gg2[3 ]
+	mm3['a03'] = gg2[23 ]
+	mm3['a04'] = gg2[4 ]
+	mm3['a05'] = gg2[5 ]
+	mm3['a06'] = gg2[6 ]
+	mm3['a07'] = gg2[7 ]
+	mm3['a08'] = gg2[8 ]
+	mm3['a09'] = gg2[2 ]
+	mm3['a10'] = gg2[9 ]
+	
+	
+	
+	    ff2.append(gg2[1])
+        ff2.append(gg2[3])
+        ff2.append(gg2[23])
+        ff2.append(gg2[4])
+        ff2.append(gg2[5])
+        ff2.append(gg2[6])
+        ff2.append(gg2[7])
+        ff2.append(gg2[8])
+        ff2.append(gg2[2])
+        ff2.append(gg2[9])
+		
+		<td>{{ i.0 }}</td>
+		<td>{{ i.1 }}</td>
+		<td>{{ i.2 }}</td>
+		<td>{{ i.3 }}</td>
+		<td>{{ i.4 }}</td>
+		<td>{{ i.5 }}</td>
+		<td>{{ i.6 }}</td>
+		<td>{{ i.7 }}</td>
+		<td>{{ i.8 }}</td>
+		
+    
+	context['a03'] = a03
+    context['a04'] = a04
+    context['a05'] = a05
+    context['a06'] = a06
+    context['a07'] = a07
+                     
+    context['a09'] = a09
+    context['a10'] = a10
+    context['a11'] = a11
+    context['a12'] = a12
+    context['a13'] = a13
+    context['a14'] = a14
+    context['a15'] = a15
+    context['a16'] = a16
+    context['a17'] = a17
+    context['a18'] = a18
+	
+	
+	url(r'^getinfo_save_01/$', views.getinfo_save_01, name='getinfo_save_01'),
+	url(r'^getinfo_save_02/$', views.getinfo_save_02, name='getinfo_save_02'),
+	url(r'^getinfo_save_03/$', views.getinfo_save_03, name='getinfo_save_03'),
+	url(r'^getinfo_save_04/$', views.getinfo_save_04, name='getinfo_save_04'),
+	url(r'^getinfo_save_05/$', views.getinfo_save_05, name='getinfo_save_05'),
+	url(r'^getinfo_save_06/$', views.getinfo_save_06, name='getinfo_save_06'),
+	url(r'^getinfo_save_07/$', views.getinfo_save_07, name='getinfo_save_07'),
+	url(r'^getinfo_save_08/$', views.getinfo_save_08, name='getinfo_save_08'),
+	url(r'^getinfo_save_09/$', views.getinfo_save_09, name='getinfo_save_09'),
+	url(r'^getinfo_save_10/$', views.getinfo_save_10, name='getinfo_save_10'),
+	url(r'^getinfo_save_11/$', views.getinfo_save_11, name='getinfo_save_11'),
+	url(r'^getinfo_save_12/$', views.getinfo_save_12, name='getinfo_save_12'),
+	url(r'^getinfo_save_13/$', views.getinfo_save_13, name='getinfo_save_13'),
+	url(r'^getinfo_save_14/$', views.getinfo_save_14, name='getinfo_save_14'),
+	url(r'^getinfo_save_15/$', views.getinfo_save_15, name='getinfo_save_15'),
+	url(r'^getinfo_save_16/$', views.getinfo_save_16, name='getinfo_save_16'),
+	url(r'^getinfo_save_17/$', views.getinfo_save_17, name='getinfo_save_17'),
+	url(r'^getinfo_save_18/$', views.getinfo_save_18, name='getinfo_save_18'),
+	
+	
+	
+	
+	  // 任何需要执行的js特效,在网页加载完成后就执行
+            var rowindex = $("#test tbody tr").length + 1;
+            var str1 = ""
+            var x = 0;
+            for (i in {{ data|safe }}) {
+                str1 = str1 +
+                    "<td> <input  type=\"text\" id=\"b\"" + x + " name=\"b\"" + x
+                    + " placeholder=\"\"\n" + "value=" + i + "></td>"
+
+            }
+            var str = "<tr> " + str1 +
+                "<td><a>删除</a></td></tr>";
+            $("#test tbody").append(str);
+            registerClick();//注册表格操作点击事件
+
+            var str = "<tr> " +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + "00" + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
+                "></td>" +
+                "<td><a>删除</a></td></tr>";
+            $("#test tbody").append(str);
+            registerClick();//注册表格操作点击事件
+			
+			
+var y03 = {{ a03 | safe}};
+	var y04 = {{ a04 | safe}};
+	var y05 = {{ a05 | safe}};
+	var y06 = {{ a06 | safe}};
+	var y07 = {{ a07 | safe}};
+	var y08 = {{ a08 | safe}};
+	var y09 = {{ a09 | safe}};
+	var y10 = {{ a10 | safe}};
+	var y11 = {{ a11 | safe}};
+	var y12 = {{ a12 | safe}};
+	var y13 = {{ a13 | safe}};
+	var y14 = {{ a14 | safe}};
+	var y15 = {{ a15 | safe}};
+	var y16 = {{ a16 | safe}};
+	var y17 = {{ a17 | safe}};
+	var y18 = {{ a18 | safe}};
+	
+			
+
+	
+	
+	
+	
+	
+	
+	
+            var x03="test03";
+			var x04="test04";
+			var x05="test05";
+			var x06="test06";
+			var x07="test07";
+			var x08="test08";
+			var x09="test09";
+			var x10="test10";
+			var x11="test11";
+			var x12="test12";
+			var x13="test13";
+			var x14="test14";
+			var x15="test15";
+			var x16="test16";
+			var x17="test17";
+			var x18="test18";
+			
+            var a03="03";
+			var a04="04";
+			var a05="05";
+			var a06="06";
+			var a07="07";
+			var a08="08";
+			var a09="09";
+			var a10="10";
+			var a11="11";
+			var a12="12";
+			var a13="13";
+			var a14="14";
+			var a15="15";
+			var a16="16";
+			var a17="17";
+			var a18="18";
+			
+            create_td(y03,x03,a03);
+			create_td(y04,x04,a04);
+			create_td(y05,x05,a05);
+			create_td(y06,x06,a06);
+			create_td(y07,x07,a07);
+			create_td(y08,x08,a08);
+			create_td(y09,x09,a09);
+			create_td(y10,x10,a10);
+			create_td(y11,x11,a11);
+			create_td(y12,x12,a12);
+			create_td(y13,x13,a13);
+			create_td(y14,x14,a14);
+			create_td(y15,x15,a15);
+			create_td(y16,x16,a16);
+			create_td(y17,x17,a17);
+			create_td(y18,x18,a18);
+			
+			
+			
+			
+			
+			  {#console.log(#}
+        {#    {{ data_00_12| safe}}#}
+        {#);#}
+        document.onmousemove = function (event) {
+        }
+        {#var data = [['Column A', 'Column B', 'Column C'], ['1', '2', '3']];#}
+        {##}
+        {#必须要有，不能简化，否则识别为空#}
+        {#var data_03 = {{ data_00_03 | safe}};#}
+        {#var data_04 = {{ data_00_04 | safe}};#}
+        {#var data_05 = {{ data_00_05 | safe}};#}
+        {#var data_06 = {{ data_00_06 | safe}};#}
+        {#var data_07 = {{ data_00_07 | safe}};#}
+        {#var data_08 = {{ data_00_08 | safe}};#}
+        {#var data_09 = {{ data_00_09 | safe}};#}
+        {#var data_10 = {{ data_00_10 | safe}};#}
+        {#var data_11 = {{ data_00_11 | safe}};#}
+        {#var data_12 = {{ data_00_12 | safe}};#}
+        {#var data_13 = {{ data_00_13 | safe}};#}
+        {#var data_14 = {{ data_00_14 | safe}};#}
+        {#var data_15 = {{ data_00_15 | safe}};#}
+        {#var data_16 = {{ data_00_16 | safe}};#}
+        {#var data_17 = {{ data_00_17 | safe}};#}
+        {#var data_18 = {{ data_00_18 | safe}};#}
+        {##}
+        {#var basic_width = 151#}
+        {#var cell_width = [basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width,#}
+        {#    basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width,#}
+        {#    basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width, basic_width,];#}
+        {#var cell_height = [{#50, 20, 40, 100#}];#}
+        {#var container = document.getElementById("table_03");#}
+        {#var hot_03 = new Handsontable(container, {#}
+        {#    data: data_03,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+            {#fixedColumnsLeft: 17 ,//固定前两列#}
+            {#stretchH: 'all',#}
+            {#width: 813,#}
+            {#autoWrapRow: true,#}
+            {#height: 487,#}
+            {#maxRows: 22,#}
+            {#rowHeaders: true,#}
+        {##}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: cell_width,//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    //水平：htLeft，htCenter，htRight，htJustify，#}
+        {#    //垂直：htTop，htMiddle，htBottom。#}
+        {#    //只读: readOnly htDimmed#}
+            {#fixedRowsBottom: 1,#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["执照编号", "变更情况", "类别签注", "吊销原因", "依据年份", "签注依据", "获取时间",], {#7个#}
+        {##}
+        {##}
+        {#}#}
+        {#);#}
+        {##}
+        {#var hot_04 = new Handsontable(document.getElementById("table_04"), {#}
+        {#    data: data_04,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["管制职级", "管制等级", "评定时间", "评定依据", "聘用状态", "聘用时间",], {#6个#}
+        {#}#}
+        {#);#}
+        {#var hot_05 = new Handsontable(document.getElementById("table_05"), {#}
+        {#    data: data_05,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["英语类别", "英语等级", "获取时间", "获取依据", "证书编号",], {#5个#}
+        {#}#}
+        {#);#}
+        {#var hot_06 = new Handsontable(document.getElementById("table_06"), {#}
+        {#    data: data_06,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6, 151 * 7 / 6,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["合格证级别", "编号", "颁发时间", "依据", "限制条件", "备注",], {#6个#}
+        {#}#}
+        {#);#}
+        {#var hot_07 = new Handsontable(document.getElementById("table_07"), {#}
+        {#    data: data_07,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: cell_width,//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["培训项目", "组织单位", "培训地点", "培训类别", "开始时间", "结束时间", "任务批件",], {#7个#}
+        {#}#}
+        {#);#}
+        {#var hot_08 = new Handsontable(document.getElementById("table_08"), {#}
+        {#    data: data_08,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151, 151, 151, 151, 450, 151, 151, 151,#}
+        {#        151, 151, 151, 151, 151, 151, 151, 151,#}
+        {#        151, 151, 151, 151, 151, 151, 151, 151, 151, 151,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+            {#fixedRowsTop: 1,#}
+        {#    colHeaders: ["培训项目", "组织单位", "培训地点", "培训类别", "培训内容", "培训执照类别签注", "依据",#}
+        {#        "开始时间", "结束时间", "理论课时数", "模拟机课时数", "操作课时数", "理论考核方式", "模拟机考核方式",#}
+        {#        "操作考核方式", "培训教员", "模拟机培训方式", "理论考核成绩", "模拟机考核分数", "操作考核分数", "总分",#}
+        {#    ], {#21个#}
+        {#}#}
+        {#);#}
+        {#var hot_09 = new Handsontable(document.getElementById("table_09"), {#}
+        {#    data: data_09,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["考核时间", "当前放单", "依据", "放单考核", "放单说明",], {#5个#}
+        {#}#}
+        {#);#}
+        {#var hot_10 = new Handsontable(document.getElementById("table_10"), {#}
+        {#    data: data_10,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: cell_width,//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["考核时间", "类别签注", "基础理论成绩", "专业理论成绩",#}
+        {#        "放单说明", "技能考核成绩", "检查员姓名", "检查员身份证",], {#8个#}
+        {#}#}
+        {#);#}
+        {#var hot_11 = new Handsontable(document.getElementById("table_11"), {#}
+        {#    data: data_11,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["技能类别", "获取时间", "依据",], {#3个#}
+        {#});#}
+        {#var hot_12 = new Handsontable(document.getElementById("table_12"), {#}
+        {#    data: data_12,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["奖励名称", "奖励级别", "获取时间", "获取依据",], {#4个#}
+        {#}#}
+        {#);#}
+        {#var hot_13 = new Handsontable(document.getElementById("table_13"), {#}
+        {#    data: data_13,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["处罚原因", "专业处罚", "暂停时间", "事件发生时间", "处罚依据",], {#5个#}
+        {#}#}
+        {#);#}
+        {#var hot_14 = new Handsontable(document.getElementById("table_14"), {#}
+        {#    data: data_14,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["教员级别", "教员类别", "聘任时间", "解聘时间", "依据",], {#5个#}
+        {#}#}
+        {#);#}
+        {#var hot_15 = new Handsontable(document.getElementById("table_15"), {#}
+        {#    data: data_15,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4, 151 * 7 / 4,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["检查员类别", "委任时间", "终止委任时间",], {#4个#}
+        {#}#}
+        {#);#}
+        {#var hot_16 = new Handsontable(document.getElementById("table_16"), {#}
+        {#    data: data_16,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3, 151 * 7 / 3,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["检查员类别", "考核时间", "考核结果",], {#3个#}
+        {#}#}
+        {#);#}
+        {#var hot_17 = new Handsontable(document.getElementById("table_17"), {#}
+        {#    data: data_17,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: cell_width,//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["类别", "影响范围", "采用时间", "名称", "标题", "文号", "概要",], {#7个#}
+        {#}#}
+        {#);#}
+        {#var hot_18 = new Handsontable(document.getElementById("table_18"), {#}
+        {#    data: data_18,#}
+        {#    licenseKey: 'non-commercial-and-evaluation',#}
+        {#    autoColumnSize: false,#}
+        {#    autoRowSize: false,//禁止行列自动计算距离#}
+        {#    dropdownMenu: true,#}
+        {#    manualRowResize: true,#}
+        {#    manualColumnResize: true,//行列可拉缩#}
+        {#    manualColumnMove: true,//可整行整列移动#}
+        {#    manualRowMove: true,#}
+        {#    mergeCells: true,//合并单元格#}
+        {#    contextMenu: true,//使用菜单#}
+        {#    colWidths: [151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5, 151 * 7 / 5,],//定义列宽度#}
+        {#    rowHeights: cell_height,//定义行高度#}
+        {#    fixedRowsTop: 1,#}
+        {#    colHeaders: ["职称级别", "获取时间", "依据", "聘任情况", "聘任详情",], {#5个#}
+        {#}#}
+        {#);#}
+
+
+        // single callback, added globally
+        {#console.log(#}
+        {#    hot.getData()#}
+        {#)#}
+        {#;#}
+
+        {#$("#send1").click(function () {#}
+        {##}
+            {#json数据#}
+            {#var post_data =JSON.stringify( hot.getData() );#}
+            {#var post_data = JSON.stringify(hot.getData(hot.countRows() - 1, 0, hot.countRows() - 1, hot.countCols() - 1));#}
+        {#    var post_data = [#}
+        {#        hot_03.getData(0, 0, hot_03.countRows() - 1, hot_03.countCols() - 1),#}
+        {#        hot_04.getData(0, 0, hot_04.countRows() - 1, hot_04.countCols() - 1),#}
+        {#        hot_05.getData(0, 0, hot_05.countRows() - 1, hot_05.countCols() - 1),#}
+        {#        hot_06.getData(0, 0, hot_06.countRows() - 1, hot_06.countCols() - 1),#}
+        {#        hot_07.getData(0, 0, hot_07.countRows() - 1, hot_07.countCols() - 1),#}
+        {#        hot_08.getData(0, 0, hot_08.countRows() - 1, hot_08.countCols() - 1),#}
+        {#        hot_09.getData(0, 0, hot_09.countRows() - 1, hot_09.countCols() - 1),#}
+        {#        hot_10.getData(0, 0, hot_10.countRows() - 1, hot_10.countCols() - 1),#}
+        {#        hot_11.getData(0, 0, hot_11.countRows() - 1, hot_11.countCols() - 1),#}
+        {#        hot_12.getData(0, 0, hot_12.countRows() - 1, hot_12.countCols() - 1),#}
+        {#        hot_13.getData(0, 0, hot_13.countRows() - 1, hot_13.countCols() - 1),#}
+        {#        hot_14.getData(0, 0, hot_14.countRows() - 1, hot_14.countCols() - 1),#}
+        {#        hot_15.getData(0, 0, hot_15.countRows() - 1, hot_15.countCols() - 1),#}
+        {#        hot_16.getData(0, 0, hot_16.countRows() - 1, hot_16.countCols() - 1),#}
+        {#        hot_17.getData(0, 0, hot_17.countRows() - 1, hot_17.countCols() - 1),#}
+        {#        hot_18.getData(0, 0, hot_18.countRows() - 1, hot_18.countCols() - 1)#}
+        {#    ];#}
+        {#    console.log(#}
+        {#        post_data#}
+        {#    )#}
+        {#    ;#}
+        {#    $.ajax({#}
+        {#        url: "http://localhost:8000/atcInfo/getinfo_save_ajax/",#}
+        {#        type: "POST",#}
+        {#        发送json数据到服务器#}
+        {#        data: JSON.stringify(post_data),#}
+        {#        dataType: "json",#}
+        {##}
+        {#        请求成功回调函数#}
+        {#        success: function (data) {#}
+        {##}
+        {##}
+        {#            alert(data);#}
+        {#            alert("请求成功")#}
+        {#        },#}
+        {#        请求失败回调函数#}
+        {#        error: function () {#}
+        {#            alert("保存成功")#}
+        {#        }#}
+        {##}
+        {#    });#}
+        {#}#}
+        {#);#}
+        {#$("#send2").click(function () {#}
+        {#    hot.alter('insert_row', hot.countRows(), 1);#}
+        {#    json数据#}
+        {##}
+        {##}
+        {#}#}
+        {#);#}
+
+        {#function savedata() {#}
+        {#    window.location.href = "http://127.0.0.1:8000/trainningcompletion/addtrainningrecord";#}
+        {##}
+        {#}#}
+
+			

@@ -24,6 +24,13 @@ from . import view,testdb
 #    path('admin/', admin.site.urls),
 #]
 """
+
+import pymysql
+
+pymysql.version_info = (1, 3, 13, "final", 0)
+
+pymysql.install_as_MySQLdb()
+
 from django.conf.urls import url, include
 from django.urls import path
 
@@ -42,12 +49,14 @@ urlpatterns = [
     path('makeplan/', view.makeplan, name="makeplan"),
 
     path('getsheet/', view.getsheet, name="getsheet"),
-    path('getinfo/', view.getinfo, name="getinfo"),
+    # path('getinfo/', view.getinfo, name="getinfo"),
     path('saveevaluationresult/', view.saveevaluationresult, name="saveevaluationresult"),
     # path('^ajax/',ajax),
     url(r'^TestModel/', include('TestModel.urls')),
     url(r'^atcInfo/', include('atcInfo.urls')),
     url(r'^trainningcompletion/', include('trainningcompletion.urls')),
     url(r'^data_anaiysis/', include('data_anaiysis.urls')),
+
+    # url('getinfo/', view.getinfo, name="getinfo"),
 
 ]

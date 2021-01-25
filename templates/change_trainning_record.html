@@ -177,17 +177,17 @@
 
     });
     // single callback, added globally
-    console.log(
-        hot.getData()
-    )
-    ;
+    {#console.log(#}
+    {#    hot.getData()#}
+    {#)#}
+    {#;#}
 
     $("#send1").click(function () {
 
         {#json数据#}
         {#var post_data =JSON.stringify( hot.getData() );#}
         {#var post_data = JSON.stringify(hot.getData(hot.countRows() - 1, 0, hot.countRows() - 1, hot.countCols() - 1));#}
-         var post_data = JSON.stringify(hot.getData( 1, 0, hot.countRows() - 1, hot.countCols() - 1));
+        var post_data = JSON.stringify(hot.getData(1, 0, hot.countRows() - 1, hot.countCols() - 1));
 
         $.ajax({
             url: "http://localhost:8000/trainningcompletion/change_trainning_record_save/",

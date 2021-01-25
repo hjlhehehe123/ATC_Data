@@ -1,12 +1,11 @@
 import json
 from datetime import datetime
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
 
-import TestModel
-from TestModel.views import name1
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse
+from django.shortcuts import render
+
+from TestModel.models import logins
 from atcInfo.models import info
 from data_anaiysis.views import 创建教员教学总学时
 from data_anaiysis.views import 创建数据模拟机培训学时
@@ -196,6 +195,10 @@ def addtrainningrecord(request):  # 获取增加模拟机培训记录的页面
     plan = json.dumps(fileuri, ensure_ascii=False)
     print(plan)
     print("@@@@@@@@@@@@@@")
+    if request.method == 'get':
+        allname = ["桃子", "草莓子", "草莓子", "s", "ssr"]
+        # return HttpResponse(json.dumps(allname))
+        return HttpResponse(allname)
     return render(request, 'addtrainningrecord.html', {'data': data, 'plan': plan})
 
 
@@ -204,7 +207,10 @@ def dateDiffInHours(t1, t2):  # 时间计算，两个时间相差的小时数
     return td.days * 24 + td.seconds / 3600 + 1
 
 
-def addtrainningrecord1(request):  # 获取增加模拟机培训记录的数据并保存
+def addtrainningrecord1(request):
+    # 获取增加模拟机培训记录的数据并保存
+
+    # if request.method == 'post':
     # name1 = TestModel.views.name1
     #     # if name1 == '0':
     #     #     data04 = "未知"
@@ -247,6 +253,11 @@ def addtrainningrecord1(request):  # 获取增加模拟机培训记录的数据�
     now_time = datetime.now()
     month = datetime.strftime(now_time, "%m")
     data03 = month + "月"
+    data06 = request.POST.get('data06')
+    if data06 == '0':
+        data06 = '塔台模拟机房'
+    if data06 == '1':
+        data06 = '雷达模拟机房'
 
     data05 = request.POST.get('data05')
     data06 = request.POST.get('data06')
@@ -254,24 +265,32 @@ def addtrainningrecord1(request):  # 获取增加模拟机培训记录的数据�
         data06 = '塔台模拟机房'
     if data06 == '1':
         data06 = '雷达模拟机房'
-    global data08
-    data081 = request.POST.get('data081').strip()
-    data082 = request.POST.get('data082').strip()
-    data083 = request.POST.get('data083').strip()
-    data084 = request.POST.get('data084').strip()
-    data08 = data081 + ' ' + data082 + ' ' + data083 + ' ' + data084
-    data08 = data08.rstrip()
-    a = 1
-    for i in data08:
+    # global data08
 
-        if ord(i) == 32:
+    data081 = request.POST.get('search-text1')
+    data082 = request.POST.get('search-text2')
+    data083 = request.POST.get('search-text3')
+    data084 = request.POST.get('search-text4')
+    data08 = data081 + ' ' + data082 + ' ' + data083 + ' ' + data084
+    # if data081 != "" and data082 != "" and data083 != "" and data084 != "":
+
+    cc = []
+    cc.append(data081)
+    cc.append(data082)
+    cc.append(data083)
+    cc.append(data084)
+    # data08 = data08.rstrip()
+    a = 0
+    for i in cc:
+        if i != "":
+            # if ord(i) == 32:
             a = a + 1
 
     print('人数' + '*********' + str(a))
 
-    global data09
-    data091 = request.POST.get('data091').strip()
-    data092 = request.POST.get('data092').strip()
+    # global data09
+    data091 = request.POST.get('search-text1').strip()
+    data092 = request.POST.get('search-text2').strip()
     data09 = data091 + ' ' + data092
     data09 = data09.rstrip()
 
@@ -286,7 +305,16 @@ def addtrainningrecord1(request):  # 获取增加模拟机培训记录的数据�
     t2 = datetime.strptime(data151, '%Y-%m-%d %H:%M')
 
     print(dateDiffInHours(t1, t2))
-    data11 = dateDiffInHours(t1, t2) * a
+    aa = 0
+    if dateDiffInHours(t1, t2) < 2 / 3:
+        aa = 0.5
+    if 1 >= dateDiffInHours(t1, t2) >= 2 / 3:
+        aa = 1
+    if 1 + 2 / 3 >= dateDiffInHours(t1, t2) > 1:
+        aa = 1.5
+    if dateDiffInHours(t1, t2) > 1 + 2 / 3:
+        aa = 2
+    data11 = aa * a
     data12 = 0.5
     if data11 < 6:
         data12 = 0.5
@@ -381,6 +409,35 @@ def ajax_addtrainningrecord2(request):  ##获取增加模拟机培训记录的�
 
     return HttpResponse(json.dumps(post_data), content_type='application/json')
 
+
+def ajax_addtrainningrecord3(request):  ##获取增加模拟机培训记录的数据中的data09（机长）并赋值给全局变量data08，
+    a = "hah111h"
+    global keyword
+    keyword = json.loads(request.body.decode("utf-8"))
+    ff = logins.objects.filter().values_list(
+        'atcAccount', )
+    allname = []
+    for k in ff:
+        m = list(k)
+        print(m[0])
+        import re
+        ret = re.findall(keyword, m[0])
+        print(ret)
+        if ret != []:
+            allname.append(m[0])
+
+    allname1 = ["桃子", "草莓子", "草拟吗", "s", "ssr"]
+    # if request.method == 'POST':
+    # print("机长"+keyword)
+    back_dic = {'user': None, 'message': None}
+    back_dic['user'] = "桃子"
+    back_dic['message'] = '成功'
+
+    return HttpResponse(json.dumps(allname), content_type='application/json')
+    # data = ["桃子", "草莓子", "草拟吗", "s", "ssr"]
+    # post_data = {"name": ["1","2",]}
+    # print(json.dumps(post_data))
+    # return HttpResponse(json.dumps(post_data), content_type='application/json')
 
 def change_trainning_record(request):  # 获取增加模拟机培训记录的页面
     if request.session.get('status'):  # 在判断网页请求的状态时，直接调用request.session从djang_session表中读取数据验证
