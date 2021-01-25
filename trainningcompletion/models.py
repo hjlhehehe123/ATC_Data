@@ -51,6 +51,3 @@ class monthplan(models.Model):
 class banzu(models.Model):
     bzname = models.CharField(max_length=300)
     bzperson = models.CharField(max_length=300)
-
-
-

@@ -29,13 +29,4 @@ url(r'^test/$', views.test, name="test"),
 url(r'^change_trainning_record_other/$', views.change_trainning_record_other, name="change_trainning_record_other"),
 url(r'^change_trainning_record_other_save/$', views.change_trainning_record_other_save, name="change_trainning_record_other_save"),
 
-
-
-
-
-
-
-
-
-
 ]

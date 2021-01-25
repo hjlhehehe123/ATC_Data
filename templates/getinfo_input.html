@@ -885,7 +885,7 @@
 
                                             str5 =
                                                 "<a href={% url 'upload' %}>" + term + "</a><br>";
-                                            $("#" + "td_b3_" + 0 + "_" + "04").append(str5);
+                                            {#$("#" + "td_b3_" + 0 + "_" + "04").append(str5);#}
 
 
                                             $('<li color="blue">' + term + '</li>').appendTo($("#" + "td_b3_" + 0 + "_" + "04")).addClass('clickable')
@@ -901,7 +901,7 @@
                                                     selectedItem = -1;
                                                 })
                                                 .click(function () {
-                                                    window.location.href = '{% url 'getinfo_input' %}';
+                                                    window.location.href = '{% url 'getinfo_input' %}' + "?filename=" + term;
                                                 });
                                             {#str5.addClass('clickable'#}
                                             {#).click(function () {#}

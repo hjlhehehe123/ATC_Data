@@ -1,23 +1,10 @@
 # def hello(request):
 #    return HttpResponse("Hello world ! ")
-import json
-from datetime import datetime
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from atcInfo import models
-
-
-import json
-from datetime import datetime
-
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-
 
 
 def login(request):
@@ -76,7 +63,7 @@ def getsheet(request):
     print(selLocation3)
 
     if selLocation1 == 1 and selLocation2 == 1:
-        return render(request, 'sheet048.html'
+        return render(request, 'jichangfxkhb.html'
                       , {'data': data
                           , 'data1': data1
                           , 'data2': data
@@ -88,7 +75,7 @@ def getsheet(request):
 
                       )
     else:
-        return render(request, 'sheet048.html', {'data': data})
+        return render(request, 'jichangfxkhb.html', {'data': data})
 
 
 def saveevaluationresult(request):

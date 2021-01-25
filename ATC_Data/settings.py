@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'TestModel',
     'trainningcompletion',
     'data_anaiysis',
+    'xunliankaohe',
 
     'corsheaders',  # 非常重要
 

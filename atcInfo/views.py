@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse
+from django.http import HttpResponse, StreamingHttpResponse
 from django.shortcuts import render
 
 from atcInfo.models import info, info_01, info_02, info_03, info_04, info_05, info_06, info_07, info_08, info_09, \
@@ -1711,27 +1711,13 @@ def upload(request):
 
 
 def download(request):
-    print("upload")
-    username = request.POST.get('username')
-    print(username)
-    file_obj = request.FILES.get('file_obj')
+    print("download")
+    filename = request.POST.get('filename')
+    print(filename)
 
-    file_name = file_obj.name
+    file = open('C:/project1/ATC_data/static/files/' + filename, 'rb')
+    response = StreamingHttpResponse(file)
+    response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = 'attachment;filename="models.py"'
 
-    path = os.path.join("C:/project1/ATC_data/static/files", file_name)
-
-    # 读取文件形式
-    with open(path, 'wb') as f:
-        for i in file_obj:
-            f.write(i)
-    # django 提供的chunks方法
-    with open(path, 'wb') as f:
-        for chunk in file_obj.chunks():
-            f.write(chunk)
-    file_list = []
-    files = os.listdir('C:/project1/ATC_data/static/files')
-    for i in files:
-        file_list.append(i)
-    print(file_list)
-    data = json.dumps(file_list, ensure_ascii=False)
-    return HttpResponse(data)
+    return response
