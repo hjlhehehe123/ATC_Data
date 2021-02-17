@@ -2,12 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
 
-    <script src="{% static 'handsontable.full.js' %}"></script>
-
-
-
+     <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'handsontable.full.css' %}"/>
     {#     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>#}
     <style type="text/css">
@@ -153,60 +149,31 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 
-<body>
-
-<form class="form-signin" action="{% url 'addjianchabaogao' %}" method="post">
+<div>
+<form class="form-signin" action="{% url 'find' %}" method="post">
     {% csrf_token %}
-    <h2 class="form-signin-heading">检查报告</h2>
-    <br>
-    <div>
-        检查科室
-        <select name="keshi" id="keshi" style="width:10%;">
-            <option value="0">塔台</option>
-            <option value="1">区调</option>
-            <option value="2">飞服</option>
-        </select><br><br>
 
+    <br>
         检查类型
         <select name="leixing" id="leixing" style="width:10%;">
             <option value="0">日检查</option>
             <option value="1">周检查</option>
             <option value="2">月检查</option>
+            <option value="3">全部</option>
 
         </select>
 
-        被检查人 <input type="text" style="width:10%;" id="per" name="per"  placeholder="" value=""  required><br><br>
         检查时段 <input type="text" style="width:11%;" id="data15" name="data15" placeholder="" value=""
                            required readonly>
         至 <input type="text" style="width:11%;" id="data151" name="data151" placeholder="" value=""
                 required readonly>
-        <br><br>
-
-        关键指标
-        <select name="zhibiao" id="zhibiao" style="width:10%;">
-            <option value="0">通话用语</option>
-            <option value="1">雷达监控</option>
-            <option value="2">间隔效率</option>
-            <option value="3">通报协调</option>
-            <option value="4">管制程序</option>
-            <option value="5">特情处置</option>
-            <option value="6">其他情况</option>
-        </select>
-
-        评价
-        <select name="pingjia" id="pingjia" style="width:10%;">
-            <option value="0">表扬</option>
-            <option value="1">正常</option>
-            <option value="2">技能缺陷</option>
-            <option value="3">现场纠违</option>
-            <option value="4">无后果违章</option>
-        </select><br>
-
-        <br>
-       具体描述<br><textarea style="width:30%;height: 200px;" id="miaoshu" name="miaoshu" placeholder=""   required></textarea><br>
+        <button id="send1" class="btn1" style="width:100px;height:30px;margin-top: 20px" type="submit">查询 </button>
+</form>
+<button id="send2" class="btn1" style="width:100px;height:30px;margin-top: 20px" onclick=window.location.href="{% url 'indexjianchabaogao' %}">新增</button><br>
+</div>
 
 
-        <!-- XDSoft DateTimePicker  时间选择 -->
+       <!-- XDSoft DateTimePicker  时间选择 -->
         <link rel="stylesheet" href="{% static 'jquery.datetimepicker.css' %}"/>
         <script src="{% static 'jquery.datetimepicker.full.js' %}"></script>
         <script>
@@ -229,16 +196,31 @@
 
         </script>
 
-
-
-    </div>
 <br>
 
- <button id="send1" class="btn1" style="width:100px;height:30px;margin-top: 20px" type="submit" >确定</button>
-</form>
 
 
+<div id="example"></div>
+ <script src="{% static 'handsontable.full.js' %}"></script>
+  <script type="text/javascript">
+    console.log(
+        {{ data| safe}}
+    )
+    ;
+    var data = {{ data | safe}};
+    const container = document.getElementById('example');
+            const hot = new Handsontable(container, {
+                data: data,
+                rowHeaders: true,
+                colHeaders: ['检查科室','检查类型','被检查人', '检查时段开始', '检查时段结束','关键指标', '评价', '具体描述'],
+                licenseKey: 'non-commercial-and-evaluation',
+                columns: [{data:1},{data:2},{data:3},{data:4},{data:5},{data:6},{data:7},{data:8}],
+                colWidths:[100,100,100,200,200,100,100],
+                autoColumnSize:true,
 
+
+            });
+  </script>
 </body>
 
 

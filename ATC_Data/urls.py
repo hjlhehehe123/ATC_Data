@@ -57,7 +57,7 @@ urlpatterns = [
     url(r'^trainningcompletion/', include('trainningcompletion.urls')),
     url(r'^data_anaiysis/', include('data_anaiysis.urls')),
     url(r'^xunliankaohe/', include('xunliankaohe.urls')),
-
+    url(r'^jianchabaogao/', include('jianchabaogao.urls')),
     # url('getinfo/', view.getinfo, name="getinfo"),
 
 ]

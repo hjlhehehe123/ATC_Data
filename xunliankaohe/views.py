@@ -1,23 +1,29 @@
 from django.shortcuts import render
 from docx import Document
+import re
 
 from xunliankaohe import models
 
 
 # Create your views here.
 
+def jichangfxkhb(request):
+    return render(request, 'jichangfxkhb.html')
+
+
+
 
 def addjichangfxkhb(request):  # 获取增加机场复训考核表记录的数据并保存
 
     textlist = []
-    listnum = [11, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    listnum=[11,1,1,1,1,1,1,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
     datan = request.POST.get('data01')
     datas = request.POST.get('data02')
 
-    for i in range(1, 8):
+    for i in range(1,8):
         name = 'data0' + str(i)
-        a = request.POST.get(name)
+        a=request.POST.get(name)
         textlist.append(a)
 
     data08 = request.POST.get('data08')
@@ -31,16 +37,16 @@ def addjichangfxkhb(request):  # 获取增加机场复训考核表记录的数�
     data09 = request.POST.get('data09')
     textlist.append(data09)
 
-    for i in range(10, 40):
+    for i in range(10,40):
         name = 'data' + str(i)
-        a = request.POST.get(name)
-        b = int(a)
+        a=request.POST.get(name)
+        b=int(a)
         if i < 39:
-            c = b * listnum[i - 10]
+           c = b * listnum[i-10]
         else:
-            c = b * 1
-        b = str(b)
-        c = str(c)
+            c=b*1
+        b=str(b)
+        c=str(c)
         textlist.append(b)
         textlist.append(c)
 
@@ -64,8 +70,8 @@ def addjichangfxkhb(request):  # 获取增加机场复训考核表记录的数�
     data57 = request.POST.get('dataldz')
     data58 = request.POST.get('qtkf')
     data59 = request.POST.get('data41')
-    if data59 == '':
-        data59 = "无"
+    if data59=='':
+       data59="无"
 
     textlist.append(data59)
     dataqtkf = request.POST.get('data40')
@@ -119,13 +125,11 @@ def addjichangfxkhb(request):  # 获取增加机场复训考核表记录的数�
     a.frontdata22 = data64
     a.frontdata23 = data65
 
+
     a.is_active = 0
     a.save()
 
-    print(textlist)
-
-    # doc = Document("E:\pythonproject\备份2\ATC_Data\ATC_Data\考核表\复训考核表\机场复训考核表\机场复训考核表样表.docx")
-    doc = Document("C:\project1\ATC_data\考核表\复训考核表\机场复训考核表\机场复训考核表样表.docx")
+    doc = Document("E:\pythonproject\ATC_Data\考核表\复训考核表\机场复训考核表\机场复训考核表样表.docx")
 
     count = 0
 
@@ -137,7 +141,6 @@ def addjichangfxkhb(request):  # 获取增加机场复训考核表记录的数�
                     cell.text = cell.text.replace("XXXX", textlist[count])
                     count += 1
         n += 1
-    # 不要删
-    # doc.save('E:\pythonproject\备份2\ATC_Data\ATC_Data\考核表\复训考核表\机场复训考核表\%s机场复训考核表.docx' %datan)
-    doc.save('C:\project1\ATC_data\考核表\复训考核表\机场复训考核表\机场复训考核表样表.docx' % datan)
+
+    doc.save('E:\pythonproject\ATC_Data\考核表\复训考核表\机场复训考核表\%s机场复训考核表.docx' %datan)
     return render(request, 'ok.html')

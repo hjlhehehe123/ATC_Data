@@ -1,0 +1,681 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
+</head>
+
+  <style type="text/css">
+      ul{list-style: none;}
+      .submenu{display: none;}
+
+       .btn1 {
+            display: inline-block;
+            height: 20px;
+            line-height: 38px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+  </style>
+
+<body>
+
+<div style="width:850px;height: 500px" >
+<div style="height: 70px;width: 850px;float: left">
+    姓名：<input type="text" style="width:60px;" id="data01" name="data01" placeholder="" value="" required>
+    考核练习号：<input type="text" style="width:60px;" id="data02" name="data02" placeholder="" value="" required>
+    考核时间：从<input type="text" style="width:23.5%;margin-top: 5px" id="data07" name="data07" placeholder="" value=""
+                           required readonly>
+        到<input type="text" style="width:23.2%;" id="data071" name="data071" placeholder="" value=""
+                required readonly><br>
+    考核方式:
+        <select name="data03" id="data03" onmousemove="showHint(this.value)" style="width:70px;">
+            <option value="0">现场</option>
+            <option value="1">模拟机</option>
+        </select>
+    天气：<input type="text" style="width:60px;margin-top: 5px" id="data04" name="data04" placeholder="" value="" required>
+    军航活动：<input type="text" style="width:60px;margin-top: 5px" id="data05" name="data05" placeholder="" value="" required>
+    复杂程度:
+        <select name="data06" id="data06" onmousemove="showHint(this.value)" style="width:70px;margin-top: 5px">
+            <option value="0">简单</option>
+            <option value="1">偶尔复杂</option>
+            <option value="2">比较复杂</option>
+            <option value="3">非常复杂</option>
+            <option value="4">特情</option>
+        </select><br>
+</div >
+<div style="width: 500px;float: left">
+    <div style="width: 500px;height:130px;float: left">
+     <div style="width: 200px;height: 120px;float: left">
+     考核目的：<br>
+    <input type="checkbox" id="m1" name="m1">获取执照<br>
+    <input type="checkbox" id="m2" name="m2">放单<br>
+    <input type="checkbox" id="m3" name="m3">资质排查<br>
+    <input type="checkbox" id="m4" name="m4">复职<br>
+    <input type="checkbox" id="m5" name="m5">复训考核<br>
+    <input type="checkbox" id="m6" name="m6">其他：<input type="text" style="width:60px;" id="data07" name="data07" placeholder="" value="" required>
+    </div>
+    <div style="width: 200px;height: 120px;float: left">
+     指挥架次：<br>
+    <input type="checkbox" id="z1" name="z1">80%通行能力<br>
+    <input type="checkbox" id="z2" name="z2">100%通行能力<br>
+    <input type="checkbox" id="z3" name="z3">130%通行能力<br>
+    <input type="checkbox" id="z4" name="z4">其他：<input type="text" style="width:60px;" id="data08" name="data08" placeholder="" value="" required>
+     </div>
+    </div>
+
+<div style="width: 500px;margin-top: 20px;float: left">
+    <input type="button" style=";margin-bottom: 5px;" value="间隔与效率" onclick="showjg()">
+    <input type="button" style=";margin-bottom: 5px;" value="协调通报" onclick="showxt()">
+    <input type="button" style=";margin-bottom: 5px;" value="意识方法和程序" onclick="showys()">
+    <input type="button" style=";margin-bottom: 5px;" value="标准陆空通话" onclick="showlk()"><br>
+    <input type="button" style=";margin-bottom: 5px;" value="特情处置" onclick="showtq()">
+    <input type="button" style=";margin-bottom: 5px;" value="雷达监控" onclick="showld()">
+</div>
+
+<div style="width: 550px;float: left" >
+
+ <div id="jg" style="width: 450px">
+<ul id="accordion" class="accordion">
+        <li>
+            <div class="link"><i class="fa fa-paint-brush"></i>1.保持安全间隔<i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numj1'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),11)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numj1"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numj1'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),11)" />
+                    是否始终保持安全间隔(11)</li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numj21'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),11)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numj21"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numj21'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),11)" />
+                    在进入另一管制区域、范围或空域前获得相应许可(11)</li>
+            </ul>
+        </li>
+        <li>
+            <div class="link"><i class="fa fa-code"></i>2.适时通报飞行活动<i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numj2'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numj2"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numj2'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),2)" />
+                    在必要情形下活动通报，协助机组建立情景意识(2)
+                </li>
+            </ul>
+        </li>
+         <li>
+            <div class="link"><i class="fa fa-code"></i>3.放飞<i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNumf(document.getElementById('numj3'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'))" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numj3"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNumf(document.getElementById('numj3'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'))" />
+                    未能完成ADA间隔下放飞要求。第一个未完成放飞扣 4 ，第二个及以上未完成放飞扣 5
+                </li>
+            </ul>
+        </li>
+    </ul>
+ </div>
+
+  <div id="xt" style="display: none;width: 450px;height: 50px ">
+
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numx1'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numx1"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numx1'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+协调移交规范(1)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numx2'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),2)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numx2"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numx2'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),2)" />
+能将飞机相关信息（机组偏航意图、不正常情况等）及时通知有关单位(2)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numx3'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),4)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numx3"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numx3'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),4)" />
+管制协调的结果责任明确，不会危及航空器的间隔(4)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numx4'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numx4"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numx4'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+以合作的态度进行协调，相互配合(1)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numx5'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numx5"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numx5'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+监控严密、相互提醒(1)<br>
+</div>
+
+<div id="ys" style="display: none;width: 450px">
+<ul id="accordion2" class="accordion2">
+        <li>
+            <div class="link"><i class="fa fa-paint-brush"></i>1.识别<i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy1'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),5)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy1"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy1'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),5)" />
+                    按规定对航空器进行识别 (5)</li>
+            </ul>
+        </li>
+        <li>
+            <div class="link"><i class="fa fa-code"></i> 2.管制意识和判断力<i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy2'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy2"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy2'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    主动管制（五边速度调整等）(2)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy3'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy3"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy3'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    正确理解管制工作的优先等级(1)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy20'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy20"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy20'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    空中/地面交通的计划和排序，加速交通有序流动(2)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy21'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy21"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy21'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    预案合理，指令明确，避免频繁改变预案或更正指令(2)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy22'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy22"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy22'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    具备保证安全间隔的意识、冲突调配和精力分配得当(2)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy23'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy23"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy23'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    管制决策考虑航空器性能以及机载设备的性能限制(1)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy24'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy24"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy24'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    管制指令发布完整、正确和及时(1)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy25'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy25"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy25'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    使用不会给其他管制员增加工作量和压力的管制方法和程序，为下一个岗位或管制单位管制员创造良好的工作条件(1)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy26'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy26"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy26'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    提供天气、冲突、活动等必要飞行情报，具有管制服务意识(1)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy27'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),5)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy27"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy27'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),5)" />
+                    发现航空器或自己存在的错误并迅速采取行动修正(5)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy28'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),12)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy28"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy28'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),12)" />
+                    无法控制指挥节奏，处于明显失控状态，丧失情景意识，无管制预案、指挥被动且效率低下，本人技术能力尚不足以应对考核(12)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy29'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),12)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy29"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy29'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),12)" />
+                    因本人判断、调配等原因，导致违反尾流间隔标准、跑道侵入、航空器误入地面施工区域等情况；指挥航空器使用与机型不匹配的道面(12)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy30'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),12)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy30"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy30'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),12)" />
+                    工作态度较差、不尊重检查员，对检查考核存在抵触情绪(12)
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="link"><i class="fa fa-mobile"></i>3.方法和程序<i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy5'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy5"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy5'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    不存在脱波过早现象（包括电子移交过早）(1)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy6'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),6)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy6"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy6'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),6)" />
+                    发布关键（进跑道、起飞、落地）指令前进行喊话(6)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy61'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy61"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy61'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    遵守本单位管制移交协议和运行手册规定(2)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy62'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),5)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy62"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy62'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),5)" />
+                    目视间隔的理解与应用(5)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy63'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy63"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy63'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    防止“错忘漏”措施的执行（进程单、标牌、冲突连线等）(2)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy64'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),3)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy64"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy64'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),3)" />
+                    标牌操作或进程单填写不及时(3)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy65'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy65"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy65'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    标牌或进程单填写正确、符合规范(2)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy66'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),3)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy66"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy66'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),3)" />
+                    交接班做到交清接明，内容清楚完整，重叠充分(3)
+                </li>
+            </ul>
+        </li>
+
+         <li>
+            <div class="link"><i class="fa fa-paint-brush"></i>4.设备操作<i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy17'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy17"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy17'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    主用设备显示器调整在适当的范围，高度过滤正确(1)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy18'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy18"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy18'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    正确设置、检查和处理管制席位设备显示信息(1)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy19'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy19"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy19'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    熟练操作和使用雷达监视、内话等生产系统(2)
+                </li>
+                <li>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy119'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy119"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy119'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    了解备份自动化系统和内话系统的使用和切换方法(2)
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+ </div>
+
+   <div id="lk" style="display: none;width: 450px">
+
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl1'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),2)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl1"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl1'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),2)" />
+熟练使用中英文标准陆空通话用语，口齿清晰(2)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl2'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),2)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl2"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl2'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),2)" />
+陆空通话简洁明了、无理解歧义(2)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl3'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),5)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl3"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl3'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),5)" />
+能及时发现并纠正自身、机组通话中的错误(5)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl4'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl4"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl4'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+通话时机和技巧恰当，语音、语速、语调适当(1)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl5'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl5"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl5'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+协调通话简洁明了，协调意图表达清晰(1)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl6'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl6"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl6'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+陆空通话和协调用语中只包括与工作有关的内容(1)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl7'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl7"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl7'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+初次联系通话时带有本单位名称，脱波时指明下一扇区或管制单位名称(1)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl8'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),12)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl8"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl8'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),12)" />
+初次联系通话时带有本单位名称，脱波时指明下一扇区或管制单位名称(12)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl9'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),12)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl9"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl9'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),12)" />
+关键指令（跑道编号、进跑道、可以起飞或着陆、跑道前等待、穿越跑道等）发错(12)<br>
+</div>
+
+ <div id="tq" style="display: none;width: 450px">
+
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt1'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),5)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt1"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt1'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),5)" />
+熟练使用特情处置检查单，处置程序、方法与应急手册相符(5)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt2'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),2)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt2"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt2'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),2)" />
+能迅速从设备故障和紧急情况中恢复(2)<br>
+ <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt3'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),3)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt3"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt3'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),3)" />
+正确处置相关告警信息(3)<br>
+  <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt4'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),3)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt4"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt4'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),3)" />
+冲突解脱时能使用关键词向机组表明情况紧急以争取其配合(3)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt5'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),5)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt5"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt5'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),5)" />
+冲突解脱时迅速判明形势，指令恰当、及时(5)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt6'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),12)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt6"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt6'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),12)" />
+因管制原因导致通信失效的情况(12)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt7'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),12)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt7"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt7'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),12)" />
+特情处置或是地面冲突解脱与规定程序明显不符、特情通话用语不熟练或不规范，导致与机组沟通不畅或冲突加剧，处置效果不佳(12)<br>
+ </div>
+
+  <div id="ld" style="display: none;width: 450px">
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numd1'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),4)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numd1"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numd1'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),4)" />
+不间断扫视、监控管制责任范围内所有飞行动态（包括自己管辖下及不直接管辖但有潜在冲突的目标），具备全局意识(4)<br>
+ <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numd2'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numd2"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numd2'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),1)" />
+对相似航班号重视，对机组进行提醒或做相应标记(1)<br>
+ <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numd3'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),12)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numd3"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numd3'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),12)" />
+机组未复诵关键指令或者复诵错关键指令，管制员未能及时发现并纠正，并导致需要采取紧急避让措施(12)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numd4'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),5)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numd4"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numd4'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),5)" />
+发布指令等待机组完整复诵指令及呼号并复核后再进行标牌操作等确认动作(5)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numd5'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),5)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numd5"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numd5'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),5)" />
+对机组发话内容存在疑问或没听懂时立刻去证实(5)<br>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numd6'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),12)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numd6"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numd6'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),12)" />
+存在较为明显的不良管制习惯，如发起飞、着陆或进跑道指令前及航空器报告脱离或穿越跑道时，没有目视或者根据监控设备检视跑道(12)<br>
+</div>
+</div>
+
+
+
+<div id="koufen" style="margin-top: 20px;margin-bottom: 20px;float: left">
+    <table id="t" width="360px" border="1" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+    <thead>
+    <tr class="tabletop" align="center"  >
+        <th width="10%">扣分项</th>
+        <th width="10%">次数</th>
+        <th width="10%">扣分</th>
+    </tr>
+    </thead>
+     <tbody>
+    <tr >
+        <td style="text-align: center">间隔与效率</td>
+        <td><input type="text" value="0" id="jgcs" style="border: 0px;text-align: center;width: 110px" ></td>
+        <td><input type="text" value="0" id="jgkf" name="jgkf" style="border: 0px;text-align: center;width: 110px"></td>
+    </tr>
+    <tr >
+        <td style="text-align: center">协调通报</td>
+        <td><input type="text" value="0" id="xtcs" style="border: 0px;text-align: center;width: 110px" ></td>
+        <td><input type="text" value="0" id="xtkf" name="xtkf" style="border: 0px;text-align: center;width: 110px"></td>
+    </tr>
+     <tr >
+        <td style="text-align: center">程序方法与意识</td>
+        <td><input type="text" value="0" id="yscs" style="border: 0px;text-align: center;width: 110px" ></td>
+        <td><input type="text" value="0" id="yskf" name="yskf" style="border: 0px;text-align: center;width: 110px"></td>
+    </tr>
+     <tr >
+        <td style="text-align: center">标准陆空通话</td>
+        <td><input type="text" value="0" id="lkcs" style="border: 0px;text-align: center;width: 110px" ></td>
+        <td><input type="text" value="0" id="lkkf" name="lkkf" style="border: 0px;text-align: center;width: 110px"></td>
+    </tr>
+     <tr >
+        <td style="text-align: center">雷达监控</td>
+        <td><input type="text" value="0" id="ldcs" style="border: 0px;text-align: center;width: 110px" ></td>
+        <td><input type="text" value="0" id="ldkf" name="ldkf" style="border: 0px;text-align: center;width: 110px"></td>
+    </tr>
+
+         <tr >
+        <td style="text-align: center">特情处置</td>
+        <td><input type="text" value="0" id="tqcs" style="border: 0px;text-align: center;width: 110px" ></td>
+        <td><input type="text" value="0" id="tqkf" name="tqkf" style="border: 0px;text-align: center;width: 110px"></td>
+    </tr>
+
+     <tr>
+         <td style="text-align: center">总分</td>
+         <td colspan="2" span="2"><input type="text" value="100" id="zf" style="border: 0px;text-align: center;width: 220px"  ></td>
+     </tr>
+
+     </tbody>
+  </table>
+
+</div>
+</div>
+
+<div style="float: top">
+    考核情况记录<br>
+    <textarea style="width: 330px;height: 100px;margin-top: 10px" id="qkjl" name="qkjl"></textarea>
+</div>
+<div style="float: top;margin-top: 20px">
+    自我评价<br>
+    <textarea style="width: 330px;height: 100px;margin-top: 10px" id="zwpj" name="zwpj"></textarea>
+</div>
+ <div style="float: top">
+    教员评语<br>
+  <textarea style="width: 330px;height: 100px;margin-top: 10px" id="jypy" name="jypy"></textarea>
+</div>
+<div style="margin-top: 10px;float: left">
+    考核结果：
+    <select name="jg" id="jg" onmousemove="showHint(this.value)" style="width:70px;">
+            <option value="0">通过</option>
+            <option value="1">不通过</option>
+            <option value="2">待定</option>
+        </select>
+    考核人签名：
+    <input type="text" style="width: 80px" id="qm1" name="qm1">
+    陪考教员签名：
+    <input type="text" style="width: 80px" id="qm2" name="qm2">
+    申请人签名：
+    <input type="text" style="width: 80px" id="qm3" name="qm3">
+    <button id="send1" class="btn1" style="width:100px;height:30px;margin-top: 20px" type="submit" >确定</button>
+</div>
+</div>
+
+
+
+<script>
+function subNum(arg,cs,kf,zf,dx){
+if(arg.value>0) {
+    arg.value = arg.value - 1;
+    cs.value = cs.value - 1;
+    kf.value = kf.value - dx;
+    zf.value = zf.value - (-dx);
+}
+}
+
+function addNum(arg,cs,kf,zf,dx){
+arg.value=arg.value-(-1);
+cs.value=cs.value-(-1);
+kf.value=kf.value-(-dx);
+zf.value=zf.value-dx;
+}
+
+function subNumf(arg,cs,kf,zf) {
+    if (arg.value > 0) {
+        if (arg.value > 1) {
+            arg.value = arg.value - 1;
+            cs.value = cs.value - 1;
+            kf.value = kf.value - 5;
+            zf.value = zf.value - (-5);
+        }
+        else {
+            arg.value = arg.value - 1;
+            cs.value = cs.value - 1;
+            kf.value = kf.value - 4;
+            zf.value = zf.value - (-4);
+        }
+    }
+}
+
+function addNumf(arg,cs,kf,zf){
+arg.value=arg.value-(-1);
+cs.value=cs.value-(-1);
+if(cs.value==1) {
+    kf.value = kf.value - (-4);
+    zf.value = zf.value - 4;
+}
+else{
+    kf.value = kf.value - (-5);
+    zf.value = zf.value - 5;
+}
+}
+
+
+function showzf(arg){
+document.getElementById("qtkf").value=arg;
+document.getElementById("zf").value=document.getElementById("zf").value-(-100)-document.getElementById("zf").value-arg;
+}
+
+function showjg() {
+    document.getElementById("jg").style.display="block";
+    document.getElementById("xt").style.display="none";
+    document.getElementById("ys").style.display="none";
+    document.getElementById("lk").style.display="none";
+    document.getElementById("ld").style.display="none";
+    document.getElementById("tq").style.display="none";
+
+}
+
+
+function showxt() {
+    document.getElementById("jg").style.display="none";
+    document.getElementById("xt").style.display="block";
+    document.getElementById("ys").style.display="none";
+    document.getElementById("lk").style.display="none";
+    document.getElementById("ld").style.display="none";
+    document.getElementById("tq").style.display="none";
+}
+
+function showys() {
+    document.getElementById("jg").style.display="none";
+    document.getElementById("xt").style.display="none";
+    document.getElementById("ys").style.display="block";
+    document.getElementById("lk").style.display="none";
+    document.getElementById("ld").style.display="none";
+    document.getElementById("tq").style.display="none";
+}
+
+function showlk() {
+    document.getElementById("jg").style.display="none";
+    document.getElementById("xt").style.display="none";
+    document.getElementById("ys").style.display="none";
+    document.getElementById("lk").style.display="block";
+    document.getElementById("ld").style.display="none";
+    document.getElementById("tq").style.display="none";
+}
+
+function showld() {
+    document.getElementById("jg").style.display="none";
+    document.getElementById("xt").style.display="none";
+    document.getElementById("ys").style.display="none";
+    document.getElementById("lk").style.display="none";
+    document.getElementById("ld").style.display="block";
+    document.getElementById("tq").style.display="none";
+}
+
+function showtq() {
+    document.getElementById("jg").style.display="none";
+    document.getElementById("xt").style.display="none";
+    document.getElementById("ys").style.display="none";
+    document.getElementById("lk").style.display="none";
+    document.getElementById("ld").style.display="none";
+    document.getElementById("tq").style.display="block";
+}
+
+  $(function () {
+                $("#data07").datetimepicker({
+
+                    format: 'Y-m-d H:i',
+                    formatTime:	'H:i',
+                    todayButton: true,
+                });
+            });
+            $(function () {
+                $("#data071").datetimepicker({
+
+                    format: 'Y-m-d H:i',
+                    formatTime:	'H:i',
+                    todayButton: true,
+                });
+            });
+
+$(function() {
+    var Accordion = function(el, multiple) {
+        this.el = el || {};
+        this.multiple = multiple || false;
+
+        // Variables privadas
+        var links = this.el.find('.link');
+        // Evento
+        links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+    }
+
+    Accordion.prototype.dropdown = function(e) {
+        var $el = e.data.el;
+            $this = $(this),
+            $next = $this.next();
+
+        $next.slideToggle();
+        $this.parent().toggleClass('open');
+
+        if (!e.data.multiple) {
+            $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+        };
+    }
+
+    var accordion = new Accordion($('#accordion'), false);
+    var accordion2 = new Accordion($('#accordion2'), false);
+});
+
+
+</script>
+
+     <!-- XDSoft DateTimePicker  时间选择 -->
+        <link rel="stylesheet" href="{% static 'jquery.datetimepicker.css' %}"/>
+        <script src="{% static 'jquery.datetimepicker.full.js' %}"></script>
+</body>
