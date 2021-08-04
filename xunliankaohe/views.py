@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from docx import Document
-import re
 
 from xunliankaohe import models
 
 
 # Create your views here.
+
 
 def jichangfxkhb(request):
     return render(request, 'jichangfxkhb.html')

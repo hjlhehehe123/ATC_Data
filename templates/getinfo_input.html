@@ -34,6 +34,7 @@
     <style>
         table, table tr th, table tr td {
             border: 1px solid #A9A9A9;
+            font-size: 1px;
         }
 
         table {
@@ -50,10 +51,11 @@
 
 {#<br><br>#}
 
-<button onclick="addRow('test03')">新增行</button>
+{#<button onclick="addRow('test3')">新增行</button>#}
+<button class="layui-btn" type="submit" onclick="send3click()" id="send3">保存</button>
 <form class="form-signin" action="{% url 'getinfo_save' %}" method="post">
     {% csrf_token %}
-    <button class="layui-btn" type="submit" id="send1">保存</button>
+    {#    <button class="layui-btn" type="submit" id="send1">保存</button>#}
     <div>
 
         <table border="1" id="t1" border="0" align="left" width="1060px">
@@ -68,9 +70,9 @@
 
             <tr>
                 <td rowspan="8" width="150px"><p>
-                    {#                    <img height="130" width="100"#}
-                    {#                                                      src="https://i02piccdn.sogoucdn.com/a0a5a9f200f8a9fa"/>#}
-                    {#                    src="/static/{{ data_01_01 }}.jpg"/>#}
+                    <img height="130" width="100"
+                            {#                                                      src="https://i02piccdn.sogoucdn.com/a0a5a9f200f8a9fa"/>#}
+                         src="/static/{{ data_01_01 }}.jpg"/>
                 </p></td>
                 <th colspan="1">曾用名:</th>
                 <td colspan="1">
@@ -231,11 +233,12 @@
 </div>
 <br>
 
-<button onclick="addRow('test03')">新增行</button>
+<button onclick="addRow('test3')">新增行</button>
+
 <form class="form-signin" action="{% url 'getinfo_save' %}" method="post">
     {% csrf_token %}
-    <button class="layui-btn" type="submit" id="send1">保存</button>
-    <table border="1" id="test03" border="0" align="left" bgcolor="#F0F0F0">
+
+    <table border="1" id="test3" border="0" align="left" bgcolor="#F0F0F0">
         <thead>
         <tr>
             <th>执照信息</th>
@@ -292,7 +295,8 @@
     </table>
 </form>
 <br>
-<table border="1" id="test04" border="0" align="left" bgcolor="#F0F0F0">
+<button onclick="addRow('test4')">新增行</button>
+<table border="1" id="test4" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
         <th>管制员等级</th>
@@ -311,7 +315,8 @@
 </table>
 
 <br>
-<table border="1" id="test05" border="0" align="left" bgcolor="#F0F0F0">
+<button onclick="addRow('test5')">新增行</button>
+<table border="1" id="test5" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
         <th>英语等级信息</th>
@@ -330,8 +335,8 @@
     </tbody>
 </table>
 <br>
-
-<table border="1" id="test06" border="0" align="left" bgcolor="#F0F0F0">
+<button onclick="addRow('test6')">新增行</button>
+<table border="1" id="test6" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
         <th>体检合格证</th>
@@ -352,7 +357,8 @@
 </table>
 
 <br>
-<table border="1" id="test07" border="0" align="left" bgcolor="#F0F0F0">
+<button onclick="addRow('test7')">新增行</button>
+<table border="1" id="test7" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
         <th>赴外培训</th>
@@ -371,10 +377,10 @@
     </tbody>
 </table>
 
-<<br>
 <br>
-
-<table border="1" id="test08" border="0" align="left" bgcolor="#F0F0F0">
+<br>
+<button onclick="addRow('test8')">新增行</button>
+<table border="1" id="test8" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
         <th>岗位培训</th>
@@ -411,7 +417,8 @@
 
 
 <br>
-<table border="1" id="test09" border="0" align="left" bgcolor="#F0F0F0">
+<button onclick="addRow('test9')">新增行</button>
+<table border="1" id="test9" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
         <th>放单考核</th>
@@ -430,6 +437,7 @@
 </table>
 
 <br>
+<button onclick="addRow('test10')">新增行</button>
 <table border="1" id="test10" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
@@ -451,6 +459,8 @@
 </table>
 
 <br>
+<button onclick="addRow('test11')">新增行</button>
+<br>
 <table border="1" id="test11" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
@@ -466,7 +476,14 @@
     </tbody>
 </table>
 
+{#<br>#}
+{#<br>#}
+{#<br>#}
 <br>
+<button onclick="addRow('test12')">新增行</button>
+
+<br>
+
 <table border="1" id="test12" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
@@ -488,6 +505,8 @@
 
 
 <br>
+<button onclick="addRow('test13')">新增行</button>
+<br>
 <table border="1" id="test13" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
     <tr>
@@ -505,6 +524,8 @@
     </tbody>
 </table>
 
+<br>
+<button onclick="addRow('test14')">新增行</button>
 <br>
 <table border="1" id="test14" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
@@ -524,7 +545,22 @@
 </table>
 
 <br>
+<button onclick="addRow('test15')">新增行</button>
+<br>
 <table border="1" id="test15" border="0" align="left" bgcolor="#F0F0F0">
+    {#    <thead>#}
+    {#    <tr>#}
+    {#        <th></th>#}
+    {#    </tr>#}
+    {#    </thead>#}
+    {#    <tbody>#}
+    {#    <tr>#}
+    {#       #}
+    {#    </tr>#}
+    {#    <tbody>#}
+    {#    注意结尾那个斜杠啊#}
+
+
     <thead>
     <tr>
         <th>检查员信息</th>
@@ -536,10 +572,11 @@
         <td>委任时间</td>
         <td>终止委任时间</td>
     </tr>
-    </thead>
-    <tbody>
+    </tbody>
 </table>
 
+<br>
+<button onclick="addRow('test16')">新增行</button>
 <br>
 <table border="1" id="test16" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
@@ -556,6 +593,8 @@
     </tbody>
 </table>
 
+<br>
+<button onclick="addRow('test17')">新增行</button>
 <br>
 <table border="1" id="test17" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
@@ -576,6 +615,8 @@
     </tbody>
 </table>
 
+<br>
+<button onclick="addRow('test18')">新增行</button>
 <br>
 <table border="1" id="test18" border="0" align="left" bgcolor="#F0F0F0">
     <thead>
@@ -611,8 +652,6 @@
 <br>
 <br>
 <br>
-
-
 <br>
 <br>
 <br>
@@ -691,14 +730,36 @@
     var y16 = {{ a16 | safe}};
     var y17 = {{ a17 | safe}};
     var y18 = {{ a18 | safe}};
+    var fff = {{ data_00_01 | safe }};
 
-    var x03 = "test03";
-    var x04 = "test04";
-    var x05 = "test05";
-    var x06 = "test06";
-    var x07 = "test07";
-    var x08 = "test08";
-    var x09 = "test09";
+    let ccc = [y03,
+        y04,
+        y05,
+        y06,
+        y07,
+        y08,
+        y09,
+        y10,
+        y11,
+        y12,
+        y13,
+        y14,
+        y15,
+        y16,
+        y17,
+        y18];
+    console.log("ccc");
+    console.log(ccc);
+
+    var file = {{ file | safe}};
+
+    var x03 = "test3";
+    var x04 = "test4";
+    var x05 = "test5";
+    var x06 = "test6";
+    var x07 = "test7";
+    var x08 = "test8";
+    var x09 = "test9";
     var x10 = "test10";
     var x11 = "test11";
     var x12 = "test12";
@@ -709,13 +770,13 @@
     var x17 = "test17";
     var x18 = "test18";
 
-    var a03 = "03";
-    var a04 = "04";
-    var a05 = "05";
-    var a06 = "06";
-    var a07 = "07";
-    var a08 = "08";
-    var a09 = "09";
+    var a03 = "3";
+    var a04 = "4";
+    var a05 = "5";
+    var a06 = "6";
+    var a07 = "7";
+    var a08 = "8";
+    var a09 = "9";
     var a10 = "10";
     var a11 = "11";
     var a12 = "12";
@@ -737,10 +798,10 @@
     function create_td(y, x1, x2) {
 
 
-        console.log("a06");
-        console.log(y06);
-        console.log("y");
-        console.log(y);
+        {#console.log("a06");#}
+        {#console.log(y06);#}
+
+
         var z = 0;
         {#for (let i of y)相当于python for  in   ，但是js for in  是遍历index#}
         for (let i of y) {
@@ -748,7 +809,7 @@
             var x = 0;
             {#console.log("i");#}
             {#console.log(i);#}
-            for (let i1 of i) {
+            for (let i1 of i.slice(1,)) {
                 str1 = str1 +
                     "<td id=td_b" + x + "_" + z + "_" + x2 + " " + "> <input  type=\"text\" id=b" + x + "_" + z + "_" + x2 + " " + " name=b" + x + "_" + z + "_" + x2 + " "
                     + " placeholder=\"\"\n" + "value=" + i1 + "></td>"
@@ -757,14 +818,14 @@
                 x = x + 1
             }
             var str = "<tr> " + str1 +
-                "<td><a>删除</a></td></tr>";
+                "<td><a onclick=\"deleteclick(this)\" id=del" + (x) + "_" + z + "_" + x2 + " " + ">删除</a></td></tr>";
             $("#" + x1 + " tbody").append(str);
             z = z + 1
         }
 
 
         var rowindex = $("#" + x1 + " tbody tr").length - 1;
-        var arrs = []
+        var arrs = [];
 
         {#for (let i of y) {#}
         {#    var arrs1=[];#}
@@ -774,87 +835,198 @@
         {#    }#}
         {##}
         {##}
-        {#}#}
-            var str3 = "";
-            var str4 = y[1];
-            for (var i = 0;
-                 i < x
-                ; i++) {
-
-                str3 = str3 +
-                    "<td id=td_b" + i + "_" + rowindex + "_" + x2 + " " + "> <input  type=\"text\" id=b" + i + "_" + rowindex + "_" + x2 + " " + " name=b" + i + "_" + rowindex + "_" + x2 + " "
-                    + " placeholder=\"\"\n" + "value=" + "" + "></td>"
 
 
-            }
-
-            var str2 = "<tr> " + str3 +
-                "<td><a>删除</a></td></tr>";
-            $("#" + x1 + " tbody").append(str2);
 
 
-            {#var str = "<tr> " +#}
-            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + "0" + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
-            {#    "></td>" +#}
-            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
-            {#    "></td>" +#}
-            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
-            {#    "></td>" +#}
-            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
-            {#    "></td>" +#}
-            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
-            {#    "></td>" +#}
-            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
-            {#    "></td>" +#}
-            {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
-            {#    "></td>" +#}
-            {#    "<td><a>删除</a></td></tr>";#}
-            {#$("#test tbody").append(str);#}
 
 
-            registerClick(x1);//注册表格操作点击事件
+        {#        新增空白行#}
+        {#            var str3 = "";#}
+        {#            var str4 = y[1];#}
+        {#            for (var i = 0;#}
+        {#                 i < x#}
+        {#                ; i++) {#}
+        {#                str3 = str3 +#}
+        {#                    "<td id=td_b" + i + "_" + rowindex + "_" + x2 + " " + "> <input  type=\"text\" id=b" + i + "_" + rowindex + "_" + x2 + " " + " name=b" + i + "_" + rowindex + "_" + x2 + " "#}
+        {#                    + " placeholder=\"\"\n" + "value=" + "" + "></td>"#}
+        {#            }#}
+        {#            var str2 = "<tr> " + str3 +#}
+        {#                "<td><a>删除</a></td></tr>";#}
+        {#            $("#" + x1 + " tbody").append(str2);#}
 
 
-        }
 
 
-        $(document).ready(function () {
+
+
+
+        {#var str = "<tr> " +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + "0" + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td><a>删除</a></td></tr>";#}
+        {#$("#test tbody").append(str);#}
+
+
+        registerClick(x1);//注册表格操作点击事件
+
+
+    }
+
+    $(document).ready(function () {
 
 // 任何需要执行的js特效
 
 
-                {#var y = {{ a03 | safe}};#}
-                {#var x1 = "test";#}
-                {#var x2 = 3;#}
-                {#create_td(y, x1, x2);#}
+            {#var y = {{ a03 | safe}};#}
+            {#var x1 = "test";#}
+            {#var x2 = 3;#}
+            {#create_td(y, x1, x2);#}
 
 
-                create_td(y03, x03, a03);
-                create_td(y04, x04, a04);
+            create_td(y03, x03, a03);
+            create_td(y04, x04, a04);
+
+
+            for (var i = 0;
+                 i < y04.length + 1
+                ; i++) {
+
+                let arg = i;//块级变量
 
                 str4 =
                     {#"<form enctype=\"multipart/form-data\" action=\"{% url 'upload' %}\" method=\"POST\">\n" +#}
-                    " <input type=\"file\" name=\"myfile\"/>\n" +
-                    " <button id=\"input_01\" type=\"submit\" value=\"上传\">上传</button>\n"
+                    " <input type=\"file\" name=myfile_" + i + ">" +
+                    " <button id=input_" + i + "  type=\"submit\" value=\"上传\">上传</button><br>"
                 {#" </form>"#}
                 ;
-                for (var i = 0;
-                     i < y04.length
-                    ; i++) {
-                    $("#" + "td_b3_" + i + "_" + "04").append(str4);
-                    $("#" + "b3_" + i + "_" + "04").remove()
+
+                $("#" + "b3_" + i + "_" + "4").remove();
+                $("#" + "td_b3_" + i + "_" + "4").append(str4);
+
+                {#$("#" + "b3_" + i + "_" + "4").remove();#}
+                console.log("$(\"#\" + \"td_b3_\" + i + \"_\" + \"4\").append(str4)");
+                console.log(i);
+                var i3 = 0;
+
+                for (let term1 of file) {
+                    console.log("term1.split('_')[2]");
+                    console.log(term1.split('_')[2]);
 
 
+                    if (term1.split('_')[2] == arg) {
+
+                        let i4 = i3;
+                        console.log(term1.split('_')[2]);
+                        console.log("相等");
+
+                        {#$('<div><a id=' + "a3_" + i4 + "_" + arg + "_" + "4" + '>' + term1 +#}
+                        {#'<span class="sr-only"></span>' +#}
+                        {#    '</a></div>')#}
+                        {#    .appendTo($('<div id="wrap"></div>')#}
+                        {#    );#}
+
+
+
+
+                        {#$('<p' + 'id=' + "p3_" + i4 + "_" + arg + "_" + "4" + ' style="font-family:arial;color:blue;font-size:0.5px;float:left;text-align:center"'+'>'#}
+                        {#    +'ssss</p>')#}
+                        {#    .appendTo($("#" + "td_b3_" + arg + "_" + "4"));#}
+
+
+                        $('<p' + ' style="font-family:arial;color:blue;font-size:0.1px;float:left;text-align:center"' + '><a ' + 'id=' + "a3_" + i4 + "_" + arg + "_" + "4" + '>' + term1 +
+                            {#'<span class="sr-only"></span>' +#}
+                            '</a>' + '</p>')
+                        {#.appendTo($('<div></div>')#}
+                            .appendTo($("#" + "td_b3_" + arg + "_" + "4")).addClass('clickable')
+                            .click(function () {
+                                window.location.href = '{% url 'download' %}' + "?filename=" + term1;
+                            });
+
+                        {#$('<div id="wrap"></div>').#}
+
+
+                        $('<p' + ' style="font-family:arial;color:blue;font-size:0.1px;float:left;text-align:center"' + '><a' + 'id=' + "asc3_" + i4 + "_" + arg + "_" + "4" + ' > 删除</a>' + '</p>')
+                            .appendTo($("#" + "td_b3_" + arg + "_" + "4")).addClass('clickable')
+                            .click(function () {
+
+                                if (confirm("是否删除文件?")) {
+                                    {#var tr = $(t).parent().parent();#}
+
+                                    {#json数据#}
+                                    {#var post_data =JSON.stringify( hot.getData() );#}
+                                    var post_data1 = JSON.stringify(document.getElementById("a3_" + i4 + "_" + arg + "_" + "4").innerHTML);
+                                    console.log("post_data1");
+                                    console.log(post_data1);
+
+                                    $("#" + "a3_" + i4 + "_" + arg + "_" + "4").remove();
+                                    $(this).remove();
+
+                                    {#alert("发送中")#}
+
+                                    $.ajax({
+                                        url: "{% url 'delete' %}",
+                                        type: "POST",
+                                        {#发送json数据到服务器#}
+                                        data: post_data1,
+                                        dataType: "json",
+
+                                        {#请求成功回调函数#}
+                                        success: function (data) {
+                                            console.log("删除le");
+                                        },
+                                        {#请求失败回调函数#}
+                                        error: function () {
+
+                                        }
+
+                                    });
+
+
+                                }
+
+
+                            });
+
+                        i3 += 1;
+
+
+                    }
                 }
 
-                var name = "{{ 选的人员  | safe}}";
-                $('#input_01').off("click").on("click", function () {
-                        console.log("sdfghgfdsdfgh ")
-                        var file = $('input[type=file]')[0].files[0];
+                var name1 = "{{ 选的人员  | safe}}";
+                var i5 = 0;
+                $('#input_' + i).off("click").on("click", function () {
+
+                        let i6 = i5;
+
+
+                        console.log("sdfghgfdsdfgh ");
+                        var file = $('input[type=file]')[arg].files[0];
+                        {#var file = $('#myfile_' + i)[0].files[0];#}
                         var csrf = $('input[name=csrfmiddlewaretoken]').val();
                         var formdata = new FormData();
 
-                        formdata.append('username', name);
+
+                        console.log("i");
+                        console.log(i);
+                        console.log("arg");
+                        console.log(arg);
+
+
+                        formdata.append('username', name1 + "_" + "4" + "_" + arg);
                         formdata.append('file_obj', file);
                         formdata.append('csrfmiddlewaretoken', csrf);
                         $.ajax({
@@ -877,209 +1049,502 @@
                                         var ok = res[1];
                                         var a = JSON.parse(res);
                                         var selectedItem = null;
-                                        $.each(a, function (index, term) {
+                                        {#$.each(a, function (index, term) {#}
+                                        {#    console.log("term");#}
+                                        {#    console.log(term.toString());#}
+                                        {##}
+                                        {##}
+                                        {#    console.log("hahhahahah");#}
+                                        {#    console.log(a);#}
+
+                                        {#str5 =#}
+                                        {#    "<a href={% url 'upload' %}>" + term + "</a><br>";#}
+                                        {#$("#" + "td_b3_" + 0 + "_" + "4").append(str5);#}
 
 
-                                            console.log("hahhahahah");
-                                            console.log(a);
+                                        $('<p' + ' style="font-family:arial;color:blue;font-size:0.1px;float:left;text-align:center"' +
+                                            '><a id=' + "a3_" + 100 + i6 + "_" + arg + "_" + "4" + '>' + name1 + "_" + "4" + "_" + arg + "_" + file.name +
+                                            {#'<span class="sr-only"></span>' +#}
+                                            '</a>' + '</p>')
+                                            .appendTo($("#" + "td_b3_" + arg + "_" + "4")).addClass('clickable')
+                                            .hover(function () {
+                                                //下拉列表每一项的事件，鼠标移进去的操作
+                                                $(this).siblings().removeClass('highlight');
+                                                $(this).addClass('highlight');
+                                                {#selectedItem = index;#}
+                                            }, function () {
+                                                //下拉列表每一项的事件，鼠标离开的操作
+                                                $(this).removeClass('highlight');
+                                                //当鼠标离开时索引置-1，当作标记
+                                                {#selectedItem = -1;#}
+                                            })
 
-                                            str5 =
-                                                "<a href={% url 'upload' %}>" + term + "</a><br>";
-                                            {#$("#" + "td_b3_" + 0 + "_" + "04").append(str5);#}
+                                            .addClass('color="blue"')
+
+                                            .click(function () {
+                                                window.location.href = '{% url 'download' %}' + "?filename=" + name1 + "_" + "4" + "_" + arg + "_" + file.name;
 
 
-                                            $('<li color="blue">' + term + '</li>').appendTo($("#" + "td_b3_" + 0 + "_" + "04")).addClass('clickable')
-                                                .hover(function () {
-                                                    //下拉列表每一项的事件，鼠标移进去的操作
-                                                    $(this).siblings().removeClass('highlight');
-                                                    $(this).addClass('highlight');
-                                                    selectedItem = index;
-                                                }, function () {
-                                                    //下拉列表每一项的事件，鼠标离开的操作
-                                                    $(this).removeClass('highlight');
-                                                    //当鼠标离开时索引置-1，当作标记
-                                                    selectedItem = -1;
-                                                })
-                                                .click(function () {
-                                                    window.location.href = '{% url 'getinfo_input' %}' + "?filename=" + term;
-                                                });
-                                            {#str5.addClass('clickable'#}
-                                            {#).click(function () {#}
-                                            {#   window.location.href='{% url 'getinfo_input' %}'; //在同当前窗口中打开窗口#}
-                                        });
+                                            });
+                                        {#str5.addClass('clickable'#}
+                                        {#).click(function () {#}
+                                        {#   window.location.href='{% url 'getinfo_input' %}'; //在同当前窗口中打开窗口#}
+
+                                        $('<p' + ' style="font-family:arial;color:blue;font-size:0.1px;float:left;text-align:center"' +
+                                            '>删除</p>')
+                                            .appendTo($("#" + "td_b3_" + arg + "_" + "4")).addClass('clickable')
+                                            .click(function () {
+
+                                                if (confirm("是否删除文件?")) {
+                                                    {#var tr = $(t).parent().parent();#}
+
+                                                    {#json数据#}
+                                                    {#var post_data =JSON.stringify( hot.getData() );#}
+                                                    var post_data1 = JSON.stringify(document.getElementById("a3_" + 100 + i6 + "_" + arg + "_" + "4").innerHTML);
+                                                    console.log("post_data1");
+                                                    console.log(post_data1);
+                                                    $(this).remove();
+                                                    $("#" + "a3_" + 100 + i6 + "_" + arg + "_" + "4").remove();
+
+
+                                                    {#alert("发送中")#}
+
+                                                    $.ajax({
+                                                        url: "{% url 'delete' %}",
+                                                        type: "POST",
+                                                        {#发送json数据到服务器#}
+                                                        data: post_data1,
+                                                        dataType: "json",
+
+                                                        {#请求成功回调函数#}
+                                                        success: function (data) {
+                                                            console.log("删除le");
+                                                        },
+                                                        {#请求失败回调函数#}
+                                                        error: function () {
+
+                                                        }
+
+                                                    });
+
+
+                                                }
+
+
+                                            });
+
+
+                                        {#);#}
 
 
                                     }
                                     //事件注册完毕
                                 }
 
-                                {#$("#" + "td_b3_" + 0+ "_" + "04").append( res);#}
+                                {#$("#" + "td_b3_" + 0+ "_" + "4").append( res);#}
 
 
 
-                                {#$("#" + "td_b3_" + 0+ "_" + "04").append( res.file_list);#}
-                                {#$("#" + "td_b3_" + 0+ "_" + "04").append( res.file_list);#}
-                                {#$("#" + "td_b3_" + 0+ "_" + "04").append( "hahhahahah");#}
+                                {#$("#" + "td_b3_" + 0+ "_" + "4").append( res.file_list);#}
+                                {#$("#" + "td_b3_" + 0+ "_" + "4").append( res.file_list);#}
+                                {#$("#" + "td_b3_" + 0+ "_" + "4").append( "hahhahahah");#}
 
 
                             }
                         )
                         ;
+                        i5 += 1;
                     }
                 )
                 ;
 
 
-                create_td(y05, x05, a05);
-                create_td(y06, x06, a06);
-                create_td(y07, x07, a07);
-                create_td(y08, x08, a08);
-                create_td(y09, x09, a09);
-                create_td(y10, x10, a10);
-                create_td(y11, x11, a11);
-                create_td(y12, x12, a12);
-                create_td(y13, x13, a13);
-                create_td(y14, x14, a14);
-                create_td(y15, x15, a15);
-                create_td(y16, x16, a16);
-                create_td(y17, x17, a17);
-                create_td(y18, x18, a18);
-
-
-            }
-        )
-        ;
-
-
-        $(function () {
-            //load加载动态修改表格样式
-            if ($("#test03 tbody tr").length > 0) {
-                $("#test03").css("border-bottom", "0px");
-                $("#test03").css("border-right", "0px");
             }
 
 
-            //注册表格操作点击事件
-            registerClick(x03);
-            registerClick(x04);
-            registerClick(x05);
-            registerClick(x06);
-            registerClick(x07);
-            registerClick(x08);
-            registerClick(x09);
-            registerClick(x10);
-            registerClick(x11);
-            registerClick(x12);
-            registerClick(x13);
-            registerClick(x14);
-            registerClick(x15);
-            registerClick(x16);
-            registerClick(x17);
-            registerClick(x18);
+            create_td(y05, x05, a05);
+            create_td(y06, x06, a06);
+            create_td(y07, x07, a07);
+            create_td(y08, x08, a08);
+            create_td(y09, x09, a09);
+            create_td(y10, x10, a10);
+            create_td(y11, x11, a11);
+            create_td(y12, x12, a12);
+            create_td(y13, x13, a13);
+            create_td(y14, x14, a14);
+            create_td(y15, x15, a15);
+            create_td(y16, x16, a16);
+            create_td(y17, x17, a17);
+            create_td(y18, x18, a18);
 
 
-        });
+            console.log("y15");
+            console.log(y15);
+
+
+        }
+    )
+    ;
+
+
+    $(function () {
+        //load加载动态修改表格样式
+        if ($("#test3 tbody tr").length > 0) {
+            $("#test3").css("border-bottom", "0px");
+            $("#test3").css("border-right", "0px");
+        }
+
 
         //注册表格操作点击事件
-        function registerClick(z1) {
-            //防止重复注册事件：.off("click")
-            $("#" + z1 + " tbody tr td a").off("click").on("click", function () {
-                var text = $(this).text();
-                switch (text) {
-                    case "修改":
-                        updateRow($(this));
-                        break;
-                    case "保存":
-                        saveRow($(this));
-                        break;
-                    case "删除":
-                        deleteRow($(this));
-                        break;
+        registerClick(x03);
+        registerClick(x04);
+        registerClick(x05);
+        registerClick(x06);
+        registerClick(x07);
+        registerClick(x08);
+        registerClick(x09);
+        registerClick(x10);
+        registerClick(x11);
+        registerClick(x12);
+        registerClick(x13);
+        registerClick(x14);
+        registerClick(x15);
+        registerClick(x16);
+        registerClick(x17);
+        registerClick(x18);
+
+
+    });
+
+    //注册表格操作点击事件
+    function registerClick(z1) {
+        //防止重复注册事件：.off("click")
+        $("#" + z1 + " tbody tr td a").off("click").on("click", function () {
+            var text = $(this).text();
+            switch (text) {
+                case "修改":
+                    updateRow($(this));
+                    break;
+                case "保存":
+                    saveRow($(this));
+                    break;
+                case "删除":
+                    deleteRow(this);
+                    break;
+            }
+        });
+    }
+
+    //新增行
+    function addRow(z1) {
+        {#if ($("#saverow").is(':checked')) {#}
+        {#    saveAllRow();//保存所有行#}
+
+        var rowindex = $("#" + z1 + " tbody tr").length + 1;
+        var hhh = z1.split("test")[1] - 3;
+
+        console.log("hhh");
+        console.log(hhh);
+        var collength = ccc[hhh][0].length - 1;
+        console.log("addRow  collength");
+        console.log(collength);
+
+        var str = "<tr> ";
+        for (var i = 0; i < collength; i++) {
+            str = str + "<td id=td_b" + i + "_" + (rowindex - 2) + "_" + z1.split("test")[1]
+                + "> <input  type=\"text\" id=b" + i + "_" + (rowindex - 2) + "_" + z1.split("test")[1] +
+                " name=b" + i + "_" + (rowindex - 2) + "_" + z1.split("test")[1] + " placeholder=\"\"\n" +
+                "></td>"
+
+
+        }
+        {#注意id名字不能有空格#}
+        str = str + "<td><a onclick=\"deleteclick(this)\" id=del" + (i) + "_" + (rowindex - 2) + "_" + z1.split("test")[1] + ">删除</a></td></tr><br>";
+
+        {#var str = "<tr> " +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + "00" + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +#}
+        {#    "></td>" +#}
+        {#    "<td><a>删除</a></td></tr>";#}
+        $("#" + z1 + " tbody").append(str);
+
+        {#var aa3 = [];#}
+        var aab5 = [];
+        var aab4 = z1.split("test")[1];
+        aab5.push(aab4);
+        aab5.push(document.getElementById("data_01_01").value);
+
+        {#aa3.push(aa5);#}
+
+
+        $.ajax({
+            url: "http://localhost:8000/atcInfo/getinfo_add_row/",
+            type: "POST",
+            {#发送json数据到服务器#}
+            data: JSON.stringify(aab5),
+            dataType: "json",
+
+            {#请求成功回调函数#}
+            success: function (data) {
+                console.log("addRow  id");
+                console.log(data);
+                i1 = [];
+                i1.push(data[0]);
+                for (var i = 0; i < collength; i++) {
+                    i1.push("");
                 }
+
+
+                ccc[aab4 - 3].push(i1);
+
+
+                {#alert(data);#}
+                {#alert("请求成功")#}
+            },
+            {#请求失败回调函数#}
+            error: function () {
+                alert("error")
+            }
+
+        });
+        registerClick(z1);//注册表格操作点击事件
+    }
+
+
+    //修改行
+    function updateRow(t) {
+        $(t).text("保存");
+        var tr = $(t).parent().parent();
+        var tds = $(tr).children();
+        for (var i = 0; i < tds.length; i++) {
+            if (i > 0 && i < tds.length - 1) {
+                var td = tds[i];
+                var text = $(td).text();
+                $(td).html("<input type='text' value='" + text + "'>");
+            }
+        }
+    }
+
+    //保存行
+    function saveRow(t) {
+        $(t).text("修改");
+        var tr = $(t).parent().parent();
+        var tds = $(tr).children();
+        for (var i = 0; i < tds.length; i++) {
+            if (i > 0 && i < tds.length - 1) {
+                var td = tds[i];
+                var text = $(td).children("input").val();
+                $(td).html(text);
+            }
+        }
+    }
+
+    //删除行
+    function deleteRow(t) {
+
+    }
+
+    //新增行前保存所有行
+    function saveAllRow() {
+        var trs = $("#test3 tbody tr");
+        for (var i = 0; i < trs.length; i++) {
+            if ($(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").text() == "保存") {
+                $(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").click();
+            }
+        }
+    }
+
+    //重置序号
+    function resetSerialNum() {
+        var trs = $("#test3 tbody tr");
+        for (var i = 0; i < trs.length; i++) {
+            $("#test tbody tr:nth-child(" + (i + 1) + ") td:nth-child(1)").text(i + 1);
+        }
+    };
+
+    function send3click() {
+
+        {#json数据#}
+        {#var post_data =JSON.stringify( hot.getData() );#}
+        {#var post_data = JSON.stringify(hot.getData(hot.countRows() - 1, 0, hot.countRows() - 1, hot.countCols() - 1));#}
+        var i3 = [3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18];
+        var aa3 = [];
+        var ddd = 0;
+
+
+        var aa4 = [fff,
+            document.getElementById("data_01_01").value,
+            document.getElementById("data_02_01").value,
+            document.getElementById("data_03_01").value,
+            document.getElementById("data_04_01").value,
+            document.getElementById("data_05_01").value,
+            document.getElementById("data_06_01").value,
+            document.getElementById("data_07_01").value,
+            document.getElementById("data_08_01").value,
+            document.getElementById("data_09_01").value,
+            document.getElementById("data_10_01").value,
+            document.getElementById("data_11_01").value,
+            document.getElementById("data_12_01").value,
+            document.getElementById("data_13_01").value,
+            document.getElementById("data_14_01").value];
+        var aa5 = [];
+        aa5.push(aa4);
+        aa3.push(aa5);
+        var xx1 = 0;
+
+
+        for (let i of i3) {
+            var rowlength = $("#test" + i + " tbody tr").length;
+            {#var collength = $("#test" + i + " tbody tr td").length;#}
+            console.log("rowlength");
+            console.log(rowlength);
+            {# console.log("collength");#}
+            {#console.log(collength);#}
+            var aa2 = [];
+
+            for (var i1 = 0;
+                 i1 < rowlength - 1
+                ; i1++) {
+
+                var aa1 = [];
+                aa1.push(ccc[xx1][i1][0]);
+
+
+                for (var i2 = 0;
+                     i2 < ccc[ddd][0].length - 1
+                    ; i2++) {
+
+
+                    var eee = "b" + i2 + "_" + i1 + "_" + i;
+                    {#console.log("ccc[ddd][0].length");#}
+                    {#console.log(ccc[ddd][0].length);#}
+                    console.log("input");
+                    console.log("b" + i2 + "_" + i1 + "_" + i);
+                    console.log(document.getElementById(eee).value);
+
+
+                    aa1.push(document.getElementById(eee).value
+                    );
+
+
+                }
+
+                aa2.push(aa1);
+
+            }
+            aa3.push(aa2);
+            ddd = ddd + 1;
+            xx1 = xx1 + 1;
+
+        }
+        console.log("aa3");
+        console.log(aa3);
+        console.log("b0_0_3");
+        console.log(document.getElementById("b0_0_3").value);
+
+
+        {#var post_data1 = JSON.stringify(document.getElementById("a3_" + i4 + "_" + arg + "_" + "4").innerHTML);#}
+        {#console.log("post_data1");#}
+        {#console.log(post_data1);#}
+        $.ajax({
+            url: "http://localhost:8000/atcInfo/getinfo_savetable/",
+            type: "POST",
+            {#发送json数据到服务器#}
+            data: JSON.stringify(aa3),
+            dataType: "json",
+
+            {#请求成功回调函数#}
+            success: function (data) {
+
+
+                {#alert(data);#}
+                {#alert("请求成功")#}
+            },
+            {#请求失败回调函数#}
+            error: function () {
+                alert("error")
+            }
+
+        });
+    };
+
+    function deleteclick(t) {
+        if (confirm("是否删除行?")) {
+            var tr = $(t).parent().parent();
+            $(tr).remove();
+
+            var x2 = t.getAttribute("id");
+            console.log("del  <a id");
+            console.log(x2);
+
+            var x3 = [];
+            var x4 = x2.split("_")[2];
+            var x5 = x2.split("_")[1];
+
+
+            console.log("shanchu de shujuku id");
+            console.log(ccc);
+            console.log(x4);
+            console.log(x5);
+
+            {#报错Cannot read property 'undefined' of undefined是因为index超出界限#}
+
+            console.log(ccc[x4 - 3][x5][0]);
+            {#shanchu de id#}
+            x3.push(ccc[x4 - 3][x5][0]);
+            {#shanchu de biao de xuhao#}
+            x3.push(x2.split("_")[2]);
+
+
+            $.ajax({
+                url: "http://localhost:8000/atcInfo/getinfo_delete_row/",
+                type: "POST",
+                {#发送json数据到服务器#}
+                data: JSON.stringify(x3),
+                dataType: "json",
+
+                {#请求成功回调函数#}
+                success: function (data) {
+                    {#alert(data);#}
+                    {#alert("请求成功")#}
+                },
+                {#请求失败回调函数#}
+                error: function () {
+                    alert("error")
+                }
+
             });
-        }
-
-        //新增行
-        function addRow(z1) {
-            {#if ($("#saverow").is(':checked')) {#}
-            {#    saveAllRow();//保存所有行#}
-
-            var rowindex = $("#" + z1 + " tbody tr").length + 1;
-            var str = "<tr> " +
-                "<td> <input  type=\"text\" id=\"b\"" + rowindex + "00" + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
-                "></td>" +
-                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
-                "></td>" +
-                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
-                "></td>" +
-                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
-                "></td>" +
-                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
-                "></td>" +
-                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
-                "></td>" +
-                "<td> <input  type=\"text\" id=\"b\"" + rowindex + " name=\"b\"" + rowindex + " placeholder=\"\"\n" +
-                "></td>" +
-                "<td><a>删除</a></td></tr>";
-            $("#" + z1 + " tbody").append(str);
-            registerClick(z1);//注册表格操作点击事件
+            {#resetSerialNum();//重置序号#}
         }
 
 
-        //修改行
-        function updateRow(t) {
-            $(t).text("保存");
-            var tr = $(t).parent().parent();
-            var tds = $(tr).children();
-            for (var i = 0; i < tds.length; i++) {
-                if (i > 0 && i < tds.length - 1) {
-                    var td = tds[i];
-                    var text = $(td).text();
-                    $(td).html("<input type='text' value='" + text + "'>");
-                }
-            }
-        }
-
-        //保存行
-        function saveRow(t) {
-            $(t).text("修改");
-            var tr = $(t).parent().parent();
-            var tds = $(tr).children();
-            for (var i = 0; i < tds.length; i++) {
-                if (i > 0 && i < tds.length - 1) {
-                    var td = tds[i];
-                    var text = $(td).children("input").val();
-                    $(td).html(text);
-                }
-            }
-        }
-
-        //删除行
-        function deleteRow(t) {
-            if (confirm("是否删除行?")) {
-                var tr = $(t).parent().parent();
-                $(tr).remove();
-                {#resetSerialNum();//重置序号#}
-            }
-        }
-
-        //新增行前保存所有行
-        function saveAllRow() {
-            var trs = $("#test03 tbody tr");
-            for (var i = 0; i < trs.length; i++) {
-                if ($(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").text() == "保存") {
-                    $(trs[i]).children("td:nth-child(5)").children("a:nth-child(1)").click();
-                }
-            }
-        }
-
-        //重置序号
-        function resetSerialNum() {
-            var trs = $("#test03 tbody tr");
-            for (var i = 0; i < trs.length; i++) {
-                $("#test tbody tr:nth-child(" + (i + 1) + ") td:nth-child(1)").text(i + 1);
-            }
-        }
+    };
 
 
 </script>

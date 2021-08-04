@@ -65,7 +65,7 @@
     </form>
 </div>
 
-<br><br>
+{#<br><br>#}
 
 
 <FORM id="{{ i.10 }}" action="{% url 'getinfo_input' %}?人员={{ data_01_01 }}" method="post">
@@ -76,7 +76,8 @@
 
 <form class="form-signin" action="{% url 'getinfo_save' %}" method="post">
     {% csrf_token %}
-    <button class="layui-btn" type="submit" id="send1">保存</button>
+    {#    暂不需要#}
+    {#    <button class="layui-btn" type="submit" id="send1">保存</button>#}
     <div>
 
         <table border="1" id="t1" border="0" align="left" width="1060px">

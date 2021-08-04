@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -24,9 +23,9 @@ SECRET_KEY = 'e@f)864px)q2%h_nxw86=y=h^c8_rqe*=k7a&u5pzwdgy@&cny'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
+# 使能外网访问
+# ALLOWED_HOSTS = ['192.168.1.103']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -44,7 +43,9 @@ INSTALLED_APPS = [
     'xunliankaohe',
     'jianchabaogao',
 
-    'corsheaders',  # 非常重要
+    'corsheaders',
+
+    # 非常重要
 
     # python manage.py startapp data_anaiysis
     # py manage.py startapp data_anaiysis
@@ -121,7 +122,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  # 或者使用 mysql.connector.django
         'NAME': 'atc',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '12345678',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

@@ -5,6 +5,7 @@ from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, StreamingHttpResponse
 from django.shortcuts import render
+from django.utils.encoding import escape_uri_path
 
 from atcInfo.models import info, info_01, info_02, info_03, info_04, info_05, info_06, info_07, info_08, info_09, \
     info_10, info_11, info_12, info_13, info_14, info_15, info_16, info_17, info_18
@@ -84,7 +85,7 @@ def getinfo(request):
     except getatcinfo01.DoesNotExist:
         getatcinfo01 = None
 
-    data_00_12 = info_12.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", )
+    data_00_12 = info_12.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05", )
     data_00_12 = list(data_00_12)
     a12 = []
     for i in data_00_12:
@@ -111,22 +112,27 @@ def getinfo(request):
     a17 = []
     a18 = []
     for i in list(
-            info_03.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_03.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )): a03.append(i)
     for i in list(
-            info_04.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_04.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", )): a04.append(i)
     for i in list(
-            info_05.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_05.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a05.append(i)
     for i in list(
-            info_06.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_06.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", )): a06.append(i)
     for i in list(
-            info_07.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_07.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )): a07.append(i)
     for i in list(
-            info_08.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_08.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08",
                                                              "data_09", "data_10", "data_11", "data_12", "data_13",
                                                              "data_14", "data_15",
@@ -134,32 +140,36 @@ def getinfo(request):
                                                              "data_21", "data_22",
                                                              )): a08.append(i)
     for i in list(
-            info_09.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_09.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a09.append(i)
     for i in list(
-            info_10.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_10.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", "data_09", )): a10.append(i)
     for i in list(
-            info_11.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", )): a11.append(i)
+            info_11.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", )): a11.append(i)
     for i in list(
-            info_12.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", )): a12.append(
+            info_12.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04",
+                                                             "data_05", )): a12.append(
         i)
     for i in list(
-            info_13.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_13.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a13.append(i)
     for i in list(
-            info_14.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_14.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a14.append(i)
     for i in list(
-            info_15.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", )): a15.append(
+            info_15.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04",
+                                                             "data_05", )): a15.append(
         i)
     for i in list(
-            info_16.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", )): a16.append(i)
+            info_16.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", )): a16.append(i)
     for i in list(
-            info_17.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_17.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )): a17.append(i)
     for i in list(
-            info_18.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_18.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a18.append(i)
 
     context['data_00_03'] = json.dumps(a03, ensure_ascii=False)
@@ -179,6 +189,7 @@ def getinfo(request):
     context['data_00_17'] = json.dumps(a17, ensure_ascii=False)
     context['data_00_18'] = json.dumps(a18, ensure_ascii=False)
 
+    context['data_00_01'] = getatcinfo01.id
     context['data_01_01'] = getatcinfo01.data_01
     context['data_02_01'] = getatcinfo01.data_02
     context['data_03_01'] = getatcinfo01.data_03
@@ -217,6 +228,8 @@ def getinfo(request):
             ii = []
             ff = trainningstatusdetail.objects \
                 .filter().values_list().all()
+
+            ggid1 = 1
             for k in ff:
                 m = list(k)
                 ee = []
@@ -228,6 +241,8 @@ def getinfo(request):
 
                     if lb == m[2]:
                         if m[11] != "0":
+                            ee.append(ggid1)
+                            ggid1 += 1
                             ee.append(str(datetime.strptime(m[13].split()[0], '%Y-%m-%d').year) + "年" + lb)
                             ee.append('管制运行部')
                             ee.append(m[6])
@@ -1065,7 +1080,7 @@ def getinfo_save(request):
     context['data_19_01'] = getatcinfo01.data_19
     context['data_20_01'] = getatcinfo01.data_20
 
-    data_00_12 = info_12.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", )
+    data_00_12 = info_12.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05", )
     data_00_12 = list(data_00_12)
     a12 = []
     for i in data_00_12:
@@ -1092,22 +1107,27 @@ def getinfo_save(request):
     a17 = []
     a18 = []
     for i in list(
-            info_03.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_03.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )): a03.append(i)
     for i in list(
-            info_04.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_04.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", )): a04.append(i)
     for i in list(
-            info_05.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_05.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a05.append(i)
     for i in list(
-            info_06.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_06.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", )): a06.append(i)
     for i in list(
-            info_07.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_07.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )): a07.append(i)
     for i in list(
-            info_08.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_08.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08",
                                                              "data_09", "data_10", "data_11", "data_12", "data_13",
                                                              "data_14", "data_15",
@@ -1115,32 +1135,36 @@ def getinfo_save(request):
                                                              "data_21", "data_22",
                                                              )): a08.append(i)
     for i in list(
-            info_09.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_09.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a09.append(i)
     for i in list(
-            info_10.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_10.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", "data_09", )): a10.append(i)
     for i in list(
-            info_11.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", )): a11.append(i)
+            info_11.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", )): a11.append(i)
     for i in list(
-            info_12.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", )): a12.append(
+            info_12.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04",
+                                                             "data_05", )): a12.append(
         i)
     for i in list(
-            info_13.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_13.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a13.append(i)
     for i in list(
-            info_14.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_14.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a14.append(i)
     for i in list(
-            info_15.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", )): a15.append(
+            info_15.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04",
+                                                             "data_05", )): a15.append(
         i)
     for i in list(
-            info_16.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", )): a16.append(i)
+            info_16.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", )): a16.append(i)
     for i in list(
-            info_17.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_17.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )): a17.append(i)
     for i in list(
-            info_18.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_18.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )): a18.append(i)
 
     context['data_00_03'] = json.dumps(a03, ensure_ascii=False)
@@ -1177,6 +1201,7 @@ def getinfo_save(request):
             ii = []
             ff = trainningstatusdetail.objects \
                 .filter().values_list().all()
+            ggid1 = 1
             for k in ff:
                 m = list(k)
                 ee = []
@@ -1188,6 +1213,8 @@ def getinfo_save(request):
 
                     if lb == m[2]:
                         if m[11] != "0":
+                            ee.append(ggid1)
+                            ggid1 += 1
                             ee.append(str(datetime.strptime(m[13].split()[0], '%Y-%m-%d').year) + "年" + lb)
                             ee.append('管制运行部')
                             ee.append(m[6])
@@ -1218,6 +1245,20 @@ def getinfo_save(request):
     print('data_00_08')
     print()
 
+    file_list1 = []
+    for root, dirs, files in os.walk('C:/project1/ATC_data/static/files'):
+        print(root)  # 当前目录路径
+        print(dirs)  # 当前路径下所有子目录
+        print(files)  # 当前路径下所有非目录子文件   只循环一次
+        file_list1.append(files)
+        print(file_list1)
+        i2 = []
+        for i1 in files:
+            # if i1.split('_')[2] == username.split('_')[2]:
+            i2.append(i1)
+
+        context['file'] = json.dumps(i2, ensure_ascii=False)
+
     return render(request, 'personinfo.html', context)
 
 
@@ -1232,6 +1273,150 @@ def getinfo_save_ajax(request):
     for aa in info_03.objects.filter(data_01=request.POST.get('data_01_01')):
         aa.update(data_02=data[0][0])
         aa.update(data_03=data[0][1])
+
+    return HttpResponse(json.dumps(post_data
+                                   ), content_type='application/json')
+
+
+zz1 = [info_01,
+       info_03,
+       info_04,
+       info_05,
+       info_06,
+       info_07,
+       info_08,
+       info_09,
+       info_10,
+       info_11,
+       info_12,
+       info_13,
+       info_14,
+       info_15,
+       info_16,
+       info_17,
+       info_18]
+
+
+def getinfo_savetable(request):
+    post_data = {
+        "name": "1"
+    }
+    aa3 = json.loads(request.body.decode("utf-8"))
+    print("getinfo_savetable aa3 ")
+    print(aa3)
+
+    for i in aa3[1:]:
+        print("i")
+        print(i)
+
+    zz3 = 0
+    for zz2 in zz1:
+        xx1 = 0
+
+        for yy1 in aa3[zz3]:
+            yy3 = {}
+            xx2 = 1
+            for yy2 in yy1[1:]:
+                # dict['Age'] = 8  # 更新
+                # dict['School'] = "RUNOOB"  # 添加
+                if (xx2 + 1) < 10:
+                    yy3["data_0" + str(xx2 + 1)] = (yy2)
+                else:
+                    yy3["data_" + str(xx2 + 1)] = (yy2)
+
+                xx2 += 1
+            print("biao hang lie")
+            print(zz3)
+            print(xx1)
+            print(xx2)
+            print("yy3")
+            print(yy3)
+            print("id")
+            print(aa3[zz3][xx1][0])
+
+            #  通常我们再变量前加一个星号(*)表示这个变量是元组/列表，加两个星号表示这个参数是字典
+            zz2.objects.filter(id=aa3[zz3][xx1][0]).update(**yy3)
+            xx1 += 1
+        zz3 += 1
+
+    # xx3 = []
+    # for xx4 in list(info_03.objects.filter(id=aa3[0][0][0])):
+    #     xx3.append(xx4)
+    # for xx2 in xx3:
+
+    # print("j")
+    # print(j)
+    # xx2.update(data_02=aa3[0][0][0])
+    # xx1 += 1
+
+    return HttpResponse(json.dumps(post_data
+                                   ), content_type='application/json')
+
+
+def getinfo_add_row(request):
+    post_data = {
+        "name": "1"
+    }
+
+    aab5 = json.loads(request.body.decode("utf-8"))
+    print("getinfo_add_row aab5 ")
+    print(aab5)
+
+    zza1 = [info_01(),
+            info_03(),
+            info_04(),
+            info_05(),
+            info_06(),
+            info_07(),
+            info_08(),
+            info_09(),
+            info_10(),
+            info_11(),
+            info_12(),
+            info_13(),
+            info_14(),
+            info_15(),
+            info_16(),
+            info_17(),
+            info_18()]
+
+    zza1[int(aab5[0]) - 2].data_01 = aab5[1]
+    zza1[int(aab5[0]) - 2].data_02 = ""
+    zza1[int(aab5[0]) - 2].data_03 = ""
+    zza1[int(aab5[0]) - 2].data_04 = ""
+    zza1[int(aab5[0]) - 2].data_05 = ""
+    zza1[int(aab5[0]) - 2].data_06 = ""
+    zza1[int(aab5[0]) - 2].data_07 = ""
+    zza1[int(aab5[0]) - 2].data_08 = ""
+    zza1[int(aab5[0]) - 2].data_09 = ""
+    zza1[int(aab5[0]) - 2].data_10 = ""
+    zza1[int(aab5[0]) - 2].data_11 = ""
+    zza1[int(aab5[0]) - 2].data_12 = ""
+    zza1[int(aab5[0]) - 2].data_13 = ""
+    zza1[int(aab5[0]) - 2].data_14 = ""
+    zza1[int(aab5[0]) - 2].data_15 = ""
+    zza1[int(aab5[0]) - 2].data_16 = ""
+    zza1[int(aab5[0]) - 2].data_17 = ""
+    zza1[int(aab5[0]) - 2].data_18 = ""
+    zza1[int(aab5[0]) - 2].data_19 = ""
+    zza1[int(aab5[0]) - 2].data_20 = ""
+    zza1[int(aab5[0]) - 2].is_active = 0
+    zza1[int(aab5[0]) - 2].save()
+    print("getinfo_add_row id ")
+    print(zza1[int(aab5[0]) - 2].id)
+    xxa3 = []
+    xxa3.append(zza1[int(aab5[0]) - 2].id)
+
+    return HttpResponse(json.dumps(xxa3
+                                   ), content_type='application/json')
+
+
+def getinfo_delete_row(request):
+    post_data = {
+        "name": "1"
+    }
+    x3 = json.loads(request.body.decode("utf-8"))
+    zz1[int(x3[1]) - 2].objects.filter(id=x3[0]).delete()
 
     return HttpResponse(json.dumps(post_data
                                    ), content_type='application/json')
@@ -1305,7 +1490,7 @@ def infosearch(request):
     #     mm4=mm4+1
     # print(context)
 
-    return render(request, 'infosearch.html', {"data": mm2})
+    return render(request, 'infosearch.html', {"data": mm2, })
 
 
 def getinfo_input(request):
@@ -1379,7 +1564,7 @@ def getinfo_input(request):
     except getatcinfo01.DoesNotExist:
         getatcinfo01 = None
 
-    data_00_12 = info_12.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", )
+    data_00_12 = info_12.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05", )
     data_00_12 = list(data_00_12)
     a12 = []
     for i in data_00_12:
@@ -1406,28 +1591,31 @@ def getinfo_input(request):
     a17 = []
     a18 = []
     for i in list(
-            info_03.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_03.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )):
         n = []
         for m in i:
             n.append(m)
         a03.append(n)
     for i in list(
-            info_04.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_04.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", )):
         n = []
         for m in i:
             n.append(m)
         a04.append(n)
     for i in list(
-            info_05.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_05.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )):
         n = []
         for m in i:
             n.append(m)
         a05.append(n)
     for i in list(
-            info_06.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_06.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", )):
         n = []
         for m in i:
@@ -1435,14 +1623,16 @@ def getinfo_input(request):
         a06.append(n)
 
     for i in list(
-            info_07.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_07.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )):
         n = []
         for m in i:
             n.append(m)
         a07.append(n)
     for i in list(
-            info_08.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_08.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08",
                                                              "data_09", "data_10", "data_11", "data_12", "data_13",
                                                              "data_14", "data_15",
@@ -1454,66 +1644,68 @@ def getinfo_input(request):
             n.append(m)
         a08.append(n)
     for i in list(
-            info_09.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_09.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )):
         n = []
         for m in i:
             n.append(m)
         a09.append(n)
     for i in list(
-            info_10.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_10.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", "data_09", )):
         n = []
         for m in i:
             n.append(m)
         a10.append(n)
     for i in list(
-            info_11.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", )):
+            info_11.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", )):
         n = []
         for m in i:
             n.append(m)
         a11.append(n)
     for i in list(
-            info_12.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", )):
+            info_12.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05", )):
         n = []
         for m in i:
             n.append(m)
         a12.append(n)
     for i in list(
-            info_13.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_13.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )):
         n = []
         for m in i:
             n.append(m)
         a13.append(n)
     for i in list(
-            info_14.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_14.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )):
         n = []
         for m in i:
             n.append(m)
         a14.append(n)
     for i in list(
-            info_15.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", )):
+            info_15.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", )):
         n = []
         for m in i:
             n.append(m)
         a15.append(n)
     for i in list(
-            info_16.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", )):
+            info_16.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", )):
         n = []
         for m in i:
             n.append(m)
         a16.append(n)
     for i in list(
-            info_17.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05", "data_06",
+            info_17.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
+                                                             "data_06",
                                                              "data_07", "data_08", )):
         n = []
         for m in i:
             n.append(m)
         a17.append(n)
     for i in list(
-            info_18.objects.filter(data_01=name).values_list("data_02", "data_03", "data_04", "data_05",
+            info_18.objects.filter(data_01=name).values_list("id", "data_02", "data_03", "data_04", "data_05",
                                                              "data_06", )):
         n = []
         for m in i:
@@ -1556,7 +1748,7 @@ def getinfo_input(request):
 
     print('a06')
     print(a06)
-
+    context['data_00_01'] = getatcinfo01.id
     context['data_01_01'] = getatcinfo01.data_01
     context['data_02_01'] = getatcinfo01.data_02
     context['data_03_01'] = getatcinfo01.data_03
@@ -1616,6 +1808,7 @@ def getinfo_input(request):
             ii = []
             ff = trainningstatusdetail.objects \
                 .filter().values_list().all()
+            ggid1 = 1
             for k in ff:
                 m = list(k)
                 ee = []
@@ -1627,6 +1820,8 @@ def getinfo_input(request):
 
                     if lb == m[2]:
                         if m[11] != "0":
+                            ee.append(ggid1)
+                            ggid1 += 1
                             ee.append(str(datetime.strptime(m[13].split()[0], '%Y-%m-%d').year) + "年" + lb)
                             ee.append('管制运行部')
                             ee.append(m[6])
@@ -1680,6 +1875,20 @@ def getinfo_input(request):
     # plt.show()
     # E: / demo / project1 / img / test.jpg
 
+    file_list1 = []
+    for root, dirs, files in os.walk('C:/project1/ATC_data/static/files'):
+        print(root)  # 当前目录路径
+        print(dirs)  # 当前路径下所有子目录
+        print(files)  # 当前路径下所有非目录子文件   只循环一次
+        file_list1.append(files)
+        print(file_list1)
+        i2 = []
+        for i1 in files:
+            # if i1.split('_')[2] == username.split('_')[2]:
+            i2.append(i1)
+
+        context['file'] = json.dumps(i2, ensure_ascii=False)
+
     return render(request, 'getinfo_input.html', context)
 
 
@@ -1690,6 +1899,7 @@ def upload(request):
     file_obj = request.FILES.get('file_obj')
 
     file_name = file_obj.name
+    file_name = username + "_" + file_name
 
     path = os.path.join("C:/project1/ATC_data/static/files", file_name)
 
@@ -1701,23 +1911,59 @@ def upload(request):
     with open(path, 'wb') as f:
         for chunk in file_obj.chunks():
             f.write(chunk)
-    file_list = []
-    files = os.listdir('C:/project1/ATC_data/static/files')
-    for i in files:
-        file_list.append(i)
-    print(file_list)
-    data = json.dumps(file_list, ensure_ascii=False)
+
+    file_list1 = []
+    for root, dirs, files in os.walk('C:/project1/ATC_data/static/files'):
+        print(root)  # 当前目录路径
+        print(dirs)  # 当前路径下所有子目录
+        print(files)  # 当前路径下所有非目录子文件   只循环一次
+        file_list1.append(files)
+        print(file_list1)
+        i2 = []
+        for i1 in files:
+            if i1.split('_')[2] == username.split('_')[2]:
+                i2.append(i1)
+
+        data = json.dumps(i2, ensure_ascii=False)
+
+    # file_list = []
+    # files = os.listdir('C:/project1/ATC_data/static/files')
+    #
+    # for i in files:
+    #     file_list.append(i)
+    # print(file_list)
+    # data = json.dumps(file_list, ensure_ascii=False)
     return HttpResponse(data)
 
 
 def download(request):
     print("download")
-    filename = request.POST.get('filename')
-    print(filename)
+    filename = "hha"
+    filename = request.GET.get('filename')
+    print(str(filename))
 
     file = open('C:/project1/ATC_data/static/files/' + filename, 'rb')
     response = StreamingHttpResponse(file)
     response['Content-Type'] = 'application/octet-stream'
-    response['Content-Disposition'] = 'attachment;filename="models.py"'
+
+    response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(escape_uri_path(filename))
 
     return response
+
+
+def delete(request):
+    file_name = json.loads(request.body.decode("utf-8"))
+
+    path = "C:/project1/ATC_data/static/files/" + file_name  # 文件路径
+    if os.path.exists(path):  # 如果文件存在
+        # 删除文件，可使用以下两种方法。
+        os.remove(path)
+        # os.unlink(path)
+        print("delete ok    " + file_name)
+    else:
+        print('no such file')  # 则返回文件不存在
+
+    print("delete")
+
+    data = json.dumps("ok", ensure_ascii=False)
+    return HttpResponse(data)

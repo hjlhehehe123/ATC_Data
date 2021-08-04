@@ -12,6 +12,12 @@ urlpatterns = [
     url(r'^getinfo_input/$', views.getinfo_input, name='getinfo_input'),
     url(r'^upload/$', views.upload, name='upload'),
     url(r'^download/$', views.download, name='download'),
+    url(r'^delete/$', views.delete, name='delete'),
+
+    url(r'^getinfo_savetable/$', views.getinfo_savetable, name='getinfo_savetable'),
+    url(r'^getinfo_add_row/$', views.getinfo_add_row, name='getinfo_add_row'),
+
+    url(r'^getinfo_delete_row/$', views.getinfo_delete_row, name='getinfo_delete_row'),
 
     # url(r'^getinfo_save_01/$', views.getinfo_save_01, name='getinfo_save_01'),
     # url(r'^getinfo_save_02/$', views.getinfo_save_02, name='getinfo_save_02'),

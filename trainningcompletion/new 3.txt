@@ -1,0 +1,16 @@
+ if post_year1 == post_year2:
+        for bbb in range(post_year1, post_year2 + 1, 1):
+            for aaa in range(month1, month2 + 1, 1):
+                print("month")
+                print(aaa)
+                for m in ll[1:]:
+                    mm = datetime.strptime(m[13].split()[0], '%Y-%m-%d').year
+                    oo = datetime.strptime(m[13].split()[0], '%Y-%m-%d').month
+                    pp = datetime.strptime(m[13].split()[0], '%Y-%m-%d').day
+                    # print(pp)
+                    print(a1)
+                    print(b1)
+                    print(m[6])
+                    print(m[4])
+                    # print(m[10])
+                    if (aaa == oo) & (bbb == mm):
