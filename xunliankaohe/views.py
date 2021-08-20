@@ -977,7 +977,8 @@ def addjichanggqkhb(request):  # 获取增加机场岗前考核表记录的数�
     return render(request, 'ok.html')
 
 def getkfdetail(request):
-    b = jianchabaogao.objects.get(data_01=name)#从检查报告读出记录
+    b = jianchabaogao.objects.get(data_01=姓名)#从检查报告读出记录
     #筛出frontdata7不为表扬和正常的项（技能缺陷，现场纠违，无后果违章）
-    #从所在部门（app/acc）对应的表里（zgkhb/fxkhb/gqkhb）搜出名字对应的记录
+    #从这个人所在部门（app/acc）对应的表里（zgkhb/fxkhb/gqkhb）搜出名字对应的记录
+    #如果是塔台的还要从jichang3张表读
 
