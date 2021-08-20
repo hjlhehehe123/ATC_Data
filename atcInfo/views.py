@@ -660,7 +660,7 @@ def getinfo(request):
     ax.set_ylim(0, 100)
     plt.title('关键指标雷达图')
     ax.grid(True)
-    plt.savefig('C:/project1/ATC_data/static/' + context['data_01_01'] + '_01.jpg')
+    plt.savefig('E:/pythonproject/ATC_data/static/' + context['data_01_01'] + '_01.jpg')
     # plt.show()
     # E: / demo / project1 / img / test.jpg
     return render(request, 'personinfo.html', context)
@@ -1246,7 +1246,7 @@ def getinfo_save(request):
     print()
 
     file_list1 = []
-    for root, dirs, files in os.walk('C:/project1/ATC_data/static/files'):
+    for root, dirs, files in os.walk('E:/pythonproject/ATC_data/static/files'):
         print(root)  # 当前目录路径
         print(dirs)  # 当前路径下所有子目录
         print(files)  # 当前路径下所有非目录子文件   只循环一次
@@ -1871,12 +1871,12 @@ def getinfo_input(request):
     ax.set_ylim(0, 100)
     plt.title('关键指标雷达图')
     ax.grid(True)
-    plt.savefig('C:/project1/ATC_data/static/' + context['data_01_01'] + '_01.jpg')
+    plt.savefig('E:/pythonproject/ATC_data/static/' + context['data_01_01'] + '_01.jpg')
     # plt.show()
     # E: / demo / project1 / img / test.jpg
 
     file_list1 = []
-    for root, dirs, files in os.walk('C:/project1/ATC_data/static/files'):
+    for root, dirs, files in os.walk('E:/pythonproject/ATC_data/static/files'):
         print(root)  # 当前目录路径
         print(dirs)  # 当前路径下所有子目录
         print(files)  # 当前路径下所有非目录子文件   只循环一次
@@ -1901,7 +1901,7 @@ def upload(request):
     file_name = file_obj.name
     file_name = username + "_" + file_name
 
-    path = os.path.join("C:/project1/ATC_data/static/files", file_name)
+    path = os.path.join("E:/pythonproject/ATC_data/static/files", file_name)
 
     # 读取文件形式
     with open(path, 'wb') as f:
@@ -1913,7 +1913,7 @@ def upload(request):
             f.write(chunk)
 
     file_list1 = []
-    for root, dirs, files in os.walk('C:/project1/ATC_data/static/files'):
+    for root, dirs, files in os.walk('E:/pythonproject/ATC_data/static/files'):
         print(root)  # 当前目录路径
         print(dirs)  # 当前路径下所有子目录
         print(files)  # 当前路径下所有非目录子文件   只循环一次
@@ -1942,7 +1942,7 @@ def download(request):
     filename = request.GET.get('filename')
     print(str(filename))
 
-    file = open('C:/project1/ATC_data/static/files/' + filename, 'rb')
+    file = open('E:/pythonproject/ATC_data/static/files/' + filename, 'rb')
     response = StreamingHttpResponse(file)
     response['Content-Type'] = 'application/octet-stream'
 
@@ -1954,7 +1954,7 @@ def download(request):
 def delete(request):
     file_name = json.loads(request.body.decode("utf-8"))
 
-    path = "C:/project1/ATC_data/static/files/" + file_name  # 文件路径
+    path = "E:/pythonproject/ATC_data/static/files/" + file_name  # 文件路径
     if os.path.exists(path):  # 如果文件存在
         # 删除文件，可使用以下两种方法。
         os.remove(path)

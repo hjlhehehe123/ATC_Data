@@ -8,26 +8,109 @@ from django.db import models
 # python manage.py migrate sessions
 # Create your models here.
 class jichangfxkhb(models.Model):
-    frontdata1 = models.CharField(max_length=100)  # 姓名
-    frontdata2 = models.CharField(max_length=30)  # 间隔次数
-    frontdata3 = models.CharField(max_length=30)  # 间隔扣分
-    frontdata4 = models.CharField(max_length=500)  # 具体扣分项
-    frontdata5 = models.CharField(max_length=30)  # 协调
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
     frontdata6 = models.CharField(max_length=30)
-    frontdata7 = models.CharField(max_length=500)
-    frontdata8 = models.CharField(max_length=30)  # 意识
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
     frontdata9 = models.CharField(max_length=30)
-    frontdata10 = models.CharField(max_length=500)
-    frontdata11 = models.CharField(max_length=30)  # 陆空通话
-    frontdata12 = models.CharField(max_length=30)
-    frontdata13 = models.CharField(max_length=500)
-    frontdata14 = models.CharField(max_length=30)  # 特情
-    frontdata15 = models.CharField(max_length=30)
-    frontdata16 = models.CharField(max_length=500)
-    frontdata17 = models.CharField(max_length=30)  # 雷达
-    frontdata18 = models.CharField(max_length=30)
-    frontdata19 = models.CharField(max_length=500)
-    frontdata20 = models.CharField(max_length=30)  # 其他扣分数
-    frontdata21 = models.CharField(max_length=500)  # 其他扣分具体项
-    frontdata22 = models.CharField(max_length=30)  # 是否通过
-    frontdata23 = models.CharField(max_length=30)  # 总分
+    frontdata10 = models.CharField(max_length=30)
+
+class ACCfxkhb(models.Model):
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
+    frontdata6 = models.CharField(max_length=30)
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
+    frontdata9 = models.CharField(max_length=30)
+    frontdata10 = models.CharField(max_length=30)
+
+class APPfxkhb(models.Model):
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
+    frontdata6 = models.CharField(max_length=30)
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
+    frontdata9 = models.CharField(max_length=30)
+    frontdata10 = models.CharField(max_length=30)
+
+class jichanggqkhb(models.Model):
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
+    frontdata6 = models.CharField(max_length=30)
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
+    frontdata9 = models.CharField(max_length=30)
+    frontdata10 = models.CharField(max_length=30)
+
+class ACCgqkhb(models.Model):
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
+    frontdata6 = models.CharField(max_length=30)
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
+    frontdata9 = models.CharField(max_length=30)
+    frontdata10 = models.CharField(max_length=30)
+
+class APPgqkhb(models.Model):
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
+    frontdata6 = models.CharField(max_length=30)
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
+    frontdata9 = models.CharField(max_length=30)
+    frontdata10 = models.CharField(max_length=30)
+
+class APPzgkhb(models.Model):
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
+    frontdata6 = models.CharField(max_length=30)
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
+    frontdata9 = models.CharField(max_length=30)
+    frontdata10 = models.CharField(max_length=30)
+
+class ACCzgkhb(models.Model):
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
+    frontdata6 = models.CharField(max_length=30)
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
+    frontdata9 = models.CharField(max_length=30)
+    frontdata10 = models.CharField(max_length=30)
+
+class jichangzgkhb(models.Model):
+    frontdata1 = models.CharField(max_length=100)
+    frontdata2 = models.CharField(max_length=30)
+    frontdata3 = models.CharField(max_length=30)
+    frontdata4 = models.CharField(max_length=30)
+    frontdata5 = models.CharField(max_length=30)
+    frontdata6 = models.CharField(max_length=30)
+    frontdata7 = models.CharField(max_length=30)
+    frontdata8 = models.CharField(max_length=30)
+    frontdata9 = models.CharField(max_length=30)
+    frontdata10 = models.CharField(max_length=30)

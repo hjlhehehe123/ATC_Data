@@ -28,23 +28,24 @@
 
 <body>
 
+<form class="form-signin" action="{% url 'addAPPfxkhb' %}" method="post">
+    {% csrf_token %}
 <div style="width:850px;height: 500px" >
-<div style="height: 70px;width: 850px;float: left">
+<div style="height: 70px;width: 835px;float: left">
     姓名：<input type="text" style="width:60px;" id="data01" name="data01" placeholder="" value="" required>
     考核日期：<input type="text" style="width:60px;" id="data02" name="data02" placeholder="" value="" required>
-    考核时长：<input type="text" style="width:60px;" id="data03" name="data03" placeholder="" value="" required>
-    席位：<input type="text" style="width:60px;margin-top: 5px" id="data04" name="data04" placeholder="" value="" required>
+    考核时长：<input type="text" style="width:60px;" id="data03" name="data03" placeholder="" value="" required>min
+    席位：<input type="text" style="width:60px;margin-top: 5px" id="data04" name="data04" placeholder="" value="进近" required>
     题目编号：<input type="text" style="width:60px;margin-top: 5px" id="data05" name="data05" placeholder="" value="" required>
-    执照类别：<input type="text" style="width:60px;" id="data06" name="data06" placeholder="" value="" required>
+    考试类别：<input type="text" style="width:90px;" id="data06" name="data06" placeholder="" value="进近复习培训" required>
     管制员职级：<input type="text" style="width:60px;" id="data07" name="data07" placeholder="" value="" required>
-
     难度:
         <select name="data08" id="data08" onmousemove="showHint(this.value)" style="width:70px;margin-top: 5px">
             <option value="0">初级</option>
             <option value="1">中级</option>
             <option value="2">高级</option>
         </select>
-    考核内容：<input type="text" style="width:60px;" id="data9" name="data9" placeholder="" value="" required><br>
+    考核内容：<input type="text" style="width:60px;" id="data09" name="data09" placeholder="" value="" required><br>
 </div >
 <div style="width: 500px;float: left">
 <div style="width: 500px;margin-top: 20px;float: left">
@@ -54,6 +55,7 @@
     <input type="button" style=";margin-bottom: 5px;" value="标准陆空通话" onclick="showlk()"><br>
     <input type="button" style=";margin-bottom: 5px;" value="特情处置" onclick="showtq()">
     <input type="button" style=";margin-bottom: 5px;" value="雷达监控" onclick="showld()">
+    <input type="button" style=";margin-bottom: 5px;" value="其他" onclick="showqt()">
 </div>
 
 <div style="width: 550px;float: left" >
@@ -64,9 +66,9 @@
             <div class="link"><i class="fa fa-paint-brush"></i>1.保持安全间隔<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numj1'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),11)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numj1"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numj1'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),11)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data10'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),11)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data10" name="data10" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data10'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),11)" />
                     始终确保安全间隔和超障高度(11)</li>
             </ul>
         </li>
@@ -74,9 +76,9 @@
             <div class="link"><i class="fa fa-code"></i>2.适时通报飞行活动<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numj2'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numj2"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numj2'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data11'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data11" name="data11" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data11'),document.getElementById('jgcs'),document.getElementById('jgkf'),document.getElementById('zf'),1)" />
                     必要时，通报飞行活动，协助机组建立情景意识(1)
                 </li>
             </ul>
@@ -86,13 +88,13 @@
 
   <div id="xt" style="display: none;width: 450px">
 
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numx1'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
-<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numx1"  />
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numx1'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data12'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data12"  name="data12" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data12'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
  主动协调，意图合理，沟通有效(1)<br>
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numx2'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
-<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numx2"  />
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numx2'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data13'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data13" name="data13"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data13'),document.getElementById('xtcs'),document.getElementById('xtkf'),document.getElementById('zf'),1)" />
 协调信息传递及时、准确、全面(1)<br>
 </div>
 
@@ -102,14 +104,14 @@
             <div class="link"><i class="fa fa-paint-brush"></i>1.保持清醒的了解<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy1'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy1"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy1'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data14'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data14"  name="data14" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data14'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     掌握天气、空域、设备情况，对间隔和流量有所预见(1)</li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy21'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy21"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy21'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data15'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data15"  name="data15" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data15'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
                     保持对相关空中动态的经常性检查(2)</li>
             </ul>
         </li>
@@ -117,21 +119,21 @@
             <div class="link"><i class="fa fa-code"></i> 2.正确的管制判断和意图<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy2'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy2"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy2'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data16'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data16"  name="data16" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data16'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
                     冲突判断准确，预案合理，主次分明(2)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy3'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy3"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy3'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data17'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data17" name="data17" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data17'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     充分合理利用航路和空域资源(1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy4'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy4"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy4'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data18'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data18" name="data18" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data18'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
                     主动识别风险和隐患(2)
                 </li>
             </ul>
@@ -140,15 +142,15 @@
             <div class="link"><i class="fa fa-mobile"></i>3.提供主动管制<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy5'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy5"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy5'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data19'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data19" name="data19" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data19'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     主动发布管制指令(1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy6'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy6"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy6'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data20'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data20" name="data20" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data20'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     协同配合，创造良好的运行条件(1)
                 </li>
             </ul>
@@ -157,51 +159,51 @@
             <div class="link"><i class="fa fa-mobile"></i>4.管制方法正确有效<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy8'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy8"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy8'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data21'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data21" name="data21" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data21'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     采用简明高效的雷达引导或其他引导方式(1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy9'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy9"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy9'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data22'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data22" name="data22" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data22'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     实施合理的水平和垂直速度控制(1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy10'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy10"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy10'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data23'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data23" name="data23"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data23'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     实施合理的空中等待程序(1)
                 </li>
                                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy8'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy8"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy8'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data24'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data24" name="data24" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data24'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     考量航空器性能(1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy9'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy9"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy9'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data25'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data25" name="data25"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data25'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     主动识别相似航班号并有效提醒(1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy30'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy30"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy30'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data26'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data26" name="data26" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data26'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     正确使用进程单或电子进程单(1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy22'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy22"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy22'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data27'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data27"  name="data27" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data27'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     实施合理的进场管理(1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy23'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy23"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy23'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data28'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data28"  name="data28" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data28'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     提供合理的落地和放飞间隔(1)
                 </li>
             </ul>
@@ -210,9 +212,9 @@
             <div class="link"><i class="fa fa-mobile"></i>5.遵守协议和程序<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy11'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy11"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy11'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data29'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data29" name="data29"/>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data29'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     遵守各类工作协议，运行规范和相关程序(1)
                 </li>
             </ul>
@@ -222,15 +224,15 @@
             <div class="link"><i class="fa fa-paint-brush"></i>6.设备操作<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy17'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy17"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy17'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data30'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data30" name="data30" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data30'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     正确使用空管通信和自动化设备，熟悉备份、应急手段 (1)
                 </li>
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy18'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy18"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy18'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data31'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data31" name="data31" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data31'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     及时发现设备异常 (1)
                 </li>
             </ul>
@@ -239,9 +241,9 @@
             <div class="link"><i class="fa fa-paint-brush"></i>7.迅速修订错误<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy24'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy24"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy24'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data32'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data32"  name="data32"/>
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data32'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),2)" />
                     及时察觉自身或驾驶员错误并迅速纠正(2)
                 </li>
             </ul>
@@ -250,9 +252,9 @@
             <div class="link"><i class="fa fa-paint-brush"></i>8.提供其他服务<i class="fa fa-chevron-down"></i></div>
             <ul class="submenu">
                 <li>
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numy25'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
-                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numy25"  />
-                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numy25'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data33'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
+                    <input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data33" name="data33"  />
+                    <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data33'),document.getElementById('yscs'),document.getElementById('yskf'),document.getElementById('zf'),1)" />
                     主动向航空器提供影响飞行的情报(1)
                 </li>
             </ul>
@@ -264,33 +266,41 @@
 
    <div id="lk" style="display: none">
 
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl1'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
-<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl1"  />
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl1'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data34'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data34" name="data34"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data34'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
 使用标准通话，口齿清晰、指令简洁，英语通话良好(1)<br>
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numl2'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
-<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numl2"  />
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numl2'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data35'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data35" name="data35" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data35'),document.getElementById('lkcs'),document.getElementById('lkkf'),document.getElementById('zf'),1)" />
 管制指令及时、准确，规范使用条件性指令(1)<br>
 </div>
 
  <div id="tq" style="display: none;width: 450px">
 
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt1'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),1)" />
-<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt1"  />
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt1'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),1)" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data36'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data36" name="data36" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data36'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),1)" />
 沉着冷静，果断决策，在关键时刻当机立断(1)<br>
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numt2'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),1)" />
-<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numt2"  />
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numt2'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),1)" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data37'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data37" name="data37"  />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data37'),document.getElementById('tqcs'),document.getElementById('tqkf'),document.getElementById('zf'),1)" />
 特情性质判断准确、处置程序得当，使用检查单(1)<br>
  </div>
 
   <div id="ld" style="display: none;width: 450px;height: 50px">
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('numd1'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),1)" />
-<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="numd1"  />
-<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('numd1'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),1)" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNum(document.getElementById('data38'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data38" name="data38" />
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNum(document.getElementById('data38'),document.getElementById('ldcs'),document.getElementById('ldkf'),document.getElementById('zf'),1)" />
 正确使用雷达或其他识别程序(1)
+</div>
+
+<div id="qt" style="display: none;width: 450px">
+ <input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="-" onclick="subNumqt(document.getElementById('data40'),document.getElementById('qtkf'),document.getElementById('zf'),1)" />
+<input style="text-align: center; width: 20px; height: 10px; float: left;" type="text" value="0" id="data40" name="data40"/>
+<input style="width: 20px; height: 15px; border: 2px white; float: left;" type="button" value="+" onclick="addNumqt(document.getElementById('data40'),document.getElementById('qtkf'),document.getElementById('zf'),1)" />
+其他扣分项<br>
+<textarea style="width: 300px;height: 100px;margin-top: 10px" id="data41" name="data41">无</textarea>
 </div>
 </div>
 
@@ -338,9 +348,14 @@
         <td><input type="text" value="0" id="tqkf" name="tqkf" style="border: 0px;text-align: center;width: 110px"></td>
     </tr>
 
+    <tr >
+        <td style="text-align: center">其他</td>
+        <td colspan="2" span="2"><input type="text" value="0" id="qtkf"  name="qtkf" style="border: 0px;text-align: center;width: 220px"></td>
+    </tr>
+
      <tr>
          <td style="text-align: center">总分</td>
-         <td colspan="2" span="2"><input type="text" value="100" id="zf" style="border: 0px;text-align: center;width: 220px"  ></td>
+         <td colspan="2" span="2"><input type="text" value="100" id="zf" name="zf" style="border: 0px;text-align: center;width: 220px"  ></td>
      </tr>
 
      </tbody>
@@ -376,7 +391,7 @@
     <button id="send1" class="btn1" style="width:100px;height:30px;margin-top: 20px" type="submit" >确定</button>
 </div>
 </div>
-
+</form>
 
 
 <script>
@@ -396,11 +411,20 @@ kf.value=kf.value-(-dx);
 zf.value=zf.value-dx;
 }
 
-
-function showzf(arg){
-document.getElementById("qtkf").value=arg;
-document.getElementById("zf").value=document.getElementById("zf").value-(-100)-document.getElementById("zf").value-arg;
+function subNumqt(arg,kf,zf,dx){
+if(arg.value>0) {
+    arg.value = arg.value - 1;
+    kf.value = kf.value - dx;
+    zf.value = zf.value - (-dx);
 }
+}
+
+function addNumqt(arg,kf,zf,dx){
+arg.value=arg.value-(-1);
+kf.value=kf.value-(-dx);
+zf.value=zf.value-dx;
+}
+
 
 function showjg() {
     document.getElementById("jg").style.display="block";
@@ -409,6 +433,7 @@ function showjg() {
     document.getElementById("lk").style.display="none";
     document.getElementById("ld").style.display="none";
     document.getElementById("tq").style.display="none";
+    document.getElementById("qt").style.display="none";
 
 }
 
@@ -420,6 +445,7 @@ function showxt() {
     document.getElementById("lk").style.display="none";
     document.getElementById("ld").style.display="none";
     document.getElementById("tq").style.display="none";
+    document.getElementById("qt").style.display="none";
 }
 
 function showys() {
@@ -429,6 +455,7 @@ function showys() {
     document.getElementById("lk").style.display="none";
     document.getElementById("ld").style.display="none";
     document.getElementById("tq").style.display="none";
+    document.getElementById("qt").style.display="none";
 }
 
 function showlk() {
@@ -438,6 +465,7 @@ function showlk() {
     document.getElementById("lk").style.display="block";
     document.getElementById("ld").style.display="none";
     document.getElementById("tq").style.display="none";
+    document.getElementById("qt").style.display="none";
 }
 
 function showld() {
@@ -447,6 +475,7 @@ function showld() {
     document.getElementById("lk").style.display="none";
     document.getElementById("ld").style.display="block";
     document.getElementById("tq").style.display="none";
+    document.getElementById("qt").style.display="none";
 }
 
 function showtq() {
@@ -456,20 +485,24 @@ function showtq() {
     document.getElementById("lk").style.display="none";
     document.getElementById("ld").style.display="none";
     document.getElementById("tq").style.display="block";
+    document.getElementById("qt").style.display="none";
 }
 
+function showqt() {
+    document.getElementById("jg").style.display = "none";
+    document.getElementById("xt").style.display = "none";
+    document.getElementById("ys").style.display = "none";
+    document.getElementById("lk").style.display = "none";
+    document.getElementById("ld").style.display = "none";
+    document.getElementById("tq").style.display = "none";
+    document.getElementById("qt").style.display = "block";
+}
+
+
   $(function () {
-                $("#data07").datetimepicker({
+                $("#data02").datetimepicker({
 
-                    format: 'Y-m-d H:i',
-                    formatTime:	'H:i',
-                    todayButton: true,
-                });
-            });
-            $(function () {
-                $("#data071").datetimepicker({
-
-                    format: 'Y-m-d H:i',
+                   format: 'Y-m-d H:i',
                     formatTime:	'H:i',
                     todayButton: true,
                 });

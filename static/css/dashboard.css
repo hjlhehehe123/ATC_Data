@@ -66,14 +66,19 @@ body {
 /*  background-color: #428bca;*/
 }
 
-
+/*
 #menu ul{
     display:none;
 }
 
-#menu>li:hover ul{
+#menu>li:active ul{
     display:block;
 }
+#menu>li:visited ul{
+    display:block;
+}
+*/
+
 li{
     list-style:none;
 }

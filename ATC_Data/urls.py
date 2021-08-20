@@ -48,7 +48,6 @@ urlpatterns = [
     path('analysis/', view.analysis, name="analysis"),
     path('makeplan/', view.makeplan, name="makeplan"),
 
-    path('getsheet/', view.getsheet, name="getsheet"),
     # path('getinfo/', view.getinfo, name="getinfo"),
     path('saveevaluationresult/', view.saveevaluationresult, name="saveevaluationresult"),
     # path('^ajax/',ajax),

@@ -13,6 +13,7 @@ def login(request):
     return render(request, 'index.html')
 
 
+
 def test(request):
     # context = {}
     # context['hello'] = 'Hello World!'
@@ -52,30 +53,7 @@ def makeplan(request):
     return render(request, 'makeplan.html')
 
 
-def getsheet(request):
-    data = models.evalution1.objects.all()
-    data = list(data)
 
-    data1 = data
-    selLocation1 = request.POST.get('selLocation1')
-    selLocation2 = request.POST.get('selLocation2')
-    selLocation3 = request.POST.get('selLocation3')
-    print(selLocation3)
-
-    if selLocation1 == 1 and selLocation2 == 1:
-        return render(request, 'jichangfxkhb.html'
-                      , {'data': data
-                          , 'data1': data1
-                          , 'data2': data
-                          , 'data3': data
-                          , 'data4': data
-                          , 'data5': data
-                          , 'data6': data
-                         }
-
-                      )
-    else:
-        return render(request, 'jichangfxkhb.html', {'data': data})
 
 
 def saveevaluationresult(request):
